@@ -1,21 +1,12 @@
 /**
  * Visual identity tokens.
  *
- * Energy colours are EDUCATIONAL VISUALISATION CONVENTIONS ONLY. They are not
- * electrical wiring colour codes and must never be presented as such.
- *
  * Official Billionslight brand colours are NOT defined here yet: they must be
  * taken from the official logo files once supplied (public/assets/branding).
  */
-export const ENERGY_COLORS = {
-  solar: "#FFC53D", // golden yellow — solar generation
-  grid: "#4DA3FF", // blue — utility grid electricity
-  battery: "#3DDC84", // green — battery energy
-  load: "#F5F7FF", // white — active household consumption
-  inactive: "#6B7280", // grey — inactive connection
-  fault: "#FF4D4F", // red — faults / warnings only
-} as const;
-export type EnergyColorKey = keyof typeof ENERGY_COLORS;
+// Energy-flow and equipment-indicator colours live in src/config/energy-flow.ts
+// (ENERGY_FLOW_COLORS, EQUIPMENT_INDICATOR_COLORS). The Phase 1–3 energy
+// palette was retired after the owner approved the migration (2026-11-27).
 
 export const SCENE_COLORS = {
   navyDeep: "#0E1A33",

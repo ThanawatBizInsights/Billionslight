@@ -2,7 +2,8 @@
  * Solar and electrical equipment (Phase 1 subset): PV panel/array, inverter,
  * meter, battery. Simplified educational models — not installation guidance.
  */
-import { ENERGY_COLORS, SCENE_COLORS } from "../../config/palette";
+import { SCENE_COLORS } from "../../config/palette";
+import { EQUIPMENT_INDICATOR_COLORS } from "../../config/energy-flow";
 import { Matte, Glow } from "../core/materials";
 import type { InverterMode } from "../energy-flow/scenario";
 
@@ -35,7 +36,7 @@ export function SolarPanel({ generation = 0, ...p }: EquipmentBaseProps & { gene
               color={SCENE_COLORS.panelCell}
               roughness={0.35}
               metalness={0.2}
-              emissive={ENERGY_COLORS.solar}
+              emissive={EQUIPMENT_INDICATOR_COLORS.solar}
               emissiveIntensity={generation * 0.12}
               flatShading
             />
@@ -68,9 +69,9 @@ export function SolarArray({ rows, cols, spacing = 0.06, generation = 0, ...p }:
 const MODE_COLOR: Record<InverterMode, string> = {
   off: "#3A3F4A",
   standby: "#E0B341",
-  "grid-tied": ENERGY_COLORS.battery,
-  backup: ENERGY_COLORS.battery,
-  fault: ENERGY_COLORS.fault,
+  "grid-tied": EQUIPMENT_INDICATOR_COLORS.inverterAC,
+  backup: EQUIPMENT_INDICATOR_COLORS.inverterAC,
+  fault: EQUIPMENT_INDICATOR_COLORS.fault,
 };
 
 /** Wall-mounted inverter with status LED and display bars showing output. */
@@ -99,7 +100,7 @@ export function Inverter({ mode = "off", output = 0, variant = "grid-tied", fram
       {[0, 1, 2, 3, 4].map((i) => (
         <mesh key={i} position={[-0.14 + i * 0.07, 0.08, 0.122]}>
           <boxGeometry args={[0.045, 0.03 + i * 0.025, 0.004]} />
-          <Glow color={output > i / 5 ? ENERGY_COLORS.solar : "#3A4252"} />
+          <Glow color={output > i / 5 ? EQUIPMENT_INDICATOR_COLORS.inverterAC : "#3A4252"} />
         </mesh>
       ))}
       <mesh position={[0.16, 0.2, 0.122]}>
@@ -132,7 +133,7 @@ export function ElectricMeter({ active = true, importing = false, ...p }: Equipm
       </mesh>
       <mesh position={[0.08, -0.03, 0.1]}>
         <circleGeometry args={[0.015, 6]} />
-        <Glow color={importing ? ENERGY_COLORS.grid : "#2F3A44"} />
+        <Glow color={importing ? EQUIPMENT_INDICATOR_COLORS.grid : "#2F3A44"} />
       </mesh>
     </group>
   );
@@ -150,7 +151,7 @@ export function BatteryStorage({ stateOfCharge = 0.8, charging = false, discharg
       {[0, 1, 2, 3, 4].map((i) => (
         <mesh key={i} position={[0, 0.65 + i * 0.07, 0.127]}>
           <boxGeometry args={[0.18, 0.04, 0.004]} />
-          <Glow color={i < lit ? (active ? ENERGY_COLORS.battery : "#7FBF9A") : "#3A4252"} />
+          <Glow color={i < lit ? (active ? EQUIPMENT_INDICATOR_COLORS.battery : "#7FBF9A") : "#3A4252"} />
         </mesh>
       ))}
     </group>

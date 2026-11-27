@@ -100,3 +100,25 @@ export const ENERGY_FLOW_LEGEND_TH: Record<EnergyFlowCategory, string> = {
   inactive: "ไม่มีการจ่ายไฟ / ตัดการเชื่อมต่อ",
   fault: "ความผิดปกติ / คำเตือน",
 };
+
+/**
+ * Equipment indicator LEDs and displays (approved migration, 2026-11-27): they
+ * use the same semantic tokens as the energy flows so a light on a device
+ * means the same thing as the line beside it.
+ */
+export const EQUIPMENT_INDICATOR_COLORS = {
+  /** PV generation (panel sheen, solar readouts). */
+  solar: ENERGY_FLOW_COLORS.solarDC,
+  /** Grid import or export activity (meter). */
+  grid: ENERGY_FLOW_COLORS.utilityGridAC,
+  /** Battery charge level / charging / discharging. */
+  battery: ENERGY_FLOW_COLORS.batteryDC,
+  /** Inverter running and its AC output level; backup-circuit supply. */
+  inverterAC: ENERGY_FLOW_COLORS.inverterAC,
+  /** An appliance receiving household power. */
+  appliance: ENERGY_FLOW_COLORS.householdLoad,
+  /** Idle / not connected. */
+  idle: ENERGY_FLOW_COLORS.inactive,
+  /** Faults and warnings only. */
+  fault: ENERGY_FLOW_COLORS.fault,
+} as const;

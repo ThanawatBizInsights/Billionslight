@@ -1,0 +1,17 @@
+{
+ "outDir": "renders/phase-2-review/energy-flow-v3",
+ "jobs": [
+  {
+   "episode": "src/episodes/review/env-garage-on-grid.json",
+   "frame": 15,
+   "out": "04-environments/garage-on-grid-day.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/env-garage-hybrid.json",
+   "frame": 15,
+   "out": "04-environments/garage-hybrid-backup-evening.png",
+   "quality": "final"
+  }
+ ]
+}

@@ -132,12 +132,12 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 - Implementation: `src/engine/equipment/Solar.tsx`
 
 **`on-grid-inverter`** — WallInverter (variant on-grid). Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio.
-- Palette: housing `#EEF0F3` (estimated), indicator-ok `#3DDC84` (estimated)
+- Palette: housing `#EEF0F3` (estimated), indicator-ok `#22D3EE` (official)
 - Animation: status-led, output-bars, anti-islanding-off
 - Implementation: `src/engine/equipment/Electrical.tsx`
 
 **`hybrid-inverter`** — WallInverter (variant hybrid). Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio.
-- Palette: housing `#EEF0F3` (estimated), indicator-ok `#3DDC84` (estimated)
+- Palette: housing `#EEF0F3` (estimated), indicator-ok `#22D3EE` (official)
 - Animation: status-led, backup-mode, output-bars
 - Implementation: `src/engine/equipment/Electrical.tsx`
 
@@ -176,7 +176,7 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 - Implementation: `src/engine/equipment/Electrical.tsx`
 
 **`microinverter`** —  Supplied references show dark ribbed housings in 1-, 2- and 4-input sizes with a mounting tab, DC connector pairs and an AC trunk lead; build a generic unbranded model (no vendor name).
-- Palette: housing `#EEF0F3` (estimated), indicator-ok `#3DDC84` (estimated)
+- Palette: housing `#EEF0F3` (estimated), indicator-ok `#22D3EE` (official)
 - Animation: status-led
 
 **`cables`**
@@ -376,8 +376,8 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 | `scene-transitions` | Scene transitions (cut, fade, dip-to-navy) | in-progress | data-preset | 3 |  | — |
 | `energy-flow-standard` | Billionslight energy-flow visual standard (V3 travelling pulse) | approved | data-preset | 3 |  | — |
 
-**`energy-flow-language`**
-- Palette: solar `#FFC53D` (sheet-swatch), grid `#4DA3FF` (sheet-swatch), battery `#3DDC84` (sheet-swatch), load `#F5F7FF` (sheet-swatch), inactive `#6B7280` (sheet-swatch), fault `#FF4D4F` (sheet-swatch)
+**`energy-flow-language`** —  Superseded palette: see energy-flow-standard (V3).
+- Palette: solarDC `#FBBF24` (official), utilityGridAC `#3B82F6` (official), batteryDC `#22C55E` (official), inverterAC `#22D3EE` (official), householdLoad `#F8FAFC` (official), inactive `#64748B` (official), fault `#EF4444` (official)
 - Implementation: `src/engine/energy-flow`
 - ⚠ Board 06 'Grid Outage + Backup' lights the whole house; the engine will show only the selected backup loads (technically required).
 - ⚠ Board 04 §10 checklist 'มีไฟสำรอง' next to a hybrid inverter must be conditional on backup configuration in any episode.

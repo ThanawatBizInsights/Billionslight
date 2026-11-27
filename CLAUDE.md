@@ -16,9 +16,10 @@ do not modify them without permission — add variants instead.
 `docs/phase-3-report.md`). Do not start Phase 4 without approval (ElevenLabs
 needs approval for any paid call).
 **Energy-flow style V3 (travelling pulse, Variant B): APPROVED** by the owner
-(2026-11-27) as the permanent style; implemented in the shared renderer.
-Implementation previews (`renders/energy-flow-review/v3/`) await approval —
-do NOT regenerate existing educational videos until the owner approves them.
+(2026-11-27) as the permanent style, and its implementation previews
+(`renders/energy-flow-review/v3/`) are APPROVED. Equipment indicator LEDs were
+migrated to the shared tokens (owner-approved, 2026-11-27); the old energy
+palette is retired. Existing videos with energy flows were regenerated.
 
 | Phase | Scope | Gate |
 |---|---|---|
@@ -236,8 +237,11 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 - Review: `node scripts/review/build-energy-flow-review.mjs`; compositions
   `EnergyFlowReference`, `EnergyFlowCableTest`; output
   `renders/energy-flow-review/v3/`.
-- Legacy `ENERGY_COLORS` (palette.ts) remains only for the approved equipment
-  indicator LEDs until the owner approves migrating them.
+- Equipment LEDs/displays use `EQUIPMENT_INDICATOR_COLORS` (built from the
+  same tokens): inverter running/output + backup supply = cyan, battery =
+  green, meter import/export = blue, PV = yellow, powered appliance = white,
+  idle = grey, fault = red. The old energy palette is retired (a test fails if
+  it reappears).
 
 ## Approved reusable assets & capabilities
 
@@ -257,5 +261,5 @@ expressions). Full register: `docs/asset-manifest.md`.
 | `midday-sun`, `golden-hour`, `evening`, `night`, `power-outage` | lighting | approved |
 | on-grid/hybrid inverter, battery stack, distribution board, EV charger, EV, utility meter, socket, switch | equipment | approved |
 | `tablet`, `demo-solar-panel`, `coffee-mug` | props | approved |
-| `energy-flow-standard` (V3 travelling pulse) | visual language | approved style (previews in review) |
+| `energy-flow-standard` (V3 travelling pulse) + equipment indicator colours | visual language | approved |
 | 20 animation clips, 11 expression presets | animation | approved |

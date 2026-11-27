@@ -15,7 +15,7 @@
  * Simplified educational model — not a wiring or installation diagram.
  */
 import { RoundedBox } from "@react-three/drei";
-import { ENERGY_COLORS } from "../../config/palette";
+import { EQUIPMENT_INDICATOR_COLORS } from "../../config/energy-flow";
 import { rand } from "../animation/core";
 import { SolarPanel } from "../equipment/Solar";
 import { BatteryStack, DistributionBoard, UtilityMeter, WallInverter } from "../equipment/Electrical";
@@ -194,7 +194,7 @@ function ApplianceModel({ a, on, frame, backup, night = 0 }: { a: Appliance; on:
     // small green "backup circuit" tag (educational marker)
     <mesh position={[0, a.kind === "light" ? -0.25 : 0.05, 0.35]}>
       <circleGeometry args={[0.05, 10]} />
-      <meshBasicMaterial color={ENERGY_COLORS.battery} toneMapped={false} />
+      <meshBasicMaterial color={EQUIPMENT_INDICATOR_COLORS.inverterAC} toneMapped={false} />
     </mesh>
   ) : null;
   let body: React.ReactNode = null;
@@ -218,7 +218,7 @@ function ApplianceModel({ a, on, frame, backup, night = 0 }: { a: Appliance; on:
           </RoundedBox>
           <mesh position={[0.33, 0.05, 0.102]}>
             <circleGeometry args={[0.012, 8]} />
-            <meshBasicMaterial color={glow > 0.5 ? ENERGY_COLORS.battery : "#3A3F48"} toneMapped={false} />
+            <meshBasicMaterial color={glow > 0.5 ? EQUIPMENT_INDICATOR_COLORS.appliance : "#3A3F48"} toneMapped={false} />
           </mesh>
           {glow > 0.05 &&
             [0, 1, 2].map((i) => {
@@ -338,12 +338,12 @@ function OutageMarker({ position, frame }: { position: Vec3; frame: number }) {
     <group position={position} scale={pulse}>
       <mesh>
         <torusGeometry args={[0.38, 0.06, 6, 24]} />
-        <meshBasicMaterial color={ENERGY_COLORS.fault} toneMapped={false} />
+        <meshBasicMaterial color={EQUIPMENT_INDICATOR_COLORS.fault} toneMapped={false} />
       </mesh>
       {[1, -1].map((s) => (
         <mesh key={s} rotation={[0, 0, (s * Math.PI) / 4]}>
           <boxGeometry args={[0.6, 0.09, 0.05]} />
-          <meshBasicMaterial color={ENERGY_COLORS.fault} toneMapped={false} />
+          <meshBasicMaterial color={EQUIPMENT_INDICATOR_COLORS.fault} toneMapped={false} />
         </mesh>
       ))}
     </group>
@@ -468,7 +468,7 @@ export function CutawayHouse({ frame, energy, housePower, backupPower, pvGenerat
           </RoundedBox>
           <mesh position={[0, 0.07, 0.052]}>
             <planeGeometry args={[0.22, 0.04]} />
-            <meshBasicMaterial color={backupPower > 0.5 ? ENERGY_COLORS.battery : "#4A505C"} toneMapped={false} />
+            <meshBasicMaterial color={backupPower > 0.5 ? EQUIPMENT_INDICATOR_COLORS.inverterAC : "#4A505C"} toneMapped={false} />
           </mesh>
         </group>
       )}

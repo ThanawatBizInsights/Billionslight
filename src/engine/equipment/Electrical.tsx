@@ -9,7 +9,7 @@
  */
 import { RoundedBox } from "@react-three/drei";
 import type { ReactNode } from "react";
-import { ENERGY_COLORS } from "../../config/palette";
+import { EQUIPMENT_INDICATOR_COLORS } from "../../config/energy-flow";
 import type { InverterMode } from "../energy-flow/scenario";
 
 type V3 = [number, number, number];
@@ -33,9 +33,9 @@ const Lit = ({ color, intensity = 1 }: { color: string; intensity?: number }) =>
 const LED_COLOR: Record<InverterMode, string> = {
   off: "#39404C",
   standby: "#E0B341",
-  "grid-tied": ENERGY_COLORS.battery,
-  backup: ENERGY_COLORS.battery,
-  fault: ENERGY_COLORS.fault,
+  "grid-tied": EQUIPMENT_INDICATOR_COLORS.inverterAC,
+  backup: EQUIPMENT_INDICATOR_COLORS.inverterAC,
+  fault: EQUIPMENT_INDICATOR_COLORS.fault,
 };
 
 /** Wall-mounted inverter. variant decides the face detail; output 0–1 lights the bars. */
@@ -61,7 +61,7 @@ export function WallInverter({ variant = "on-grid", mode = "grid-tied", output =
       {[0, 1, 2, 3].map((i) => (
         <mesh key={i} position={[-w * 0.15 + i * w * 0.1, h * 0.12, 0.094]}>
           <planeGeometry args={[w * 0.06, 0.03]} />
-          <meshBasicMaterial color={output > i / 4 + 0.01 ? ENERGY_COLORS.solar : "#2C3444"} toneMapped={false} />
+          <meshBasicMaterial color={output > i / 4 + 0.01 ? EQUIPMENT_INDICATOR_COLORS.inverterAC : "#2C3444"} toneMapped={false} />
         </mesh>
       ))}
       {/* status LED */}
@@ -72,7 +72,7 @@ export function WallInverter({ variant = "on-grid", mode = "grid-tied", output =
       {variant === "hybrid" && (
         <mesh position={[0, -h * 0.18, 0.088]}>
           <planeGeometry args={[w * 0.6, 0.006]} />
-          <meshBasicMaterial color={ENERGY_COLORS.battery} toneMapped={false} />
+          <meshBasicMaterial color={EQUIPMENT_INDICATOR_COLORS.inverterAC} toneMapped={false} />
         </mesh>
       )}
       {/* cable glands */}
@@ -105,7 +105,7 @@ export function BatteryStack({ modules = 3, stateOfCharge = 0.8, charging = fals
       {Array.from({ length: 5 }, (_, i) => (
         <mesh key={i} position={[0.2, 0.06 + modules * mh - 0.12 + i * 0.018, 0.131]}>
           <planeGeometry args={[0.07, 0.01]} />
-          <meshBasicMaterial color={i < lit ? (active ? ENERGY_COLORS.battery : "#7FBF9A") : "#3A4252"} toneMapped={false} />
+          <meshBasicMaterial color={i < lit ? (active ? EQUIPMENT_INDICATOR_COLORS.battery : "#7FBF9A") : "#3A4252"} toneMapped={false} />
         </mesh>
       ))}
     </Place>
@@ -136,7 +136,7 @@ export function DistributionBoard({ breakers = 8, tripped = [] as number[], door
             </mesh>
             <mesh position={[0, off ? -0.02 : 0.02, 0.018]}>
               <boxGeometry args={[0.016, 0.03, 0.012]} />
-              <Matte color={tripped.includes(i) ? ENERGY_COLORS.fault : "#2A2F3A"} />
+              <Matte color={tripped.includes(i) ? EQUIPMENT_INDICATOR_COLORS.fault : "#2A2F3A"} />
             </mesh>
           </group>
         );
@@ -165,7 +165,7 @@ export function EVCharger({ charging = false, frame = 0, ...p }: PlaceProps & { 
       </RoundedBox>
       <mesh position={[0, 0.05, 0.069]}>
         <torusGeometry args={[0.04, 0.006, 6, 20]} />
-        <meshBasicMaterial color={charging ? ENERGY_COLORS.battery : "#4DA3FF"} transparent opacity={pulse} toneMapped={false} />
+        <meshBasicMaterial color={charging ? EQUIPMENT_INDICATOR_COLORS.battery : EQUIPMENT_INDICATOR_COLORS.idle} transparent opacity={pulse} toneMapped={false} />
       </mesh>
       {/* holster + coiled cable */}
       <mesh position={[0.17, -0.05, 0.02]}>
@@ -197,7 +197,7 @@ export function UtilityMeter({ importing = false, exporting = false, powered = t
       </mesh>
       <mesh position={[0.07, -0.02, 0.095]}>
         <circleGeometry args={[0.012, 8]} />
-        <meshBasicMaterial color={importing ? ENERGY_COLORS.grid : exporting ? ENERGY_COLORS.solar : "#2F3A44"} toneMapped={false} />
+        <meshBasicMaterial color={importing || exporting ? EQUIPMENT_INDICATOR_COLORS.grid : "#2F3A44"} toneMapped={false} />
       </mesh>
     </Place>
   );
@@ -238,7 +238,7 @@ export function ElectricCar({ color = "#F2F3F5", chargingPortGlow = 0, ...p }: P
       {/* charging port (left front fender) */}
       <mesh position={[-0.91, 0.72, 1.25]} rotation={[0, -Math.PI / 2, 0]}>
         <circleGeometry args={[0.05, 10]} />
-        <meshBasicMaterial color={chargingPortGlow > 0 ? ENERGY_COLORS.battery : "#3A3F48"} transparent opacity={0.4 + chargingPortGlow * 0.6} toneMapped={false} />
+        <meshBasicMaterial color={chargingPortGlow > 0 ? EQUIPMENT_INDICATOR_COLORS.battery : "#3A3F48"} transparent opacity={0.4 + chargingPortGlow * 0.6} toneMapped={false} />
       </mesh>
     </Place>
   );

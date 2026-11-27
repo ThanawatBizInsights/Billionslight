@@ -13,6 +13,7 @@
  *
  * Equipment wall is the back wall (z = −3.0). Front (+Z) is the open garage door.
  */
+import { EQUIPMENT_INDICATOR_COLORS } from "../../config/energy-flow";
 import { RoundedBox } from "@react-three/drei";
 import { BatteryStack, DistributionBoard, ElectricCar, EVCharger, LightSwitch, WallInverter, WallSocket } from "../equipment/Electrical";
 import type { EnergyState } from "../energy-flow/scenario";
@@ -174,7 +175,7 @@ export function GarageServiceArea({ energy, options, lights, frame }: GarageProp
           </RoundedBox>
           <mesh position={[0, 0.07, 0.052]}>
             <planeGeometry args={[0.22, 0.04]} />
-            <meshBasicMaterial color={energy.backupLoadsPowered ? "#3DDC84" : "#4A505C"} toneMapped={false} />
+            <meshBasicMaterial color={energy.backupLoadsPowered ? EQUIPMENT_INDICATOR_COLORS.inverterAC : "#4A505C"} toneMapped={false} />
           </mesh>
         </group>
       )}

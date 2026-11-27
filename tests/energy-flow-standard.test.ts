@@ -43,6 +43,16 @@ describe("energy-flow tokens", () => {
       "ระบบไฟสำรอง",
     ]);
   });
+  it("the retired ENERGY_COLORS palette is not used anywhere", () => {
+    const walk = (d: string): string[] => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : /\.(ts|tsx)$/.test(e.name) ? [path.join(d, e.name)] : []));
+    for (const f of walk(path.resolve(__dirname, "../src"))) expect(fs.readFileSync(f, "utf8").includes("ENERGY_COLORS"), f).toBe(false);
+  });
+
+  it("equipment indicators use the shared tokens", async () => {
+    const { EQUIPMENT_INDICATOR_COLORS } = await import("../src/config/energy-flow");
+    for (const v of Object.values(EQUIPMENT_INDICATOR_COLORS)) expect(Object.values(ENERGY_FLOW_COLORS)).toContain(v);
+  });
+
   it("the standard renderer and labels never hard-code flow colours", () => {
     for (const f of ["src/engine/energy-flow/EnergyFlowPath.tsx", "src/engine/energy-flow/FlowLabels.tsx", "src/engine/energy-flow/links.ts"]) {
       const src = fs.readFileSync(path.resolve(__dirname, "..", f), "utf8");

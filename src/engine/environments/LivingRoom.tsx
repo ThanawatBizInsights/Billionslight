@@ -12,6 +12,7 @@
  *   daylight— how bright the window/garden view is (0 night … 1 day)
  * Room: x −3.2…3.2, z −2.6…2.4, ceiling 2.8 m. Units metres.
  */
+import { EQUIPMENT_INDICATOR_COLORS } from "../../config/energy-flow";
 import { RoundedBox } from "@react-three/drei";
 import { rand } from "../animation/core";
 import { LightSwitch, WallSocket } from "../equipment/Electrical";
@@ -115,7 +116,7 @@ function AirConditioner({ position, rotationY, running, frame }: { position: Vec
       </mesh>
       <mesh position={[0.36, 0.06, 0.112]}>
         <circleGeometry args={[0.01, 8]} />
-        <meshBasicMaterial color={running > 0.5 ? "#3DDC84" : "#3A3F48"} toneMapped={false} />
+        <meshBasicMaterial color={running > 0.5 ? EQUIPMENT_INDICATOR_COLORS.appliance : "#3A3F48"} toneMapped={false} />
       </mesh>
       {running > 0.05 &&
         [0, 1, 2].map((i) => {

@@ -5,7 +5,7 @@
  */
 import { RoundedBox } from "@react-three/drei";
 import type { ReactNode } from "react";
-import { ENERGY_COLORS } from "../../config/palette";
+import { ENERGY_FLOW_COLORS } from "../../config/energy-flow";
 
 export interface PropProps {
   /** 0–1 extra state: screen brightness, panel glint … */
@@ -28,12 +28,12 @@ export function Tablet({ state = 1 }: PropProps) {
       {[-0.07, 0, 0.07].map((x, i) => (
         <mesh key={x} position={[x, 0.005, 0.0085]}>
           <planeGeometry args={[0.035, 0.035]} />
-          <meshBasicMaterial color={[ENERGY_COLORS.solar, "#E8ECF4", ENERGY_COLORS.load][i]} toneMapped={false} />
+          <meshBasicMaterial color={[ENERGY_FLOW_COLORS.solarDC, "#E8ECF4", ENERGY_FLOW_COLORS.householdLoad][i]} toneMapped={false} />
         </mesh>
       ))}
       <mesh position={[0, -0.04, 0.0085]}>
         <planeGeometry args={[0.15, 0.008]} />
-        <meshBasicMaterial color={ENERGY_COLORS.solar} toneMapped={false} />
+        <meshBasicMaterial color={ENERGY_FLOW_COLORS.solarDC} toneMapped={false} />
       </mesh>
     </group>
   );
@@ -51,7 +51,7 @@ export function DemoSolarPanel({ state = 0.5 }: PropProps) {
       {Array.from({ length: cols * rows }, (_, i) => (
         <mesh key={i} position={[((i % cols) - (cols - 1) / 2) * 0.066, (Math.floor(i / cols) - (rows - 1) / 2) * 0.062, 0.01]}>
           <planeGeometry args={[0.06, 0.056]} />
-          <meshStandardMaterial color="#27428F" roughness={0.35} metalness={0.15} emissive={ENERGY_COLORS.solar} emissiveIntensity={state * 0.15} />
+          <meshStandardMaterial color="#27428F" roughness={0.35} metalness={0.15} emissive={ENERGY_FLOW_COLORS.solarDC} emissiveIntensity={state * 0.15} />
         </mesh>
       ))}
     </group>

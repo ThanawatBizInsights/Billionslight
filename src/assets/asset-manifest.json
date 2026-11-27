@@ -762,8 +762,9 @@
           "note": "matte white/light grey"
         },
         "indicator-ok": {
-          "hex": "#3DDC84",
-          "source": "estimated"
+          "hex": "#22D3EE",
+          "source": "official",
+          "note": "EQUIPMENT_INDICATOR_COLORS.inverterAC (inverter running) — migrated 2026-11-27"
         }
       },
       "issues": [],
@@ -807,8 +808,9 @@
           "note": "matte white/light grey"
         },
         "indicator-ok": {
-          "hex": "#3DDC84",
-          "source": "estimated"
+          "hex": "#22D3EE",
+          "source": "official",
+          "note": "EQUIPMENT_INDICATOR_COLORS.inverterAC (inverter running) — migrated 2026-11-27"
         }
       },
       "issues": [],
@@ -1107,8 +1109,9 @@
           "note": "matte white/light grey"
         },
         "indicator-ok": {
-          "hex": "#3DDC84",
-          "source": "estimated"
+          "hex": "#22D3EE",
+          "source": "official",
+          "note": "EQUIPMENT_INDICATOR_COLORS.inverterAC (inverter running) — migrated 2026-11-27"
         }
       },
       "issues": [],
@@ -1946,36 +1949,48 @@
       ],
       "implementation": "src/engine/energy-flow",
       "palette": {
-        "solar": {
-          "hex": "#FFC53D",
-          "source": "sheet-swatch"
+        "solarDC": {
+          "hex": "#FBBF24",
+          "source": "official",
+          "note": "ENERGY_FLOW_COLORS (V3 standard)"
         },
-        "grid": {
-          "hex": "#4DA3FF",
-          "source": "sheet-swatch"
+        "utilityGridAC": {
+          "hex": "#3B82F6",
+          "source": "official",
+          "note": "ENERGY_FLOW_COLORS (V3 standard)"
         },
-        "battery": {
-          "hex": "#3DDC84",
-          "source": "sheet-swatch"
+        "batteryDC": {
+          "hex": "#22C55E",
+          "source": "official",
+          "note": "ENERGY_FLOW_COLORS (V3 standard)"
         },
-        "load": {
-          "hex": "#F5F7FF",
-          "source": "sheet-swatch"
+        "inverterAC": {
+          "hex": "#22D3EE",
+          "source": "official",
+          "note": "ENERGY_FLOW_COLORS (V3 standard)"
+        },
+        "householdLoad": {
+          "hex": "#F8FAFC",
+          "source": "official",
+          "note": "ENERGY_FLOW_COLORS (V3 standard)"
         },
         "inactive": {
-          "hex": "#6B7280",
-          "source": "sheet-swatch"
+          "hex": "#64748B",
+          "source": "official",
+          "note": "ENERGY_FLOW_COLORS (V3 standard)"
         },
         "fault": {
-          "hex": "#FF4D4F",
-          "source": "sheet-swatch"
+          "hex": "#EF4444",
+          "source": "official",
+          "note": "ENERGY_FLOW_COLORS (V3 standard)"
         }
       },
       "issues": [
         "Board 06 'Grid Outage + Backup' lights the whole house; the engine will show only the selected backup loads (technically required).",
         "Board 04 §10 checklist 'มีไฟสำรอง' next to a hybrid inverter must be conditional on backup configuration in any episode."
       ],
-      "animationCapabilities": []
+      "animationCapabilities": [],
+      "notes": " Superseded palette: see energy-flow-standard (V3)."
     },
     {
       "id": "scene-palette",

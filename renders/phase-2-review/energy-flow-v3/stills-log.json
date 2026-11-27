@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-27T15:54:48.270Z",
+  "gl": "swangle",
+  "jobs": [
+    {
+      "out": "renders/phase-2-review/energy-flow-v3/04-environments/garage-on-grid-day.png",
+      "frame": 15,
+      "size": "1920x1080",
+      "sec": 3.5,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2-review/energy-flow-v3/04-environments/garage-hybrid-backup-evening.png",
+      "frame": 15,
+      "size": "1920x1080",
+      "sec": 2.9,
+      "ok": true
+    }
+  ]
+}

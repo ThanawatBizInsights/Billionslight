@@ -3,9 +3,22 @@
 **Style approved by the owner (2026-11-27): Variant B — bright leading edge
 with a fading tail.** It is the permanent energy-flow animation for every
 scene with electrical data, rendered by the shared `EnergyFlowPath`.
-Implementation previews: `renders/energy-flow-review/v3/`. Existing
-educational videos are regenerated only after the owner approves these
-previews.
+Implementation previews (`renders/energy-flow-review/v3/`) approved by the
+owner (2026-11-27); existing videos with energy flows were regenerated.
+
+## Equipment indicators (`EQUIPMENT_INDICATOR_COLORS`)
+
+Device LEDs and displays use the same tokens (owner-approved migration):
+
+| Indicator | Token |
+|---|---|
+| Inverter running, output bars, backup-circuit supply | `inverterAC` (cyan) |
+| Battery level / charging / discharging | `batteryDC` (green) |
+| Meter import or export | `utilityGridAC` (blue) |
+| PV sheen / solar readouts | `solarDC` (yellow) |
+| Appliance powered | `householdLoad` (white) |
+| Idle | `inactive` (grey) |
+| Fault, tripped breaker, outage marker | `fault` (red) |
 
 Educational visualisation colours — **not** electrical conductor
 identification colours. The pulse shows the *direction of energy transfer*,
