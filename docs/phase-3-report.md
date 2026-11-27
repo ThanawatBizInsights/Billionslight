@@ -39,7 +39,13 @@ Videos: `renders/phase-3-review/showcase/`.
 
 See the table below (from `renders/render-log.jsonl`, ffprobe-verified).
 
-PERF_TABLE
+| Quality | Resolution | Frames | Render time | s/frame | Peak RSS | ffprobe verification |
+|---|---|---|---|---|---|---|
+| draft | 360x640 | 915 | 109.8 s | 0.12 | 2113 MB | True (h264 yuv420p, 30.507 s, 2.3 MB) |
+| preview | 540x960 | 915 | 196.4 s | 0.215 | 2276 MB | True (h264 yuv420p, 30.507 s, 3.8 MB) |
+| final | 1080x1920 | 915 | 502 s | 0.549 | 3357 MB | True (h264 yuv420p, 30.507 s, 12.2 MB) |
+
+Host: 4-core Xeon 2.1 GHz container, SwANGLE software GL (no GPU), concurrency 3. A GPU Mac should be faster; the final at ~0.55 s/frame is slightly lower per frame than Phase 2's living-room test (0.63) despite the larger cutaway scenes.
 
 ## Known limitations / review points
 
