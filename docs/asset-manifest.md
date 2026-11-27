@@ -123,7 +123,7 @@ Updated: 2026-11-27 · 132 assets · reference files live (git-ignored) under `p
 | `transformer` | Pole-mounted transformer | reference-supplied | procedural-mesh | 3 | 1 m (real-world-typical) | 05-solar-house-environment-sheet.png ENV06 label |
 | `ev-charger` | EV charger (wallbox) | approved | procedural-mesh | 3 | 0.5 m (real-world-typical) | 02-cinematic-reference-board.png §08; 05-solar-house-environment-sheet.png ENV03 |
 | `electric-vehicle` | Electric vehicle | approved | procedural-mesh | 3 | 1.5 m (real-world-typical) | 02-cinematic-reference-board.png §08; 05-solar-house-environment-sheet.png ENV03 |
-| `microinverter` | Microinverter | reference-supplied | procedural-mesh | 3 | 0.25 m (real-world-typical) | vendor-microinverter.webp |
+| `microinverter` | Microinverter | reference-supplied | procedural-mesh | 3 | 0.25 m (real-world-typical) | vendor-microinverter.webp; micro-inverter-2-panel.webp; micro-inverter-4-panel.webp |
 | `cables` | Electrical cables / conduit routes | reference-supplied | procedural-mesh | 3 |  | 05-solar-house-environment-sheet.png ENV05 |
 | `light-switch` | Light switch | approved | procedural-mesh | 2 |  | — |
 
@@ -175,7 +175,7 @@ Updated: 2026-11-27 · 132 assets · reference files live (git-ignored) under `p
 - Animation: charging-port-glow
 - Implementation: `src/engine/equipment/Electrical.tsx`
 
-**`microinverter`**
+**`microinverter`** —  Supplied references show dark ribbed housings in 1-, 2- and 4-input sizes with a mounting tab, DC connector pairs and an AC trunk lead; build a generic unbranded model (no vendor name).
 - Palette: housing `#EEF0F3` (estimated), indicator-ok `#3DDC84` (estimated)
 - Animation: status-led
 
@@ -355,15 +355,14 @@ Updated: 2026-11-27 · 132 assets · reference files live (git-ignored) under `p
 
 | ID | Name | Status | Model | Phase | Scale | Reference |
 |---|---|---|---|---|---|---|
-| `billionslight-logo` | Official Billionslight logo (horizontal & stacked) (แสงพันล้าน) | reference-supplied | 2d-overlay | 5 |  | billionslight-logo-horizontal.png transparent PNG 1028×283; billionslight-logo-stacked.png transparent PNG 663×645 |
+| `billionslight-logo` | Official Billionslight logo (horizontal & stacked) (แสงพันล้าน) | reference-supplied | 2d-overlay | 5 |  | billionslight-logo-horizontal.png transparent PNG 1028×283; billionslight-logo-stacked.png transparent PNG 663×645; logo-brand-sheet.jpg designer brand sheet (final.jpg): colour codes, lock-ups, concept; logo-master.pdf master final.pdf (same one-page sheet, vector) |
 | `partner-brand-logos` | Third-party brand logos (distributed brands) | reference-only | none | 1 |  | ; fb-cover.png |
 
 **`billionslight-logo`**
 - Palette: orange `#FF5E1F` (official), blue `#1B28CE` (official), navy `#21409A` (official)
 - Animation: fade-in, uniform-scale-in
-- ⚠ Master files (final.ai / final.pdf) not yet inspected — confirm exact brand colours and clear-space rules from them.
 - ⚠ The reference boards use a different sun/arc 'BILLIONSLIGHT' header mark — that is NOT the official logo and will not be used.
-- ⚠ Tagline 'จำหน่ายอุปกรณ์ ไฟฟ้า ครบวงจร' is part of the lock-up — confirm whether a version without the tagline exists for video.
+- ⚠ Tagline 'จำหน่ายอุปกรณ์ ไฟฟ้า ครบวงจร' is part of the lock-up — the master sheet has no approved tagline-free lock-up (only a cap mock-up without it) — keep the full logo unless the owner supplies/approves one.
 
 **`partner-brand-logos`**
 - ⚠ Trademarks of other companies. Must not appear in animations unless the owner confirms permission for a specific use.
@@ -534,7 +533,7 @@ Updated: 2026-11-27 · 132 assets · reference files live (git-ignored) under `p
 | ID | Name | Status | Model | Phase | Scale | Reference |
 |---|---|---|---|---|---|---|
 | `supplier-flyers` | Supplier promotional flyers (5 kW / 10 kW packages) | reference-only | none | 1 |  | supplier-flyer-5kw.jpg; supplier-flyer-10kw.jpg |
-| `vendor-product-photos` | Vendor product photos (microinverter, battery, meter, accessories) | reference-only | none | 2 |  | vendor-microinverter.webp; vendor-stacked-battery.webp; vendor-energy-meter.webp; vendor-accessories.webp |
+| `vendor-product-photos` | Vendor product photos (microinverter, battery, meter, accessories) | reference-only | none | 2 |  | vendor-microinverter.webp; vendor-stacked-battery.webp; vendor-energy-meter.webp; vendor-accessories.webp; micro-inverter-2-panel.webp; micro-inverter-4-panel.webp |
 | `tablet` | Tablet (hand-held prop, screen glow) | approved | procedural-mesh | 2 |  | 01-visual-reference-board.png Sunny holding tablet / panel |
 | `demo-solar-panel` | Demonstration solar panel (hand-held prop) | approved | procedural-mesh | 2 |  | 01-visual-reference-board.png Sunny holding tablet / panel |
 | `coffee-mug` | Coffee mug (hand-held prop) | approved | procedural-mesh | 2 |  | 04-solar-composition-reference.png §02 mugs on table |

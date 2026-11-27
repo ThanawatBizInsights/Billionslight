@@ -1082,6 +1082,14 @@
         {
           "file": "products/vendor-microinverter.webp",
           "note": "form reference only"
+        },
+        {
+          "file": "products/micro-inverter/micro-inverter-2-panel.webp",
+          "note": "form reference only — 2-input unit"
+        },
+        {
+          "file": "products/micro-inverter/micro-inverter-4-panel.webp",
+          "note": "form reference only — 4-input unit"
         }
       ],
       "scale": {
@@ -1103,7 +1111,8 @@
           "source": "estimated"
         }
       },
-      "issues": []
+      "issues": [],
+      "notes": " Supplied references show dark ribbed housings in 1-, 2- and 4-input sizes with a mounting tab, DC connector pairs and an AC trunk lead; build a generic unbranded model (no vendor name)."
     },
     {
       "id": "cables",
@@ -1877,23 +1886,31 @@
         {
           "file": "branding/billionslight-logo-stacked.png",
           "section": "transparent PNG 663×645"
+        },
+        {
+          "file": "branding/logo-brand-sheet.jpg",
+          "section": "designer brand sheet (final.jpg): colour codes, lock-ups, concept"
+        },
+        {
+          "file": "branding/logo-master.pdf",
+          "section": "master final.pdf (same one-page sheet, vector)"
         }
       ],
       "palette": {
         "orange": {
           "hex": "#FF5E1F",
           "source": "official",
-          "note": "measured from official PNG"
+          "note": "brand sheet colour code ff5e1f; matches PNG"
         },
         "blue": {
           "hex": "#1B28CE",
           "source": "official",
-          "note": "icon ring, measured"
+          "note": "brand sheet colour code 1b28ce; matches PNG"
         },
         "navy": {
           "hex": "#21409A",
           "source": "official",
-          "note": "'BILLIONS' wordmark, measured"
+          "note": "'BILLIONS' wordmark, measured from PNG (not listed on the brand sheet)"
         }
       },
       "animationCapabilities": [
@@ -1901,9 +1918,8 @@
         "uniform-scale-in"
       ],
       "issues": [
-        "Master files (final.ai / final.pdf) not yet inspected — confirm exact brand colours and clear-space rules from them.",
         "The reference boards use a different sun/arc 'BILLIONSLIGHT' header mark — that is NOT the official logo and will not be used.",
-        "Tagline 'จำหน่ายอุปกรณ์ ไฟฟ้า ครบวงจร' is part of the lock-up — confirm whether a version without the tagline exists for video."
+        "Tagline 'จำหน่ายอุปกรณ์ ไฟฟ้า ครบวงจร' is part of the lock-up — the master sheet has no approved tagline-free lock-up (only a cap mock-up without it) — keep the full logo unless the owner supplies/approves one."
       ],
       "implementation": null
     },
@@ -2038,6 +2054,12 @@
         },
         {
           "file": "products/vendor-accessories.webp"
+        },
+        {
+          "file": "products/micro-inverter/micro-inverter-2-panel.webp"
+        },
+        {
+          "file": "products/micro-inverter/micro-inverter-4-panel.webp"
         }
       ],
       "notes": "Shape references for generic models only. No vendor names, logos or exact product likeness in renders.",

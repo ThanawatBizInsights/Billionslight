@@ -55,8 +55,9 @@ needs approval for any paid call).
 - **Preserve official Billionslight branding.** Use the supplied logo files
   only; never redraw, recolour, re-typeset or change proportions. Do not invent
   brand colours — take them from official files.
-- Official logo colours (measured from the PNG; confirm against final.ai):
-  orange `#FF5E1F`, blue `#1B28CE`, navy `#21409A`. The boards' sun/arc
+- Official logo colours (designer brand sheet / final.pdf): orange `#FF5E1F`,
+  blue `#1B28CE`; wordmark navy `#21409A` (measured from the PNG). No approved
+  tagline-free lock-up exists yet. The boards' sun/arc
   header mark is NOT the official logo.
 - Original visual style only: do not reproduce the reference creator's
   characters, branding or environments.
