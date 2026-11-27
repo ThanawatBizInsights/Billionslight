@@ -23,7 +23,7 @@ export function Tablet({ state = 1 }: PropProps) {
         <meshStandardMaterial color="#1D3B6E" emissive="#7FB8FF" emissiveIntensity={0.35 * state} roughness={0.3} />
       </mesh>
       {/* screen glow lights the holder's face (useful in blackout scenes) */}
-      {state > 0.05 && <pointLight position={[0, 0, 0.25]} color="#9CC7FF" intensity={state * 1.6} distance={1.6} decay={2} />}
+      {state > 0.05 && <pointLight position={[0, 0, 0.25]} color="#9CC7FF" intensity={state * 0.8} distance={1.2} decay={2} />}
       {/* simple energy diagram on screen: sun → inverter → house */}
       {[-0.07, 0, 0.07].map((x, i) => (
         <mesh key={x} position={[x, 0.005, 0.0085]}>
