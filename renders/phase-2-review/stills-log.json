@@ -1,404 +1,404 @@
 {
-  "at": "2026-11-27T05:49:22.290Z",
+  "at": "2026-11-27T09:33:40.514Z",
   "gl": "swangle",
   "jobs": [
     {
       "out": "renders/phase-2-review/01-characters/sunny-turnaround.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 1.9,
+      "sec": 3.7,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/01-characters/ton-turnaround.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 1.8,
+      "sec": 2.5,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/01-characters/scale-comparison.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2.3,
+      "sec": 3.1,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/sunny/01-neutral.png",
       "frame": 16,
       "size": "540x540",
-      "sec": 1.5,
+      "sec": 2.4,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/sunny/02-happy.png",
       "frame": 36,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.4,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/sunny/03-talk.png",
       "frame": 52,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.3,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/sunny/04-surprised.png",
       "frame": 76,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.5,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/sunny/05-thinking.png",
       "frame": 96,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.3,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/sunny/06-confused.png",
       "frame": 116,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.3,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/sunny/07-laughing.png",
       "frame": 136,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.2,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/sunny/08-wink.png",
       "frame": 156,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.2,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/sunny/09-concerned.png",
       "frame": 176,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.3,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/sunny/10-curious.png",
       "frame": 196,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.1,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/ton/01-neutral.png",
       "frame": 16,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.7,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/ton/02-happy.png",
       "frame": 36,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.8,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/ton/03-talk.png",
       "frame": 52,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.9,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/ton/04-surprised.png",
       "frame": 76,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.8,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/ton/05-thinking.png",
       "frame": 96,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 1.7,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/ton/06-confused.png",
       "frame": 116,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 1.8,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/ton/07-laughing.png",
       "frame": 136,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 1.9,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/ton/08-concerned.png",
       "frame": 156,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 1.5,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/ton/09-listening.png",
       "frame": 176,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 1.7,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/02-expressions/ton/10-curious.png",
       "frame": 196,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.7,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/01-idle.png",
       "frame": 20,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.1,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/02-talk-explain.png",
       "frame": 50,
       "size": "540x540",
-      "sec": 1.7,
+      "sec": 2.1,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/03-point.png",
       "frame": 80,
       "size": "540x540",
-      "sec": 1.6,
+      "sec": 2.2,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/04-think.png",
       "frame": 110,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.3,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/05-wave.png",
       "frame": 140,
       "size": "540x540",
-      "sec": 1.5,
+      "sec": 2.2,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/06-hold-tablet.png",
       "frame": 170,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.2,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/07-present-solar-panel.png",
       "frame": 200,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.2,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/08-thumbs-up.png",
       "frame": 230,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.3,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/09-surprised.png",
       "frame": 260,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.1,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/10-shrug.png",
       "frame": 290,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 2.3,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/11-look-upward.png",
       "frame": 320,
       "size": "540x540",
-      "sec": 1.5,
+      "sec": 2.3,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sunny/12-laugh.png",
       "frame": 350,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 2.2,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/01-idle.png",
       "frame": 20,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 1.6,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/02-talk.png",
       "frame": 50,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.6,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/03-listen.png",
       "frame": 80,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.5,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/04-think.png",
       "frame": 110,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.6,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/05-point.png",
       "frame": 140,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.7,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/06-surprised.png",
       "frame": 170,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.5,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/07-confused-shrug.png",
       "frame": 200,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.6,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/08-laugh.png",
       "frame": 230,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 1.5,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/09-wave.png",
       "frame": 260,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 1.6,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/10-lean-in.png",
       "frame": 290,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 1.6,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/11-nod.png",
       "frame": 320,
       "size": "540x540",
-      "sec": 1.3,
+      "sec": 1.6,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/ton/12-coffee.png",
       "frame": 350,
       "size": "540x540",
-      "sec": 1.4,
+      "sec": 1.6,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/03-poses/sitting-eye-contact.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2,
+      "sec": 2.7,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/04-environments/house-day.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2.1,
+      "sec": 2.5,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/04-environments/house-golden-hour.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2.2,
+      "sec": 2.7,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/04-environments/house-night.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2.2,
+      "sec": 2.6,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/04-environments/house-blackout.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2,
+      "sec": 2.3,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/04-environments/living-room-day.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2.3,
+      "sec": 2.5,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/04-environments/living-room-evening.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2.6,
+      "sec": 3.1,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/04-environments/living-room-blackout.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2.1,
+      "sec": 2.5,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/04-environments/garage-on-grid-day.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2,
+      "sec": 2.5,
       "ok": true
     },
     {
       "out": "renders/phase-2-review/04-environments/garage-hybrid-backup-evening.png",
       "frame": 15,
       "size": "1920x1080",
-      "sec": 2.1,
+      "sec": 2.6,
       "ok": true
     }
   ]

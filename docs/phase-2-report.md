@@ -43,11 +43,11 @@ yuv420p + AAC, 30 fps, 300 frames, 10.0 s.
 
 | Quality | Resolution | Render time | s / frame | Real-time factor | Peak RAM | File |
 |---|---|---|---|---|---|---|
-| draft | 360×640 | 28.7 s | 0.10 | 0.35× | 1.5 GB | 0.9 MB |
-| preview | 540×960 | 57.7 s | 0.19 | 0.17× | 1.9 GB | 1.6 MB |
-| final | 1080×1920 | 160.4 s | 0.53 | 0.06× | 2.7 GB | 5.4 MB |
+| draft | 360×640 | 36.4 s | 0.12 | 0.27× | 1.9 GB | 0.8 MB |
+| preview | 540×960 | 68.4 s | 0.23 | 0.15× | 2.0 GB | 1.5 MB |
+| final | 1080×1920 | 190.0 s | 0.63 | 0.05× | 2.6 GB | 5.3 MB |
 
-Review stills: 1.5–2.5 s each (57 stills).
+Re-rendered 2026-11-27 with Sunny face variant B (approved). Face B adds about 15–20% render time versus the v1 face. Review stills: 1.5–2.6 s each (57 stills).
 
 Measured in the cloud container (4 vCPU Intel Xeon 2.1 GHz, no GPU, software
 GL `swangle`, concurrency 3). On the Intel MacBook with GPU (`angle`), expect
