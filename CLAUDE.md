@@ -5,9 +5,13 @@ whenever a new reusable asset or capability is approved.
 
 ## Current phase
 
-**Phase 1 — Technical foundation: complete, AWAITING APPROVAL.**
-Do not start Phase 2 until the owner approves. Then STOP again after Phase 2
-(visual prototype) for visual approval before expanding the asset library.
+**Phase 1 — provisionally approved (2026-11-27).**
+**Phase 2 — ON HOLD until the essential reference sheets arrive** (approved
+Sunny low-poly adaptation, canonical homeowner sheet — see
+`docs/reference-review.md`). Do not build Phase 2 prototypes before then. When
+they arrive: inspect → prototype → front/side/rear/¾ renders → environment
+previews → 10 s living-room test (Sunny + homeowner) → measure → STOP for
+visual approval. Do not expand the asset library before that approval.
 
 | Phase | Scope | Gate |
 |---|---|---|
@@ -24,12 +28,34 @@ Do not start Phase 2 until the owner approves. Then STOP again after Phase 2
 - **Preserve approved character identities.** Sunny's official character sheet
   (`public/assets/characters/sunny/`) is authoritative. Do not redesign Sunny,
   or change any approved character, without explicit approval.
+- **Sunny is an orange squirrel mascot** (white hard hat, navy coverall with
+  blue shoulder panels, gold trim, sun badge, violet eyes, bushy tail). The
+  approved low-poly adaptation, when supplied, is the modelling authority.
 - `temp-engineer` is a TEMPORARY placeholder. Never present it as Sunny.
+- Reference images are design guides; final assets must be genuine,
+  reusable, programmable 3D assets (procedural rigs/meshes, or GLB later).
 - **Preserve official Billionslight branding.** Use the supplied logo files
   only; never redraw, recolour, re-typeset or change proportions. Do not invent
   brand colours — take them from official files.
+- Official logo colours (measured from the PNG; confirm against final.ai):
+  orange `#FF5E1F`, blue `#1B28CE`, navy `#21409A`. The boards' sun/arc
+  header mark is NOT the official logo.
 - Original visual style only: do not reproduce the reference creator's
   characters, branding or environments.
+- Third-party brand logos and vendor product branding must not appear in
+  animations without the owner's explicit permission.
+
+## Asset manifest & references
+
+- Every reusable asset is registered in `src/assets/asset-manifest.json`
+  (validated by `src/schemas/asset-manifest.ts`; `npm run manifest` writes
+  `docs/asset-manifest.md`). Add/update an entry whenever an asset or
+  capability is introduced. Status `approved` is set only on the owner's word.
+- **The GitHub repo is PUBLIC.** Reference copies live in
+  `public/assets/references/drive/` (git-ignored). Never commit reference
+  images, logo files, vendor material, quotations or Google Drive IDs/links.
+- The Drive folder is the source of truth for references; fetch them through
+  the Google Drive connector (direct downloads are blocked in cloud sessions).
 
 ## Engineering rules
 
@@ -72,6 +98,7 @@ Do not start Phase 2 until the owner approves. Then STOP again after Phase 2
 
 ## Paid services
 
+- **No ElevenLabs credits during Phase 2** (owner instruction, 2026-11-27).
 - **Avoid unnecessary paid API calls.** ElevenLabs is only called when
   `ELEVENLABS_API_KEY` is set AND `ELEVENLABS_ALLOW_PAID_CALLS=true`, and only
   with the owner's approval. Development/testing uses mock or imported audio.
@@ -95,6 +122,7 @@ npm run render:test:draft      # 360×640 draft
 npm run render:test            # 1080×1920 final
 node scripts/render.mjs Episode --episode=src/episodes/<id>.episode.json --quality=preview
 node scripts/plan-shot.mjs '<json>'   # numeric camera framing
+npm run manifest               # regenerate docs/asset-manifest.md
 npm test && npm run typecheck
 ```
 
@@ -103,7 +131,7 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 
 ## Approved reusable assets & capabilities
 
-_(Nothing has visual approval yet. Phase 1 assets are prototypes.)_
+_(Nothing has visual approval yet. Full register: `docs/asset-manifest.md`.)_
 
 | ID | Type | Status |
 |---|---|---|

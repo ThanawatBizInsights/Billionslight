@@ -11,3 +11,8 @@ dist/
 .DS_Store
 cache/audio/
 *.log
+
+# Reference material from the owner's Google Drive. The GitHub repo is PUBLIC:
+# never commit character sheets, logos, vendor files or Drive file IDs.
+public/assets/references/drive/
+public/assets/references/local-index.json

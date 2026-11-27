@@ -1,0 +1,2103 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-11-27",
+  "referenceRoot": "public/assets/references/drive",
+  "assets": [
+    {
+      "id": "sunny",
+      "name": "Sunny — Billionslight solar & electrical engineer",
+      "nameTh": "ซันนี่",
+      "category": "character",
+      "status": "awaiting-low-poly-adaptation",
+      "modelType": "procedural-creature-rig",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§01 turnaround, §04 expressions, §05–06 key poses"
+        },
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§01 main, §04 expressions & poses"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "hero, expressions, key animations"
+        },
+        {
+          "file": "boards/03-cinematic-house-lighting-grid.png",
+          "section": "lighting grid — Sunny in every mood"
+        },
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§02 two-character, §04 over-shoulder, §05 low-angle hero"
+        },
+        {
+          "file": "characters/three-squirrels-team.png",
+          "section": "centre character — highest-resolution face/uniform detail"
+        }
+      ],
+      "scale": {
+        "heightM": 1.55,
+        "basis": "proposed",
+        "note": "Incl. hard hat. Board 06 shows Sunny ≈ homeowner height; chibi proportions, head ≈ 45–50% of height."
+      },
+      "palette": {
+        "fur": {
+          "hex": "#DB9450",
+          "source": "sampled",
+          "note": "main orange fur"
+        },
+        "fur-light": {
+          "hex": "#F6AA50",
+          "source": "sampled",
+          "note": "sunlit fur, board 01"
+        },
+        "cream": {
+          "hex": "#FDE6CD",
+          "source": "sampled",
+          "note": "cheeks, muzzle, belly, inner tail"
+        },
+        "helmet": {
+          "hex": "#F8F0F0",
+          "source": "sampled",
+          "note": "white hard hat, matte"
+        },
+        "uniform": {
+          "hex": "#222C48",
+          "source": "sampled",
+          "note": "navy coverall"
+        },
+        "uniform-panel": {
+          "hex": "#2F7DE1",
+          "source": "estimated",
+          "note": "bright blue shoulder/collar panels"
+        },
+        "trim": {
+          "hex": "#B2803B",
+          "source": "sampled",
+          "note": "gold piping & zip"
+        },
+        "badge": {
+          "hex": "#F7B744",
+          "source": "sampled",
+          "note": "sun badge on chest"
+        },
+        "iris": {
+          "hex": "#6B3F8F",
+          "source": "estimated",
+          "note": "violet iris"
+        },
+        "inner-ear": {
+          "hex": "#F4B6A8",
+          "source": "estimated",
+          "note": "pink inner ear"
+        },
+        "nose": {
+          "hex": "#8A4A2A",
+          "source": "estimated"
+        }
+      },
+      "animationCapabilities": [
+        "idle",
+        "walk",
+        "sit",
+        "talk",
+        "point",
+        "think",
+        "nod",
+        "surprised",
+        "confused",
+        "laugh",
+        "wave",
+        "hold-tablet",
+        "check-meter",
+        "look-upward",
+        "operate-switch",
+        "explain",
+        "hold-pv-panel",
+        "thumbs-up",
+        "arms-crossed",
+        "expr:neutral",
+        "expr:happy",
+        "expr:talk",
+        "expr:surprised",
+        "expr:thinking",
+        "expr:confused",
+        "expr:laughing",
+        "expr:wink",
+        "blink",
+        "eye-gaze",
+        "lip-sync",
+        "ear-flick",
+        "tail-sway",
+        "look-at"
+      ],
+      "issues": [
+        "Owner will supply an approved low-poly adaptation; sheets are smooth/plush renders at ~110 px per turnaround view — too small for exact proportions. Need ≥2048 px front/side/back/¾ sheet.",
+        "Tail is faceted low-poly on board 01/06 but plush on board 02 and 'Three Squirrels' — confirm low-poly treatment.",
+        "Helmet tint varies (pure white vs. faint pink) across boards — confirm.",
+        "Hands: four-finger paws or mitten? Needed for tablet / switch / pointing poses."
+      ],
+      "notes": "Authoritative identity. Do not redesign. Rig = shared humanoid joints + ear and 3–4 segment tail chains.",
+      "implementation": null
+    },
+    {
+      "id": "homeowner-male",
+      "name": "Homeowner (male) — the curious homeowner",
+      "nameTh": "เจ้าของบ้าน (ชาย)",
+      "category": "character",
+      "status": "needs-owner-decision",
+      "modelType": "procedural-humanoid-rig",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§02 turnaround, §07 expressions, §08 key poses",
+          "note": "Variant A: cream short-sleeve shirt, navy trousers, white shoes"
+        },
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§02",
+          "note": "Variant B: blue-grey shirt, dark trousers, spikier hair"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "hero",
+          "note": "Variant C: tan open overshirt over cream tee"
+        },
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§02, §03 close-up"
+        }
+      ],
+      "scale": {
+        "heightM": 1.65,
+        "basis": "proposed",
+        "note": "Blocky/voxel-like: cube head ≈ 45% of height, faceted hair."
+      },
+      "palette": {
+        "skin": {
+          "hex": "#F3C29C",
+          "source": "sampled",
+          "note": "board 01"
+        },
+        "hair": {
+          "hex": "#3A2A2C",
+          "source": "sampled",
+          "note": "dark brown, faceted"
+        },
+        "shirt": {
+          "hex": "#EDE3D6",
+          "source": "sampled",
+          "note": "variant A"
+        },
+        "trousers": {
+          "hex": "#2B3352",
+          "source": "estimated",
+          "note": "navy"
+        },
+        "shoes": {
+          "hex": "#F2F2F2",
+          "source": "estimated"
+        }
+      },
+      "animationCapabilities": [
+        "idle",
+        "talk",
+        "listen",
+        "think",
+        "nod",
+        "confused",
+        "surprised",
+        "point",
+        "walk",
+        "sit",
+        "operate-switch",
+        "expr:neutral",
+        "expr:happy",
+        "expr:talk",
+        "expr:surprised",
+        "expr:thinking",
+        "expr:confused",
+        "expr:laughing",
+        "expr:concerned",
+        "blink",
+        "lip-sync",
+        "look-at"
+      ],
+      "issues": [
+        "Three different outfits/hair across boards 01, 02 and 06 — choose one canonical design (recommend board 01: it is the only one with a full turnaround, expressions and poses)."
+      ],
+      "implementation": null
+    },
+    {
+      "id": "homeowner-female",
+      "name": "Homeowner (female)",
+      "nameTh": "เจ้าของบ้าน (หญิง)",
+      "category": "character",
+      "status": "reference-supplied",
+      "modelType": "procedural-humanoid-rig",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§03 front/side/back"
+        }
+      ],
+      "scale": {
+        "heightM": 1.6,
+        "basis": "proposed"
+      },
+      "palette": {
+        "shirt": {
+          "hex": "#F2A7B5",
+          "source": "estimated",
+          "note": "pink blouse"
+        },
+        "trousers": {
+          "hex": "#5A5F6E",
+          "source": "estimated",
+          "note": "grey"
+        },
+        "hair": {
+          "hex": "#4A3030",
+          "source": "estimated"
+        }
+      },
+      "animationCapabilities": [
+        "idle",
+        "talk",
+        "listen",
+        "think",
+        "nod",
+        "walk",
+        "sit",
+        "blink",
+        "lip-sync",
+        "look-at"
+      ],
+      "issues": [
+        "Only one board; no ¾ view, expressions or poses. Not in the original brief — confirm whether she is needed for Phase 2."
+      ],
+      "implementation": null
+    },
+    {
+      "id": "technician",
+      "name": "Electrical technician",
+      "nameTh": "ช่างเทคนิค",
+      "category": "character",
+      "status": "missing-reference",
+      "modelType": "procedural-humanoid-rig",
+      "phase": 3,
+      "animationCapabilities": [
+        "inspect-equipment",
+        "use-tester",
+        "walk",
+        "talk",
+        "point"
+      ],
+      "issues": [
+        "No reference supplied. Needs PPE design (helmet, insulated gloves, safety glasses)."
+      ],
+      "references": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "squirrel-teammate-red",
+      "name": "Squirrel teammate (red-brown, brown eyes)",
+      "category": "character",
+      "status": "needs-owner-decision",
+      "modelType": "procedural-creature-rig",
+      "phase": 3,
+      "references": [
+        {
+          "file": "characters/three-squirrels-team.png",
+          "section": "side character holding acorn-shaped battery"
+        }
+      ],
+      "issues": [
+        "Not mentioned in the brief: confirm name, role and whether this character is in scope."
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null
+    },
+    {
+      "id": "squirrel-teammate-grey",
+      "name": "Squirrel teammate (grey, green eyes)",
+      "category": "character",
+      "status": "needs-owner-decision",
+      "modelType": "procedural-creature-rig",
+      "phase": 3,
+      "references": [
+        {
+          "file": "characters/three-squirrels-team.png",
+          "section": "side character holding LED downlight"
+        }
+      ],
+      "issues": [
+        "Not mentioned in the brief: confirm name, role and whether this character is in scope."
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null
+    },
+    {
+      "id": "temp-engineer",
+      "name": "Temporary engineer placeholder",
+      "category": "character",
+      "status": "temporary",
+      "modelType": "procedural-humanoid-rig",
+      "phase": 1,
+      "implementation": "src/engine/characters/library.ts",
+      "animationCapabilities": [
+        "idle",
+        "wave",
+        "point",
+        "talk",
+        "explain",
+        "nod",
+        "smile",
+        "blink",
+        "look-at"
+      ],
+      "notes": "Phase 1 pipeline test only. Superseded once Sunny's prototype exists; never ship.",
+      "references": [],
+      "palette": {},
+      "issues": []
+    },
+    {
+      "id": "modern-thai-house",
+      "name": "ENV01 Modern Thai solar house",
+      "nameTh": "บ้านโซลาร์",
+      "category": "environment",
+      "status": "reference-supplied",
+      "modelType": "procedural-environment",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV01 main"
+        },
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§09–12 exterior, angle, day/evening/night, cutaway"
+        },
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§05 exterior, §06 cutaway"
+        },
+        {
+          "file": "boards/03-cinematic-house-lighting-grid.png",
+          "section": "all six lighting moods"
+        }
+      ],
+      "scale": {
+        "footprintM": [
+          12,
+          9
+        ],
+        "basis": "proposed",
+        "note": "Two storeys ≈ 3.2 m each; flat roof with tilted PV array; front steps; upper terrace planters."
+      },
+      "palette": {
+        "concrete": {
+          "hex": "#D9D6CF",
+          "source": "estimated",
+          "note": "pale board-formed concrete / stone"
+        },
+        "render-white": {
+          "hex": "#F2EFE8",
+          "source": "estimated"
+        },
+        "window-frame": {
+          "hex": "#2A2A2E",
+          "source": "estimated"
+        },
+        "interior-warm": {
+          "hex": "#F59E0B",
+          "source": "sheet-swatch",
+          "note": "board 03 'Interior Warm'"
+        },
+        "pv-glass": {
+          "hex": "#1E3A8A",
+          "source": "estimated"
+        },
+        "foliage": {
+          "hex": "#4E8C3A",
+          "source": "estimated"
+        }
+      },
+      "animationCapabilities": [
+        "day-night-cycle",
+        "interior-lights-on-off",
+        "cutaway",
+        "window-glow-by-power-state",
+        "energy-cable-anchors"
+      ],
+      "implementation": "src/engine/environments/ModernThaiHouse.tsx",
+      "issues": [
+        "Existing Phase 1 prototype (gable roof) does NOT match the reference (flat-roof modern block with terrace). It will be rebuilt; the old one is kept only until then.",
+        "No outdoor meter / inverter location shown on the exterior — confirm placement (side wall vs. garage ENV03 / room ENV05)."
+      ]
+    },
+    {
+      "id": "living-room",
+      "name": "ENV02 Living room",
+      "nameTh": "ห้องนั่งเล่น",
+      "category": "environment",
+      "status": "reference-supplied",
+      "modelType": "procedural-environment",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§07"
+        },
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§09 living-room cutaway"
+        },
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "other spaces — ENV02"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "environments — living room"
+        }
+      ],
+      "scale": {
+        "footprintM": [
+          6,
+          5
+        ],
+        "basis": "proposed",
+        "note": "Ceiling 2.8 m."
+      },
+      "palette": {
+        "wall": {
+          "hex": "#3B3550",
+          "source": "estimated",
+          "note": "evening — muted plum/navy"
+        },
+        "sofa": {
+          "hex": "#D8C8C0",
+          "source": "estimated"
+        },
+        "cushion-accent": {
+          "hex": "#E0A63A",
+          "source": "estimated"
+        },
+        "floor-wood": {
+          "hex": "#8A5A3C",
+          "source": "estimated"
+        },
+        "rug": {
+          "hex": "#BDB6B0",
+          "source": "estimated"
+        },
+        "lamp-glow": {
+          "hex": "#F59E0B",
+          "source": "sheet-swatch"
+        }
+      },
+      "animationCapabilities": [
+        "day",
+        "evening",
+        "power-outage",
+        "backup-loads-only",
+        "ac-on-off",
+        "tv-on-off",
+        "lamp-on-off",
+        "ceiling-lights"
+      ],
+      "issues": [
+        "Need: socket positions, window/garden view, whether AC wall unit is always on the left wall."
+      ],
+      "implementation": null
+    },
+    {
+      "id": "dining-area",
+      "name": "ENV02B Dining area",
+      "category": "environment",
+      "status": "reference-supplied",
+      "modelType": "procedural-environment",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV02B"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null,
+      "issues": []
+    },
+    {
+      "id": "bedroom",
+      "name": "ENV02C Bedroom",
+      "category": "environment",
+      "status": "reference-supplied",
+      "modelType": "procedural-environment",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV02C"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null,
+      "issues": []
+    },
+    {
+      "id": "garage-ev",
+      "name": "ENV03 Garage — EV charger & battery",
+      "category": "environment",
+      "status": "reference-supplied",
+      "modelType": "procedural-environment",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV03"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null,
+      "issues": []
+    },
+    {
+      "id": "rooftop-solar",
+      "name": "ENV04 Rooftop solar installation",
+      "category": "environment",
+      "status": "reference-supplied",
+      "modelType": "procedural-environment",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV04"
+        },
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§08 rooftop perspective"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null,
+      "issues": []
+    },
+    {
+      "id": "equipment-room",
+      "name": "ENV05 Electrical equipment room",
+      "category": "environment",
+      "status": "reference-supplied",
+      "modelType": "procedural-environment",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV05"
+        },
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§07 equipment macro"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null,
+      "issues": []
+    },
+    {
+      "id": "neighbourhood-grid",
+      "name": "ENV06 Neighbourhood & utility grid",
+      "category": "environment",
+      "status": "reference-supplied",
+      "modelType": "procedural-environment",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV06"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "neighbourhood / grid"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null,
+      "issues": []
+    },
+    {
+      "id": "sunny-home-office",
+      "name": "ENV07 Sunny's home office",
+      "category": "environment",
+      "status": "reference-supplied",
+      "modelType": "procedural-environment",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV07"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null,
+      "issues": []
+    },
+    {
+      "id": "demo-studio",
+      "name": "Technical demonstration studio (dark navy)",
+      "category": "environment",
+      "status": "reference-supplied",
+      "modelType": "procedural-environment",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§10 centred product demonstration"
+        }
+      ],
+      "issues": [
+        "Only one composition reference; acceptable as a guide."
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null
+    },
+    {
+      "id": "pv-panel",
+      "name": "PV module",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§08"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "equipment library"
+        }
+      ],
+      "scale": {
+        "heightM": 1.7,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "generation-sheen",
+        "irradiance-driven"
+      ],
+      "implementation": "src/engine/equipment/Solar.tsx",
+      "palette": {},
+      "issues": [
+        "Phase 1 prototype exists but must be restyled to match boards 02/06 (rounded matte housing, small dark display)."
+      ]
+    },
+    {
+      "id": "on-grid-inverter",
+      "name": "On-grid (grid-tied) inverter",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§08"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "equipment library"
+        }
+      ],
+      "scale": {
+        "heightM": 0.5,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "status-led",
+        "output-bars",
+        "anti-islanding-off"
+      ],
+      "implementation": "src/engine/equipment/Solar.tsx",
+      "palette": {
+        "housing": {
+          "hex": "#EEF0F3",
+          "source": "estimated",
+          "note": "matte white/light grey"
+        },
+        "indicator-ok": {
+          "hex": "#3DDC84",
+          "source": "estimated"
+        }
+      },
+      "issues": [
+        "Phase 1 prototype exists but must be restyled to match boards 02/06 (rounded matte housing, small dark display)."
+      ]
+    },
+    {
+      "id": "hybrid-inverter",
+      "name": "Hybrid inverter",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§08"
+        },
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§10"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "equipment library"
+        }
+      ],
+      "scale": {
+        "heightM": 0.6,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "status-led",
+        "backup-mode",
+        "output-bars"
+      ],
+      "implementation": "src/engine/equipment/Solar.tsx",
+      "palette": {
+        "housing": {
+          "hex": "#EEF0F3",
+          "source": "estimated",
+          "note": "matte white/light grey"
+        },
+        "indicator-ok": {
+          "hex": "#3DDC84",
+          "source": "estimated"
+        }
+      },
+      "issues": [
+        "Phase 1 prototype exists but must be restyled to match boards 02/06 (rounded matte housing, small dark display)."
+      ]
+    },
+    {
+      "id": "battery-storage",
+      "name": "Battery storage (Li-ion)",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§08"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "equipment library"
+        },
+        {
+          "file": "products/vendor-stacked-battery.webp",
+          "note": "form reference only — no vendor branding"
+        }
+      ],
+      "scale": {
+        "heightM": 1.1,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "state-of-charge-bars",
+        "charge-discharge-glow"
+      ],
+      "implementation": "src/engine/equipment/Solar.tsx",
+      "palette": {},
+      "issues": [
+        "Phase 1 prototype exists but must be restyled to match boards 02/06 (rounded matte housing, small dark display)."
+      ]
+    },
+    {
+      "id": "electricity-meter",
+      "name": "Electricity meter",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§08"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "equipment library"
+        },
+        {
+          "file": "products/vendor-energy-meter.webp",
+          "note": "form reference only"
+        }
+      ],
+      "scale": {
+        "heightM": 0.3,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "import-export-indicator",
+        "display"
+      ],
+      "implementation": "src/engine/equipment/Solar.tsx",
+      "palette": {},
+      "issues": [
+        "Phase 1 prototype exists but must be restyled to match boards 02/06 (rounded matte housing, small dark display)."
+      ]
+    },
+    {
+      "id": "distribution-board",
+      "name": "Distribution board",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§08"
+        },
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV05"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "equipment library"
+        }
+      ],
+      "scale": {
+        "heightM": 0.6,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "breaker-states",
+        "door-open"
+      ],
+      "implementation": null,
+      "palette": {},
+      "issues": []
+    },
+    {
+      "id": "circuit-breaker",
+      "name": "Circuit breaker",
+      "category": "equipment",
+      "status": "missing-reference",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [],
+      "scale": {
+        "heightM": 0.1,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "on-off-toggle",
+        "trip"
+      ],
+      "implementation": null,
+      "palette": {},
+      "issues": [
+        "No reference supplied."
+      ]
+    },
+    {
+      "id": "rcd",
+      "name": "Residual current device (RCD/RCBO)",
+      "category": "equipment",
+      "status": "missing-reference",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [],
+      "scale": {
+        "heightM": 0.1,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "test-button",
+        "trip"
+      ],
+      "implementation": null,
+      "palette": {},
+      "issues": [
+        "No reference supplied."
+      ]
+    },
+    {
+      "id": "utility-pole",
+      "name": "Utility pole",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§08"
+        },
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV06"
+        }
+      ],
+      "scale": {
+        "heightM": 9.0,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "line-energised-state"
+      ],
+      "implementation": null,
+      "palette": {},
+      "issues": []
+    },
+    {
+      "id": "transformer",
+      "name": "Pole-mounted transformer",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV06 label"
+        }
+      ],
+      "scale": {
+        "heightM": 1.0,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "energised-state"
+      ],
+      "implementation": null,
+      "palette": {},
+      "issues": []
+    },
+    {
+      "id": "ev-charger",
+      "name": "EV charger (wallbox)",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§08"
+        },
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV03"
+        }
+      ],
+      "scale": {
+        "heightM": 0.5,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "charging-led",
+        "cable"
+      ],
+      "implementation": null,
+      "palette": {},
+      "issues": []
+    },
+    {
+      "id": "electric-vehicle",
+      "name": "Electric vehicle",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§08"
+        },
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV03"
+        }
+      ],
+      "scale": {
+        "heightM": 1.5,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "charging-port-glow"
+      ],
+      "implementation": null,
+      "palette": {},
+      "issues": []
+    },
+    {
+      "id": "microinverter",
+      "name": "Microinverter",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "products/vendor-microinverter.webp",
+          "note": "form reference only"
+        }
+      ],
+      "scale": {
+        "heightM": 0.25,
+        "basis": "real-world-typical"
+      },
+      "animationCapabilities": [
+        "status-led"
+      ],
+      "implementation": null,
+      "palette": {
+        "housing": {
+          "hex": "#EEF0F3",
+          "source": "estimated",
+          "note": "matte white/light grey"
+        },
+        "indicator-ok": {
+          "hex": "#3DDC84",
+          "source": "estimated"
+        }
+      },
+      "issues": []
+    },
+    {
+      "id": "cables",
+      "name": "Electrical cables / conduit routes",
+      "category": "equipment",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/05-solar-house-environment-sheet.png",
+          "section": "ENV05"
+        }
+      ],
+      "animationCapabilities": [
+        "energy-flow-particles"
+      ],
+      "implementation": "src/engine/energy-flow/EnergyPath.tsx",
+      "palette": {},
+      "issues": []
+    },
+    {
+      "id": "air-conditioner",
+      "name": "Air conditioner (wall split)",
+      "category": "appliance",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§09"
+        }
+      ],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "refrigerator",
+      "name": "Refrigerator",
+      "category": "appliance",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§09"
+        }
+      ],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "television",
+      "name": "Television",
+      "category": "appliance",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§09"
+        }
+      ],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "washing-machine",
+      "name": "Washing machine",
+      "category": "appliance",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§09"
+        }
+      ],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "standing-fan",
+      "name": "Standing fan",
+      "category": "appliance",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§09"
+        }
+      ],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "rice-cooker",
+      "name": "Rice cooker",
+      "category": "appliance",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§09"
+        }
+      ],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "light-bulb",
+      "name": "Light bulb",
+      "category": "appliance",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§09"
+        }
+      ],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "laptop",
+      "name": "Laptop / computer",
+      "category": "appliance",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§09"
+        }
+      ],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "floor-lamp",
+      "name": "Floor lamp",
+      "category": "appliance",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§07 living room"
+        }
+      ],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "ceiling-light",
+      "name": "Ceiling light",
+      "category": "appliance",
+      "status": "reference-supplied",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§07 living room"
+        }
+      ],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "socket",
+      "name": "Household socket",
+      "category": "appliance",
+      "status": "missing-reference",
+      "modelType": "procedural-mesh",
+      "phase": 3,
+      "references": [],
+      "animationCapabilities": [
+        "on-off-state",
+        "power-indicator"
+      ],
+      "issues": [
+        "No reference supplied."
+      ],
+      "palette": {},
+      "implementation": null
+    },
+    {
+      "id": "bright-morning",
+      "name": "Morning",
+      "nameTh": "เช้า",
+      "category": "lighting-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/03-cinematic-house-lighting-grid.png",
+          "section": "Morning"
+        },
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§10"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "lighting moods"
+        }
+      ],
+      "palette": {
+        "key": {
+          "hex": "#FFD166",
+          "source": "sheet-swatch",
+          "note": "board 03 lighting palette"
+        }
+      },
+      "notes": "Soft warm light, long shadows, fresh & calm",
+      "implementation": "src/engine/lighting/presets.ts",
+      "issues": [
+        "Phase 1 preset exists but is not yet tuned to board 03."
+      ],
+      "animationCapabilities": []
+    },
+    {
+      "id": "midday-sun",
+      "name": "Midday",
+      "nameTh": "กลางวัน",
+      "category": "lighting-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/03-cinematic-house-lighting-grid.png",
+          "section": "Midday"
+        },
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§10"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "lighting moods"
+        }
+      ],
+      "palette": {
+        "key": {
+          "hex": "#FFD166",
+          "source": "sheet-swatch",
+          "note": "board 03 lighting palette"
+        }
+      },
+      "notes": "Bright, high contrast, energetic",
+      "implementation": "src/engine/lighting/presets.ts",
+      "issues": [
+        "Phase 1 preset exists but is not yet tuned to board 03."
+      ],
+      "animationCapabilities": []
+    },
+    {
+      "id": "cloudy-rainy",
+      "name": "Cloudy / rainy",
+      "nameTh": "ครึ้ม / ฝนตก",
+      "category": "lighting-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/03-cinematic-house-lighting-grid.png",
+          "section": "Cloudy / rainy"
+        },
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§10"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "lighting moods"
+        }
+      ],
+      "palette": {
+        "key": {
+          "hex": "#64748B",
+          "source": "sheet-swatch",
+          "note": "board 03 lighting palette"
+        }
+      },
+      "notes": "Soft diffused, cooler, rain atmosphere",
+      "implementation": null,
+      "issues": [],
+      "animationCapabilities": []
+    },
+    {
+      "id": "golden-hour",
+      "name": "Golden hour",
+      "nameTh": "เย็น (แสงทอง)",
+      "category": "lighting-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/03-cinematic-house-lighting-grid.png",
+          "section": "Golden hour"
+        },
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§10"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "lighting moods"
+        }
+      ],
+      "palette": {
+        "key": {
+          "hex": "#F59E0B",
+          "source": "sheet-swatch",
+          "note": "board 03 lighting palette"
+        }
+      },
+      "notes": "Warm golden light, rich colour, atmospheric",
+      "implementation": "src/engine/lighting/presets.ts",
+      "issues": [
+        "Phase 1 preset exists but is not yet tuned to board 03."
+      ],
+      "animationCapabilities": []
+    },
+    {
+      "id": "night",
+      "name": "Night",
+      "nameTh": "กลางคืน",
+      "category": "lighting-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/03-cinematic-house-lighting-grid.png",
+          "section": "Night"
+        },
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§10"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "lighting moods"
+        }
+      ],
+      "palette": {
+        "key": {
+          "hex": "#0F1B3D",
+          "source": "sheet-swatch",
+          "note": "board 03 lighting palette"
+        }
+      },
+      "notes": "Warm interior light, deep blue shadows",
+      "implementation": null,
+      "issues": [],
+      "animationCapabilities": []
+    },
+    {
+      "id": "power-outage",
+      "name": "Power outage",
+      "nameTh": "ไฟดับ",
+      "category": "lighting-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/03-cinematic-house-lighting-grid.png",
+          "section": "Power outage"
+        },
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§10"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "lighting moods"
+        }
+      ],
+      "palette": {
+        "key": {
+          "hex": "#3B82F6",
+          "source": "sheet-swatch",
+          "note": "board 03 lighting palette"
+        }
+      },
+      "notes": "No interior light, cool moonlight, dark & quiet",
+      "implementation": "src/engine/lighting/presets.ts",
+      "issues": [
+        "Phase 1 preset exists but is not yet tuned to board 03."
+      ],
+      "animationCapabilities": []
+    },
+    {
+      "id": "evening",
+      "name": "Evening",
+      "nameTh": "ค่ำ",
+      "category": "lighting-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§11 day / evening / night"
+        }
+      ],
+      "implementation": "src/engine/lighting/presets.ts",
+      "issues": [
+        "Phase 1 preset exists but is not yet tuned to board 01 §11."
+      ],
+      "palette": {},
+      "animationCapabilities": []
+    },
+    {
+      "id": "emergency-backup",
+      "name": "Emergency backup lighting",
+      "category": "lighting-preset",
+      "status": "missing-reference",
+      "modelType": "data-preset",
+      "phase": 3,
+      "issues": [
+        "Not on board 03 — proposal: power-outage + warm light only on backup circuits."
+      ],
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null
+    },
+    {
+      "id": "demo-studio-light",
+      "name": "Technical demonstration studio lighting",
+      "category": "lighting-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§10"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null,
+      "issues": []
+    },
+    {
+      "id": "establishing-wide",
+      "name": "Wide establishing",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§01"
+        }
+      ],
+      "implementation": "src/engine/cameras/presets.ts",
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "medium-two-character",
+      "name": "Medium two-character conversation",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§02"
+        }
+      ],
+      "implementation": null,
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "medium-character",
+      "name": "Medium single-character shot",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§12 medium (dialogue)"
+        }
+      ],
+      "implementation": "src/engine/cameras/presets.ts",
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "close-up",
+      "name": "Close-up facial reaction",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§03"
+        }
+      ],
+      "implementation": null,
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "over-the-shoulder",
+      "name": "Over-the-shoulder explanation",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§04"
+        }
+      ],
+      "implementation": null,
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "low-angle-hero",
+      "name": "Low-angle hero (Sunny)",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§05"
+        }
+      ],
+      "implementation": null,
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "top-down-energy-flow",
+      "name": "Top-down / isometric energy-flow view",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§06"
+        }
+      ],
+      "implementation": null,
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "equipment-macro",
+      "name": "Equipment macro / close-up",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§07"
+        }
+      ],
+      "implementation": null,
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "rooftop-perspective",
+      "name": "Rooftop perspective",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§08"
+        }
+      ],
+      "implementation": null,
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "interior-cutaway",
+      "name": "Living-room / interior cutaway",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§09"
+        }
+      ],
+      "implementation": null,
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "product-demo",
+      "name": "Centred product demonstration",
+      "category": "camera-preset",
+      "status": "reference-supplied",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§10"
+        }
+      ],
+      "implementation": null,
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "slow-dolly-in",
+      "name": "Slow dolly-in",
+      "category": "camera-preset",
+      "status": "missing-reference",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [],
+      "implementation": "src/engine/cameras/presets.ts",
+      "notes": "Camera move; no image reference required.",
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "slow-dolly-out",
+      "name": "Slow dolly-out",
+      "category": "camera-preset",
+      "status": "missing-reference",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [],
+      "implementation": "src/engine/cameras/presets.ts",
+      "notes": "Camera move; no image reference required.",
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "orbit-equipment",
+      "name": "Orbit around equipment",
+      "category": "camera-preset",
+      "status": "missing-reference",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [],
+      "implementation": "src/engine/cameras/presets.ts",
+      "notes": "Camera move; no image reference required.",
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "tracking",
+      "name": "Tracking shot",
+      "category": "camera-preset",
+      "status": "missing-reference",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [],
+      "implementation": null,
+      "notes": "Camera move; no image reference required.",
+      "palette": {},
+      "animationCapabilities": [],
+      "issues": []
+    },
+    {
+      "id": "billionslight-logo",
+      "name": "Official Billionslight logo (horizontal & stacked)",
+      "nameTh": "แสงพันล้าน",
+      "category": "branding",
+      "status": "reference-supplied",
+      "modelType": "2d-overlay",
+      "phase": 5,
+      "references": [
+        {
+          "file": "branding/billionslight-logo-horizontal.png",
+          "section": "transparent PNG 1028×283"
+        },
+        {
+          "file": "branding/billionslight-logo-stacked.png",
+          "section": "transparent PNG 663×645"
+        }
+      ],
+      "palette": {
+        "orange": {
+          "hex": "#FF5E1F",
+          "source": "official",
+          "note": "measured from official PNG"
+        },
+        "blue": {
+          "hex": "#1B28CE",
+          "source": "official",
+          "note": "icon ring, measured"
+        },
+        "navy": {
+          "hex": "#21409A",
+          "source": "official",
+          "note": "'BILLIONS' wordmark, measured"
+        }
+      },
+      "animationCapabilities": [
+        "fade-in",
+        "uniform-scale-in"
+      ],
+      "issues": [
+        "Master files (final.ai / final.pdf) not yet inspected — confirm exact brand colours and clear-space rules from them.",
+        "The reference boards use a different sun/arc 'BILLIONSLIGHT' header mark — that is NOT the official logo and will not be used.",
+        "Tagline 'จำหน่ายอุปกรณ์ ไฟฟ้า ครบวงจร' is part of the lock-up — confirm whether a version without the tagline exists for video."
+      ],
+      "implementation": null
+    },
+    {
+      "id": "energy-flow-language",
+      "name": "Energy-flow visual language",
+      "category": "visual-language",
+      "status": "reference-supplied",
+      "modelType": "2d-overlay",
+      "phase": 3,
+      "references": [
+        {
+          "file": "boards/02-cinematic-reference-board.png",
+          "section": "§11"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "energy-flow visual language"
+        },
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§06"
+        }
+      ],
+      "implementation": "src/engine/energy-flow",
+      "palette": {
+        "solar": {
+          "hex": "#FFC53D",
+          "source": "sheet-swatch"
+        },
+        "grid": {
+          "hex": "#4DA3FF",
+          "source": "sheet-swatch"
+        },
+        "battery": {
+          "hex": "#3DDC84",
+          "source": "sheet-swatch"
+        },
+        "load": {
+          "hex": "#F5F7FF",
+          "source": "sheet-swatch"
+        },
+        "inactive": {
+          "hex": "#6B7280",
+          "source": "sheet-swatch"
+        },
+        "fault": {
+          "hex": "#FF4D4F",
+          "source": "sheet-swatch"
+        }
+      },
+      "issues": [
+        "Board 06 'Grid Outage + Backup' lights the whole house; the engine will show only the selected backup loads (technically required).",
+        "Board 04 §10 checklist 'มีไฟสำรอง' next to a hybrid inverter must be conditional on backup configuration in any episode."
+      ],
+      "animationCapabilities": []
+    },
+    {
+      "id": "scene-palette",
+      "name": "Global scene & UI palette",
+      "category": "visual-language",
+      "status": "needs-owner-decision",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§03"
+        },
+        {
+          "file": "boards/06-production-reference-sheet.png",
+          "section": "colour & material palette"
+        },
+        {
+          "file": "boards/03-cinematic-house-lighting-grid.png",
+          "section": "lighting palette"
+        }
+      ],
+      "palette": {
+        "navy-b01": {
+          "hex": "#0F2747",
+          "source": "sheet-swatch",
+          "note": "board 01 primary"
+        },
+        "yellow-b01": {
+          "hex": "#FBBF24",
+          "source": "sheet-swatch",
+          "note": "board 01 primary"
+        },
+        "navy-b06": {
+          "hex": "#0B1B3B",
+          "source": "sheet-swatch",
+          "note": "board 06 deep navy"
+        },
+        "yellow-b06": {
+          "hex": "#FFC107",
+          "source": "sheet-swatch",
+          "note": "board 06 solar yellow"
+        },
+        "sunlight": {
+          "hex": "#FFD166",
+          "source": "sheet-swatch"
+        },
+        "interior-warm": {
+          "hex": "#F59E0B",
+          "source": "sheet-swatch"
+        },
+        "night-shadow": {
+          "hex": "#0F1B3D",
+          "source": "sheet-swatch"
+        },
+        "moonlight": {
+          "hex": "#3B82F6",
+          "source": "sheet-swatch"
+        },
+        "cloud": {
+          "hex": "#64748B",
+          "source": "sheet-swatch"
+        },
+        "ambient-fill": {
+          "hex": "#E2E8F0",
+          "source": "sheet-swatch"
+        }
+      },
+      "issues": [
+        "Boards 01 and 06 give different navy (#0F2747 vs #0B1B3B) and yellow (#FBBF24 vs #FFC107). Pick one pair.",
+        "These illustration colours differ from the official logo colours (orange #FF5E1F / blue #1B28CE). Confirm the video-world palette may differ from the logo palette."
+      ],
+      "animationCapabilities": [],
+      "implementation": null
+    },
+    {
+      "id": "supplier-flyers",
+      "name": "Supplier promotional flyers (5 kW / 10 kW packages)",
+      "category": "prop",
+      "status": "reference-only",
+      "modelType": "none",
+      "phase": 1,
+      "references": [
+        {
+          "file": "third-party/supplier-flyer-5kw.jpg"
+        },
+        {
+          "file": "third-party/supplier-flyer-10kw.jpg"
+        }
+      ],
+      "issues": [
+        "Third-party marketing with prices, savings and payback claims. Not a technical source — never use its figures in episodes without independent verification and owner approval."
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null
+    },
+    {
+      "id": "vendor-product-photos",
+      "name": "Vendor product photos (microinverter, battery, meter, accessories)",
+      "category": "prop",
+      "status": "reference-only",
+      "modelType": "none",
+      "phase": 2,
+      "references": [
+        {
+          "file": "products/vendor-microinverter.webp"
+        },
+        {
+          "file": "products/vendor-stacked-battery.webp"
+        },
+        {
+          "file": "products/vendor-energy-meter.webp"
+        },
+        {
+          "file": "products/vendor-accessories.webp"
+        }
+      ],
+      "notes": "Shape references for generic models only. No vendor names, logos or exact product likeness in renders.",
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null,
+      "issues": []
+    },
+    {
+      "id": "partner-brand-logos",
+      "name": "Third-party brand logos (distributed brands)",
+      "category": "branding",
+      "status": "reference-only",
+      "modelType": "none",
+      "phase": 1,
+      "references": [
+        {
+          "file": "third-party/"
+        },
+        {
+          "file": "branding/fb-cover.png"
+        }
+      ],
+      "issues": [
+        "Trademarks of other companies. Must not appear in animations unless the owner confirms permission for a specific use."
+      ],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": null
+    }
+  ]
+}
