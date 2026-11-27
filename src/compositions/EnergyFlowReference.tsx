@@ -135,8 +135,8 @@ export function EnergyFlowCableTest() {
   const w = (x: number, y: number) => toWorld(x, y, width, height, u);
   const cables: { title: string; pts: Vec3[]; category: EnergyFlowCategory; dir: 1 | -1 }[] = [
     { title: "Short · 1.2 m (pulse adapted)", pts: [w(80, 420), w(140, 420), w(200, 420)], category: "inverterAC", dir: 1 },
-    { title: "Medium · ~5 m, curved", pts: [w(80, 760), w(260, 640), w(480, 860), w(620, 700)], category: "batteryDC", dir: -1 },
-    { title: "Long · ~14 m, multiple bends", pts: [w(80, 1120), w(900, 1120), w(1000, 1220), w(1000, 1420), w(300, 1420), w(220, 1560), w(940, 1560)], category: "utilityGridAC", dir: 1 },
+    { title: "Medium · ~5 m, angled bends", pts: [w(80, 760), w(260, 640), w(480, 860), w(620, 700)], category: "batteryDC", dir: -1 },
+    { title: "Long · ~14 m, rounded corners", pts: [w(80, 1120), w(900, 1120), w(1000, 1220), w(1000, 1420), w(300, 1420), w(220, 1560), w(940, 1560)], category: "utilityGridAC", dir: 1 },
   ];
   const ys = [340, 580, 1040];
   return (
