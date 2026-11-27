@@ -30,7 +30,7 @@ frames in parallel and out of order; determinism is what makes that safe.
 | Clips are pure functions `(ctx, pose) → pose`, layered with blend envelopes | Deterministic blending and transitions; easy to test. |
 | Energy flows derived from an electrical *scenario*, not keyframed | Visualisation cannot contradict the physics/rules; rules are unit-tested. |
 | Environments expose named **anchors** and **cable routes** | Characters can `pointAt`/`lookAt` "arrayCenter"; energy paths follow the building. |
-| Quality presets change *composition resolution* (draft 360×640, preview 540×960, final 1080×1920) plus shadow-map size and particle density | Actually reduces WebGL cost on an Intel MacBook (Remotion's `--scale` alone would still render 3D at full size). |
+| Quality presets change *composition resolution* (draft 360×640, preview 540×960, final 1080×1920) plus shadow-map size and atmosphere particle count | Actually reduces WebGL cost on an Intel MacBook (Remotion's `--scale` alone would still render 3D at full size). |
 | Thai fonts bundled locally (Noto Sans Thai, OFL) | Offline-safe renders; Remotion waits for fonts before capture. |
 | Procedural geometry first; GLTF/GLB later via drei `useGLTF` + `delayRender` | No Blender dependency now; imported assets slot into the same registries. |
 | TypeScript 5.9, not 7.x | TS 7 (native port) is very new; 5.9 is what the Remotion/R3F ecosystem is tested against. |
@@ -61,7 +61,7 @@ src/
     characters/               rig (joints, pose, blending), Humanoid, library
     environments/             ModernThaiHouse, registry (anchors, cables)
     equipment/                PV panel/array, inverter, meter, battery
-    energy-flow/              scenario rules, timeline, EnergyPath particles
+    energy-flow/              scenario rules, timeline, links, pulse maths, EnergyFlowPath (V3 pulse), labels
     cameras/                  CameraRig, presets
     lighting/                 presets, LightingRig (sky dome, sun, fill, fog)
     audio/                    ElevenLabs config guard (Phase 4 builds on this)
@@ -134,8 +134,9 @@ ElectricalScenario ─► deriveEnergyState (rules) ─► deriveFlowLinks ─�
                                                           │
 environment cable routes ─► ROUTE_TO_LINK ────────────────┤
                                                           ▼
-                     EnergyFlowPath (constant speed, density = kW, arrowheads, instanced)
-                     FlowLabels (projected Thai labels + kW) · FlowLegend
+                     EnergyFlowPath (V3: one travelling pulse per connection — gradient shader
+                                     on the cable tube; direction from the link; never tied to kW)
+                     FlowLabels (projected Thai labels + kW) · FlowLegend (pulse swatches)
 ```
 
-Opt-in per scene via `energyFlow.style`; tokens in `src/config/energy-flow.ts`.
+Applies to every scene with electrical data; tokens in `src/config/energy-flow.ts`.

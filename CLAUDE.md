@@ -15,10 +15,10 @@ do not modify them without permission — add variants instead.
 **Phase 3 — animation engine: BUILT, awaiting owner review** (see
 `docs/phase-3-report.md`). Do not start Phase 4 without approval (ElevenLabs
 needs approval for any paid call).
-**Energy-flow visual standard: BUILT, awaiting owner visual approval** (see
-`docs/energy-flow-standard.md`, previews in `renders/energy-flow-review/`).
-It is opt-in per scene (`energyFlow.style: "standard"`); do NOT switch the
-default or apply it to existing episodes until the owner approves.
+**Energy-flow style V3 (travelling pulse, Variant B): APPROVED** by the owner
+(2026-11-27) as the permanent style; implemented in the shared renderer.
+Implementation previews (`renders/energy-flow-review/v3/`) await approval —
+do NOT regenerate existing educational videos until the owner approves them.
 
 | Phase | Scope | Gate |
 |---|---|---|
@@ -125,11 +125,16 @@ default or apply it to existing episodes until the owner approves.
   AC output · white `#F8FAFC` household loads after distribution (dark
   outline) · grey `#64748B` inactive/isolated · red `#EF4444` faults/warnings
   only. On-grid and hybrid are configurations, never a colour.
+- **Approved animation (V3):** one thin coloured line + ONE travelling pulse
+  per connection — bright leading edge (always facing the destination), long
+  fading tail. No arrowheads, particles, density, multiple pulses, lightning
+  or bloom. Pulse 35 % of the cable, 1.2 s source→destination (0.8–1.5 s),
+  linear seamless loop, base line 30 %, constant thickness. Speed, length,
+  brightness and thickness NEVER depend on kW — show kW in labels instead.
 - Import/export share the blue grid path and charge/discharge share the green
-  battery path — DIRECTION distinguishes them. Constant particle speed;
-  particle DENSITY encodes kW against one `referenceKw` per comparison scene;
-  0 kW = no particles. Always pair colour with arrows, Thai labels (with kW)
-  and equipment indicators (colour-vision accessibility).
+  battery path — the pulse DIRECTION distinguishes them. Inactive = static
+  grey; warning = stopped line + red indicator on the affected connection only.
+  Pair colour with Thai labels (with kW), icons and equipment indicators.
 - Flows come from `deriveFlowLinks` (rules engine) only. On-grid blackout:
   sunlight may show, but no usable power flows. Hybrid backup: grid isolated
   (red warning), only backup circuits supplied. Never a decorative flow.
@@ -215,20 +220,24 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 - Showcase: `node scripts/review/build-phase3-showcase.mjs`, stills plan in
   `renders/phase-3-review/stills-plan.json`.
 
-## Energy-flow standard (awaiting approval)
+## Energy-flow standard (V3 approved style)
 
-- Scene option `energyFlow`: `style` ("legacy" default | "standard"),
-  `referenceKw`, `labels`, `legend`, `hidden`, `pathScale`.
-- Renderer `EnergyFlowPath`, labels/legend `FlowLabels.tsx`, links
-  `links.ts`, sampling `sampleFlowLinks` (direction reversals fade out/in).
+- Spec: `docs/energy-flow-standard.md`; tokens `ENERGY_FLOW_COLORS` and
+  `ENERGY_FLOW_PULSE` in `src/config/energy-flow.ts`; maths `pulse.ts`;
+  renderer `EnergyFlowPath` (gradient shader on the cable tube); links
+  `links.ts`; labels/legend `FlowLabels.tsx`.
+- Scene option `energyFlow`: `labels`, `legend` (opt-in), `hidden`,
+  `pathScale`, `pulseSeconds`. Deprecated `style: "legacy"` migrates to the
+  approved style; `referenceKw` is ignored.
 - Environments may define `flowLabelAnchors` and `loadWeights`.
 - Thai labels: `ENERGY_FLOW_LABELS_TH` (พลังงานแสงอาทิตย์, ไฟฟ้าจากการไฟฟ้า,
   กำลังชาร์จแบตเตอรี่, กำลังจ่ายไฟจากแบตเตอรี่, ไฟฟ้าจากอินเวอร์เตอร์,
   การใช้ไฟฟ้าภายในบ้าน, ส่งไฟฟ้ากลับเข้าระบบ, หยุดจ่ายไฟ, ระบบไฟสำรอง).
-- Review: `node scripts/review/build-energy-flow-review.mjs`; reference sheet
-  composition `EnergyFlowReference`.
-- Legacy `ENERGY_COLORS` (palette.ts) remains only for the legacy renderer and
-  the approved equipment indicator LEDs until migration is approved.
+- Review: `node scripts/review/build-energy-flow-review.mjs`; compositions
+  `EnergyFlowReference`, `EnergyFlowCableTest`; output
+  `renders/energy-flow-review/v3/`.
+- Legacy `ENERGY_COLORS` (palette.ts) remains only for the approved equipment
+  indicator LEDs until the owner approves migrating them.
 
 ## Approved reusable assets & capabilities
 
@@ -248,4 +257,5 @@ expressions). Full register: `docs/asset-manifest.md`.
 | `midday-sun`, `golden-hour`, `evening`, `night`, `power-outage` | lighting | approved |
 | on-grid/hybrid inverter, battery stack, distribution board, EV charger, EV, utility meter, socket, switch | equipment | approved |
 | `tablet`, `demo-solar-panel`, `coffee-mug` | props | approved |
+| `energy-flow-standard` (V3 travelling pulse) | visual language | approved style (previews in review) |
 | 20 animation clips, 11 expression presets | animation | approved |
