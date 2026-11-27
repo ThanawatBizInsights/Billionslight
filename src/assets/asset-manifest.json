@@ -162,9 +162,9 @@
         "walk (Phase 3)"
       ],
       "issues": [
-        "NOT visually approved (owner, 2026-11-27): eyes looked intimidating. Eye/face redesign variants A/B/C in review (docs/sunny-eye-review.md). Default face remains v1 until a variant is approved."
+        "Face variant B approved (owner, 2026-11-27). Full character still part of the Phase 2 visual-approval review."
       ],
-      "notes": "Authoritative identity from the original character sheet. Soft faceted low-poly; tail = 5-joint chain; removable props (tablet, demo solar panel); pure-white hard hat with ridges between the ears. Face variants: v1 (Phase 2 prototype, not approved), A/B/C (SunnyFace: soft-faceted head with cream facial region, SunnyEye with curved iris texture, surface catchlights, eyelids). Select per cast with `variant`.",
+      "notes": "Authoritative identity from the original character sheet. Soft faceted low-poly; tail = 5-joint chain; removable props (tablet, demo solar panel); pure-white hard hat with ridges between the ears. Face variants: v1 (Phase 2 prototype, not approved), A/B/C (SunnyFace: soft-faceted head with cream facial region, SunnyEye with curved iris texture, surface catchlights, eyelids). Default face: variant B (approved). v1/A/C kept for comparison only.",
       "implementation": "src/engine/characters/sunny"
     },
     {
@@ -2885,6 +2885,58 @@
       ],
       "implementation": "src/engine/characters/expressions.ts",
       "issues": []
+    },
+    {
+      "id": "sunny-face-b",
+      "name": "Sunny face — variant B (Cinematic low-poly)",
+      "category": "character",
+      "status": "approved",
+      "modelType": "procedural-creature-rig",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§01/§04 Sunny face"
+        },
+        {
+          "file": "characters/three-squirrels-team.png",
+          "section": "centre character"
+        }
+      ],
+      "palette": {
+        "sclera": {
+          "hex": "#FFF4E8",
+          "source": "owner-approved"
+        },
+        "iris": {
+          "hex": "#8050A1",
+          "source": "owner-approved"
+        },
+        "iris-highlight": {
+          "hex": "#B68AC8",
+          "source": "owner-approved"
+        },
+        "pupil": {
+          "hex": "#302039",
+          "source": "owner-approved"
+        },
+        "upper-lid": {
+          "hex": "#59382D",
+          "source": "owner-approved"
+        }
+      },
+      "animationCapabilities": [
+        "lid-blink",
+        "smile-lower-lids",
+        "happy-closed-eyes",
+        "surprise",
+        "gaze-left-right-up-down",
+        "look-at",
+        "brows"
+      ],
+      "implementation": "src/engine/characters/sunny",
+      "issues": [],
+      "notes": "Soft polygonal facial contours (55% smoothing, head detail 3), 20×14 eyeballs, iris 0.88 / pupil 0.56 of eye width, no rim, roughness 0.38. Approved 2026-11-27."
     }
   ]
 }

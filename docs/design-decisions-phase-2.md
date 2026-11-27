@@ -80,10 +80,18 @@ still need **visual approval** before the asset library is expanded.
 - The boards set the art direction; the approved character sheets win when
   they disagree.
 
+## 10. Sunny's face (owner decision, 2026-11-27)
+- The v1 prototype face was rejected (eyes looked intimidating).
+- **Variant B — "Cinematic low-poly" is approved**: soft polygonal facial
+  contours, simpler smooth eyes, moderate gloss, minimal visible sclera, large
+  purple irises with large dark pupils, cream facial region around the eyes and
+  cheeks, soft brown lid lines and brows. Details: `docs/sunny-eye-review.md`.
+
 ## How the prototypes implement these decisions
 | Decision | Implementation |
 |---|---|
 | Sunny identity | `src/engine/characters/SquirrelMascot.tsx`, colours in `library.ts` (`SUNNY`) |
+| Sunny face (variant B) | `src/engine/characters/sunny/` (`defaultVariant: "B"`) |
 | Ton identity | `src/engine/characters/StylizedHuman.tsx`, `library.ts` (`TON`) |
 | Heights | `CharacterDefinition.heightM` + `NATURAL_HEIGHT` calibration in `CharacterModel.tsx`, checked on the scale-reference render |
 | Removable props | `src/engine/props/Props.tsx` + `props` track on characters (episode schema) |

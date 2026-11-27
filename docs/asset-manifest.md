@@ -2,7 +2,7 @@
 
 _Generated from `src/assets/asset-manifest.json` by `node scripts/manifest-report.mjs` — edit the JSON, not this file._
 
-Updated: 2026-11-27 · 117 assets · reference files live (git-ignored) under `public/assets/references/drive/`.
+Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `public/assets/references/drive/`.
 
 | Status | Count |
 |---|---|
@@ -12,7 +12,7 @@ Updated: 2026-11-27 · 117 assets · reference files live (git-ignored) under `p
 | deferred | 2 |
 | superseded | 2 |
 | reference-supplied | 32 |
-| approved | 1 |
+| approved | 2 |
 | reference-only | 3 |
 | in-progress | 2 |
 
@@ -27,12 +27,13 @@ Updated: 2026-11-27 · 117 assets · reference files live (git-ignored) under `p
 | `squirrel-teammate-red` | Squirrel teammate (red-brown, brown eyes) | deferred | procedural-creature-rig | 3 |  | three-squirrels-team.png side character holding acorn-shaped battery |
 | `squirrel-teammate-grey` | Squirrel teammate (grey, green eyes) | deferred | procedural-creature-rig | 3 |  | three-squirrels-team.png side character holding LED downlight |
 | `temp-engineer` | Temporary engineer placeholder | superseded | procedural-humanoid-rig | 1 |  | — |
+| `sunny-face-b` | Sunny face — variant B (Cinematic low-poly) | approved | procedural-creature-rig | 2 |  | 01-visual-reference-board.png §01/§04 Sunny face; three-squirrels-team.png centre character |
 
-**`sunny`** — Authoritative identity from the original character sheet. Soft faceted low-poly; tail = 5-joint chain; removable props (tablet, demo solar panel); pure-white hard hat with ridges between the ears. Face variants: v1 (Phase 2 prototype, not approved), A/B/C (SunnyFace: soft-faceted head with cream facial region, SunnyEye with curved iris texture, surface catchlights, eyelids). Select per cast with `variant`.
+**`sunny`** — Authoritative identity from the original character sheet. Soft faceted low-poly; tail = 5-joint chain; removable props (tablet, demo solar panel); pure-white hard hat with ridges between the ears. Face variants: v1 (Phase 2 prototype, not approved), A/B/C (SunnyFace: soft-faceted head with cream facial region, SunnyEye with curved iris texture, surface catchlights, eyelids). Default face: variant B (approved). v1/A/C kept for comparison only.
 - Palette: fur `#E8913A` (prototype), fur-light `#F4AA55` (prototype), cream `#FDE6CD` (sampled), helmet `#F6F4F2` (owner-approved), uniform `#1F2A4A` (prototype), uniform-panel `#2F7DE1` (prototype), trim `#E0A93B` (prototype), badge `#FBBF24` (owner-approved), iris `#7A4BA8` (prototype), inner-ear `#F4B6A8` (prototype), nose `#7A4127` (prototype), boot `#1A2238` (prototype), eye-sclera `#FFF4E8` (owner-approved), eye-iris `#8050A1` (owner-approved), eye-iris-highlight `#B68AC8` (owner-approved), eye-pupil `#302039` (owner-approved), eye-upper-lid `#59382D` (owner-approved)
 - Animation: idle-breathing, wave, point, talk, explain, open-hands, nod, shake-head, listen, think, surprised, laugh, thumbs-up, hold-tablet, present-prop, look-upward, lean-in, sit, shrug, ear-flick, tail-sway, blink, eye-gaze, look-at, expr:neutral, expr:happy, expr:talk, expr:surprised, expr:thinking, expr:confused, expr:laughing, expr:wink, expr:concerned, expr:listening, expr:curious, walk (Phase 3)
-- Implementation: `src/engine/characters/SquirrelMascot.tsx + src/engine/characters/sunny/`
-- ⚠ NOT visually approved (owner, 2026-11-27): eyes looked intimidating. Eye/face redesign variants A/B/C in review (docs/sunny-eye-review.md). Default face remains v1 until a variant is approved.
+- Implementation: `src/engine/characters/sunny`
+- ⚠ Face variant B approved (owner, 2026-11-27). Full character still part of the Phase 2 visual-approval review.
 
 **`homeowner_male_01`** — Curious, friendly, occasionally humorous; asks practical questions. Cream short-sleeved shirt, navy trousers, white casual shoes, dark-brown geometric hair, warm skin tone.
 - Palette: skin `#E9B48A` (prototype), hair `#3B2A24` (prototype), shirt `#EFE6D6` (prototype), trousers `#1F2D52` (prototype), shoes `#F4F4F2` (prototype), belt `#3A2E26` (prototype)
@@ -57,6 +58,11 @@ Updated: 2026-11-27 · 117 assets · reference files live (git-ignored) under `p
 **`temp-engineer`** — Phase 1 placeholder; kept only so the Phase 1 foundation test still renders. Superseded by sunny.
 - Animation: idle, wave, point, talk, explain, nod, smile, blink, look-at
 - Implementation: `src/engine/characters/library.ts`
+
+**`sunny-face-b`** — Soft polygonal facial contours (55% smoothing, head detail 3), 20×14 eyeballs, iris 0.88 / pupil 0.56 of eye width, no rim, roughness 0.38. Approved 2026-11-27.
+- Palette: sclera `#FFF4E8` (owner-approved), iris `#8050A1` (owner-approved), iris-highlight `#B68AC8` (owner-approved), pupil `#302039` (owner-approved), upper-lid `#59382D` (owner-approved)
+- Animation: lid-blink, smile-lower-lids, happy-closed-eyes, surprise, gaze-left-right-up-down, look-at, brows
+- Implementation: `src/engine/characters/sunny`
 
 ## environment
 

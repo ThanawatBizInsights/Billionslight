@@ -1,6 +1,6 @@
 # Phase 2 report — Visual prototype
 
-Date: 2026-11-27 · Status: **complete; Sunny's face NOT approved (eye redesign in `docs/sunny-eye-review.md`); Ton/environments awaiting visual approval**
+Date: 2026-11-27 · Status: **re-rendered with the approved Sunny face (variant B); full pack awaiting owner VISUAL APPROVAL**
 Approved inputs: `docs/design-decisions-phase-2.md` · References: Drive
 boards 01–06 and "Three Squirrels" (local copies, git-ignored).
 
@@ -83,8 +83,8 @@ at final quality, estimate about 3× the 10-second figure.
 3. **Hands are mitten paws (Sunny) or blocks (Ton)**, with no fingers. Pointing
    and thumbs-up read through arm pose, not finger shapes. Say if finger
    detail is wanted.
-4. **Sunny's eyes** use a white sclera ring, while the sheet shows almost
-   none. Easy to reduce if preferred.
+4. **Sunny's eyes** were redesigned (`docs/sunny-eye-review.md`); variant B
+   is approved and used throughout this pack.
 5. **Faces and hard hat brim:** in some low-angle shots the brim covers the
    brows; brows are kept small.
 6. **Shadows** come from a single sun shadow map; interior lamps do not cast

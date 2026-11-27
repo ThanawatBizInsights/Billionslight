@@ -6,12 +6,10 @@ whenever a new reusable asset or capability is approved.
 ## Current phase
 
 **Phase 1 — provisionally approved (2026-11-27).**
-**Sunny's face is NOT approved** (owner, 2026-11-27: eyes looked intimidating).
-Eye redesign variants A/B/C are awaiting the owner's choice
-(`docs/sunny-eye-review.md`, renders in `renders/phase-2/sunny-eye-review/`).
-Do not change Ton, environments, equipment or the core renderer while
-Sunny's face is under review. `v1` stays the default until a variant is
-approved; never delete it before then.
+**Sunny's face: variant B ("Cinematic low-poly") APPROVED** (owner,
+2026-11-27) and set as `SUNNY.defaultVariant`. Variants v1/A/C are kept for
+comparison only; do not use them in episodes. Do not change the approved
+face without permission (see `docs/sunny-eye-review.md`).
 **Phase 2 — prototypes complete, AWAITING VISUAL APPROVAL** (review pack:
 `docs/phase-2-report.md`, renders in `renders/phase-2-review/`). Do not start
 Phase 3 and do not expand the asset library until the owner approves the
@@ -32,7 +30,7 @@ visuals. Approved design decisions: `docs/design-decisions-phase-2.md`.
 - **Preserve approved character identities.** Sunny's official character sheet
   (`public/assets/characters/sunny/`) is authoritative. Do not redesign Sunny,
   or change any approved character, without explicit approval.
-- **Sunny** (`sunny`): golden-orange squirrel mascot, 1.35 m incl. hard hat
+- **Sunny** (`sunny`, face variant B approved): golden-orange squirrel mascot, 1.35 m incl. hard hat
   (≈79% of Ton). Large head, compact body, short limbs, large purple eyes,
   cream cheeks/muzzle, pink inner ears, small brown nose, soft faceted bushy
   tail, PURE WHITE ridged hard hat between the ears, navy + bright-blue
@@ -168,8 +166,8 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 - `environment.states` animates environment values (power, lights, tv, ac);
   `lighting.transitions` blends presets (e.g. evening → power-outage).
 - Environments may compute cable routes from options (garage on-grid/hybrid).
-- Sunny face variants: `CharacterDefinition.defaultVariant` + per-cast
-  `variant` in episodes ("v1" | "A" | "B" | "C"). New face lives in
+- Sunny face variants: `CharacterDefinition.defaultVariant` (= "B",
+  approved) + per-cast `variant` override ("v1" | "A" | "B" | "C" — review only). New face lives in
   `src/engine/characters/sunny/` (head geometry, SunnyEye, iris texture).
   Eye review pack: `node scripts/review/build-sunny-eye-review.mjs`.
 - Review pipeline: `node scripts/review/build-review-episodes.mjs` →
@@ -181,7 +179,7 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 ## Approved reusable assets & capabilities
 
 Approved (owner decisions): `scene-palette` (board 01 colours), character
-design decisions in `docs/design-decisions-phase-2.md`. All 3D assets below
+design decisions in `docs/design-decisions-phase-2.md`, Sunny face variant B. All 3D assets below
 are PROTOTYPES awaiting visual approval. Full register: `docs/asset-manifest.md`.
 
 | ID | Type | Status |

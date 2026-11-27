@@ -1,6 +1,8 @@
 # Sunny — eye and facial geometry redesign (review, 2026-11-27)
 
-Status: **three variants (A, B, C) ready for owner visual approval.** Sunny
+Status: **variant B ("Cinematic low-poly") APPROVED by the owner (2026-11-27)**
+and set as Sunny's default face (`SUNNY.defaultVariant = "B"`). A, C and v1
+remain in the code for comparison only. Sunny
 only; Ton, environments, equipment and the core renderer are unchanged.
 The previous face (`v1`) is untouched and remains the default until a variant
 is approved, so nothing has been overwritten irreversibly.
@@ -107,7 +109,6 @@ identical across variants.
 The extra face cost is modest. B is the cheapest option if render time matters
 on the Intel MacBook.
 
-## 7. After approval
-Set `defaultVariant` on `SUNNY` in `src/engine/characters/library.ts` to the
-chosen variant (episodes can also choose per cast with `"variant"`), then
-re-render the Phase 2 review pack and the living-room test.
+## 7. Approval
+Variant B approved 2026-11-27 → `SUNNY.defaultVariant = "B"`. The Phase 2
+review pack and the living-room test were re-rendered with face B.

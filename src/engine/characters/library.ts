@@ -42,6 +42,9 @@ export const SUNNY: CharacterDefinition = {
     sole: "#3A4466",
   },
   seed: 7,
+  // Face variant B ("Cinematic low-poly") approved by the owner 2026-11-27.
+  // v1, A and C remain available for comparison only.
+  defaultVariant: "B",
   defaultExpression: "happy",
   role: "Billionslight solar & electrical guide. Friendly technical expert; explains through demonstrations and everyday examples.",
 };

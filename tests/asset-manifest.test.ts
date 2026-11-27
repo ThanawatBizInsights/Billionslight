@@ -47,7 +47,7 @@ describe("asset manifest", () => {
   });
 
   it("only owner-approved decisions are marked approved", () => {
-    expect(manifest.assets.filter((a) => a.status === "approved").map((a) => a.id)).toEqual(["scene-palette"]);
+    expect(manifest.assets.filter((a) => a.status === "approved").map((a) => a.id).sort()).toEqual(["scene-palette", "sunny-face-b"]);
   });
 
   it("third-party material is reference-only", () => {

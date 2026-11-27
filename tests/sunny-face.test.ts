@@ -10,10 +10,10 @@ import { SUNNY } from "../src/engine/characters/library";
 import blinkTest from "../src/episodes/review/sunny-eye/blink-gaze-test.json";
 
 describe("Sunny face redesign", () => {
-  it("defines variants A, B, C and keeps v1 as the default until approved", () => {
+  it("defines variants A, B, C; the owner-approved variant B is Sunny's default", () => {
     expect(Object.keys(SUNNY_FACE_VARIANTS)).toEqual(["A", "B", "C"]);
     expect(isNewFace("v1")).toBe(false);
-    expect(SUNNY.defaultVariant ?? "v1").toBe("v1");
+    expect(SUNNY.defaultVariant).toBe("B");
   });
 
   it("uses the owner eye palette", () => {
