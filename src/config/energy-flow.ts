@@ -49,19 +49,44 @@ export const ENERGY_FLOW_LABELS_TH = {
 export type EnergyFlowLabelKey = keyof typeof ENERGY_FLOW_LABELS_TH;
 
 /**
- * Motion & density scale. Speed is CONSTANT (electricity does not "go faster"
- * with more load); particle density encodes power. Density is linear in kW
- * against a per-scene reference so values are comparable within a scene.
+ * APPROVED animation style (owner, 2026-11-27 — "Variant B"): one thin
+ * coloured line per connection carrying ONE travelling pulse of light with a
+ * short bright leading edge and a long fading tail. The leading edge always
+ * faces the destination. No arrowheads, no particles, no density.
+ *
+ * Pulse speed, length, brightness and line thickness NEVER depend on power;
+ * kW is shown separately (labels). The effect shows the direction of energy
+ * transfer, not the movement or speed of electrons.
  */
-export const ENERGY_FLOW_MOTION = {
-  /** Metres per second — same for every path and every power level. */
-  speed: 0.9,
-  /** Particles per metre at the reference power (scene.energyFlow.referenceKw). */
-  densityAtReference: 5,
-  /** Default reference power (kW) for a comparison scene. */
-  referenceKw: 5,
-  /** Distance between moving arrowheads (m). */
-  arrowSpacing: 1.6,
+export const ENERGY_FLOW_PULSE = {
+  /** Pulse length as a fraction of the connection length. */
+  lengthFraction: 0.35,
+  /** Short connections: the pulse is at least this long (m) but never more than maxFraction of the cable. */
+  minLengthM: 0.55,
+  maxFraction: 0.6,
+  /** Seconds for the leading edge to travel from source to destination (approved range 0.8–1.5). */
+  travelSeconds: 1.2,
+  travelSecondsRange: [0.8, 1.5] as const,
+  /** Line brightness when no pulse is passing (approved 25–35 %). */
+  baseIntensity: 0.3,
+  peakIntensity: 1,
+  /**
+   * Intensity profile from the trailing end (0) to the leading end (1):
+   * 0 % → 0, 25 % → 0.15, 50 % → 0.40, 75 % → 0.75, 90 % → 1.0, 100 % → 0 (smooth, rapid fade).
+   */
+  profile: [
+    [0, 0],
+    [0.25, 0.15],
+    [0.5, 0.4],
+    [0.75, 0.75],
+    [0.9, 1],
+    [1, 0],
+  ] as const,
+  /** How far the leading edge blends toward a lighter tint of its own colour (keeps colour identity). */
+  leadingTint: 0.45,
+  /** Soft, restrained glow around the line (alpha at peak). No full-scene bloom. */
+  glowPeak: 0.4,
+  /** Constant cable radius (m); `energyFlow.pathScale` thickens it uniformly for wide shots. */
   cableRadius: 0.03,
 } as const;
 

@@ -44,19 +44,17 @@
           "scenario": {
             "pvRatedKw": 5,
             "inverterRatedKw": 5,
-            "householdLoadKw": 3,
+            "householdLoadKw": 2.5,
             "backupLoadKw": 0.8,
             "exportPermitted": false,
             "inverterType": "grid-tied",
             "gridStatus": "connected",
-            "solarIrradiance": 0.4
+            "solarIrradiance": 0.5
           },
           "transitionFrames": 0
         }
       ],
       "energyFlow": {
-        "style": "standard",
-        "referenceKw": 5,
         "labels": true,
         "legend": true,
         "pathScale": 1.8
@@ -65,7 +63,7 @@
         {
           "id": "title",
           "kind": "title",
-          "text": "ออนกริด · ใช้งานปกติ",
+          "text": "ออนกริด · ใช้งานปกติ\n(โซลาร์พอดีกับการใช้ไฟ)",
           "from": 0,
           "durationInFrames": 150,
           "anchor": [

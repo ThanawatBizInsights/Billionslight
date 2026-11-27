@@ -1,0 +1,13 @@
+{
+  "at": "2026-11-27T15:20:17.108Z",
+  "gl": "swangle",
+  "jobs": [
+    {
+      "out": "renders/energy-flow-review/v3/stills/04-battery-charging.png",
+      "frame": 75,
+      "size": "1080x1920",
+      "sec": 3.5,
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "energy-flow-04-battery-charging",
+  "title": "Energy-flow standard review · 04-battery-charging",
+  "topic": "Visual standard test (silent). Simplified educational model, not a wiring diagram. kW values are illustrative.",
+  "language": "th",
+  "aspectRatio": "9:16",
+  "fps": 30,
+  "cast": [],
+  "scenes": [
+    {
+      "id": "test",
+      "durationInFrames": 150,
+      "environment": {
+        "id": "energy-cutaway-house",
+        "options": {
+          "system": "hybrid",
+          "battery": true,
+          "backupLoads": [
+            "fridge",
+            "light-living",
+            "fan"
+          ]
+        }
+      },
+      "lighting": {
+        "preset": "midday-sun"
+      },
+      "camera": {
+        "keyframes": [
+          {
+            "frame": 0,
+            "position": [
+              21.44,
+              24.49,
+              45.29
+            ],
+            "target": [
+              2.5,
+              1,
+              0.5
+            ],
+            "fov": 30
+          }
+        ]
+      },
+      "electrical": [
+        {
+          "frame": 0,
+          "scenario": {
+            "pvRatedKw": 5,
+            "inverterRatedKw": 5,
+            "householdLoadKw": 1.5,
+            "backupLoadKw": 0.8,
+            "exportPermitted": false,
+            "inverterType": "hybrid",
+            "gridStatus": "connected",
+            "solarIrradiance": 0.9,
+            "battery": {
+              "present": true,
+              "capacityKwh": 10,
+              "stateOfCharge": 0.5,
+              "maxPowerKw": 5
+            },
+            "backup": {
+              "backupOutputConfigured": true,
+              "gridIsolationDevice": true,
+              "loadsOnBackupCircuit": true
+            }
+          },
+          "transitionFrames": 0
+        }
+      ],
+      "energyFlow": {
+        "labels": true,
+        "legend": true,
+        "pathScale": 1.8
+      },
+      "overlays": [
+        {
+          "id": "title",
+          "kind": "title",
+          "text": "ไฮบริด · ชาร์จแบตเตอรี่จากโซลาร์",
+          "from": 0,
+          "durationInFrames": 150,
+          "anchor": [
+            0.5,
+            0.04
+          ],
+          "style": "compact"
+        }
+      ]
+    }
+  ],
+  "branding": {
+    "showLogo": false
+  },
+  "approval": {
+    "status": "visual-review",
+    "history": []
+  }
+}

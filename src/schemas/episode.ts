@@ -295,23 +295,27 @@ export const Scene = z.object({
     .default({ type: "cut", durationInFrames: 0 }),
   claimIds: z.array(z.string()).default([]),
   /**
-   * Energy-flow visual style. "standard" = Billionslight energy-flow standard
-   * (src/config/energy-flow.ts). "legacy" = Phase 1–3 renderer; stays the
-   * default until the owner approves applying the standard to all episodes.
+   * Energy-flow presentation. The approved travelling-pulse style
+   * (docs/energy-flow-standard.md) applies to every scene with electrical data.
    */
   energyFlow: z
     .object({
-      style: z.enum(["legacy", "standard"]).default("legacy"),
-      /** kW that maps to the standard particle density; keep one value per comparison. */
-      referenceKw: z.number().positive().default(5),
-      labels: z.boolean().default(true),
-      legend: z.boolean().default(true),
+      /** Deprecated: "legacy" (Phase 1–3 particles) is migrated to the approved style. */
+      style: z.enum(["legacy", "standard"]).transform(() => "standard" as const).default("standard"),
+      /** Deprecated (particle density was removed in V3); accepted and ignored. */
+      referenceKw: z.number().positive().optional(),
+      /** Thai flow labels with kW (educational scenes). */
+      labels: z.boolean().default(false),
+      /** Colour legend panel. */
+      legend: z.boolean().default(false),
       /** Link or route IDs to hide (e.g. "grid", "load:house:tv"). */
       hidden: z.array(z.string()).default([]),
-      /** Thickness multiplier for cables, particles and arrows (wide shots). Does not change density or speed. */
+      /** Uniform line-thickness multiplier for wide shots (never tied to power). */
       pathScale: z.number().min(0.5).max(4).default(1),
+      /** Pulse travel time source → destination, seconds (approved range 0.8–1.5; default 1.2). */
+      pulseSeconds: z.number().min(0.8).max(1.5).optional(),
     })
-    .default({ style: "legacy", referenceKw: 5, labels: true, legend: true, hidden: [], pathScale: 1 }),
+    .default({ style: "standard", labels: false, legend: false, hidden: [], pathScale: 1 }),
 });
 export type Scene = z.infer<typeof Scene>;
 

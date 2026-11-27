@@ -5,8 +5,9 @@ import { ElectricalScenario } from "../src/schemas/episode";
 import { deriveEnergyState } from "../src/engine/energy-flow/scenario";
 import { deriveFlowLinks, householdSupply, loadRouteKw } from "../src/engine/energy-flow/links";
 import { sampleFlowLinks } from "../src/engine/energy-flow/timeline";
-import { particleFraction } from "../src/engine/energy-flow/EnergyFlowPath";
-import { ENERGY_FLOW_COLORS, ENERGY_FLOW_LABELS_TH, ENERGY_FLOW_MOTION } from "../src/config/energy-flow";
+import { clampTravelSeconds, pulseFraction, pulseHead, pulseIntensityAt, pulseProfile } from "../src/engine/energy-flow/pulse";
+import { ENERGY_FLOW_COLORS, ENERGY_FLOW_LABELS_TH, ENERGY_FLOW_PULSE } from "../src/config/energy-flow";
+import { EpisodeScene } from "./helpers/scene";
 
 const S = (o: Record<string, unknown>) => ElectricalScenario.parse({ inverterType: "grid-tied", gridStatus: "connected", solarIrradiance: 0.8, pvRatedKw: 5, inverterRatedKw: 5, ...o });
 const battery = (soc: number) => ({ present: true, capacityKwh: 10, stateOfCharge: soc, maxPowerKw: 5 });
@@ -50,18 +51,76 @@ describe("energy-flow tokens", () => {
   });
 });
 
-describe("power → particle density (constant speed)", () => {
-  it("0 kW shows nothing; density rises with kW; never depends on speed", () => {
-    const ref = 5;
-    expect(particleFraction(0, ref)).toBe(0);
-    const f1 = particleFraction(1, ref);
-    const f3 = particleFraction(3, ref);
-    const f5 = particleFraction(5, ref);
-    expect(f1).toBeGreaterThan(0);
-    expect(f3).toBeGreaterThan(f1);
-    expect(f5).toBeGreaterThan(f3);
-    expect(f3 / f1).toBeCloseTo(3);
-    expect(typeof ENERGY_FLOW_MOTION.speed).toBe("number"); // a single constant speed for every path
+describe("approved travelling pulse (V3)", () => {
+  const fps = 30;
+  it("profile matches the approved stops: dark tail, 100 % at 90 %, smooth fade at the leading end", () => {
+    expect(pulseProfile(0)).toBe(0);
+    expect(pulseProfile(0.25)).toBeCloseTo(0.15);
+    expect(pulseProfile(0.5)).toBeCloseTo(0.4);
+    expect(pulseProfile(0.75)).toBeCloseTo(0.75);
+    expect(pulseProfile(0.9)).toBeCloseTo(1);
+    expect(pulseProfile(0.95)).toBeGreaterThan(0.3);
+    expect(pulseProfile(0.95)).toBeLessThan(0.7);
+    expect(pulseProfile(1)).toBe(0);
+    // long soft tail, short bright head: intensity rises monotonically up to the peak
+    for (let x = 0.01; x < 0.9; x += 0.01) expect(pulseProfile(x + 0.01)).toBeGreaterThanOrEqual(pulseProfile(x) - 1e-9);
+  });
+
+  it("the brightest point is always ahead of the tail in the direction of travel", () => {
+    const pulse = pulseFraction(6);
+    const head = 0.7;
+    let best = 0;
+    let bestS = 0;
+    for (let s = 0; s <= 1; s += 0.001) {
+      const v = pulseIntensityAt(s, head, pulse);
+      if (v > best) [best, bestS] = [v, s];
+    }
+    expect(bestS).toBeLessThan(head);
+    expect(head - bestS).toBeLessThan(pulse * 0.15); // short bright leading edge
+    expect(pulseIntensityAt(head - pulse * 0.8, head, pulse)).toBeLessThan(0.2); // faded tail
+    expect(pulseIntensityAt(head + 0.01, head, pulse)).toBe(0); // nothing ahead of the leading edge
+  });
+
+  it("one pulse moves linearly source → destination and loops seamlessly (enters and leaves the cable)", () => {
+    const pulse = pulseFraction(6);
+    const T = clampTravelSeconds();
+    expect(T).toBe(1.2);
+    // linear: equal frame steps → equal head steps
+    const h = [0, 3, 6, 9].map((f) => pulseHead(f, fps, pulse, T));
+    expect(h[2]! - h[1]!).toBeCloseTo(h[1]! - h[0]!);
+    // 1 cable length per travelSeconds
+    expect(pulseHead(fps * T * 0.5, fps, pulse, T)).toBeCloseTo(0.5, 5);
+    // loop: head runs 0 → 1 + pulse, so the tail has left the cable before it re-enters at the source
+    const cycleFrames = fps * T * (1 + pulse);
+    expect(pulseHead(cycleFrames - 0.01, fps, pulse, T)).toBeGreaterThan(1 + pulse - 0.01);
+    expect(pulseHead(cycleFrames, fps, pulse, T)).toBeCloseTo(0, 5);
+    expect(pulseIntensityAt(1, 1 + pulse - 1e-6, pulse)).toBeLessThan(0.01); // nothing left on the cable at wrap time
+  });
+
+  it("pulse length is 35 % of the cable, adapted for short cables", () => {
+    expect(pulseFraction(10)).toBeCloseTo(ENERGY_FLOW_PULSE.lengthFraction);
+    expect(pulseFraction(1)).toBeGreaterThan(ENERGY_FLOW_PULSE.lengthFraction);
+    expect(pulseFraction(0.2)).toBeLessThanOrEqual(ENERGY_FLOW_PULSE.maxFraction);
+  });
+
+  it("travel time stays inside the approved 0.8–1.5 s range", () => {
+    expect(clampTravelSeconds(0.2)).toBe(0.8);
+    expect(clampTravelSeconds(3)).toBe(1.5);
+  });
+
+  it("nothing in the pulse depends on power (kW)", () => {
+    // pulse maths take no power input at all
+    expect(pulseHead.length).toBeLessThanOrEqual(5);
+    const src = fs.readFileSync(path.resolve(__dirname, "../src/engine/energy-flow/pulse.ts"), "utf8");
+    expect(/\bkw\b/i.test(src)).toBe(false);
+    const renderer = fs.readFileSync(path.resolve(__dirname, "../src/engine/energy-flow/EnergyFlowPath.tsx"), "utf8");
+    expect(/particle|arrow|density/i.test(renderer.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, ""))).toBe(false);
+  });
+
+  it("old episodes migrate: legacy style and referenceKw are accepted and mapped to the approved style", () => {
+    const scene = EpisodeScene({ energyFlow: { style: "legacy", referenceKw: 5 } });
+    expect(scene.energyFlow.style).toBe("standard");
+    expect(scene.energyFlow.labels).toBe(false);
   });
 });
 

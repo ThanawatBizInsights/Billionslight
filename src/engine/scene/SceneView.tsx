@@ -22,14 +22,11 @@ import { getShot, SHOTS } from "../cameras/shots";
 import { environmentCables, getEnvironment, type EnvironmentDefinition } from "../environments/registry";
 import { LightingRig } from "../lighting/LightingRig";
 import { blendPresets, getLightingPreset, type LightingPreset } from "../lighting/presets";
-import { EnergyPath } from "../energy-flow/EnergyPath";
 import { sampleElectrical, sampleFlowLinks } from "../energy-flow/timeline";
 import { EnergyFlowPath } from "../energy-flow/EnergyFlowPath";
 import { FlowLabels, FlowLegend, type FlowLabelItem } from "../energy-flow/FlowLabels";
 import { ROUTE_TO_LINK, loadRouteKw, type LinkId } from "../energy-flow/links";
 import type { EnergyFlowCategory } from "../../config/energy-flow";
-import type { FlowId } from "../energy-flow/scenario";
-import type { EnergyColorKey } from "../../config/palette";
 import { Atmosphere } from "../core/Atmosphere";
 import type { QualityPreset } from "../../config/formats";
 import { PROPS, PROP_GRIPS } from "../props/Props";
@@ -290,28 +287,27 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
     );
   });
 
-  const standard = scene.energyFlow.style === "standard";
-  const flowSample = standard ? sampleFlowLinks(scene.electrical, frame) : null;
+  // Approved energy-flow style (travelling pulse) for every scene with electrical data.
+  const flowSample = sampleFlowLinks(scene.electrical, frame);
   const cables = environmentCables(env, scene.environment.options);
   const hidden = new Set(scene.energyFlow.hidden);
   let labelItems: FlowLabelItem[] = [];
   let legendCats: EnergyFlowCategory[] = [];
   let paths: ReactNode = null;
-  if (standard && flowSample) {
+  if (flowSample) {
     const routeIds = Object.keys(cables);
     const loadKw = loadRouteKw(routeIds, flowSample.household, env.loadWeights ?? {}, envState);
-    const ref = scene.energyFlow.referenceKw;
-    paths = Object.entries(cables).map(([id, pts], i) => {
+    paths = Object.entries(cables).map(([id, pts]) => {
       if (id.startsWith("load:")) {
         const kw = loadKw[id] ?? 0;
         // backup-circuit routes are only drawn when they carry power (avoid doubled cables)
         if (id.startsWith("load:backup:") && kw <= 0) return null;
-        return <EnergyFlowPath key={id} points={pts} frame={frame} fps={fps} kw={kw} direction={1} category="householdLoad" referenceKw={ref} densityScale={quality.particleMultiplier} pathScale={scene.energyFlow.pathScale} seed={i + 1} visible={!hidden.has(id)} />;
+        return <EnergyFlowPath key={id} points={pts} frame={frame} fps={fps} kw={kw} direction={1} category={kw > 0.005 ? "householdLoad" : "inactive"} pathScale={scene.energyFlow.pathScale} travelSeconds={scene.energyFlow.pulseSeconds} visible={!hidden.has(id)} />;
       }
       const linkId = ROUTE_TO_LINK[id];
       if (!linkId) return null;
       const l = flowSample.links[linkId];
-      return <EnergyFlowPath key={id} points={pts} frame={frame} fps={fps} kw={l.kw} direction={l.direction} category={l.category} warning={l.warning} referenceKw={ref} densityScale={quality.particleMultiplier} pathScale={scene.energyFlow.pathScale} seed={i + 1} visible={!hidden.has(id) && !hidden.has(linkId)} />;
+      return <EnergyFlowPath key={id} points={pts} frame={frame} fps={fps} kw={l.kw} direction={l.direction} category={l.category} warning={l.warning} pathScale={scene.energyFlow.pathScale} travelSeconds={scene.energyFlow.pulseSeconds} visible={!hidden.has(id) && !hidden.has(linkId)} />;
     });
     const present = new Set(Object.keys(cables).map((id) => (id.startsWith("load:") ? "load" : ROUTE_TO_LINK[id])).filter(Boolean));
     const mid = (pts: Vec3[], lift = 0.35): Vec3 => {
@@ -342,26 +338,6 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
       legendCats = (["solarDC", "utilityGridAC", "batteryDC", "inverterAC", "householdLoad"] as EnergyFlowCategory[]).filter((c) => cats.has(c));
       legendCats.push("inactive", "fault");
     }
-  } else {
-    labelItems = [];
-    paths = energy
-    ? Object.entries(environmentCables(env, scene.environment.options)).map(([id, pts], i) => {
-        // household consumption routes: "load:house:<appliance>" (normal circuits) and
-        // "load:backup:<appliance>" (backup circuit, only while house circuits are down)
-        if (id.startsWith("load:")) {
-          const [, circuit, appliance] = id.split(":");
-          const sw = envState[appliance!] ?? 1;
-          const level = circuit === "backup" ? energy.backupPower * (1 - energy.housePower) : energy.housePower;
-          return <EnergyPath key={id} points={pts} frame={frame} fps={fps} intensity={0.45 * level * sw} color="load" seed={i + 1} particleMultiplier={quality.particleMultiplier * 0.5} />;
-        }
-        const flowId = (id === "meter-to-house" ? "grid-to-house" : id) as FlowId;
-        const flow = energy.state.flows[flowId];
-        if (!flow) return null;
-        const color: EnergyColorKey = flow.kind;
-        return <EnergyPath key={id} points={pts} frame={frame} fps={fps} intensity={energy.intensity[flowId] ?? 0} color={color} seed={i + 1} particleMultiplier={quality.particleMultiplier} />;
-      })
-    : null;
-
   }
   const atmosphere = scene.environment.options.atmosphere;
   return (

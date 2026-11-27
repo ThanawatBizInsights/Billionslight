@@ -1128,9 +1128,9 @@
         }
       ],
       "animationCapabilities": [
-        "energy-flow-particles"
+        "energy-flow-pulse"
       ],
-      "implementation": "src/engine/energy-flow/EnergyPath.tsx",
+      "implementation": "src/engine/energy-flow/EnergyFlowPath.tsx",
       "palette": {},
       "issues": []
     },
@@ -3146,9 +3146,9 @@
     },
     {
       "id": "energy-flow-standard",
-      "name": "Billionslight energy-flow visual standard",
+      "name": "Billionslight energy-flow visual standard (V3 travelling pulse)",
       "category": "visual-language",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 3,
       "references": [],
@@ -3190,17 +3190,18 @@
         }
       },
       "animationCapabilities": [
-        "directional-particles",
-        "density-by-kW",
-        "arrowheads",
-        "inactive",
-        "warning",
+        "travelling-pulse",
+        "bright-leading-edge",
+        "fading-tail",
+        "direction-from-rules-engine",
+        "inactive-static",
+        "warning-indicator",
         "thai-labels",
         "legend"
       ],
       "implementation": "src/engine/energy-flow",
       "issues": [],
-      "notes": "See docs/energy-flow-standard.md. Opt-in per scene until approved."
+      "notes": "Owner approved Variant B (bright leading edge, fading tail) as the permanent style on 2026-11-27. Implementation previews (renders/energy-flow-review/v3/) await approval before existing educational videos are regenerated. See docs/energy-flow-standard.md."
     }
   ]
 }

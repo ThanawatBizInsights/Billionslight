@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /**
- * Energy-flow visual standard review: six 5-second tests on the same house,
+ * Energy-flow visual standard review (V3, approved travelling pulse): 5-second tests on the same house,
  * equipment layout, camera and (where appropriate) lighting.
  *   node scripts/review/build-energy-flow-review.mjs
- * → src/episodes/energy-flow-review/*.json + renders/energy-flow-review/stills-plan.json
+ * → src/episodes/energy-flow-review/*.json + renders/energy-flow-review/v3/stills-plan.json
+ * (08 = cable-length test: composition EnergyFlowCableTest)
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -23,21 +24,25 @@ const hybrid = { system: "hybrid", battery: true, backupLoads: ["fridge", "light
 export const REVIEW_CAMERA = { frame: 0, position: [21.44, 24.49, 45.29], target: [2.5, 1, 0.5], fov: 30 };
 
 const TESTS = [
-  { id: "01-on-grid-normal", title: "ออนกริด · ใช้งานปกติ", options: onGrid, lighting: "midday-sun",
+  { id: "01-on-grid-normal", title: "ออนกริด · ใช้งานปกติ\n(โซลาร์พอดีกับการใช้ไฟ)", options: onGrid, lighting: "midday-sun",
+    scenario: { ...base, inverterType: "grid-tied", gridStatus: "connected", solarIrradiance: 0.5, householdLoadKw: 2.5 } },
+  { id: "02-solar-with-grid-import", title: "โซลาร์ + ไฟฟ้าจากการไฟฟ้า", options: onGrid, lighting: "midday-sun",
     scenario: { ...base, inverterType: "grid-tied", gridStatus: "connected", solarIrradiance: 0.4, householdLoadKw: 3 } },
-  { id: "02-surplus-export", title: "ส่งไฟฟ้าส่วนเกินกลับเข้าระบบ\n(เฉพาะระบบที่ได้รับอนุญาต)", options: onGrid, lighting: "midday-sun",
+  { id: "03-surplus-export", title: "ส่งไฟฟ้าส่วนเกินกลับเข้าระบบ\n(เฉพาะระบบที่ได้รับอนุญาต)", options: onGrid, lighting: "midday-sun",
     scenario: { ...base, inverterType: "grid-tied", gridStatus: "connected", solarIrradiance: 0.9, householdLoadKw: 1.5, exportPermitted: true } },
-  { id: "03-battery-charging", title: "ไฮบริด · ชาร์จแบตเตอรี่จากโซลาร์", options: hybrid, lighting: "midday-sun",
+  { id: "04-battery-charging", title: "ไฮบริด · ชาร์จแบตเตอรี่จากโซลาร์", options: hybrid, lighting: "midday-sun",
     scenario: { ...base, inverterType: "hybrid", gridStatus: "connected", solarIrradiance: 0.9, householdLoadKw: 1.5, battery: battery(0.5), backup: fullBackup } },
-  { id: "04-battery-discharging-night", title: "ไฮบริด · กลางคืน จ่ายไฟจากแบตเตอรี่", options: hybrid, lighting: "night",
+  { id: "05-battery-discharging-night", title: "ไฮบริด · กลางคืน\nจ่ายไฟจากแบตเตอรี่", options: hybrid, lighting: "night",
     scenario: { ...base, inverterType: "hybrid", gridStatus: "connected", solarIrradiance: 0, householdLoadKw: 1.8, battery: battery(0.8), backup: fullBackup } },
-  { id: "05-on-grid-outage", title: "ออนกริด · ไฟดับ\nอินเวอร์เตอร์หยุดจ่ายไฟ", options: onGrid, lighting: "midday-sun",
+  { id: "06-on-grid-outage", title: "ออนกริด · ไฟดับ\nอินเวอร์เตอร์หยุดจ่ายไฟ", options: onGrid, lighting: "midday-sun",
     scenario: { ...base, inverterType: "grid-tied", gridStatus: "outage", solarIrradiance: 0.9, householdLoadKw: 2.5 } },
-  { id: "06-hybrid-backup", title: "ไฮบริด · ไฟดับ\nระบบไฟสำรองทำงาน", options: hybrid, lighting: "midday-sun",
+  { id: "07-hybrid-backup", title: "ไฮบริด · ไฟดับ\nระบบไฟสำรองทำงาน", options: hybrid, lighting: "midday-sun",
     scenario: { ...base, inverterType: "hybrid", gridStatus: "outage", solarIrradiance: 0.5, householdLoadKw: 2.5, backupLoadKw: 0.8, battery: battery(0.7), backup: fullBackup } },
+  { id: "09-night-hybrid-backup", title: "กลางคืน · ไฟดับ\nแบตเตอรี่จ่ายระบบไฟสำรอง", options: hybrid, lighting: "night",
+    scenario: { ...base, inverterType: "hybrid", gridStatus: "outage", solarIrradiance: 0, householdLoadKw: 2.5, backupLoadKw: 0.8, battery: battery(0.7), backup: fullBackup } },
 ];
 
-const plan = { outDir: "renders/energy-flow-review/stills", jobs: [] };
+const plan = { outDir: "renders/energy-flow-review/v3/stills", jobs: [] };
 for (const t of TESTS) {
   const episode = {
     schemaVersion: 1,
@@ -56,7 +61,7 @@ for (const t of TESTS) {
         lighting: { preset: t.lighting },
         camera: { keyframes: [REVIEW_CAMERA] },
         electrical: [{ frame: 0, scenario: t.scenario, transitionFrames: 0 }],
-        energyFlow: { style: "standard", referenceKw: 5, labels: true, legend: true, pathScale: 1.8 },
+        energyFlow: { labels: true, legend: true, pathScale: 1.8 },
         overlays: [{ id: "title", kind: "title", text: t.title, from: 0, durationInFrames: 150, anchor: [0.5, 0.04], style: "compact" }],
       },
     ],
@@ -67,6 +72,6 @@ for (const t of TESTS) {
   fs.writeFileSync(file, JSON.stringify(episode, null, 2) + "\n");
   plan.jobs.push({ episode: path.relative(root, file), frame: 75, out: `${t.id}.png`, quality: "preview" });
 }
-fs.mkdirSync(path.join(root, "renders/energy-flow-review"), { recursive: true });
-fs.writeFileSync(path.join(root, "renders/energy-flow-review/stills-plan.json"), JSON.stringify(plan, null, 1) + "\n");
+fs.mkdirSync(path.join(root, "renders/energy-flow-review/v3"), { recursive: true });
+fs.writeFileSync(path.join(root, "renders/energy-flow-review/v3/stills-plan.json"), JSON.stringify(plan, null, 1) + "\n");
 console.log(`wrote ${TESTS.length} episodes + stills plan`);

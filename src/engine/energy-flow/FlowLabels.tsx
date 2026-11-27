@@ -2,7 +2,7 @@
  * 2D labels + legend for the energy-flow standard. Labels are pinned to 3D
  * points projected with the scene camera (pure maths, same camera as the
  * render), drawn as HTML so Thai text uses the bundled Noto Sans Thai.
- * Text, arrows and icons accompany every colour (colour-vision accessibility).
+ * Text, icons and the pulse swatch accompany every colour (colour-vision accessibility).
  */
 import { useVideoConfig } from "remotion";
 import * as THREE from "three";
@@ -75,7 +75,7 @@ export function FlowLabels({ items, shot }: { items: FlowLabelItem[]; shot: Came
         const color = ENERGY_FLOW_COLORS[it.warning ? "fault" : it.category];
         const left = clampX(x);
         const top = clampY(y);
-        const icon = it.warning ? "⚠" : it.label === "shutdown" ? "⏻" : "➜";
+        const icon = it.warning ? "⚠" : it.label === "shutdown" ? "⏻" : null;
         return (
           <div
             key={it.id}
@@ -99,7 +99,7 @@ export function FlowLabels({ items, shot }: { items: FlowLabelItem[]; shot: Came
               boxShadow: `0 ${3 * u}px ${12 * u}px rgba(0,0,0,0.35)`,
             }}
           >
-            <span style={{ color, fontSize: 26 * u }}>{icon}</span>
+            {icon ? <span style={{ color, fontSize: 26 * u }}>{icon}</span> : <PulseSwatch color={color} u={u} width={34} />}
             <span>{ENERGY_FLOW_LABELS_TH[it.label]}</span>
             {it.kw !== undefined && <span style={{ color, fontVariantNumeric: "tabular-nums" }}>{fmtKw(it.kw)}</span>}
           </div>
@@ -134,11 +134,32 @@ export function FlowLegend({ categories }: { categories: EnergyFlowCategory[] })
     >
       {categories.map((c) => (
         <div key={c} style={{ display: "flex", alignItems: "center", gap: 10 * u, whiteSpace: "nowrap" }}>
-          <span style={{ position: "relative", width: 46 * u, height: 8 * u, borderRadius: 99, background: ENERGY_FLOW_COLORS[c], outline: c === "householdLoad" ? `${2 * u}px solid ${ENERGY_FLOW_OUTLINE}` : undefined, flex: "none" }} />
-          <span style={{ color: ENERGY_FLOW_COLORS[c], fontSize: 20 * u, width: 18 * u, flex: "none" }}>{c === "fault" ? "⚠" : c === "inactive" ? "—" : "➜"}</span>
+          {c === "inactive" || c === "fault" ? (
+            <span style={{ width: 64 * u, height: 6 * u, borderRadius: 99, background: ENERGY_FLOW_COLORS[c === "fault" ? "inactive" : c], flex: "none", position: "relative" }}>
+              {c === "fault" && <span style={{ position: "absolute", left: 22 * u, top: -9 * u, width: 18 * u, height: 18 * u, borderRadius: 99, border: `${4 * u}px solid ${ENERGY_FLOW_COLORS.fault}`, boxSizing: "border-box" }} />}
+            </span>
+          ) : (
+            <PulseSwatch color={ENERGY_FLOW_COLORS[c]} u={u} width={64} outline={c === "householdLoad"} />
+          )}
           <span>{ENERGY_FLOW_LEGEND_TH[c]}</span>
         </div>
       ))}
     </div>
+  );
+}
+
+/** 2D swatch of the approved style: thin line with a fading tail and a bright leading edge (left → right). */
+export function PulseSwatch({ color, u, width, outline = false }: { color: string; u: number; width: number; outline?: boolean }) {
+  return (
+    <span
+      style={{
+        width: width * u,
+        height: 6 * u,
+        borderRadius: 99,
+        flex: "none",
+        background: `linear-gradient(90deg, ${color}55 0%, ${color}66 25%, ${color}99 50%, ${color}cc 75%, #FFFFFF 90%, ${color}55 100%)`,
+        boxShadow: `0 0 ${6 * u}px ${color}88${outline ? `, 0 0 0 ${2 * u}px ${ENERGY_FLOW_OUTLINE}` : ""}`,
+      }}
+    />
   );
 }

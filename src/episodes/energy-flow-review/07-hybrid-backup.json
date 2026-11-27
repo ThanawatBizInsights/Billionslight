@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "energy-flow-02-surplus-export",
-  "title": "Energy-flow standard review · 02-surplus-export",
+  "id": "energy-flow-07-hybrid-backup",
+  "title": "Energy-flow standard review · 07-hybrid-backup",
   "topic": "Visual standard test (silent). Simplified educational model, not a wiring diagram. kW values are illustrative.",
   "language": "th",
   "aspectRatio": "9:16",
@@ -14,7 +14,13 @@
       "environment": {
         "id": "energy-cutaway-house",
         "options": {
-          "system": "on-grid"
+          "system": "hybrid",
+          "battery": true,
+          "backupLoads": [
+            "fridge",
+            "light-living",
+            "fan"
+          ]
         }
       },
       "lighting": {
@@ -44,19 +50,28 @@
           "scenario": {
             "pvRatedKw": 5,
             "inverterRatedKw": 5,
-            "householdLoadKw": 1.5,
+            "householdLoadKw": 2.5,
             "backupLoadKw": 0.8,
-            "exportPermitted": true,
-            "inverterType": "grid-tied",
-            "gridStatus": "connected",
-            "solarIrradiance": 0.9
+            "exportPermitted": false,
+            "inverterType": "hybrid",
+            "gridStatus": "outage",
+            "solarIrradiance": 0.5,
+            "battery": {
+              "present": true,
+              "capacityKwh": 10,
+              "stateOfCharge": 0.7,
+              "maxPowerKw": 5
+            },
+            "backup": {
+              "backupOutputConfigured": true,
+              "gridIsolationDevice": true,
+              "loadsOnBackupCircuit": true
+            }
           },
           "transitionFrames": 0
         }
       ],
       "energyFlow": {
-        "style": "standard",
-        "referenceKw": 5,
         "labels": true,
         "legend": true,
         "pathScale": 1.8
@@ -65,7 +80,7 @@
         {
           "id": "title",
           "kind": "title",
-          "text": "ส่งไฟฟ้าส่วนเกินกลับเข้าระบบ\n(เฉพาะระบบที่ได้รับอนุญาต)",
+          "text": "ไฮบริด · ไฟดับ\nระบบไฟสำรองทำงาน",
           "from": 0,
           "durationInFrames": 150,
           "anchor": [

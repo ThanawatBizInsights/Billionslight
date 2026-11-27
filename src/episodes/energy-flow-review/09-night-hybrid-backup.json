@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "energy-flow-06-hybrid-backup",
-  "title": "Energy-flow standard review · 06-hybrid-backup",
+  "id": "energy-flow-09-night-hybrid-backup",
+  "title": "Energy-flow standard review · 09-night-hybrid-backup",
   "topic": "Visual standard test (silent). Simplified educational model, not a wiring diagram. kW values are illustrative.",
   "language": "th",
   "aspectRatio": "9:16",
@@ -24,7 +24,7 @@
         }
       },
       "lighting": {
-        "preset": "midday-sun"
+        "preset": "night"
       },
       "camera": {
         "keyframes": [
@@ -55,7 +55,7 @@
             "exportPermitted": false,
             "inverterType": "hybrid",
             "gridStatus": "outage",
-            "solarIrradiance": 0.5,
+            "solarIrradiance": 0,
             "battery": {
               "present": true,
               "capacityKwh": 10,
@@ -72,8 +72,6 @@
         }
       ],
       "energyFlow": {
-        "style": "standard",
-        "referenceKw": 5,
         "labels": true,
         "legend": true,
         "pathScale": 1.8
@@ -82,7 +80,7 @@
         {
           "id": "title",
           "kind": "title",
-          "text": "ไฮบริด · ไฟดับ\nระบบไฟสำรองทำงาน",
+          "text": "กลางคืน · ไฟดับ\nแบตเตอรี่จ่ายระบบไฟสำรอง",
           "from": 0,
           "durationInFrames": 150,
           "anchor": [

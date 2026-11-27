@@ -6,7 +6,7 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 
 | Status | Count |
 |---|---|
-| approved | 68 |
+| approved | 69 |
 | reserved | 1 |
 | missing-reference | 8 |
 | deferred | 2 |
@@ -14,7 +14,6 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 | reference-supplied | 32 |
 | reference-only | 3 |
 | in-progress | 16 |
-| awaiting-visual-approval | 1 |
 
 ## character
 
@@ -181,8 +180,8 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 - Animation: status-led
 
 **`cables`**
-- Animation: energy-flow-particles
-- Implementation: `src/engine/energy-flow/EnergyPath.tsx`
+- Animation: energy-flow-pulse
+- Implementation: `src/engine/energy-flow/EnergyFlowPath.tsx`
 
 **`light-switch`**
 - Animation: on-off-rocker
@@ -375,7 +374,7 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 | `energy-flow-language` | Energy-flow visual language | reference-supplied | 2d-overlay | 3 |  | 02-cinematic-reference-board.png §11; 06-production-reference-sheet.png energy-flow visual language; 04-solar-composition-reference.png §06 |
 | `scene-palette` | Global scene & UI palette | approved | data-preset | 2 |  | 01-visual-reference-board.png §03; 06-production-reference-sheet.png colour & material palette; 03-cinematic-house-lighting-grid.png lighting palette |
 | `scene-transitions` | Scene transitions (cut, fade, dip-to-navy) | in-progress | data-preset | 3 |  | — |
-| `energy-flow-standard` | Billionslight energy-flow visual standard | awaiting-visual-approval | data-preset | 3 |  | — |
+| `energy-flow-standard` | Billionslight energy-flow visual standard (V3 travelling pulse) | approved | data-preset | 3 |  | — |
 
 **`energy-flow-language`**
 - Palette: solar `#FFC53D` (sheet-swatch), grid `#4DA3FF` (sheet-swatch), battery `#3DDC84` (sheet-swatch), load `#F5F7FF` (sheet-swatch), inactive `#6B7280` (sheet-swatch), fault `#FF4D4F` (sheet-swatch)
@@ -390,9 +389,9 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 - Animation: cut, crossfade, dip-to-navy
 - Implementation: `src/compositions/EpisodeComposition.tsx`
 
-**`energy-flow-standard`** — See docs/energy-flow-standard.md. Opt-in per scene until approved.
+**`energy-flow-standard`** — Owner approved Variant B (bright leading edge, fading tail) as the permanent style on 2026-11-27. Implementation previews (renders/energy-flow-review/v3/) await approval before existing educational videos are regenerated. See docs/energy-flow-standard.md.
 - Palette: solarDC `#FBBF24` (official), utilityGridAC `#3B82F6` (official), batteryDC `#22C55E` (official), inverterAC `#22D3EE` (official), householdLoad `#F8FAFC` (official), inactive `#64748B` (official), fault `#EF4444` (official)
-- Animation: directional-particles, density-by-kW, arrowheads, inactive, warning, thai-labels, legend
+- Animation: travelling-pulse, bright-leading-edge, fading-tail, direction-from-rules-engine, inactive-static, warning-indicator, thai-labels, legend
 - Implementation: `src/engine/energy-flow`
 
 ## animation-clip

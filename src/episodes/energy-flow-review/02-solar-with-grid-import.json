@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "energy-flow-03-battery-charging",
-  "title": "Energy-flow standard review · 03-battery-charging",
+  "id": "energy-flow-02-solar-with-grid-import",
+  "title": "Energy-flow standard review · 02-solar-with-grid-import",
   "topic": "Visual standard test (silent). Simplified educational model, not a wiring diagram. kW values are illustrative.",
   "language": "th",
   "aspectRatio": "9:16",
@@ -14,13 +14,7 @@
       "environment": {
         "id": "energy-cutaway-house",
         "options": {
-          "system": "hybrid",
-          "battery": true,
-          "backupLoads": [
-            "fridge",
-            "light-living",
-            "fan"
-          ]
+          "system": "on-grid"
         }
       },
       "lighting": {
@@ -50,30 +44,17 @@
           "scenario": {
             "pvRatedKw": 5,
             "inverterRatedKw": 5,
-            "householdLoadKw": 1.5,
+            "householdLoadKw": 3,
             "backupLoadKw": 0.8,
             "exportPermitted": false,
-            "inverterType": "hybrid",
+            "inverterType": "grid-tied",
             "gridStatus": "connected",
-            "solarIrradiance": 0.9,
-            "battery": {
-              "present": true,
-              "capacityKwh": 10,
-              "stateOfCharge": 0.5,
-              "maxPowerKw": 5
-            },
-            "backup": {
-              "backupOutputConfigured": true,
-              "gridIsolationDevice": true,
-              "loadsOnBackupCircuit": true
-            }
+            "solarIrradiance": 0.4
           },
           "transitionFrames": 0
         }
       ],
       "energyFlow": {
-        "style": "standard",
-        "referenceKw": 5,
         "labels": true,
         "legend": true,
         "pathScale": 1.8
@@ -82,7 +63,7 @@
         {
           "id": "title",
           "kind": "title",
-          "text": "ไฮบริด · ชาร์จแบตเตอรี่จากโซลาร์",
+          "text": "โซลาร์ + ไฟฟ้าจากการไฟฟ้า",
           "from": 0,
           "durationInFrames": 150,
           "anchor": [

@@ -3,19 +3,29 @@
  * social-media safe area; sizes scale with the render resolution.
  */
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { ENERGY_COLORS, SCENE_COLORS, type EnergyColorKey } from "../config/palette";
+import { SCENE_COLORS } from "../config/palette";
+import { ENERGY_FLOW_COLORS, ENERGY_FLOW_LEGEND_TH, type EnergyFlowCategory } from "../config/energy-flow";
+import { PulseSwatch } from "../engine/energy-flow/FlowLabels";
 import { SAFE_AREA_9_16 } from "../config/formats";
 import type { Scene } from "../schemas/episode";
 import { THAI_FONT_STACK } from "../engine/subtitles/fonts";
 
-export const LEGEND_LABELS_TH: Record<EnergyColorKey, string> = {
-  solar: "ไฟจากโซลาร์เซลล์",
-  grid: "ไฟจากการไฟฟ้า",
-  battery: "พลังงานจากแบตเตอรี่",
-  load: "การใช้ไฟในบ้าน",
-  inactive: "ไม่มีการจ่ายไฟ",
-  fault: "ความผิดปกติ / คำเตือน",
+/** Overlay style keys → energy-flow categories (old short keys still accepted). */
+const OVERLAY_ENERGY_KEYS: Record<string, EnergyFlowCategory> = {
+  solar: "solarDC",
+  grid: "utilityGridAC",
+  battery: "batteryDC",
+  inverter: "inverterAC",
+  load: "householdLoad",
+  inactive: "inactive",
+  fault: "fault",
+  solarDC: "solarDC",
+  utilityGridAC: "utilityGridAC",
+  batteryDC: "batteryDC",
+  inverterAC: "inverterAC",
+  householdLoad: "householdLoad",
 };
+const energyKey = (k: string): EnergyFlowCategory | undefined => OVERLAY_ENERGY_KEYS[k.replace("energy-", "")];
 
 type Overlay = Scene["overlays"][number];
 
@@ -86,7 +96,7 @@ function Label({ text, u, color }: { text: string; u: number; color: string }) {
   );
 }
 
-function Legend({ keys, u }: { keys: EnergyColorKey[]; u: number }) {
+function Legend({ keys, u }: { keys: EnergyFlowCategory[]; u: number }) {
   return (
     <div
       style={{
@@ -105,8 +115,8 @@ function Legend({ keys, u }: { keys: EnergyColorKey[]; u: number }) {
     >
       {keys.map((k) => (
         <div key={k} style={{ display: "flex", alignItems: "center", gap: 16 * u, whiteSpace: "nowrap" }}>
-          <span style={{ width: 40 * u, height: 8 * u, borderRadius: 99, background: ENERGY_COLORS[k], boxShadow: `0 0 ${10 * u}px ${ENERGY_COLORS[k]}` }} />
-          {LEGEND_LABELS_TH[k]}
+          <PulseSwatch color={ENERGY_FLOW_COLORS[k]} u={u} width={48} outline={k === "householdLoad"} />
+          {ENERGY_FLOW_LEGEND_TH[k]}
         </div>
       ))}
     </div>
@@ -134,11 +144,10 @@ export function SceneOverlays({ scene }: { scene: Scene }) {
           if (o.kind === "title") el = <Title text={o.text ?? ""} u={u} compact={o.style === "compact"} />;
           else if (o.kind === "label" && o.style === "tag") el = <Tag text={o.text ?? ""} u={u} />;
           else if (o.kind === "label") {
-            const key = (o.style?.replace("energy-", "") ?? "solar") as EnergyColorKey;
-            el = <Label text={o.text ?? ""} u={u} color={ENERGY_COLORS[key] ?? ENERGY_COLORS.solar} />;
+            el = <Label text={o.text ?? ""} u={u} color={ENERGY_FLOW_COLORS[energyKey(o.style ?? "solar") ?? "solarDC"]} />;
           } else if (o.kind === "legend") {
-            const keys = (o.text ?? "solar,grid,battery,load").split(",").map((s) => s.trim()) as EnergyColorKey[];
-            el = <Legend keys={keys.filter((k) => k in ENERGY_COLORS)} u={u} />;
+            const keys = (o.text ?? "solar,grid,battery,inverter,load").split(",").map((k) => energyKey(k.trim()));
+            el = <Legend keys={keys.filter((k): k is EnergyFlowCategory => k !== undefined)} u={u} />;
           } else el = <Tag text={o.text ?? ""} u={u} />;
           return (
             <div key={o.id} style={{ opacity, transform: `translateY(${rise * u}px)` }}>
