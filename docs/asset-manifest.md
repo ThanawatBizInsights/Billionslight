@@ -2,7 +2,7 @@
 
 _Generated from `src/assets/asset-manifest.json` by `node scripts/manifest-report.mjs` — edit the JSON, not this file._
 
-Updated: 2026-11-27 · 132 assets · reference files live (git-ignored) under `public/assets/references/drive/`.
+Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `public/assets/references/drive/`.
 
 | Status | Count |
 |---|---|
@@ -14,6 +14,7 @@ Updated: 2026-11-27 · 132 assets · reference files live (git-ignored) under `p
 | reference-supplied | 32 |
 | reference-only | 3 |
 | in-progress | 16 |
+| awaiting-visual-approval | 1 |
 
 ## character
 
@@ -374,6 +375,7 @@ Updated: 2026-11-27 · 132 assets · reference files live (git-ignored) under `p
 | `energy-flow-language` | Energy-flow visual language | reference-supplied | 2d-overlay | 3 |  | 02-cinematic-reference-board.png §11; 06-production-reference-sheet.png energy-flow visual language; 04-solar-composition-reference.png §06 |
 | `scene-palette` | Global scene & UI palette | approved | data-preset | 2 |  | 01-visual-reference-board.png §03; 06-production-reference-sheet.png colour & material palette; 03-cinematic-house-lighting-grid.png lighting palette |
 | `scene-transitions` | Scene transitions (cut, fade, dip-to-navy) | in-progress | data-preset | 3 |  | — |
+| `energy-flow-standard` | Billionslight energy-flow visual standard | awaiting-visual-approval | data-preset | 3 |  | — |
 
 **`energy-flow-language`**
 - Palette: solar `#FFC53D` (sheet-swatch), grid `#4DA3FF` (sheet-swatch), battery `#3DDC84` (sheet-swatch), load `#F5F7FF` (sheet-swatch), inactive `#6B7280` (sheet-swatch), fault `#FF4D4F` (sheet-swatch)
@@ -387,6 +389,11 @@ Updated: 2026-11-27 · 132 assets · reference files live (git-ignored) under `p
 **`scene-transitions`**
 - Animation: cut, crossfade, dip-to-navy
 - Implementation: `src/compositions/EpisodeComposition.tsx`
+
+**`energy-flow-standard`** — See docs/energy-flow-standard.md. Opt-in per scene until approved.
+- Palette: solarDC `#FBBF24` (official), utilityGridAC `#3B82F6` (official), batteryDC `#22C55E` (official), inverterAC `#22D3EE` (official), householdLoad `#F8FAFC` (official), inactive `#64748B` (official), fault `#EF4444` (official)
+- Animation: directional-particles, density-by-kW, arrowheads, inactive, warning, thai-labels, legend
+- Implementation: `src/engine/energy-flow`
 
 ## animation-clip
 

@@ -34,3 +34,19 @@ design, sizing, protection or wiring guide.
 gold = solar · blue = grid · green = battery · white = household consumption ·
 grey = inactive · red = faults/warnings only. The legend labels are in
 `src/components/Overlays.tsx` (`LEGEND_LABELS_TH`).
+
+
+## Energy-flow visual standard (2026-11-27)
+
+See `docs/energy-flow-standard.md`. Additional rules encoded in the engine:
+
+- Backup demand above the inverter's continuous rating trips the backup output
+  (`inverter-overload`, fault mode); no partial flow is drawn.
+- If PV + battery power cannot sustain the backup circuit, the backup output is
+  shown off (`backup-capacity-insufficient`), never as a partial flow while the
+  loads are unpowered.
+- Battery at/below 5 % state of charge: `battery-depleted`; grid-connected
+  discharge stops at the 20 % reserve (`battery-reserve-reached`). These
+  thresholds are illustrative model values, not product specifications.
+- Export is drawn only when `exportPermitted` is true (blue grid path in the
+  reverse direction); otherwise surplus PV is curtailed.

@@ -15,6 +15,10 @@ do not modify them without permission — add variants instead.
 **Phase 3 — animation engine: BUILT, awaiting owner review** (see
 `docs/phase-3-report.md`). Do not start Phase 4 without approval (ElevenLabs
 needs approval for any paid call).
+**Energy-flow visual standard: BUILT, awaiting owner visual approval** (see
+`docs/energy-flow-standard.md`, previews in `renders/energy-flow-review/`).
+It is opt-in per scene (`energyFlow.style: "standard"`); do NOT switch the
+default or apply it to existing episodes until the owner approves.
 
 | Phase | Scope | Gate |
 |---|---|---|
@@ -113,9 +117,22 @@ needs approval for any paid call).
 - Distinguish kW (power) from kWh (energy). Export is never assumed.
 - Never present electrical work as DIY. Models are simplified and are not
   installation or wiring instructions.
-- Energy colours are visualisation conventions, NOT wiring colour codes:
-  gold = solar, blue = grid, green = battery, white = household consumption,
-  grey = inactive, red = faults/warnings only.
+- **Energy-flow standard (permanent):** colours come ONLY from
+  `ENERGY_FLOW_COLORS` in `src/config/energy-flow.ts` — never hard-code them.
+  Educational visualisation colours, NOT conductor identification colours:
+  yellow `#FBBF24` solar DC · blue `#3B82F6` utility grid AC (import or export)
+  · green `#22C55E` battery DC (charge or discharge) · cyan `#22D3EE` inverter
+  AC output · white `#F8FAFC` household loads after distribution (dark
+  outline) · grey `#64748B` inactive/isolated · red `#EF4444` faults/warnings
+  only. On-grid and hybrid are configurations, never a colour.
+- Import/export share the blue grid path and charge/discharge share the green
+  battery path — DIRECTION distinguishes them. Constant particle speed;
+  particle DENSITY encodes kW against one `referenceKw` per comparison scene;
+  0 kW = no particles. Always pair colour with arrows, Thai labels (with kW)
+  and equipment indicators (colour-vision accessibility).
+- Flows come from `deriveFlowLinks` (rules engine) only. On-grid blackout:
+  sunlight may show, but no usable power flows. Hybrid backup: grid isolated
+  (red warning), only backup circuits supplied. Never a decorative flow.
 - Do not invent Thai utility regulations, installation requirements, savings
   figures or product specs. Every technical claim needs a `referenceIds` entry;
   uncertain claims stay `needs-human-review`. Episodes cannot be `approved`
@@ -197,6 +214,21 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
   per-appliance switches.
 - Showcase: `node scripts/review/build-phase3-showcase.mjs`, stills plan in
   `renders/phase-3-review/stills-plan.json`.
+
+## Energy-flow standard (awaiting approval)
+
+- Scene option `energyFlow`: `style` ("legacy" default | "standard"),
+  `referenceKw`, `labels`, `legend`, `hidden`, `pathScale`.
+- Renderer `EnergyFlowPath`, labels/legend `FlowLabels.tsx`, links
+  `links.ts`, sampling `sampleFlowLinks` (direction reversals fade out/in).
+- Environments may define `flowLabelAnchors` and `loadWeights`.
+- Thai labels: `ENERGY_FLOW_LABELS_TH` (พลังงานแสงอาทิตย์, ไฟฟ้าจากการไฟฟ้า,
+  กำลังชาร์จแบตเตอรี่, กำลังจ่ายไฟจากแบตเตอรี่, ไฟฟ้าจากอินเวอร์เตอร์,
+  การใช้ไฟฟ้าภายในบ้าน, ส่งไฟฟ้ากลับเข้าระบบ, หยุดจ่ายไฟ, ระบบไฟสำรอง).
+- Review: `node scripts/review/build-energy-flow-review.mjs`; reference sheet
+  composition `EnergyFlowReference`.
+- Legacy `ENERGY_COLORS` (palette.ts) remains only for the legacy renderer and
+  the approved equipment indicator LEDs until migration is approved.
 
 ## Approved reusable assets & capabilities
 

@@ -3143,6 +3143,64 @@
         "dip-to-navy"
       ],
       "implementation": "src/compositions/EpisodeComposition.tsx"
+    },
+    {
+      "id": "energy-flow-standard",
+      "name": "Billionslight energy-flow visual standard",
+      "category": "visual-language",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 3,
+      "references": [],
+      "palette": {
+        "solarDC": {
+          "hex": "#FBBF24",
+          "source": "official",
+          "note": "owner-specified energy-flow token (educational, not conductor colours)"
+        },
+        "utilityGridAC": {
+          "hex": "#3B82F6",
+          "source": "official",
+          "note": "owner-specified energy-flow token (educational, not conductor colours)"
+        },
+        "batteryDC": {
+          "hex": "#22C55E",
+          "source": "official",
+          "note": "owner-specified energy-flow token (educational, not conductor colours)"
+        },
+        "inverterAC": {
+          "hex": "#22D3EE",
+          "source": "official",
+          "note": "owner-specified energy-flow token (educational, not conductor colours)"
+        },
+        "householdLoad": {
+          "hex": "#F8FAFC",
+          "source": "official",
+          "note": "owner-specified energy-flow token (educational, not conductor colours)"
+        },
+        "inactive": {
+          "hex": "#64748B",
+          "source": "official",
+          "note": "owner-specified energy-flow token (educational, not conductor colours)"
+        },
+        "fault": {
+          "hex": "#EF4444",
+          "source": "official",
+          "note": "owner-specified energy-flow token (educational, not conductor colours)"
+        }
+      },
+      "animationCapabilities": [
+        "directional-particles",
+        "density-by-kW",
+        "arrowheads",
+        "inactive",
+        "warning",
+        "thai-labels",
+        "legend"
+      ],
+      "implementation": "src/engine/energy-flow",
+      "issues": [],
+      "notes": "See docs/energy-flow-standard.md. Opt-in per scene until approved."
     }
   ]
 }

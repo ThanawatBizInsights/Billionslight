@@ -125,3 +125,17 @@ electrical keyframes ─► deriveEnergyState ─► flows + housePower/backupPo
 | Crossfades overlap the timeline | A `fade` transition starts the scene earlier (overlap = transition length), so total duration stays exact; dip-to-navy splits its length between outgoing and incoming scenes. |
 | Appliance power derived from the scenario | Appliances run when house circuits are powered; backup-circuit appliances (hybrid only, `options.backupLoads`) run when the backup supply is active. Nothing is hand-animated. Per-appliance switches live in `environment.states`. |
 | Consumption routes are a naming convention | `load:house:<appliance>` / `load:backup:<appliance>` cables render white flows at the house / backup power level, so any environment can add them without engine changes. |
+
+
+## Energy-flow visual standard
+
+```
+ElectricalScenario ─► deriveEnergyState (rules) ─► deriveFlowLinks ─► links {kW, direction, category, warning, label}
+                                                          │
+environment cable routes ─► ROUTE_TO_LINK ────────────────┤
+                                                          ▼
+                     EnergyFlowPath (constant speed, density = kW, arrowheads, instanced)
+                     FlowLabels (projected Thai labels + kW) · FlowLegend
+```
+
+Opt-in per scene via `energyFlow.style`; tokens in `src/config/energy-flow.ts`.

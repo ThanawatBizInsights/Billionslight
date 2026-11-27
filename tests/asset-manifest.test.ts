@@ -49,7 +49,7 @@ describe("asset manifest", () => {
   it("Phase 2 approval: Sunny (face B), Ton and the palette are approved; nothing is left awaiting review", () => {
     const approved = new Set(manifest.assets.filter((a) => a.status === "approved").map((a) => a.id));
     for (const id of ["scene-palette", "sunny-face-b", "sunny", "homeowner_male_01", "modern-thai-house", "living-room", "garage-service-area"]) expect(approved.has(id), id).toBe(true);
-    expect(manifest.assets.filter((a) => a.status === "awaiting-visual-approval")).toEqual([]);
+    expect(manifest.assets.filter((a) => a.phase <= 2 && a.status === "awaiting-visual-approval")).toEqual([]);
   });
 
   it("third-party material is reference-only", () => {
