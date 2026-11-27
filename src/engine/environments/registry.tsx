@@ -46,6 +46,10 @@ export interface EnvironmentDefinition {
   /** Default state values given the lighting and electrical state. */
   defaultState?: (lighting: LightingPreset, energy: EnergyVisual | null) => Record<string, number>;
   render: (p: EnvironmentRenderProps) => ReactNode;
+  /** Energy-flow standard: where each link's label sits (default: path midpoint); "household" = total consumption label. */
+  flowLabelAnchors?: Record<string, Vec3>;
+  /** Relative (illustrative) weights for splitting household kW over "load:*" routes. */
+  loadWeights?: Record<string, number>;
 }
 
 export const IDLE_ENERGY_STATE: EnergyState = deriveEnergyState({
@@ -143,6 +147,15 @@ export const ENVIRONMENTS: Record<string, EnvironmentDefinition> = {
     anchors: CUTAWAY_ANCHORS,
     cables: cutawayCables,
     focus: [1.6, 2.6, 0],
+    flowLabelAnchors: {
+      "pv-inverter": [2.0, 8.2, -1.0],
+      "inverter-house": [4.6, 0.2, 5.4],
+      "inverter-backup": [4.6, 0.2, 5.4],
+      battery: [8.2, 0.2, 6.6],
+      grid: [11.6, 9.4, 4.6],
+      household: [-2.4, 7.4, 1.0],
+    },
+    loadWeights: { "ac-living": 1, "ac-bedroom": 0.9, tv: 0.15, fridge: 0.2, "rice-cooker": 0.6, washer: 0.5, laptop: 0.06, fan: 0.06, "light-living": 0.05, "light-kitchen": 0.05, "light-bedroom": 0.05, "light-study": 0.05 },
     shadowExtent: 14,
     atmosphere: { center: [1.6, 3, 2], size: [16, 6, 8], count: 40 },
     defaultState: (l, e) => ({
@@ -150,8 +163,11 @@ export const ENVIRONMENTS: Record<string, EnvironmentDefinition> = {
       clouds: e && e.pvGeneration < 0.35 && presetDaylight(l) > 0.5 ? 1 : 0,
       ...Object.fromEntries(CUTAWAY_APPLIANCES.map((a) => [a.id, 1])),
     }),
-    render: ({ frame, energy, options, state }) => (
+    // section view: keep the cut-open model readable at night (soft cool fill; scene lights stay the preset's)
+    adjustLighting: (p) => ({ ...p, fog: { ...p.fog, near: Math.max(p.fog.near, 70), far: Math.max(p.fog.far, 220) }, ambient: { ...p.ambient, intensity: Math.max(p.ambient.intensity, 0.18 + 0.32 * p.interiorGlow) }, hemisphere: { ...p.hemisphere, intensity: Math.max(p.hemisphere.intensity, 0.38 + 0.3 * p.interiorGlow) } }),
+    render: ({ frame, energy, options, state, lighting }) => (
       <CutawayHouse
+        night={lighting.interiorGlow}
         frame={frame}
         energy={energy?.state ?? IDLE_ENERGY_STATE}
         housePower={energy?.housePower ?? 1}

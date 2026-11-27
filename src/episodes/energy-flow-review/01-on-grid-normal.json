@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "energy-flow-01-on-grid-normal",
+  "title": "Energy-flow standard review · 01-on-grid-normal",
+  "topic": "Visual standard test (silent). Simplified educational model, not a wiring diagram. kW values are illustrative.",
+  "language": "th",
+  "aspectRatio": "9:16",
+  "fps": 30,
+  "cast": [],
+  "scenes": [
+    {
+      "id": "test",
+      "durationInFrames": 150,
+      "environment": {
+        "id": "energy-cutaway-house",
+        "options": {
+          "system": "on-grid"
+        }
+      },
+      "lighting": {
+        "preset": "midday-sun"
+      },
+      "camera": {
+        "keyframes": [
+          {
+            "frame": 0,
+            "position": [
+              21.44,
+              24.49,
+              45.29
+            ],
+            "target": [
+              2.5,
+              1,
+              0.5
+            ],
+            "fov": 30
+          }
+        ]
+      },
+      "electrical": [
+        {
+          "frame": 0,
+          "scenario": {
+            "pvRatedKw": 5,
+            "inverterRatedKw": 5,
+            "householdLoadKw": 3,
+            "backupLoadKw": 0.8,
+            "exportPermitted": false,
+            "inverterType": "grid-tied",
+            "gridStatus": "connected",
+            "solarIrradiance": 0.4
+          },
+          "transitionFrames": 0
+        }
+      ],
+      "energyFlow": {
+        "style": "standard",
+        "referenceKw": 5,
+        "labels": true,
+        "legend": true,
+        "pathScale": 1.8
+      },
+      "overlays": [
+        {
+          "id": "title",
+          "kind": "title",
+          "text": "ออนกริด · ใช้งานปกติ",
+          "from": 0,
+          "durationInFrames": 150,
+          "anchor": [
+            0.5,
+            0.04
+          ],
+          "style": "compact"
+        }
+      ]
+    }
+  ],
+  "branding": {
+    "showLogo": false
+  },
+  "approval": {
+    "status": "visual-review",
+    "history": []
+  }
+}

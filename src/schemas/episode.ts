@@ -294,6 +294,24 @@ export const Scene = z.object({
     .object({ type: z.enum(["cut", "fade", "dip-to-navy"]), durationInFrames: z.number().int().nonnegative() })
     .default({ type: "cut", durationInFrames: 0 }),
   claimIds: z.array(z.string()).default([]),
+  /**
+   * Energy-flow visual style. "standard" = Billionslight energy-flow standard
+   * (src/config/energy-flow.ts). "legacy" = Phase 1–3 renderer; stays the
+   * default until the owner approves applying the standard to all episodes.
+   */
+  energyFlow: z
+    .object({
+      style: z.enum(["legacy", "standard"]).default("legacy"),
+      /** kW that maps to the standard particle density; keep one value per comparison. */
+      referenceKw: z.number().positive().default(5),
+      labels: z.boolean().default(true),
+      legend: z.boolean().default(true),
+      /** Link or route IDs to hide (e.g. "grid", "load:house:tv"). */
+      hidden: z.array(z.string()).default([]),
+      /** Thickness multiplier for cables, particles and arrows (wide shots). Does not change density or speed. */
+      pathScale: z.number().min(0.5).max(4).default(1),
+    })
+    .default({ style: "legacy", referenceKw: 5, labels: true, legend: true, hidden: [], pathScale: 1 }),
 });
 export type Scene = z.infer<typeof Scene>;
 

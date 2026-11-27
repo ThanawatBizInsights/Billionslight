@@ -56,9 +56,12 @@ describe("electrical scenario rules", () => {
 
   it("backup is limited by inverter power (kW), independent of battery energy (kWh)", () => {
     const st = deriveEnergyState(S({ inverterType: "hybrid", gridStatus: "outage", solarIrradiance: 0, inverterRatedKw: 3, backupLoadKw: 5, battery: { present: true, capacityKwh: 20, maxPowerKw: 5 }, backup: fullBackup }));
-    expect(st.flows["inverter-to-backup"].kw).toBe(3);
+    // 20 kWh of stored energy does not raise a 3 kW inverter's power limit: 5 kW of
+    // backup demand overloads it, the backup output trips and no flow is shown.
+    expect(st.flows["inverter-to-backup"].kw).toBe(0);
     expect(st.backupLoadsPowered).toBe(false);
-    expect(st.warnings).toContain("backup-capacity-insufficient");
+    expect(st.inverterMode).toBe("fault");
+    expect(st.warnings).toContain("inverter-overload");
   });
 
   it("inverter fault: grid still supplies the house, inverter shows fault", () => {

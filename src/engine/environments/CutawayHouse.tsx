@@ -188,7 +188,7 @@ function Box({ size, position, color, rotation }: { size: [number, number, numbe
   );
 }
 
-function ApplianceModel({ a, on, frame, backup }: { a: Appliance; on: number; frame: number; backup: boolean }) {
+function ApplianceModel({ a, on, frame, backup, night = 0 }: { a: Appliance; on: number; frame: number; backup: boolean; night?: number }) {
   const glow = on;
   const badge = backup ? (
     // small green "backup circuit" tag (educational marker)
@@ -206,7 +206,7 @@ function ApplianceModel({ a, on, frame, backup }: { a: Appliance; on: number; fr
             <cylinderGeometry args={[0.22, 0.26, 0.06, 12]} />
             <meshStandardMaterial color="#FFF1D6" emissive="#FFD08A" emissiveIntensity={glow * 2.6} toneMapped={false} />
           </mesh>
-          {glow > 0.02 && <pointLight position={[0, -0.3, 0]} color="#FFC98A" intensity={glow * 4} distance={4.2} decay={1.7} />}
+          {glow > 0.02 && <pointLight position={[0, -0.3, 0]} color="#FFC98A" intensity={glow * (4 + 14 * night)} distance={4.2 + 3 * night} decay={1.5} />}
         </group>
       );
       break;
@@ -379,9 +379,11 @@ export interface CutawayProps {
   options: Record<string, unknown>;
   /** Environment state: per-appliance switch (0/1, keyed by appliance id, default 1), dbDoor (0–1), clouds (0–1). */
   state: Record<string, number>;
+  /** 0–1: how dark it is outside (lighting.interiorGlow); powered room lights carry the scene at night. */
+  night?: number;
 }
 
-export function CutawayHouse({ frame, energy, housePower, backupPower, pvGeneration, options, state }: CutawayProps) {
+export function CutawayHouse({ frame, energy, housePower, backupPower, pvGeneration, options, state, night = 0 }: CutawayProps) {
   const hybrid = options.system === "hybrid";
   const battery = hybrid && options.battery === true;
   const backupSet = new Set((options.backupLoads as string[] | undefined) ?? DEFAULT_BACKUP);
@@ -432,8 +434,8 @@ export function CutawayHouse({ frame, energy, housePower, backupPower, pvGenerat
           ))}
         </group>
       ))}
-      {/* garage roof */}
-      <Box size={[G.x1 - G.x0, 0.18, D]} position={[(G.x0 + G.x1) / 2, H.slab + H.floor + 0.09, 0]} color={C.roof} />
+      {/* garage: roof cut away so the service equipment stays visible; a thin beam marks the roofline */}
+      <Box size={[G.x1 - G.x0, 0.12, 0.16]} position={[(G.x0 + G.x1) / 2, H.slab + H.floor + 0.06, H.z0 + 0.08]} color={C.cut} />
 
       {/* furniture (simple) */}
       <RoundedBox args={[2.1, 0.45, 0.85]} radius={0.08} smoothness={2} position={[-2.2, H.slab + 0.3, -2.3]} castShadow>
@@ -452,7 +454,7 @@ export function CutawayHouse({ frame, energy, housePower, backupPower, pvGenerat
 
       {/* appliances, powered from the electrical scenario */}
       {CUTAWAY_APPLIANCES.map((a) => (
-        <ApplianceModel key={a.id} a={a} frame={frame} on={appliancePowered(a, { housePower, backupPower }, options) * (state[a.id] ?? 1)} backup={hybrid && backupSet.has(a.id)} />
+        <ApplianceModel key={a.id} a={a} frame={frame} on={appliancePowered(a, { housePower, backupPower }, options) * (state[a.id] ?? 1)} backup={hybrid && backupSet.has(a.id)} night={night} />
       ))}
 
       {/* garage service area */}

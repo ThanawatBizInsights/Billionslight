@@ -42,14 +42,14 @@ function Positioned({ o, children }: { o: Overlay; children: React.ReactNode }) 
   );
 }
 
-function Title({ text, u }: { text: string; u: number }) {
+function Title({ text, u, compact = false }: { text: string; u: number; compact?: boolean }) {
   return (
     <div
       style={{
         fontFamily: THAI_FONT_STACK,
         fontWeight: 800,
-        fontSize: 76 * u,
-        lineHeight: 1.45,
+        fontSize: (compact ? 46 : 76) * u,
+        lineHeight: compact ? 1.35 : 1.45,
         color: "#FFFFFF",
         textAlign: "center",
         textShadow: `0 ${4 * u}px ${18 * u}px rgba(14,26,51,0.75)`,
@@ -131,7 +131,7 @@ export function SceneOverlays({ scene }: { scene: Scene }) {
         .map((o) => {
           const { opacity, rise } = fadeFor(frame, o);
           let el: React.ReactNode = null;
-          if (o.kind === "title") el = <Title text={o.text ?? ""} u={u} />;
+          if (o.kind === "title") el = <Title text={o.text ?? ""} u={u} compact={o.style === "compact"} />;
           else if (o.kind === "label" && o.style === "tag") el = <Tag text={o.text ?? ""} u={u} />;
           else if (o.kind === "label") {
             const key = (o.style?.replace("energy-", "") ?? "solar") as EnergyColorKey;

@@ -1,0 +1,48 @@
+{
+  "at": "2026-11-27T14:47:37.870Z",
+  "gl": "swangle",
+  "jobs": [
+    {
+      "out": "renders/energy-flow-review/stills/01-on-grid-normal.png",
+      "frame": 75,
+      "size": "540x960",
+      "sec": 2.6,
+      "ok": true
+    },
+    {
+      "out": "renders/energy-flow-review/stills/02-surplus-export.png",
+      "frame": 75,
+      "size": "540x960",
+      "sec": 2.9,
+      "ok": true
+    },
+    {
+      "out": "renders/energy-flow-review/stills/03-battery-charging.png",
+      "frame": 75,
+      "size": "540x960",
+      "sec": 2.9,
+      "ok": true
+    },
+    {
+      "out": "renders/energy-flow-review/stills/04-battery-discharging-night.png",
+      "frame": 75,
+      "size": "540x960",
+      "sec": 2.7,
+      "ok": true
+    },
+    {
+      "out": "renders/energy-flow-review/stills/05-on-grid-outage.png",
+      "frame": 75,
+      "size": "540x960",
+      "sec": 2.2,
+      "ok": true
+    },
+    {
+      "out": "renders/energy-flow-review/stills/06-hybrid-backup.png",
+      "frame": 75,
+      "size": "540x960",
+      "sec": 2.4,
+      "ok": true
+    }
+  ]
+}

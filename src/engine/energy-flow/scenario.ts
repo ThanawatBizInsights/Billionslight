@@ -113,6 +113,7 @@ export function deriveEnergyState(s: ElectricalScenario): EnergyState {
       }
     }
     const remaining = s.householdLoadKw - solarToHouse;
+    if (hasBattery && remaining > 0 && battery.stateOfCharge <= 0.2) warnings.push("battery-reserve-reached");
     if (hasBattery && remaining > 0 && battery.stateOfCharge > 0.2) {
       batteryDischarge = Math.min(remaining, battery.maxPowerKw, inv - solarToHouse);
     }
@@ -148,15 +149,26 @@ export function deriveEnergyState(s: ElectricalScenario): EnergyState {
     warnings.push("hybrid-without-backup-configuration");
     return { ...base, flows, inverterMode: "off", unservedLoadKw: round(s.householdLoadKw) };
   }
-  const batteryAvail = hasBattery && battery.stateOfCharge > 0.05 ? battery.maxPowerKw : 0;
-  const supplyLimit = Math.min(inv, pvAvailableKw + batteryAvail);
+  const depleted = hasBattery && battery.stateOfCharge <= 0.05;
+  if (depleted) warnings.push("battery-depleted");
+  const batteryAvail = hasBattery && !depleted ? battery.maxPowerKw : 0;
   const demand = s.backupLoadKw;
-  const served = Math.min(demand, supplyLimit);
+  // Overload: the backup demand exceeds the inverter's continuous rating → the
+  // backup output trips (no partial supply is shown).
+  if (demand > inv + 0.005) {
+    warnings.push("inverter-overload");
+    return { ...base, flows, inverterMode: "fault", unservedLoadKw: round(s.householdLoadKw) };
+  }
+  const supplyLimit = Math.min(inv, pvAvailableKw + batteryAvail);
+  // Not enough PV + battery power for the backup circuit → the output cannot be
+  // sustained; it is shown as off rather than as a partial, contradictory flow.
+  const sufficient = demand > 0 && supplyLimit >= demand - 0.005;
+  if (!sufficient && demand > 0) warnings.push("backup-capacity-insufficient");
+  const served = sufficient ? demand : 0;
   const solarToBackup = Math.min(pvAvailableKw, served);
   const fromBattery = served - solarToBackup;
-  const charge = hasBattery && battery.stateOfCharge < 1 ? Math.min(pvAvailableKw - solarToBackup, battery.maxPowerKw, inv - served) : 0;
-  const backupPowered = served >= demand - 0.005 && demand > 0;
-  if (!backupPowered && demand > 0) warnings.push("backup-capacity-insufficient");
+  const charge = hasBattery && battery.stateOfCharge < 1 ? Math.max(0, Math.min(pvAvailableKw - solarToBackup, battery.maxPowerKw, inv - served)) : 0;
+  const backupPowered = sufficient;
 
   set("pv-to-inverter", solarToBackup + charge);
   set("inverter-to-backup", served, solarToBackup > 0 ? "solar" : "battery");
@@ -166,7 +178,7 @@ export function deriveEnergyState(s: ElectricalScenario): EnergyState {
     ...base,
     flows,
     pvUsedKw: round(solarToBackup + charge),
-    inverterMode: served > 0 ? "backup" : "standby",
+    inverterMode: served > 0 || charge > 0 ? "backup" : "standby",
     houseLoadsPowered: false,
     backupLoadsPowered: backupPowered,
     // Non-backup household circuits remain unpowered during the outage.

@@ -1,0 +1,41 @@
+{
+ "outDir": "renders/energy-flow-review/stills",
+ "jobs": [
+  {
+   "episode": "src/episodes/energy-flow-review/01-on-grid-normal.json",
+   "frame": 75,
+   "out": "01-on-grid-normal.png",
+   "quality": "preview"
+  },
+  {
+   "episode": "src/episodes/energy-flow-review/02-surplus-export.json",
+   "frame": 75,
+   "out": "02-surplus-export.png",
+   "quality": "preview"
+  },
+  {
+   "episode": "src/episodes/energy-flow-review/03-battery-charging.json",
+   "frame": 75,
+   "out": "03-battery-charging.png",
+   "quality": "preview"
+  },
+  {
+   "episode": "src/episodes/energy-flow-review/04-battery-discharging-night.json",
+   "frame": 75,
+   "out": "04-battery-discharging-night.png",
+   "quality": "preview"
+  },
+  {
+   "episode": "src/episodes/energy-flow-review/05-on-grid-outage.json",
+   "frame": 75,
+   "out": "05-on-grid-outage.png",
+   "quality": "preview"
+  },
+  {
+   "episode": "src/episodes/energy-flow-review/06-hybrid-backup.json",
+   "frame": 75,
+   "out": "06-hybrid-backup.png",
+   "quality": "preview"
+  }
+ ]
+}

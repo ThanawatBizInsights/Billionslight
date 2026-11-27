@@ -62,3 +62,51 @@ export function sampleElectrical(keys: ElectricalKey[], frame: number): EnergyVi
     pvGeneration: lerp(prevVis.pvGeneration, curVis.pvGeneration, t),
   };
 }
+
+// ------------------------------------------------------- standard (links)
+import { deriveFlowLinks, householdSupply, type FlowLink, type LinkId } from "./links";
+
+export interface FlowLinkSample {
+  links: Record<LinkId, FlowLink>;
+  household: { kw: number; circuit: "house" | "backup" | "none" };
+  state: EnergyState;
+  scenario: ElectricalScenario;
+}
+
+/**
+ * Links at a frame. kW cross-fades over the keyframe's transition; if a link
+ * reverses direction (import ↔ export, charge ↔ discharge) the old flow fades
+ * out before the new one fades in, so particles never slide "through zero".
+ */
+export function sampleFlowLinks(keys: ElectricalKey[], frame: number): FlowLinkSample | null {
+  if (keys.length === 0) return null;
+  const sorted = [...keys].sort((a, b) => a.frame - b.frame);
+  let idx = 0;
+  for (let i = 0; i < sorted.length; i++) if (sorted[i]!.frame <= frame) idx = i;
+  const cur = sorted[idx]!;
+  const curState = deriveEnergyState(cur.scenario);
+  const curLinks = deriveFlowLinks(curState, cur.scenario);
+  const curHouse = householdSupply(curState, cur.scenario);
+  const out: FlowLinkSample = { links: curLinks, household: curHouse, state: curState, scenario: cur.scenario };
+  if (idx === 0 || cur.transitionFrames === 0) return out;
+  const t = progress(frame, cur.frame, cur.frame + cur.transitionFrames, "easeInOut");
+  if (t >= 1) return out;
+  const prev = sorted[idx - 1]!;
+  const prevState = deriveEnergyState(prev.scenario);
+  const prevLinks = deriveFlowLinks(prevState, prev.scenario);
+  const links = {} as Record<LinkId, FlowLink>;
+  for (const id of Object.keys(curLinks) as LinkId[]) {
+    const a = prevLinks[id];
+    const b = curLinks[id];
+    if (a.active && b.active && a.direction !== b.direction) {
+      links[id] = t < 0.5 ? { ...a, kw: a.kw * (1 - 2 * t) } : { ...b, kw: b.kw * (2 * t - 1) };
+    } else if (!b.active && a.active) {
+      links[id] = { ...a, kw: a.kw * (1 - t), warning: b.warning, label: b.label };
+    } else {
+      links[id] = { ...b, kw: lerp(a.active ? a.kw : 0, b.kw, t) };
+    }
+  }
+  const prevHouse = householdSupply(prevState, prev.scenario);
+  const household = curHouse.circuit === prevHouse.circuit ? { ...curHouse, kw: lerp(prevHouse.kw, curHouse.kw, t) } : t < 0.5 ? { ...prevHouse, kw: prevHouse.kw * (1 - 2 * t) } : { ...curHouse, kw: curHouse.kw * (2 * t - 1) };
+  return { ...out, links, household };
+}
