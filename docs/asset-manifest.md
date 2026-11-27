@@ -2,11 +2,11 @@
 
 _Generated from `src/assets/asset-manifest.json` by `node scripts/manifest-report.mjs` — edit the JSON, not this file._
 
-Updated: 2026-11-27 · 110 assets · reference files live (git-ignored) under `public/assets/references/drive/`.
+Updated: 2026-11-27 · 117 assets · reference files live (git-ignored) under `public/assets/references/drive/`.
 
 | Status | Count |
 |---|---|
-| awaiting-visual-approval | 59 |
+| awaiting-visual-approval | 66 |
 | reserved | 1 |
 | missing-reference | 8 |
 | deferred | 2 |
@@ -28,11 +28,11 @@ Updated: 2026-11-27 · 110 assets · reference files live (git-ignored) under `p
 | `squirrel-teammate-grey` | Squirrel teammate (grey, green eyes) | deferred | procedural-creature-rig | 3 |  | three-squirrels-team.png side character holding LED downlight |
 | `temp-engineer` | Temporary engineer placeholder | superseded | procedural-humanoid-rig | 1 |  | — |
 
-**`sunny`** — Authoritative identity from the original character sheet. Soft faceted low-poly; tail = 5-joint chain; removable props (tablet, demo solar panel); pure-white hard hat with ridges between the ears.
-- Palette: fur `#E8913A` (prototype), fur-light `#F4AA55` (prototype), cream `#FDE6CD` (sampled), helmet `#F6F4F2` (owner-approved), uniform `#1F2A4A` (prototype), uniform-panel `#2F7DE1` (prototype), trim `#E0A93B` (prototype), badge `#FBBF24` (owner-approved), iris `#7A4BA8` (prototype), inner-ear `#F4B6A8` (prototype), nose `#7A4127` (prototype), boot `#1A2238` (prototype)
+**`sunny`** — Authoritative identity from the original character sheet. Soft faceted low-poly; tail = 5-joint chain; removable props (tablet, demo solar panel); pure-white hard hat with ridges between the ears. Face variants: v1 (Phase 2 prototype, not approved), A/B/C (SunnyFace: soft-faceted head with cream facial region, SunnyEye with curved iris texture, surface catchlights, eyelids). Select per cast with `variant`.
+- Palette: fur `#E8913A` (prototype), fur-light `#F4AA55` (prototype), cream `#FDE6CD` (sampled), helmet `#F6F4F2` (owner-approved), uniform `#1F2A4A` (prototype), uniform-panel `#2F7DE1` (prototype), trim `#E0A93B` (prototype), badge `#FBBF24` (owner-approved), iris `#7A4BA8` (prototype), inner-ear `#F4B6A8` (prototype), nose `#7A4127` (prototype), boot `#1A2238` (prototype), eye-sclera `#FFF4E8` (owner-approved), eye-iris `#8050A1` (owner-approved), eye-iris-highlight `#B68AC8` (owner-approved), eye-pupil `#302039` (owner-approved), eye-upper-lid `#59382D` (owner-approved)
 - Animation: idle-breathing, wave, point, talk, explain, open-hands, nod, shake-head, listen, think, surprised, laugh, thumbs-up, hold-tablet, present-prop, look-upward, lean-in, sit, shrug, ear-flick, tail-sway, blink, eye-gaze, look-at, expr:neutral, expr:happy, expr:talk, expr:surprised, expr:thinking, expr:confused, expr:laughing, expr:wink, expr:concerned, expr:listening, expr:curious, walk (Phase 3)
-- Implementation: `src/engine/characters/SquirrelMascot.tsx`
-- ⚠ Prototype awaiting owner visual approval (Phase 2 review pack).
+- Implementation: `src/engine/characters/SquirrelMascot.tsx + src/engine/characters/sunny/`
+- ⚠ NOT visually approved (owner, 2026-11-27): eyes looked intimidating. Eye/face redesign variants A/B/C in review (docs/sunny-eye-review.md). Default face remains v1 until a variant is approved.
 
 **`homeowner_male_01`** — Curious, friendly, occasionally humorous; asks practical questions. Cream short-sleeved shirt, navy trousers, white casual shoes, dark-brown geometric hair, warm skin tone.
 - Palette: skin `#E9B48A` (prototype), hair `#3B2A24` (prototype), shirt `#EFE6D6` (prototype), trousers `#1F2D52` (prototype), shoes `#F4F4F2` (prototype), belt `#3A2E26` (prototype)
@@ -264,6 +264,7 @@ Updated: 2026-11-27 · 110 assets · reference files live (git-ignored) under `p
 | `emergency-backup` | Emergency backup lighting | missing-reference | data-preset | 3 |  | — |
 | `demo-studio-light` | Technical demonstration studio lighting | reference-supplied | data-preset | 3 |  | 04-solar-composition-reference.png §10 |
 | `review-studio-light` | Review studio soft key + fill | in-progress | data-preset | 2 |  | — |
+| `portrait-warm` | Cinematic portrait (warm amber key, soft navy shadows) | awaiting-visual-approval | data-preset | 2 |  | — |
 
 **`bright-morning`** — Soft warm light, long shadows, fresh & calm
 - Palette: key `#FFD166` (sheet-swatch)
@@ -302,6 +303,11 @@ Updated: 2026-11-27 · 110 assets · reference files live (git-ignored) under `p
 
 **`review-studio-light`** — Engine ID: review-studio (lighting).
 - Implementation: `src/engine/lighting/presets.ts`
+
+**`portrait-warm`**
+- Palette: key `#FFB867` (prototype), shadow `#0F2747` (owner-approved)
+- Implementation: `src/engine/lighting/presets.ts`
+- ⚠ Used for the Sunny eye review cinematic close-ups.
 
 ## camera-preset
 
@@ -391,6 +397,7 @@ Updated: 2026-11-27 · 110 assets · reference files live (git-ignored) under `p
 | `sit` | Clip: sit | awaiting-visual-approval | data-preset | 2 |  | — |
 | `shrug` | Clip: shrug | awaiting-visual-approval | data-preset | 2 |  | — |
 | `smile` | Clip: smile | awaiting-visual-approval | data-preset | 2 |  | — |
+| `blink` | Clip: blink (deliberate blink via eyelids) | awaiting-visual-approval | data-preset | 2 |  | — |
 
 **`idle-breathing`**
 - Animation: blend-in-out
@@ -469,6 +476,10 @@ Updated: 2026-11-27 · 110 assets · reference files live (git-ignored) under `p
 - Implementation: `src/engine/animation/clips.ts`
 
 **`smile`**
+- Animation: blend-in-out
+- Implementation: `src/engine/animation/clips.ts`
+
+**`blink`**
 - Animation: blend-in-out
 - Implementation: `src/engine/animation/clips.ts`
 

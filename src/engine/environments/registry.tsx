@@ -81,7 +81,13 @@ export const ENVIRONMENTS: Record<string, EnvironmentDefinition> = {
     focus: [0, 0.9, 0],
     shadowExtent: 4,
     skyVisible: false,
-    render: ({ options }) => <ReviewStudio ruler={options.ruler === true} seats={(options.seats as [number, number, number][] | undefined) ?? []} />,
+    render: ({ options }) => (
+      <ReviewStudio
+        ruler={options.ruler === true}
+        seats={(options.seats as [number, number, number][] | undefined) ?? []}
+        {...(options.backdrop === "navy" ? { floorColor: "#1B2C4F", wallColor: "#0F2747" } : {})}
+      />
+    ),
   },
   "modern-thai-house": {
     id: "modern-thai-house",

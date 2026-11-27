@@ -19,6 +19,12 @@ export const EXPRESSIONS: Record<string, FaceState> = {
   concerned: f({ smile: -0.45, browRaise: 0.35, browTilt: 0, mouthOpen: 0.05 }),
   listening: f({ smile: 0.35, browRaise: 0.1 }),
   curious: f({ smile: 0.3, browRaise: 0.55, browTilt: 0.35, gaze: [0.1, 0.05] }),
+  // gaze presets (character-local: + yaw = character's left)
+  "look-left": f({ smile: 0.25, gaze: [0.38, 0] }),
+  "look-right": f({ smile: 0.25, gaze: [-0.38, 0] }),
+  "look-up": f({ smile: 0.2, browRaise: 0.3, gaze: [0, 0.3] }),
+  "look-down": f({ smile: 0.15, browRaise: -0.05, gaze: [0, -0.3], eyelids: [0.25, 0.25] }),
+  "eyes-closed": f({ smile: 0.3, eyelids: [1, 1] }),
 };
 
 export const EXPRESSION_IDS = Object.keys(EXPRESSIONS);

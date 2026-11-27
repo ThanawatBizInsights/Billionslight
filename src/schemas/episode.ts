@@ -63,6 +63,8 @@ export const CharacterCast = z.object({
   id: z.string().min(1),
   /** Reusable character definition from the library. */
   characterId: AssetId,
+  /** Optional design variant of the character (e.g. Sunny face review "A" | "B" | "C"). */
+  variant: z.string().optional(),
   voiceKey: z.string().optional(),
 });
 

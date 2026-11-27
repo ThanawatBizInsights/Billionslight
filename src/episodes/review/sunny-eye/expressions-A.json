@@ -1,0 +1,141 @@
+{
+ "schemaVersion": 1,
+ "id": "sunny-eye-expressions-a",
+ "title": "Sunny A expressions",
+ "aspectRatio": "1:1",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "s",
+   "characterId": "sunny",
+   "variant": "A"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 312,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0,
+       1,
+       2.3
+      ],
+      "target": [
+       0,
+       0.96,
+       0
+      ],
+      "fov": 20
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "s",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0,
+        0,
+        0
+       ],
+       "rotationY": 0.15
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "neutral"
+      },
+      {
+       "frame": 24,
+       "expression": "happy"
+      },
+      {
+       "frame": 48,
+       "expression": "talk"
+      },
+      {
+       "frame": 72,
+       "expression": "listening"
+      },
+      {
+       "frame": 96,
+       "expression": "thinking"
+      },
+      {
+       "frame": 120,
+       "expression": "surprised"
+      },
+      {
+       "frame": 144,
+       "expression": "concerned"
+      },
+      {
+       "frame": 168,
+       "expression": "laughing"
+      },
+      {
+       "frame": 192,
+       "expression": "happy"
+      },
+      {
+       "frame": 216,
+       "expression": "look-left"
+      },
+      {
+       "frame": 240,
+       "expression": "look-right"
+      },
+      {
+       "frame": 264,
+       "expression": "look-up"
+      },
+      {
+       "frame": 288,
+       "expression": "look-down"
+      }
+     ],
+     "clips": [
+      {
+       "clip": "talk",
+       "from": 48,
+       "durationInFrames": 24,
+       "blendFrames": 3
+      },
+      {
+       "clip": "listen",
+       "from": 72,
+       "durationInFrames": 24,
+       "blendFrames": 3
+      },
+      {
+       "clip": "blink",
+       "from": 200,
+       "durationInFrames": 7,
+       "blendFrames": 1
+      }
+     ]
+    }
+   ],
+   "overlays": []
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

@@ -1,0 +1,412 @@
+{
+  "at": "2026-11-27T06:07:07.651Z",
+  "gl": "swangle",
+  "jobs": [
+    {
+      "out": "renders/phase-2/sunny-eye-review/01-front-closeups/A-front.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.4,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/02-views/A-three-quarter.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.3,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/02-views/A-side.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/03-full-body/A-front.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/03-full-body/A-three-quarter.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.1,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/01-neutral.png",
+      "frame": 18,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/02-happy.png",
+      "frame": 42,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/03-talking.png",
+      "frame": 62,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/04-listening.png",
+      "frame": 90,
+      "size": "540x540",
+      "sec": 1.8,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/05-thinking.png",
+      "frame": 114,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/06-surprised.png",
+      "frame": 138,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/07-concerned.png",
+      "frame": 162,
+      "size": "540x540",
+      "sec": 2.2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/08-laughing.png",
+      "frame": 186,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/09-blinking.png",
+      "frame": 202,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/10-looking-left.png",
+      "frame": 234,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/11-looking-right.png",
+      "frame": 258,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/12-looking-up.png",
+      "frame": 282,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/A/13-looking-down.png",
+      "frame": 306,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/05-cinematic/A-cinematic.png",
+      "frame": 15,
+      "size": "1080x1920",
+      "sec": 2.8,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/01-front-closeups/B-front.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.3,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/02-views/B-three-quarter.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.3,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/02-views/B-side.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.3,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/03-full-body/B-front.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/03-full-body/B-three-quarter.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/01-neutral.png",
+      "frame": 18,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/02-happy.png",
+      "frame": 42,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/03-talking.png",
+      "frame": 62,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/04-listening.png",
+      "frame": 90,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/05-thinking.png",
+      "frame": 114,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/06-surprised.png",
+      "frame": 138,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/07-concerned.png",
+      "frame": 162,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/08-laughing.png",
+      "frame": 186,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/09-blinking.png",
+      "frame": 202,
+      "size": "540x540",
+      "sec": 1.8,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/10-looking-left.png",
+      "frame": 234,
+      "size": "540x540",
+      "sec": 1.8,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/11-looking-right.png",
+      "frame": 258,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/12-looking-up.png",
+      "frame": 282,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/B/13-looking-down.png",
+      "frame": 306,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/05-cinematic/B-cinematic.png",
+      "frame": 15,
+      "size": "1080x1920",
+      "sec": 2.6,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/01-front-closeups/C-front.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.3,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/02-views/C-three-quarter.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.3,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/02-views/C-side.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.3,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/03-full-body/C-front.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/03-full-body/C-three-quarter.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 2.2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/01-neutral.png",
+      "frame": 18,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/02-happy.png",
+      "frame": 42,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/03-talking.png",
+      "frame": 62,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/04-listening.png",
+      "frame": 90,
+      "size": "540x540",
+      "sec": 2.1,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/05-thinking.png",
+      "frame": 114,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/06-surprised.png",
+      "frame": 138,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/07-concerned.png",
+      "frame": 162,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/08-laughing.png",
+      "frame": 186,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/09-blinking.png",
+      "frame": 202,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/10-looking-left.png",
+      "frame": 234,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/11-looking-right.png",
+      "frame": 258,
+      "size": "540x540",
+      "sec": 1.9,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/12-looking-up.png",
+      "frame": 282,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/04-expressions/C/13-looking-down.png",
+      "frame": 306,
+      "size": "540x540",
+      "sec": 2,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/05-cinematic/C-cinematic.png",
+      "frame": 15,
+      "size": "1080x1920",
+      "sec": 2.6,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2/sunny-eye-review/01-front-closeups/v1-front.png",
+      "frame": 15,
+      "size": "1080x1080",
+      "sec": 1.8,
+      "ok": true
+    }
+  ]
+}

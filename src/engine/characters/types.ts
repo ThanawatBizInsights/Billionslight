@@ -31,6 +31,8 @@ export interface CharacterDefinition {
   colors: Record<string, string>;
   /** Seed so idle motion of different characters is not in sync. */
   seed: number;
+  /** Default design variant (e.g. Sunny's face); episodes can override per cast member. */
+  defaultVariant?: string;
   /** Default expression when no expression track is given. */
   defaultExpression: string;
   /** Free text: personality / role, for writers and the studio UI. */

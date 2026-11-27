@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "sunny-eye-body-c-three-quarter",
+ "title": "Sunny C body three-quarter",
+ "aspectRatio": "1:1",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "s",
+   "characterId": "sunny",
+   "variant": "C"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0,
+       0.78,
+       4.6
+      ],
+      "target": [
+       0,
+       0.7,
+       0
+      ],
+      "fov": 24
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "s",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0,
+        0,
+        0
+       ],
+       "rotationY": 0.62
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "C · Extra cute · FULL BODY · THREE-QUARTER",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

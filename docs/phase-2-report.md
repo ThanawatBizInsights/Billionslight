@@ -1,6 +1,6 @@
 # Phase 2 report — Visual prototype
 
-Date: 2026-11-27 · Status: **complete, awaiting owner VISUAL APPROVAL**
+Date: 2026-11-27 · Status: **complete; Sunny's face NOT approved (eye redesign in `docs/sunny-eye-review.md`); Ton/environments awaiting visual approval**
 Approved inputs: `docs/design-decisions-phase-2.md` · References: Drive
 boards 01–06 and "Three Squirrels" (local copies, git-ignored).
 
@@ -38,7 +38,16 @@ ElevenLabs credits used. No technical claim is made in the test.
 
 ## Rendering performance
 
-PERFORMANCE_TABLE
+10-second test (300 frames). All three outputs were verified by ffprobe: H.264
+yuv420p + AAC, 30 fps, 300 frames, 10.0 s.
+
+| Quality | Resolution | Render time | s / frame | Real-time factor | Peak RAM | File |
+|---|---|---|---|---|---|---|
+| draft | 360×640 | 28.7 s | 0.10 | 0.35× | 1.5 GB | 0.9 MB |
+| preview | 540×960 | 57.7 s | 0.19 | 0.17× | 1.9 GB | 1.6 MB |
+| final | 1080×1920 | 160.4 s | 0.53 | 0.06× | 2.7 GB | 5.4 MB |
+
+Review stills: 1.5–2.5 s each (57 stills).
 
 Measured in the cloud container (4 vCPU Intel Xeon 2.1 GHz, no GPU, software
 GL `swangle`, concurrency 3). On the Intel MacBook with GPU (`angle`), expect

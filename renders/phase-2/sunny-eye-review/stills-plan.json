@@ -1,0 +1,412 @@
+{
+ "outDir": "renders/phase-2/sunny-eye-review",
+ "sheetTitle": "SUNNY EYE REVIEW",
+ "jobs": [
+  {
+   "episode": "src/episodes/review/sunny-eye/close-A-front.json",
+   "frame": 15,
+   "out": "01-front-closeups/A-front.png",
+   "quality": "final",
+   "label": "A · Original Sunny-inspired · front"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/close-A-three-quarter.json",
+   "frame": 15,
+   "out": "02-views/A-three-quarter.png",
+   "quality": "final",
+   "label": "A · Original Sunny-inspired · three-quarter"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/close-A-side.json",
+   "frame": 15,
+   "out": "02-views/A-side.png",
+   "quality": "final",
+   "label": "A · Original Sunny-inspired · side"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/body-A-front.json",
+   "frame": 15,
+   "out": "03-full-body/A-front.png",
+   "quality": "final",
+   "label": "A · Original Sunny-inspired · front"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/body-A-three-quarter.json",
+   "frame": 15,
+   "out": "03-full-body/A-three-quarter.png",
+   "quality": "final",
+   "label": "A · Original Sunny-inspired · three-quarter"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 18,
+   "out": "04-expressions/A/01-neutral.png",
+   "quality": "preview",
+   "label": "neutral"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 42,
+   "out": "04-expressions/A/02-happy.png",
+   "quality": "preview",
+   "label": "happy"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 62,
+   "out": "04-expressions/A/03-talking.png",
+   "quality": "preview",
+   "label": "talking"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 90,
+   "out": "04-expressions/A/04-listening.png",
+   "quality": "preview",
+   "label": "listening"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 114,
+   "out": "04-expressions/A/05-thinking.png",
+   "quality": "preview",
+   "label": "thinking"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 138,
+   "out": "04-expressions/A/06-surprised.png",
+   "quality": "preview",
+   "label": "surprised"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 162,
+   "out": "04-expressions/A/07-concerned.png",
+   "quality": "preview",
+   "label": "concerned"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 186,
+   "out": "04-expressions/A/08-laughing.png",
+   "quality": "preview",
+   "label": "laughing"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 202,
+   "out": "04-expressions/A/09-blinking.png",
+   "quality": "preview",
+   "label": "blinking"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 234,
+   "out": "04-expressions/A/10-looking-left.png",
+   "quality": "preview",
+   "label": "looking left"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 258,
+   "out": "04-expressions/A/11-looking-right.png",
+   "quality": "preview",
+   "label": "looking right"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 282,
+   "out": "04-expressions/A/12-looking-up.png",
+   "quality": "preview",
+   "label": "looking up"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-A.json",
+   "frame": 306,
+   "out": "04-expressions/A/13-looking-down.png",
+   "quality": "preview",
+   "label": "looking down"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/cinematic-A.json",
+   "frame": 15,
+   "out": "05-cinematic/A-cinematic.png",
+   "quality": "final",
+   "label": "A · Original Sunny-inspired"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/close-B-front.json",
+   "frame": 15,
+   "out": "01-front-closeups/B-front.png",
+   "quality": "final",
+   "label": "B · Cinematic low-poly · front"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/close-B-three-quarter.json",
+   "frame": 15,
+   "out": "02-views/B-three-quarter.png",
+   "quality": "final",
+   "label": "B · Cinematic low-poly · three-quarter"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/close-B-side.json",
+   "frame": 15,
+   "out": "02-views/B-side.png",
+   "quality": "final",
+   "label": "B · Cinematic low-poly · side"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/body-B-front.json",
+   "frame": 15,
+   "out": "03-full-body/B-front.png",
+   "quality": "final",
+   "label": "B · Cinematic low-poly · front"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/body-B-three-quarter.json",
+   "frame": 15,
+   "out": "03-full-body/B-three-quarter.png",
+   "quality": "final",
+   "label": "B · Cinematic low-poly · three-quarter"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 18,
+   "out": "04-expressions/B/01-neutral.png",
+   "quality": "preview",
+   "label": "neutral"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 42,
+   "out": "04-expressions/B/02-happy.png",
+   "quality": "preview",
+   "label": "happy"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 62,
+   "out": "04-expressions/B/03-talking.png",
+   "quality": "preview",
+   "label": "talking"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 90,
+   "out": "04-expressions/B/04-listening.png",
+   "quality": "preview",
+   "label": "listening"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 114,
+   "out": "04-expressions/B/05-thinking.png",
+   "quality": "preview",
+   "label": "thinking"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 138,
+   "out": "04-expressions/B/06-surprised.png",
+   "quality": "preview",
+   "label": "surprised"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 162,
+   "out": "04-expressions/B/07-concerned.png",
+   "quality": "preview",
+   "label": "concerned"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 186,
+   "out": "04-expressions/B/08-laughing.png",
+   "quality": "preview",
+   "label": "laughing"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 202,
+   "out": "04-expressions/B/09-blinking.png",
+   "quality": "preview",
+   "label": "blinking"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 234,
+   "out": "04-expressions/B/10-looking-left.png",
+   "quality": "preview",
+   "label": "looking left"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 258,
+   "out": "04-expressions/B/11-looking-right.png",
+   "quality": "preview",
+   "label": "looking right"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 282,
+   "out": "04-expressions/B/12-looking-up.png",
+   "quality": "preview",
+   "label": "looking up"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-B.json",
+   "frame": 306,
+   "out": "04-expressions/B/13-looking-down.png",
+   "quality": "preview",
+   "label": "looking down"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/cinematic-B.json",
+   "frame": 15,
+   "out": "05-cinematic/B-cinematic.png",
+   "quality": "final",
+   "label": "B · Cinematic low-poly"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/close-C-front.json",
+   "frame": 15,
+   "out": "01-front-closeups/C-front.png",
+   "quality": "final",
+   "label": "C · Extra cute · front"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/close-C-three-quarter.json",
+   "frame": 15,
+   "out": "02-views/C-three-quarter.png",
+   "quality": "final",
+   "label": "C · Extra cute · three-quarter"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/close-C-side.json",
+   "frame": 15,
+   "out": "02-views/C-side.png",
+   "quality": "final",
+   "label": "C · Extra cute · side"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/body-C-front.json",
+   "frame": 15,
+   "out": "03-full-body/C-front.png",
+   "quality": "final",
+   "label": "C · Extra cute · front"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/body-C-three-quarter.json",
+   "frame": 15,
+   "out": "03-full-body/C-three-quarter.png",
+   "quality": "final",
+   "label": "C · Extra cute · three-quarter"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 18,
+   "out": "04-expressions/C/01-neutral.png",
+   "quality": "preview",
+   "label": "neutral"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 42,
+   "out": "04-expressions/C/02-happy.png",
+   "quality": "preview",
+   "label": "happy"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 62,
+   "out": "04-expressions/C/03-talking.png",
+   "quality": "preview",
+   "label": "talking"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 90,
+   "out": "04-expressions/C/04-listening.png",
+   "quality": "preview",
+   "label": "listening"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 114,
+   "out": "04-expressions/C/05-thinking.png",
+   "quality": "preview",
+   "label": "thinking"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 138,
+   "out": "04-expressions/C/06-surprised.png",
+   "quality": "preview",
+   "label": "surprised"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 162,
+   "out": "04-expressions/C/07-concerned.png",
+   "quality": "preview",
+   "label": "concerned"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 186,
+   "out": "04-expressions/C/08-laughing.png",
+   "quality": "preview",
+   "label": "laughing"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 202,
+   "out": "04-expressions/C/09-blinking.png",
+   "quality": "preview",
+   "label": "blinking"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 234,
+   "out": "04-expressions/C/10-looking-left.png",
+   "quality": "preview",
+   "label": "looking left"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 258,
+   "out": "04-expressions/C/11-looking-right.png",
+   "quality": "preview",
+   "label": "looking right"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 282,
+   "out": "04-expressions/C/12-looking-up.png",
+   "quality": "preview",
+   "label": "looking up"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/expressions-C.json",
+   "frame": 306,
+   "out": "04-expressions/C/13-looking-down.png",
+   "quality": "preview",
+   "label": "looking down"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/cinematic-C.json",
+   "frame": 15,
+   "out": "05-cinematic/C-cinematic.png",
+   "quality": "final",
+   "label": "C · Extra cute"
+  },
+  {
+   "episode": "src/episodes/review/sunny-eye/close-v1-front.json",
+   "frame": 15,
+   "out": "01-front-closeups/v1-front.png",
+   "quality": "final",
+   "label": "v1 · previous prototype (not approved) · front"
+  }
+ ]
+}

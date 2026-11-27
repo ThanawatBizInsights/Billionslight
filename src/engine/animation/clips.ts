@@ -225,6 +225,12 @@ const shrug: Clip = ({ frame }, pose) => {
   return setJoints(pose, { shoulderL: [-0.35, 0, 0.4 * k], shoulderR: [-0.35, 0, -0.4 * k], elbowL: [-1.2, 0.3, 0], elbowR: [-1.2, -0.3, 0], head: [0, 0, 0.15 * k] }, { browRaise: 0.5 * k });
 };
 
+/** Deliberate blink (in addition to the automatic blinks): closes and reopens over ~6 frames. */
+const blink: Clip = ({ frame }, pose) => {
+  const k = frame <= 2 ? frame / 2 : Math.max(0, 1 - (frame - 2) / 4);
+  return { ...pose, face: { ...pose.face, eyelids: [Math.max(pose.face.eyelids[0], k), Math.max(pose.face.eyelids[1], k)] } };
+};
+
 const smile: Clip = (_ctx, pose) => ({ ...pose, face: { ...pose.face, smile: 1, browRaise: 0.2 } });
 
 export const CLIPS: Record<string, Clip> = {
@@ -247,6 +253,7 @@ export const CLIPS: Record<string, Clip> = {
   "lean-in": leanIn,
   sit,
   shrug,
+  blink,
   smile,
 };
 

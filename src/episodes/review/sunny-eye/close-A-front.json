@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "sunny-eye-close-a-front",
+ "title": "Sunny A · Original Sunny-inspired front",
+ "aspectRatio": "1:1",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "s",
+   "characterId": "sunny",
+   "variant": "A"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0,
+       1,
+       2.3
+      ],
+      "target": [
+       0,
+       0.96,
+       0
+      ],
+      "fov": 20
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "s",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0,
+        0,
+        0
+       ],
+       "rotationY": 0
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "neutral"
+      }
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "A · Original Sunny-inspired · FRONT · NEUTRAL",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

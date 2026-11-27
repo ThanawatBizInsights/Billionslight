@@ -34,6 +34,7 @@ export function CharacterModel({
   position = [0, 0, 0],
   rotationY = 0,
   attachments,
+  variant,
   children,
 }: {
   def: CharacterDefinition;
@@ -43,11 +44,13 @@ export function CharacterModel({
   position?: [number, number, number];
   rotationY?: number;
   attachments?: Attachments;
+  /** Design variant (e.g. Sunny face "A" | "B" | "C"); falls back to def.defaultVariant. */
+  variant?: string;
   children?: ReactNode;
 }) {
   const s = modelScale(def);
   let body: ReactNode;
-  if (def.bodyPlan === "squirrel-mascot") body = <SquirrelMascot def={def} pose={pose} blink={blink} look={look} attachments={attachments} />;
+  if (def.bodyPlan === "squirrel-mascot") body = <SquirrelMascot def={def} pose={pose} blink={blink} look={look} attachments={attachments} faceVariant={variant ?? def.defaultVariant} />;
   else if (def.bodyPlan === "stylized-human") body = <StylizedHuman def={def} pose={pose} blink={blink} look={look} attachments={attachments} />;
   else body = <Humanoid def={def} pose={pose} blink={blink} look={look} />;
   return (

@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "id": "sunny-eye-close-b-side",
+ "title": "Sunny B · Cinematic low-poly side",
+ "aspectRatio": "1:1",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "s",
+   "characterId": "sunny",
+   "variant": "B"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0,
+       1,
+       2.3
+      ],
+      "target": [
+       0,
+       0.96,
+       0
+      ],
+      "fov": 20
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "s",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0,
+        0,
+        0
+       ],
+       "rotationY": 1.5707963267948966
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "neutral"
+      }
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "B · Cinematic low-poly · SIDE · NEUTRAL",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

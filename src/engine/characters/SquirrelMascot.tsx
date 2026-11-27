@@ -15,6 +15,8 @@ import * as THREE from "three";
 import type { Pose, Rot } from "./rig";
 import type { CharacterDefinition } from "./types";
 import { Brow, CartoonEye, Facet, Joint, Mouth, Part, type Attachments } from "./parts";
+import { SunnyFace } from "./sunny/SunnyFace";
+import { SUNNY_FACE_VARIANTS, isNewFace } from "./sunny/faceVariants";
 
 /** Rest orientation of the tail chain: rises back from the hips, then curls up. */
 const TAIL_REST: Rot[] = [
@@ -50,7 +52,23 @@ function useTorsoGeometry() {
   }, []);
 }
 
-export function SquirrelMascot({ def, pose, blink, look, attachments }: { def: CharacterDefinition; pose: Pose; blink: number; look: [number, number]; attachments?: Attachments }) {
+export function SquirrelMascot({
+  def,
+  pose,
+  blink,
+  look,
+  attachments,
+  faceVariant = "v1",
+}: {
+  def: CharacterDefinition;
+  pose: Pose;
+  blink: number;
+  look: [number, number];
+  attachments?: Attachments;
+  /** "v1" = Phase 2 prototype face; "A" | "B" | "C" = eye-review variants (SunnyFace). */
+  faceVariant?: string;
+}) {
+  const newFace = isNewFace(faceVariant);
   const c = def.colors as Record<string, string>;
   const b = def.body;
   const torso = useTorsoGeometry();
@@ -211,6 +229,10 @@ export function SquirrelMascot({ def, pose, blink, look, attachments }: { def: C
             {arm(-1)}
             <Joint name="neck" pose={pose} position={[0, 0.285, 0]} attachments={attachments}>
               <Joint name="head" pose={pose} position={[0, 0.22, 0.015]} attachments={attachments} extraRotation={[-look[1], look[0], 0]}>
+                {newFace ? (
+                  <SunnyFace variant={SUNNY_FACE_VARIANTS[faceVariant as "A" | "B" | "C"]} face={face} blink={blink} colors={c} />
+                ) : (
+                  <>
                 {/* large round head (semi-axes 0.316 × 0.232 × 0.281) */}
                 <Part scale={[1.17, 0.86, 1.04]} color={c.fur!}>
                   <icosahedronGeometry args={[headR, 2]} />
@@ -261,10 +283,12 @@ export function SquirrelMascot({ def, pose, blink, look, attachments }: { def: C
                     <meshBasicMaterial color={c.blush} transparent opacity={0.35 + face.squint * 0.3} depthWrite={false} />
                   </mesh>
                 ))}
+                  </>
+                )}
                 {ear(1)}
                 {ear(-1)}
                 {/* white hard hat: faceted dome, brim with front peak, three ridges */}
-                <group position={[0, 0.118, -0.015]}>
+                <group position={[0, newFace ? 0.142 : 0.118, -0.015]}>
                   <Part scale={[1.1, 0.92, 1.08]} color={c.helmet!}>
                     <sphereGeometry args={[0.29, 12, 5, 0, Math.PI * 2, 0, Math.PI / 2]} />
                   </Part>

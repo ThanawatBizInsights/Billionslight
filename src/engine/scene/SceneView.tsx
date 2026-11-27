@@ -34,6 +34,7 @@ type Track = Scene["characters"][number];
 interface CharState {
   castId: string;
   def: CharacterDefinition;
+  variant?: string;
   position: Vec3;
   rotationY: number;
 }
@@ -120,7 +121,7 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
 
   const states: CharState[] = scene.characters.map((t) => {
     const cast = episode.cast.find((c) => c.id === t.castId)!;
-    return { castId: t.castId, def: getCharacter(cast.characterId), ...samplePlacement(t, frame) };
+    return { castId: t.castId, def: getCharacter(cast.characterId), variant: cast.variant, ...samplePlacement(t, frame) };
   });
 
   const characters = scene.characters.map((t, i) => {
@@ -197,6 +198,7 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
         rotationY={st.rotationY}
         look={look}
         attachments={attachments}
+        variant={st.variant}
       />
     );
   });

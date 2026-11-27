@@ -1,0 +1,280 @@
+{
+ "schemaVersion": 1,
+ "id": "sunny-eye-blink-gaze-test",
+ "title": "Sunny eye variants · 5 s blink and gaze test",
+ "aspectRatio": "16:9",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "sA",
+   "characterId": "sunny",
+   "variant": "A"
+  },
+  {
+   "id": "sB",
+   "characterId": "sunny",
+   "variant": "B"
+  },
+  {
+   "id": "sC",
+   "characterId": "sunny",
+   "variant": "C"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 150,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0,
+       0.98,
+       6.2
+      ],
+      "target": [
+       0,
+       0.9299999999999999,
+       0
+      ],
+      "fov": 14
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "sA",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        -0.85,
+        0,
+        0
+       ],
+       "rotationY": 0
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      },
+      {
+       "frame": 22,
+       "expression": "look-left"
+      },
+      {
+       "frame": 44,
+       "expression": "look-right"
+      },
+      {
+       "frame": 66,
+       "expression": "look-up"
+      },
+      {
+       "frame": 88,
+       "expression": "look-down"
+      },
+      {
+       "frame": 106,
+       "expression": "happy"
+      },
+      {
+       "frame": 114,
+       "expression": "laughing"
+      },
+      {
+       "frame": 136,
+       "expression": "happy"
+      }
+     ],
+     "clips": [
+      {
+       "clip": "blink",
+       "from": 16,
+       "durationInFrames": 7,
+       "blendFrames": 1
+      },
+      {
+       "clip": "blink",
+       "from": 58,
+       "durationInFrames": 7,
+       "blendFrames": 1
+      },
+      {
+       "clip": "blink",
+       "from": 100,
+       "durationInFrames": 7,
+       "blendFrames": 1
+      }
+     ]
+    },
+    {
+     "castId": "sB",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0,
+        0,
+        0
+       ],
+       "rotationY": 0
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      },
+      {
+       "frame": 22,
+       "expression": "look-left"
+      },
+      {
+       "frame": 44,
+       "expression": "look-right"
+      },
+      {
+       "frame": 66,
+       "expression": "look-up"
+      },
+      {
+       "frame": 88,
+       "expression": "look-down"
+      },
+      {
+       "frame": 106,
+       "expression": "happy"
+      },
+      {
+       "frame": 114,
+       "expression": "laughing"
+      },
+      {
+       "frame": 136,
+       "expression": "happy"
+      }
+     ],
+     "clips": [
+      {
+       "clip": "blink",
+       "from": 16,
+       "durationInFrames": 7,
+       "blendFrames": 1
+      },
+      {
+       "clip": "blink",
+       "from": 58,
+       "durationInFrames": 7,
+       "blendFrames": 1
+      },
+      {
+       "clip": "blink",
+       "from": 100,
+       "durationInFrames": 7,
+       "blendFrames": 1
+      }
+     ]
+    },
+    {
+     "castId": "sC",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0.85,
+        0,
+        0
+       ],
+       "rotationY": 0
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      },
+      {
+       "frame": 22,
+       "expression": "look-left"
+      },
+      {
+       "frame": 44,
+       "expression": "look-right"
+      },
+      {
+       "frame": 66,
+       "expression": "look-up"
+      },
+      {
+       "frame": 88,
+       "expression": "look-down"
+      },
+      {
+       "frame": 106,
+       "expression": "happy"
+      },
+      {
+       "frame": 114,
+       "expression": "laughing"
+      },
+      {
+       "frame": 136,
+       "expression": "happy"
+      }
+     ],
+     "clips": [
+      {
+       "clip": "blink",
+       "from": 16,
+       "durationInFrames": 7,
+       "blendFrames": 1
+      },
+      {
+       "clip": "blink",
+       "from": 58,
+       "durationInFrames": 7,
+       "blendFrames": 1
+      },
+      {
+       "clip": "blink",
+       "from": 100,
+       "durationInFrames": 7,
+       "blendFrames": 1
+      }
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "SUNNY EYE REVIEW · A (left) · B (centre) · C (right) · BLINK + GAZE (left → right → up → down) + LAUGH",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

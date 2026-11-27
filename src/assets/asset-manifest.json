@@ -101,6 +101,26 @@
           "hex": "#1A2238",
           "source": "prototype",
           "note": "navy safety boots"
+        },
+        "eye-sclera": {
+          "hex": "#FFF4E8",
+          "source": "owner-approved"
+        },
+        "eye-iris": {
+          "hex": "#8050A1",
+          "source": "owner-approved"
+        },
+        "eye-iris-highlight": {
+          "hex": "#B68AC8",
+          "source": "owner-approved"
+        },
+        "eye-pupil": {
+          "hex": "#302039",
+          "source": "owner-approved"
+        },
+        "eye-upper-lid": {
+          "hex": "#59382D",
+          "source": "owner-approved"
         }
       },
       "animationCapabilities": [
@@ -142,10 +162,10 @@
         "walk (Phase 3)"
       ],
       "issues": [
-        "Prototype awaiting owner visual approval (Phase 2 review pack)."
+        "NOT visually approved (owner, 2026-11-27): eyes looked intimidating. Eye/face redesign variants A/B/C in review (docs/sunny-eye-review.md). Default face remains v1 until a variant is approved."
       ],
-      "notes": "Authoritative identity from the original character sheet. Soft faceted low-poly; tail = 5-joint chain; removable props (tablet, demo solar panel); pure-white hard hat with ridges between the ears.",
-      "implementation": "src/engine/characters/SquirrelMascot.tsx"
+      "notes": "Authoritative identity from the original character sheet. Soft faceted low-poly; tail = 5-joint chain; removable props (tablet, demo solar panel); pure-white hard hat with ridges between the ears. Face variants: v1 (Phase 2 prototype, not approved), A/B/C (SunnyFace: soft-faceted head with cream facial region, SunnyEye with curved iris texture, surface catchlights, eyelids). Select per cast with `variant`.",
+      "implementation": "src/engine/characters/sunny"
     },
     {
       "id": "homeowner_male_01",
@@ -2743,6 +2763,125 @@
       "palette": {},
       "animationCapabilities": [
         "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "portrait-warm",
+      "name": "Cinematic portrait (warm amber key, soft navy shadows)",
+      "category": "lighting-preset",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {
+        "key": {
+          "hex": "#FFB867",
+          "source": "prototype"
+        },
+        "shadow": {
+          "hex": "#0F2747",
+          "source": "owner-approved"
+        }
+      },
+      "animationCapabilities": [],
+      "implementation": "src/engine/lighting/presets.ts",
+      "issues": [
+        "Used for the Sunny eye review cinematic close-ups."
+      ]
+    },
+    {
+      "id": "blink",
+      "name": "Clip: blink (deliberate blink via eyelids)",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-look-left",
+      "name": "Expression: look-left",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable",
+        "gaze"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-look-right",
+      "name": "Expression: look-right",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable",
+        "gaze"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-look-up",
+      "name": "Expression: look-up",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable",
+        "gaze"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-look-down",
+      "name": "Expression: look-down",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable",
+        "gaze"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-eyes-closed",
+      "name": "Expression: eyes-closed",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable",
+        "gaze"
       ],
       "implementation": "src/engine/characters/expressions.ts",
       "issues": []

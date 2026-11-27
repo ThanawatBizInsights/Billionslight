@@ -6,6 +6,12 @@ whenever a new reusable asset or capability is approved.
 ## Current phase
 
 **Phase 1 — provisionally approved (2026-11-27).**
+**Sunny's face is NOT approved** (owner, 2026-11-27: eyes looked intimidating).
+Eye redesign variants A/B/C are awaiting the owner's choice
+(`docs/sunny-eye-review.md`, renders in `renders/phase-2/sunny-eye-review/`).
+Do not change Ton, environments, equipment or the core renderer while
+Sunny's face is under review. `v1` stays the default until a variant is
+approved; never delete it before then.
 **Phase 2 — prototypes complete, AWAITING VISUAL APPROVAL** (review pack:
 `docs/phase-2-report.md`, renders in `renders/phase-2-review/`). Do not start
 Phase 3 and do not expand the asset library until the owner approves the
@@ -162,6 +168,10 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 - `environment.states` animates environment values (power, lights, tv, ac);
   `lighting.transitions` blends presets (e.g. evening → power-outage).
 - Environments may compute cable routes from options (garage on-grid/hybrid).
+- Sunny face variants: `CharacterDefinition.defaultVariant` + per-cast
+  `variant` in episodes ("v1" | "A" | "B" | "C"). New face lives in
+  `src/engine/characters/sunny/` (head geometry, SunnyEye, iris texture).
+  Eye review pack: `node scripts/review/build-sunny-eye-review.mjs`.
 - Review pipeline: `node scripts/review/build-review-episodes.mjs` →
   `node scripts/render-stills.mjs renders/phase-2-review/stills-plan.json` →
   `python3 scripts/review/contact_sheet.py` (optional, Pillow).
