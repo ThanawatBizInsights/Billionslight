@@ -10,10 +10,10 @@ whenever a new reusable asset or capability is approved.
 2026-11-27) and set as `SUNNY.defaultVariant`. Variants v1/A/C are kept for
 comparison only; do not use them in episodes. Do not change the approved
 face without permission (see `docs/sunny-eye-review.md`).
-**Phase 2 — prototypes complete, AWAITING VISUAL APPROVAL** (review pack:
-`docs/phase-2-report.md`, renders in `renders/phase-2-review/`). Do not start
-Phase 3 and do not expand the asset library until the owner approves the
-visuals. Approved design decisions: `docs/design-decisions-phase-2.md`.
+**Phase 2 — APPROVED by the owner (2026-11-27).** Approved assets are locked:
+do not modify them without permission — add variants instead.
+**Phase 3 — animation engine: IN PROGRESS.** Stop and report before Phase 4
+(ElevenLabs needs approval for any paid call).
 
 | Phase | Scope | Gate |
 |---|---|---|
@@ -178,19 +178,20 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 
 ## Approved reusable assets & capabilities
 
-Approved (owner decisions): `scene-palette` (board 01 colours), character
-design decisions in `docs/design-decisions-phase-2.md`, Sunny face variant B. All 3D assets below
-are PROTOTYPES awaiting visual approval. Full register: `docs/asset-manifest.md`.
+Approved (owner, 2026-11-27): `scene-palette`, the design decisions in
+`docs/design-decisions-phase-2.md`, Sunny face variant B, and the whole Phase 2
+review pack (characters, environments, equipment, lighting, props, clips,
+expressions). Full register: `docs/asset-manifest.md`.
 
 | ID | Type | Status |
 |---|---|---|
-| `sunny`, `homeowner_male_01` | characters | awaiting visual approval |
+| `sunny` (face B), `homeowner_male_01` | characters | approved |
 | `homeowner_female_01` | character | reserved |
 | `temp-engineer` | character | superseded (Phase 1 test only) |
-| `modern-thai-house`, `living-room`, `garage-service-area` | environments | awaiting visual approval |
+| `modern-thai-house`, `living-room`, `garage-service-area` | environments | approved |
 | `gable-house-prototype` | environment | superseded (Phase 1 test only) |
 | `review-studio` | environment | internal review set |
-| `midday-sun`, `golden-hour`, `evening`, `night`, `power-outage` | lighting | awaiting visual approval |
-| on-grid/hybrid inverter, battery stack, distribution board, EV charger, EV, utility meter, socket, switch | equipment | awaiting visual approval |
-| `tablet`, `demo-solar-panel`, `coffee-mug` | props | awaiting visual approval |
-| 20 animation clips, 11 expression presets | animation | awaiting visual approval |
+| `midday-sun`, `golden-hour`, `evening`, `night`, `power-outage` | lighting | approved |
+| on-grid/hybrid inverter, battery stack, distribution board, EV charger, EV, utility meter, socket, switch | equipment | approved |
+| `tablet`, `demo-solar-panel`, `coffee-mug` | props | approved |
+| 20 animation clips, 11 expression presets | animation | approved |

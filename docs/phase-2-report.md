@@ -1,6 +1,6 @@
 # Phase 2 report — Visual prototype
 
-Date: 2026-11-27 · Status: **re-rendered with the approved Sunny face (variant B); full pack awaiting owner VISUAL APPROVAL**
+Date: 2026-11-27 · Status: **APPROVED by the owner (2026-11-27)**, with Sunny face variant B
 Approved inputs: `docs/design-decisions-phase-2.md` · References: Drive
 boards 01–06 and "Three Squirrels" (local copies, git-ignored).
 

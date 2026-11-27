@@ -37,17 +37,19 @@ describe("asset manifest", () => {
     }
   });
 
-  it("Phase 2 characters await visual approval; May is reserved; teammates deferred", () => {
-    expect(byId.get("sunny")!.status).toBe("awaiting-visual-approval");
-    expect(byId.get("homeowner_male_01")!.status).toBe("awaiting-visual-approval");
+  it("Phase 2 characters approved; May is reserved; teammates deferred", () => {
+    expect(byId.get("sunny")!.status).toBe("approved");
+    expect(byId.get("homeowner_male_01")!.status).toBe("approved");
     expect(byId.get("homeowner_female_01")!.status).toBe("reserved");
     expect(byId.get("squirrel-teammate-red")!.status).toBe("deferred");
     expect(byId.get("sunny")!.scale!.heightM).toBe(1.35);
     expect(byId.get("homeowner_male_01")!.scale!.heightM).toBe(1.7);
   });
 
-  it("only owner-approved decisions are marked approved", () => {
-    expect(manifest.assets.filter((a) => a.status === "approved").map((a) => a.id).sort()).toEqual(["scene-palette", "sunny-face-b"]);
+  it("Phase 2 approval: Sunny (face B), Ton and the palette are approved; nothing is left awaiting review", () => {
+    const approved = new Set(manifest.assets.filter((a) => a.status === "approved").map((a) => a.id));
+    for (const id of ["scene-palette", "sunny-face-b", "sunny", "homeowner_male_01", "modern-thai-house", "living-room", "garage-service-area"]) expect(approved.has(id), id).toBe(true);
+    expect(manifest.assets.filter((a) => a.status === "awaiting-visual-approval")).toEqual([]);
   });
 
   it("third-party material is reference-only", () => {

@@ -8,7 +8,7 @@
       "name": "Sunny — Billionslight solar & electrical engineer",
       "nameTh": "ซันนี่",
       "category": "character",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-creature-rig",
       "phase": 2,
       "references": [
@@ -161,9 +161,7 @@
         "expr:curious",
         "walk (Phase 3)"
       ],
-      "issues": [
-        "Face variant B approved (owner, 2026-11-27). Full character still part of the Phase 2 visual-approval review."
-      ],
+      "issues": [],
       "notes": "Authoritative identity from the original character sheet. Soft faceted low-poly; tail = 5-joint chain; removable props (tablet, demo solar panel); pure-white hard hat with ridges between the ears. Face variants: v1 (Phase 2 prototype, not approved), A/B/C (SunnyFace: soft-faceted head with cream facial region, SunnyEye with curved iris texture, surface catchlights, eyelids). Default face: variant B (approved). v1/A/C kept for comparison only.",
       "implementation": "src/engine/characters/sunny"
     },
@@ -172,7 +170,7 @@
       "name": "Ton (ต้น) — main male homeowner",
       "nameTh": "ต้น",
       "category": "character",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-humanoid-rig",
       "phase": 2,
       "references": [
@@ -247,9 +245,7 @@
         "expr:curious",
         "walk (Phase 3)"
       ],
-      "issues": [
-        "Prototype awaiting owner visual approval (Phase 2 review pack)."
-      ],
+      "issues": [],
       "implementation": "src/engine/characters/StylizedHuman.tsx",
       "notes": "Curious, friendly, occasionally humorous; asks practical questions. Cream short-sleeved shirt, navy trousers, white casual shoes, dark-brown geometric hair, warm skin tone."
     },
@@ -394,7 +390,7 @@
       "name": "ENV01 Modern Thai solar house",
       "nameTh": "บ้านโซลาร์",
       "category": "environment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-environment",
       "phase": 2,
       "references": [
@@ -459,9 +455,7 @@
         "energy-cable-anchors"
       ],
       "implementation": "src/engine/environments/ModernSolarHouse.tsx",
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "notes": "Rebuilt to board 05 ENV01: flat-roof two-storey block, recessed glazing with lit interiors, terrace planters, tilted PV array on racks, garage/service wing, utility meter on a separate boundary-wall pillar, tropical landscaping. Day/golden/night/blackout via lighting presets + power state."
     },
     {
@@ -469,7 +463,7 @@
       "name": "ENV02 Living room",
       "nameTh": "ห้องนั่งเล่น",
       "category": "environment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-environment",
       "phase": 2,
       "references": [
@@ -535,9 +529,7 @@
         "sockets",
         "light-switch"
       ],
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "implementation": "src/engine/environments/LivingRoom.tsx",
       "notes": "Cutaway room 6.4×5 m, ceiling 2.8 m. State: power, lights, tv, ac, daylight. Sofa, coffee table, TV + console, wall AC, floor lamp, pendant + downlights, window with garden view, sockets, light switch."
     },
@@ -581,7 +573,7 @@
       "id": "garage-service-area",
       "name": "ENV03 Garage & electrical service area (default equipment storytelling location)",
       "category": "environment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-environment",
       "phase": 3,
       "references": [
@@ -600,9 +592,7 @@
         "energy-flow-routes"
       ],
       "implementation": "src/engine/environments/GarageServiceArea.tsx",
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "notes": "Options: system on-grid|hybrid, battery (hybrid only), evCharger, car. Storytelling location only — not an installation recommendation. Energy-flow routes derived from the configuration."
     },
     {
@@ -713,7 +703,7 @@
       "id": "pv-panel",
       "name": "PV module",
       "category": "equipment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -736,15 +726,13 @@
       ],
       "implementation": "src/engine/equipment/Solar.tsx",
       "palette": {},
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ]
+      "issues": []
     },
     {
       "id": "on-grid-inverter",
       "name": "On-grid (grid-tied) inverter",
       "category": "equipment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -778,16 +766,14 @@
           "source": "estimated"
         }
       },
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "notes": "WallInverter (variant on-grid). Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "hybrid-inverter",
       "name": "Hybrid inverter",
       "category": "equipment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -825,16 +811,14 @@
           "source": "estimated"
         }
       },
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "notes": "WallInverter (variant hybrid). Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "battery-storage",
       "name": "Battery storage (Li-ion)",
       "category": "equipment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -861,16 +845,14 @@
       ],
       "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {},
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "notes": "BatteryStack. Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "electricity-meter",
       "name": "Electricity meter",
       "category": "equipment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -897,16 +879,14 @@
       ],
       "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {},
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "notes": "UtilityMeter. Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "distribution-board",
       "name": "Distribution board",
       "category": "equipment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -933,9 +913,7 @@
       ],
       "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {},
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "notes": "DistributionBoard. Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
@@ -1038,7 +1016,7 @@
       "id": "ev-charger",
       "name": "EV charger (wallbox)",
       "category": "equipment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 3,
       "references": [
@@ -1061,16 +1039,14 @@
       ],
       "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {},
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "notes": "EVCharger. Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "electric-vehicle",
       "name": "Electric vehicle",
       "category": "equipment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 3,
       "references": [
@@ -1092,9 +1068,7 @@
       ],
       "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {},
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "notes": "ElectricCar. Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
@@ -1155,7 +1129,7 @@
       "id": "air-conditioner",
       "name": "Air conditioner (wall split)",
       "category": "appliance",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -1168,9 +1142,7 @@
         "on-off-state",
         "power-indicator"
       ],
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "palette": {},
       "implementation": "src/engine/environments/LivingRoom.tsx"
     },
@@ -1199,7 +1171,7 @@
       "id": "television",
       "name": "Television",
       "category": "appliance",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -1212,9 +1184,7 @@
         "on-off-state",
         "power-indicator"
       ],
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "palette": {},
       "implementation": "src/engine/environments/LivingRoom.tsx"
     },
@@ -1327,7 +1297,7 @@
       "id": "floor-lamp",
       "name": "Floor lamp",
       "category": "appliance",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -1340,9 +1310,7 @@
         "on-off-state",
         "power-indicator"
       ],
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "palette": {},
       "implementation": "src/engine/environments/LivingRoom.tsx"
     },
@@ -1350,7 +1318,7 @@
       "id": "ceiling-light",
       "name": "Ceiling light",
       "category": "appliance",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -1363,9 +1331,7 @@
         "on-off-state",
         "power-indicator"
       ],
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "palette": {},
       "implementation": "src/engine/environments/LivingRoom.tsx"
     },
@@ -1373,7 +1339,7 @@
       "id": "socket",
       "name": "Household socket",
       "category": "appliance",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 3,
       "references": [],
@@ -1381,9 +1347,7 @@
         "on-off-state",
         "power-indicator"
       ],
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ],
+      "issues": [],
       "palette": {},
       "implementation": "src/engine/equipment/Electrical.tsx"
     },
@@ -1392,7 +1356,7 @@
       "name": "Morning",
       "nameTh": "เช้า",
       "category": "lighting-preset",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1418,9 +1382,7 @@
       },
       "notes": "Soft warm light, long shadows, fresh & calm",
       "implementation": "src/engine/lighting/presets.ts",
-      "issues": [
-        "Preview rendered; awaiting owner visual approval."
-      ],
+      "issues": [],
       "animationCapabilities": []
     },
     {
@@ -1428,7 +1390,7 @@
       "name": "Midday",
       "nameTh": "กลางวัน",
       "category": "lighting-preset",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1454,9 +1416,7 @@
       },
       "notes": "Bright, high contrast, energetic",
       "implementation": "src/engine/lighting/presets.ts",
-      "issues": [
-        "Preview rendered; awaiting owner visual approval."
-      ],
+      "issues": [],
       "animationCapabilities": []
     },
     {
@@ -1498,7 +1458,7 @@
       "name": "Golden hour",
       "nameTh": "เย็น (แสงทอง)",
       "category": "lighting-preset",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1524,9 +1484,7 @@
       },
       "notes": "Warm golden light, rich colour, atmospheric",
       "implementation": "src/engine/lighting/presets.ts",
-      "issues": [
-        "Preview rendered; awaiting owner visual approval."
-      ],
+      "issues": [],
       "animationCapabilities": []
     },
     {
@@ -1534,7 +1492,7 @@
       "name": "Night",
       "nameTh": "กลางคืน",
       "category": "lighting-preset",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1560,9 +1518,7 @@
       },
       "notes": "Warm interior light, deep blue shadows",
       "implementation": "src/engine/lighting/presets.ts",
-      "issues": [
-        "Preview rendered; awaiting owner visual approval."
-      ],
+      "issues": [],
       "animationCapabilities": []
     },
     {
@@ -1570,7 +1526,7 @@
       "name": "Power outage",
       "nameTh": "ไฟดับ",
       "category": "lighting-preset",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1596,9 +1552,7 @@
       },
       "notes": "No interior light, cool moonlight, dark & quiet",
       "implementation": "src/engine/lighting/presets.ts",
-      "issues": [
-        "Preview rendered; awaiting owner visual approval."
-      ],
+      "issues": [],
       "animationCapabilities": []
     },
     {
@@ -1606,7 +1560,7 @@
       "name": "Evening",
       "nameTh": "ค่ำ",
       "category": "lighting-preset",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1616,9 +1570,7 @@
         }
       ],
       "implementation": "src/engine/lighting/presets.ts",
-      "issues": [
-        "Preview rendered; awaiting owner visual approval."
-      ],
+      "issues": [],
       "palette": {},
       "animationCapabilities": []
     },
@@ -2151,7 +2103,7 @@
       "id": "light-switch",
       "name": "Light switch",
       "category": "equipment",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [],
@@ -2160,15 +2112,13 @@
         "on-off-rocker"
       ],
       "implementation": "src/engine/equipment/Electrical.tsx",
-      "issues": [
-        "Prototype awaiting owner visual approval."
-      ]
+      "issues": []
     },
     {
       "id": "tablet",
       "name": "Tablet (hand-held prop, screen glow)",
       "category": "prop",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -2189,7 +2139,7 @@
       "id": "demo-solar-panel",
       "name": "Demonstration solar panel (hand-held prop)",
       "category": "prop",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -2210,7 +2160,7 @@
       "id": "coffee-mug",
       "name": "Coffee mug (hand-held prop)",
       "category": "prop",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -2245,7 +2195,7 @@
       "id": "idle-breathing",
       "name": "Clip: idle-breathing",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2260,7 +2210,7 @@
       "id": "wave",
       "name": "Clip: wave",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2276,7 +2226,7 @@
       "id": "point",
       "name": "Clip: point",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2292,7 +2242,7 @@
       "id": "talk",
       "name": "Clip: talk",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2307,7 +2257,7 @@
       "id": "explain",
       "name": "Clip: explain",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2323,7 +2273,7 @@
       "id": "open-hands",
       "name": "Clip: open-hands",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2338,7 +2288,7 @@
       "id": "nod",
       "name": "Clip: nod",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2353,7 +2303,7 @@
       "id": "shake-head",
       "name": "Clip: shake-head",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2368,7 +2318,7 @@
       "id": "listen",
       "name": "Clip: listen",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2383,7 +2333,7 @@
       "id": "think",
       "name": "Clip: think",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2399,7 +2349,7 @@
       "id": "surprised",
       "name": "Clip: surprised",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2414,7 +2364,7 @@
       "id": "laugh",
       "name": "Clip: laugh",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2429,7 +2379,7 @@
       "id": "thumbs-up",
       "name": "Clip: thumbs-up",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2445,7 +2395,7 @@
       "id": "hold-tablet",
       "name": "Clip: hold-tablet",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2460,7 +2410,7 @@
       "id": "present-prop",
       "name": "Clip: present-prop",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2476,7 +2426,7 @@
       "id": "look-upward",
       "name": "Clip: look-upward",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2491,7 +2441,7 @@
       "id": "lean-in",
       "name": "Clip: lean-in",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2506,7 +2456,7 @@
       "id": "sit",
       "name": "Clip: sit",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2521,7 +2471,7 @@
       "id": "shrug",
       "name": "Clip: shrug",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2536,7 +2486,7 @@
       "id": "smile",
       "name": "Clip: smile",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2551,7 +2501,7 @@
       "id": "expr-neutral",
       "name": "Expression: neutral",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2571,7 +2521,7 @@
       "id": "expr-happy",
       "name": "Expression: happy",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2591,7 +2541,7 @@
       "id": "expr-talk",
       "name": "Expression: talk",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2611,7 +2561,7 @@
       "id": "expr-surprised",
       "name": "Expression: surprised",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2631,7 +2581,7 @@
       "id": "expr-thinking",
       "name": "Expression: thinking",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2651,7 +2601,7 @@
       "id": "expr-confused",
       "name": "Expression: confused",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2671,7 +2621,7 @@
       "id": "expr-laughing",
       "name": "Expression: laughing",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2691,7 +2641,7 @@
       "id": "expr-wink",
       "name": "Expression: wink",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2711,7 +2661,7 @@
       "id": "expr-concerned",
       "name": "Expression: concerned",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2731,7 +2681,7 @@
       "id": "expr-listening",
       "name": "Expression: listening",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2751,7 +2701,7 @@
       "id": "expr-curious",
       "name": "Expression: curious",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -2771,7 +2721,7 @@
       "id": "portrait-warm",
       "name": "Cinematic portrait (warm amber key, soft navy shadows)",
       "category": "lighting-preset",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2787,15 +2737,14 @@
       },
       "animationCapabilities": [],
       "implementation": "src/engine/lighting/presets.ts",
-      "issues": [
-        "Used for the Sunny eye review cinematic close-ups."
-      ]
+      "issues": [],
+      "notes": "Used for the Sunny eye review cinematic close-ups."
     },
     {
       "id": "blink",
       "name": "Clip: blink (deliberate blink via eyelids)",
       "category": "animation-clip",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2810,7 +2759,7 @@
       "id": "expr-look-left",
       "name": "Expression: look-left",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2826,7 +2775,7 @@
       "id": "expr-look-right",
       "name": "Expression: look-right",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2842,7 +2791,7 @@
       "id": "expr-look-up",
       "name": "Expression: look-up",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2858,7 +2807,7 @@
       "id": "expr-look-down",
       "name": "Expression: look-down",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
@@ -2874,7 +2823,7 @@
       "id": "expr-eyes-closed",
       "name": "Expression: eyes-closed",
       "category": "expression",
-      "status": "awaiting-visual-approval",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [],
