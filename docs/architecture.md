@@ -101,3 +101,27 @@ pose = evaluatePose(frame, clips, base face from expression track, body dims)
 | Environment `adjustLighting` | Outdoor presets are reused indoors; interiors swap grass-green bounce light for a warm floor bounce, and drop outdoor haze. |
 | Option-dependent cable routes | The garage draws different energy paths for on-grid vs hybrid (battery and backup circuit only when configured). |
 | Review content = episodes | Identity sheets, scale reference, expressions, poses and environment previews are generated episode JSON rendered by the same engine, so what is approved is what episodes will use. |
+
+## Phase 3 additions — animation engine
+
+```
+character keyframes ──► sampleMotion(frame) ─► {travel, speed, heading}
+                                   │                │
+                                   ▼                ▼ (faceMovement)
+evaluatePose(frame, clips, face, body, motion) ─► auto walk layer (gait = travel / stride)
+                                                  + interaction clips (reach / operate-switch …)
+scene.camera.shots[] ─► SHOTS[preset](ShotContext{subject(f), subject2(f), aspect, params})
+scene.transitionIn ─► sceneStartFrames / sceneOverlap ─► TransitionLayer (fade, dip-to-navy)
+electrical keyframes ─► deriveEnergyState ─► flows + housePower/backupPower
+                                            └► environment: appliance on/off, load routes (white)
+```
+
+| Decision | Why |
+|---|---|
+| Walk driven by distance travelled, not time | Feet never slide whatever the keyframe timing; standing still blends the walk out automatically. Opt out with `autoWalk: false`. |
+| Point/reach targets resolved by the scene | Clips stay body-local (yaw/pitch/dist); episodes name an anchor (`lightSwitch`, `inverter`) or a cast member. |
+| Subject-aware shot presets | A shot is a pure function of the frame and its subjects, so tracking, two-shots and over-the-shoulder follow moving characters deterministically. Vertical frames get extra distance automatically. |
+| Shot lists with hard cuts | `camera.shots[]` cut on `from`; explicit keyframes still override everything. |
+| Crossfades overlap the timeline | A `fade` transition starts the scene earlier (overlap = transition length), so total duration stays exact; dip-to-navy splits its length between outgoing and incoming scenes. |
+| Appliance power derived from the scenario | Appliances run when house circuits are powered; backup-circuit appliances (hybrid only, `options.backupLoads`) run when the backup supply is active. Nothing is hand-animated. Per-appliance switches live in `environment.states`. |
+| Consumption routes are a naming convention | `load:house:<appliance>` / `load:backup:<appliance>` cables render white flows at the house / backup power level, so any environment can add them without engine changes. |

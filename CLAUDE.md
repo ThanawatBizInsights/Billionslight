@@ -12,8 +12,9 @@ comparison only; do not use them in episodes. Do not change the approved
 face without permission (see `docs/sunny-eye-review.md`).
 **Phase 2 — APPROVED by the owner (2026-11-27).** Approved assets are locked:
 do not modify them without permission — add variants instead.
-**Phase 3 — animation engine: IN PROGRESS.** Stop and report before Phase 4
-(ElevenLabs needs approval for any paid call).
+**Phase 3 — animation engine: BUILT, awaiting owner review** (see
+`docs/phase-3-report.md`). Do not start Phase 4 without approval (ElevenLabs
+needs approval for any paid call).
 
 | Phase | Scope | Gate |
 |---|---|---|
@@ -175,6 +176,26 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
   `python3 scripts/review/contact_sheet.py` (optional, Pillow).
 - Plan camera framing numerically with `scripts/plan-shot.mjs` (remember it
   ignores character facing — check which way characters look).
+
+## Engine capabilities (Phase 3, in review)
+
+- Locomotion: characters walk automatically while keyframes move them (gait
+  synced to distance; `autoWalk: false` opts out); `faceMovement: true` turns
+  them toward the direction of travel.
+- Interaction clips: `reach`, `operate-switch`, `check-equipment`,
+  `shade-eyes`, `scratch-head`; `params.target` = anchor name, point or
+  `{castId}` (resolved by the scene).
+- Cameras: `camera.shots[]` = subject-aware presets from
+  `src/engine/cameras/shots.ts` with hard cuts on `from`; subjects are
+  `{castId}`, anchor names or points. Keyframes still override.
+- Transitions: `transitionIn` cut / fade (overlaps the previous scene) /
+  dip-to-navy.
+- `energy-cutaway-house`: appliances powered from the derived electrical state;
+  backup loads via `options.backupLoads` (hybrid only); white consumption flows
+  via `load:house:*` / `load:backup:*` cable IDs; states `dbDoor`, `clouds`,
+  per-appliance switches.
+- Showcase: `node scripts/review/build-phase3-showcase.mjs`, stills plan in
+  `renders/phase-3-review/stills-plan.json`.
 
 ## Approved reusable assets & capabilities
 
