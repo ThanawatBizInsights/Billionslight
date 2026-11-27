@@ -23,6 +23,14 @@ export interface ClipBody extends BodyDims {
   scale: number;
 }
 
+/** Root motion of the character at this frame, derived from its position track. */
+export interface Motion {
+  /** Distance travelled since frame 0, metres (drives the gait phase — no foot sliding). */
+  travel: number;
+  /** Current ground speed, metres per second. */
+  speed: number;
+}
+
 export interface ClipContext {
   /** Frame relative to clip start. */
   frame: number;
@@ -31,6 +39,9 @@ export interface ClipContext {
   seed: number;
   params: Record<string, unknown>;
   body: ClipBody;
+  /** Envelope weight of this clip at this frame (0–1): lets clips shape their own transitions. */
+  blend: number;
+  motion: Motion;
 }
 
 export type Clip = (ctx: ClipContext, pose: Pose) => Pose;
@@ -198,9 +209,11 @@ const leanIn: Clip = (_ctx, pose) => addPose(pose, { spine: [0.14, 0, 0], head: 
  * Sit on a seat of height params.seatHeight (world metres, default 0.45).
  * Works for any body plan because it uses the character's leg dimensions.
  */
-const sit: Clip = ({ params, body }, pose) => {
+const sit: Clip = ({ params, body, blend }, pose) => {
   const seat = num(params, "seatHeight", 0.45) / body.scale; // to body-plan units
   const rootY = seat - body.hipHeight;
+  // sitting down / standing up: lean forward mid-transition (peaks when half seated)
+  const lean = 0.55 * (1 - blend);
   return {
     ...setJoints(pose, {
       hipL: [-1.5, 0, 0.06],
@@ -209,7 +222,7 @@ const sit: Clip = ({ params, body }, pose) => {
       kneeR: [1.45, 0, 0],
       ankleL: [0.05, 0, 0],
       ankleR: [0.05, 0, 0],
-      spine: [-0.06, 0, 0],
+      spine: [-0.06 + lean, 0, 0],
       shoulderL: [-0.45, 0, 0.12],
       shoulderR: [-0.45, 0, -0.12],
       elbowL: [-0.55, 0, 0],
@@ -229,6 +242,105 @@ const shrug: Clip = ({ frame }, pose) => {
 const blink: Clip = ({ frame }, pose) => {
   const k = frame <= 2 ? frame / 2 : Math.max(0, 1 - (frame - 2) / 4);
   return { ...pose, face: { ...pose.face, eyelids: [Math.max(pose.face.eyelids[0], k), Math.max(pose.face.eyelids[1], k)] } };
+};
+
+/**
+ * Walk cycle. The gait phase comes from the distance travelled, so feet do not
+ * slide at any speed; amplitude follows ground speed (0 when standing). Added
+ * automatically when a character moves (track.autoWalk, default on).
+ * params.inPlace: walk on the spot at params.speed m/s (for demonstrations).
+ */
+const walk: Clip = ({ frame, fps, params, body, motion }, pose) => {
+  const inPlace = params.inPlace === true;
+  const speed = inPlace ? num(params, "speed", 1) : motion.speed;
+  const travel = inPlace ? (frame / fps) * speed : motion.travel;
+  const step = (body.thigh + body.shin) * 1.25 * body.scale; // metres per step
+  const t = (travel / (2 * step)) * Math.PI * 2;
+  const amp = clamp(speed / 0.9, 0, 1.2);
+  if (amp <= 0.001) return pose;
+  const s = Math.sin(t);
+  const c = Math.cos(t);
+  const swingL = Math.max(0, c);
+  const swingR = Math.max(0, -c);
+  const A = 0.42 * amp; // thigh swing
+  const out = addPose(pose, {
+    hipL: [-A * s, 0, 0],
+    hipR: [A * s, 0, 0],
+    kneeL: [0.06 + 0.85 * amp * swingL * swingL, 0, 0],
+    kneeR: [0.06 + 0.85 * amp * swingR * swingR, 0, 0],
+    ankleL: [-0.25 * amp * swingL, 0, 0],
+    ankleR: [-0.25 * amp * swingR, 0, 0],
+    shoulderL: [0.34 * amp * s, 0, 0],
+    shoulderR: [-0.34 * amp * s, 0, 0],
+    elbowL: [-0.22 * amp, 0, 0],
+    elbowR: [-0.22 * amp, 0, 0],
+    spine: [0.05 * amp, 0.07 * amp * s, 0],
+    chest: [0, -0.05 * amp * s, 0],
+    head: [0, 0.03 * amp * s, 0],
+    tail1: [0.06 * amp * c, 0.16 * amp * s, 0],
+    tail3: [0, 0.12 * amp * s, 0.05 * amp * c],
+    tail5: [0.05 * amp * c, 0.14 * amp * s, 0],
+  });
+  // body rises at mid-stance and dips at double support (twice per cycle)
+  return { ...out, rootY: out.rootY + ((0.016 * amp) / body.scale) * Math.cos(2 * t) };
+};
+
+/**
+ * Reach toward a target (params.yaw/pitch/dist, resolved from params.target /
+ * pointAt by the scene). The elbow bends for near targets; the body leans in
+ * for far ones. params.press: true adds a press at params.pressAt (frames).
+ */
+const reach: Clip = ({ frame, params, body }, pose) => {
+  const left = params.hand === "left";
+  const yaw = left ? -num(params, "yaw", 0.3) : num(params, "yaw", -0.3);
+  const pitch = num(params, "pitch", 0);
+  const dist = num(params, "dist", 0.5);
+  const armLen = (body.upperArm + body.forearm) * body.scale;
+  const near = clamp(1 - dist / (armLen * 1.05));
+  const far = clamp((dist - armLen) / 0.5);
+  let press = 0;
+  if (params.press === true) {
+    const at = num(params, "pressAt", 12);
+    press = Math.max(0, Math.sin(clamp((frame - at) / 8) * Math.PI));
+  }
+  const arm = aimArm(clamp(yaw, -1.5, 1.5), clamp(pitch + near * 0.5, -0.8, 1.3));
+  const p = setJoints(pose, {
+    shoulderR: [arm[0] - press * 0.12, arm[1], arm[2]],
+    elbowR: [-1.3 * near + press * 0.25, 0, 0],
+    wristR: [0.2 - press * 0.35, 0, 0],
+    spine: [0.22 * far + 0.04, yaw * 0.12, 0],
+  });
+  return withHand(params, p, pose, "right");
+};
+
+/** Operate a light switch / button: reach + press (defaults suit a wall switch). */
+const operateSwitch: Clip = (ctx, pose) => reach({ ...ctx, params: { press: true, pressAt: 10, ...ctx.params } }, pose);
+
+/** Inspect equipment: lean in, both hands raised in front, small deliberate checks. */
+const checkEquipment: Clip = ({ frame, fps, seed }, pose) => {
+  const t = frame / fps;
+  const tap = Math.max(0, Math.sin(t * Math.PI * 2 * 0.9)) * 0.12;
+  const n = noise1(seed + 71, t * 0.6) * 0.06;
+  return setJoints(pose, {
+    spine: [0.2, n, 0],
+    head: [0.16, n * 1.5, 0.08],
+    shoulderL: [-0.85, -0.25, 0.15],
+    elbowL: [-1.05, 0, 0],
+    wristL: [0.2, 0, 0.2],
+    shoulderR: [-1.0 - tap, 0.2, -0.12],
+    elbowR: [-0.75 + tap, 0, 0],
+    wristR: [-0.1, 0, -0.2],
+  }, { browRaise: -0.1, gaze: [0, -0.2] });
+};
+
+/** Shade the eyes with one hand while looking up (e.g. at rooftop solar panels). */
+const shadeEyes: Clip = ({ params }, pose) =>
+  withHand(params, setJoints(pose, { shoulderR: [-2.05, 0.35, -0.45], elbowR: [-1.75, 0, 0], wristR: [0.55, 0, 0.3], head: [-0.32, 0, 0], neck: [-0.12, 0, 0] }, { gaze: [0, 0.45], browRaise: 0.2 }), pose, "right");
+
+/** Confused head scratch. */
+const scratchHead: Clip = ({ frame, fps, params }, pose) => {
+  const sc = Math.sin((frame / fps) * Math.PI * 2 * 3) * 0.12;
+  return withHand(params, setJoints(pose, { shoulderR: [-2.4, 0.2, -0.55], elbowR: [-2.0 + sc, 0, 0], wristR: [0.3, 0, 0], head: [0.05, -0.1, 0.18] }, { browTilt: -0.6, smile: -0.1 }), pose, "right");
 };
 
 const smile: Clip = (_ctx, pose) => ({ ...pose, face: { ...pose.face, smile: 1, browRaise: 0.2 } });
@@ -254,6 +366,12 @@ export const CLIPS: Record<string, Clip> = {
   sit,
   shrug,
   blink,
+  walk,
+  reach,
+  "operate-switch": operateSwitch,
+  "check-equipment": checkEquipment,
+  "shade-eyes": shadeEyes,
+  "scratch-head": scratchHead,
   smile,
 };
 
@@ -282,15 +400,36 @@ const DEFAULT_BODY: ClipBody = { hipHeight: 0.9, thigh: 0.42, shin: 0.4, shoulde
  * Evaluate the full layered pose at a frame:
  *   rest (with base face) → idle breathing (always) → each active clip blended by its envelope.
  */
-export function evaluatePose(frame: number, fps: number, seed: number, clips: ClipInstance[], baseFace?: FaceState, body: ClipBody = DEFAULT_BODY): Pose {
-  let pose = idleBreathing({ frame, fps, seed, durationInFrames: Infinity, params: {}, body }, restPose(baseFace));
+const STILL: Motion = { travel: 0, speed: 0 };
+
+/**
+ * Evaluate the full layered pose at a frame:
+ *   rest (with base face) → idle breathing (always) → automatic walk (when the
+ *   character moves and autoWalk is on) → each active clip blended by its envelope.
+ */
+export function evaluatePose(
+  frame: number,
+  fps: number,
+  seed: number,
+  clips: ClipInstance[],
+  baseFace?: FaceState,
+  body: ClipBody = DEFAULT_BODY,
+  motion: Motion = STILL,
+  autoWalk = true,
+): Pose {
+  const base: Omit<ClipContext, "frame" | "durationInFrames" | "params" | "blend"> = { fps, seed, body, motion };
+  let pose = idleBreathing({ ...base, frame, durationInFrames: Infinity, params: {}, blend: 1 }, restPose(baseFace));
+  if (autoWalk && motion.speed > 0.02 && !clips.some((c) => c.clip === "walk")) {
+    const w = clamp((motion.speed - 0.02) / 0.25);
+    pose = blendPoses(pose, walk({ ...base, frame, durationInFrames: Infinity, params: {}, blend: w }, pose), w);
+  }
   for (const c of clips) {
     if (c.clip === "idle-breathing") continue;
     const fn = CLIPS[c.clip];
     if (!fn) throw new Error(`Unknown animation clip "${c.clip}"`);
     const w = clipEnvelope(frame, c) * c.weight;
     if (w <= 0) continue;
-    const ctx: ClipContext = { frame: frame - c.from, durationInFrames: c.durationInFrames, fps, seed, params: c.params, body };
+    const ctx: ClipContext = { ...base, frame: frame - c.from, durationInFrames: c.durationInFrames, params: c.params, blend: w };
     pose = blendPoses(pose, fn(ctx, pose), w);
   }
   return pose;

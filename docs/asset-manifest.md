@@ -2,7 +2,7 @@
 
 _Generated from `src/assets/asset-manifest.json` by `node scripts/manifest-report.mjs` — edit the JSON, not this file._
 
-Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `public/assets/references/drive/`.
+Updated: 2026-11-27 · 132 assets · reference files live (git-ignored) under `public/assets/references/drive/`.
 
 | Status | Count |
 |---|---|
@@ -13,7 +13,7 @@ Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `p
 | superseded | 2 |
 | reference-supplied | 32 |
 | reference-only | 3 |
-| in-progress | 2 |
+| in-progress | 16 |
 
 ## character
 
@@ -77,6 +77,7 @@ Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `p
 | `demo-studio` | Technical demonstration studio (dark navy) | reference-supplied | procedural-environment | 3 |  | 04-solar-composition-reference.png §10 centred product demonstration |
 | `review-studio` | Review studio (identity sheets, scale ruler, seats) | in-progress | procedural-environment | 2 |  | — |
 | `gable-house-prototype` | Phase 1 gable-roof house prototype | superseded | procedural-environment | 1 |  | — |
+| `energy-cutaway-house` | ENV04 Energy cutaway house | in-progress | procedural-environment | 3 |  | — |
 
 **`modern-thai-house`** — Rebuilt to board 05 ENV01: flat-roof two-storey block, recessed glazing with lit interiors, terrace planters, tilted PV array on racks, garage/service wing, utility meter on a separate boundary-wall pillar, tropical landscaping. Day/golden/night/blackout via lighting presets + power state.
 - Palette: concrete `#D9D6CF` (estimated), render-white `#F2EFE8` (estimated), window-frame `#2A2A2E` (estimated), interior-warm `#F59E0B` (sheet-swatch), pv-glass `#1E3A8A` (estimated), foliage `#4E8C3A` (estimated)
@@ -101,6 +102,10 @@ Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `p
 
 **`gable-house-prototype`** — Superseded by modern-thai-house; kept for the Phase 1 foundation test.
 - Implementation: `src/engine/environments/ModernThaiHouse.tsx`
+
+**`energy-cutaway-house`** — Isometric two-storey section with rooms, appliances, garage service area, meter and pole. Appliance power derived from the electrical scenario. Simplified educational model, not a wiring diagram.
+- Animation: energy-flows, appliance-states, backup-circuit, outage-marker, clouds
+- Implementation: `src/engine/environments/CutawayHouse.tsx`
 
 ## equipment
 
@@ -304,6 +309,12 @@ Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `p
 | `slow-dolly-out` | Slow dolly-out | missing-reference | data-preset | 3 |  | — |
 | `orbit-equipment` | Orbit around equipment | missing-reference | data-preset | 3 |  | — |
 | `tracking` | Tracking shot | missing-reference | data-preset | 3 |  | — |
+| `two-character` | Camera: two-character | in-progress | data-preset | 3 |  | — |
+| `isometric-house` | Camera: isometric-house | in-progress | data-preset | 3 |  | — |
+| `rooftop-aerial` | Camera: rooftop-aerial | in-progress | data-preset | 3 |  | — |
+| `equipment-close-up` | Camera: equipment-close-up | in-progress | data-preset | 3 |  | — |
+| `orbit-around-equipment` | Camera: orbit-around-equipment | in-progress | data-preset | 3 |  | — |
+| `top-down-technical` | Camera: top-down-technical | in-progress | data-preset | 3 |  | — |
 
 **`slow-dolly-in`** — Camera move; no image reference required.
 - Implementation: `src/engine/cameras/presets.ts`
@@ -315,6 +326,30 @@ Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `p
 - Implementation: `src/engine/cameras/presets.ts`
 
 **`tracking`** — Camera move; no image reference required.
+
+**`two-character`** — Two-shot perpendicular to the line between two subjects; auto distance by aspect
+- Animation: subject-aware, deterministic
+- Implementation: `src/engine/cameras/shots.ts`
+
+**`isometric-house`** — High 45° long-lens house view
+- Animation: subject-aware, deterministic
+- Implementation: `src/engine/cameras/shots.ts`
+
+**`rooftop-aerial`** — High view over the roof array with slow orbit
+- Animation: subject-aware, deterministic
+- Implementation: `src/engine/cameras/shots.ts`
+
+**`equipment-close-up`** — Equipment close-up with slow lateral move
+- Animation: subject-aware, deterministic
+- Implementation: `src/engine/cameras/shots.ts`
+
+**`orbit-around-equipment`** — Slow orbit around a piece of equipment
+- Animation: subject-aware, deterministic
+- Implementation: `src/engine/cameras/shots.ts`
+
+**`top-down-technical`** — Top-down technical view
+- Animation: subject-aware, deterministic
+- Implementation: `src/engine/cameras/shots.ts`
 
 ## branding
 
@@ -339,6 +374,7 @@ Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `p
 |---|---|---|---|---|---|---|
 | `energy-flow-language` | Energy-flow visual language | reference-supplied | 2d-overlay | 3 |  | 02-cinematic-reference-board.png §11; 06-production-reference-sheet.png energy-flow visual language; 04-solar-composition-reference.png §06 |
 | `scene-palette` | Global scene & UI palette | approved | data-preset | 2 |  | 01-visual-reference-board.png §03; 06-production-reference-sheet.png colour & material palette; 03-cinematic-house-lighting-grid.png lighting palette |
+| `scene-transitions` | Scene transitions (cut, fade, dip-to-navy) | in-progress | data-preset | 3 |  | — |
 
 **`energy-flow-language`**
 - Palette: solar `#FFC53D` (sheet-swatch), grid `#4DA3FF` (sheet-swatch), battery `#3DDC84` (sheet-swatch), load `#F5F7FF` (sheet-swatch), inactive `#6B7280` (sheet-swatch), fault `#FF4D4F` (sheet-swatch)
@@ -348,6 +384,10 @@ Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `p
 
 **`scene-palette`** — Board 01 is the primary cinematic colour direction. Warm amber light, muted blue shadows, natural wood, cream interiors, subtle tropical greenery; natural architectural colours in daytime. The official logo keeps its own brand colours.
 - Palette: deep-navy `#0F2747` (owner-approved), solar-yellow `#FBBF24` (owner-approved)
+
+**`scene-transitions`**
+- Animation: cut, crossfade, dip-to-navy
+- Implementation: `src/compositions/EpisodeComposition.tsx`
 
 ## animation-clip
 
@@ -374,6 +414,12 @@ Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `p
 | `shrug` | Clip: shrug | approved | data-preset | 2 |  | — |
 | `smile` | Clip: smile | approved | data-preset | 2 |  | — |
 | `blink` | Clip: blink (deliberate blink via eyelids) | approved | data-preset | 2 |  | — |
+| `walk` | Clip: walk | in-progress | data-preset | 3 |  | — |
+| `reach` | Clip: reach | in-progress | data-preset | 3 |  | — |
+| `operate-switch` | Clip: operate-switch | in-progress | data-preset | 3 |  | — |
+| `check-equipment` | Clip: check-equipment | in-progress | data-preset | 3 |  | — |
+| `shade-eyes` | Clip: shade-eyes | in-progress | data-preset | 3 |  | — |
+| `scratch-head` | Clip: scratch-head | in-progress | data-preset | 3 |  | — |
 
 **`idle-breathing`**
 - Animation: blend-in-out
@@ -456,6 +502,30 @@ Updated: 2026-11-27 · 118 assets · reference files live (git-ignored) under `p
 - Implementation: `src/engine/animation/clips.ts`
 
 **`blink`**
+- Animation: blend-in-out
+- Implementation: `src/engine/animation/clips.ts`
+
+**`walk`** — Procedural walk cycle driven by travel distance (no foot sliding); also applied automatically while a character moves
+- Animation: blend-in-out
+- Implementation: `src/engine/animation/clips.ts`
+
+**`reach`** — Reach toward a world target (yaw/pitch/distance), optional press
+- Animation: blend-in-out
+- Implementation: `src/engine/animation/clips.ts`
+
+**`operate-switch`** — Reach and press a switch or breaker at a target
+- Animation: blend-in-out
+- Implementation: `src/engine/animation/clips.ts`
+
+**`check-equipment`** — Lean in and inspect equipment
+- Animation: blend-in-out
+- Implementation: `src/engine/animation/clips.ts`
+
+**`shade-eyes`** — Hand above the eyes, looking into the distance
+- Animation: blend-in-out
+- Implementation: `src/engine/animation/clips.ts`
+
+**`scratch-head`** — Puzzled head scratch
 - Animation: blend-in-out
 - Implementation: `src/engine/animation/clips.ts`
 

@@ -93,6 +93,10 @@ export const CharacterTrack = z.object({
   expression: z
     .array(z.object({ frame: Frame, expression: AssetId, easing: EasingName.default("easeInOut") }))
     .default([]),
+  /** Blend a walk cycle automatically whenever the character moves (gait synced to distance). */
+  autoWalk: z.boolean().default(true),
+  /** Turn to face the direction of travel while moving (keyframe rotation applies when still). */
+  faceMovement: z.boolean().default(false),
   /** Hand-held props attached to a joint for a time range (props stay separate assets). */
   props: z
     .array(
@@ -120,9 +124,40 @@ export const CameraKeyframe = z.object({
   easing: EasingName.default("easeInOutCubic"),
 });
 
+/** A camera subject: a cast member (eye level), an environment anchor name, or a fixed point. */
+export const CameraSubject = z.union([Vec3, z.string(), z.object({ castId: z.string() })]);
+
+export const ShotParams = z
+  .object({
+    azimuth: z.number().optional(),
+    relative: z.boolean().optional(),
+    distance: z.number().positive().optional(),
+    height: z.number().optional(),
+    fov: z.number().min(2).max(90).optional(),
+    push: z.number().min(-1).max(0.9).optional(),
+    orbit: z.number().optional(),
+    side: z.number().optional(),
+  })
+  .default({});
+
+/** One camera set-up; consecutive shots cut on their `from` frame. */
+export const CameraShotSpec = z.object({
+  from: Frame,
+  preset: AssetId,
+  subject: CameraSubject.optional(),
+  subject2: CameraSubject.optional(),
+  params: ShotParams,
+});
+
 export const CameraTrack = z.object({
-  /** Library preset to start from (optional). Keyframes override it. */
+  /** Library preset for the whole scene (optional). */
   preset: AssetId.optional(),
+  subject: CameraSubject.optional(),
+  subject2: CameraSubject.optional(),
+  params: ShotParams,
+  /** Subject-aware shot list with hard cuts (used when no keyframes are given). */
+  shots: z.array(CameraShotSpec).default([]),
+  /** Explicit keyframes override presets and shots. */
   keyframes: z.array(CameraKeyframe).default([]),
 });
 
@@ -325,16 +360,29 @@ export type EpisodeInput = z.input<typeof Episode>;
 
 export const parseEpisode = (data: unknown): Episode => Episode.parse(data);
 
-/** Total duration = sum of scene durations (scenes are sequential). */
-export const episodeDurationInFrames = (ep: Pick<Episode, "scenes">): number =>
-  ep.scenes.reduce((sum, s) => sum + s.durationInFrames, 0);
+/**
+ * Overlap (frames) between scene i and the previous scene. Only crossfades
+ * ("fade") overlap; cuts and dips to navy are sequential.
+ */
+export const sceneOverlap = (ep: Pick<Episode, "scenes">, i: number): number => {
+  if (i === 0) return 0;
+  const t = ep.scenes[i]!.transitionIn;
+  if (t.type !== "fade") return 0;
+  return Math.min(t.durationInFrames, ep.scenes[i]!.durationInFrames, ep.scenes[i - 1]!.durationInFrames);
+};
 
-/** Scene start frames in the episode timeline. */
+/** Scene start frames in the episode timeline (crossfades overlap the previous scene). */
 export const sceneStartFrames = (ep: Pick<Episode, "scenes">): number[] => {
   let t = 0;
-  return ep.scenes.map((s) => {
-    const start = t;
-    t += s.durationInFrames;
+  return ep.scenes.map((s, i) => {
+    const start = t - sceneOverlap(ep, i);
+    t = start + s.durationInFrames;
     return start;
   });
+};
+
+/** Total duration: end of the last scene, accounting for crossfade overlaps. */
+export const episodeDurationInFrames = (ep: Pick<Episode, "scenes">): number => {
+  const starts = sceneStartFrames(ep);
+  return ep.scenes.length ? starts[starts.length - 1]! + ep.scenes[ep.scenes.length - 1]!.durationInFrames : 0;
 };

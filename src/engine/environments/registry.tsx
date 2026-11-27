@@ -15,6 +15,7 @@ import { ModernSolarHouse, SOLAR_HOUSE_ANCHORS, SOLAR_HOUSE_CABLES } from "./Mod
 import { LIVING_ROOM_ANCHORS, LivingRoom } from "./LivingRoom";
 import { GARAGE_ANCHORS, GarageServiceArea, garageCables } from "./GarageServiceArea";
 import { ReviewStudio } from "./ReviewStudio";
+import { CUTAWAY_ANCHORS, CUTAWAY_APPLIANCES, CutawayHouse, cutawayCables } from "./CutawayHouse";
 
 export interface EnvironmentRenderProps {
   frame: number;
@@ -134,6 +135,31 @@ export const ENVIRONMENTS: Record<string, EnvironmentDefinition> = {
     defaultState: (l, e) => ({ power: e ? Math.max(e.housePower, e.backupPower) : 1, lights: 1, daylight: presetDaylight(l) }),
     render: ({ frame, energy, options, state }) => (
       <GarageServiceArea frame={frame} energy={energy?.state ?? IDLE_ENERGY_STATE} options={options} lights={state.lights! * state.power!} />
+    ),
+  },
+  "energy-cutaway-house": {
+    id: "energy-cutaway-house",
+    label: "ENV04 Energy cutaway house (isometric section for energy explanations)",
+    anchors: CUTAWAY_ANCHORS,
+    cables: cutawayCables,
+    focus: [1.6, 2.6, 0],
+    shadowExtent: 14,
+    atmosphere: { center: [1.6, 3, 2], size: [16, 6, 8], count: 40 },
+    defaultState: (l, e) => ({
+      dbDoor: 0.9,
+      clouds: e && e.pvGeneration < 0.35 && presetDaylight(l) > 0.5 ? 1 : 0,
+      ...Object.fromEntries(CUTAWAY_APPLIANCES.map((a) => [a.id, 1])),
+    }),
+    render: ({ frame, energy, options, state }) => (
+      <CutawayHouse
+        frame={frame}
+        energy={energy?.state ?? IDLE_ENERGY_STATE}
+        housePower={energy?.housePower ?? 1}
+        backupPower={energy?.backupPower ?? 0}
+        pvGeneration={energy?.pvGeneration ?? 0}
+        options={options}
+        state={state}
+      />
     ),
   },
   "gable-house-prototype": {

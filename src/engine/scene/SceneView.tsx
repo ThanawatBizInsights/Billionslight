@@ -9,7 +9,7 @@ import { useCurrentFrame, useVideoConfig } from "remotion";
 import * as THREE from "three";
 import type { Episode, Scene, Vec3 } from "../../schemas/episode";
 import { blinkAmount, clamp, lerp, lerpAngle, lerpVec3, progress, sampleTrack, type Keyframe } from "../animation/core";
-import { evaluatePose, type ClipBody } from "../animation/clips";
+import { evaluatePose, type ClipBody, type Motion } from "../animation/clips";
 import { getCharacter } from "../characters/library";
 import { CharacterModel, eyeHeightWorld, modelScale } from "../characters/CharacterModel";
 import { getExpression } from "../characters/expressions";
@@ -18,6 +18,7 @@ import type { Attachments } from "../characters/parts";
 import type { CharacterDefinition } from "../characters/types";
 import { CameraRig, sampleCamera, type CameraShot } from "../cameras/CameraRig";
 import { getCameraPreset } from "../cameras/presets";
+import { getShot, SHOTS } from "../cameras/shots";
 import { environmentCables, getEnvironment, type EnvironmentDefinition } from "../environments/registry";
 import { LightingRig } from "../lighting/LightingRig";
 import { blendPresets, getLightingPreset, type LightingPreset } from "../lighting/presets";
@@ -63,6 +64,28 @@ export function samplePlacement(t: Track, frame: number): { position: Vec3; rota
   return { position: s.p as Vec3, rotationY: s.r };
 }
 
+/**
+ * Root motion along the position track: distance travelled since frame 0
+ * (drives the gait phase) and current ground speed (drives gait amplitude).
+ */
+export function sampleMotion(t: Track, frame: number, fps: number): Motion & { heading: number | null } {
+  const pos = (f: number) => samplePlacement(t, f).position;
+  let travel = 0;
+  let prev = pos(0);
+  for (let f = 1; f <= frame; f++) {
+    const p = pos(f);
+    travel += Math.hypot(p[0] - prev[0], p[2] - prev[2]);
+    prev = p;
+  }
+  const a = pos(Math.max(0, frame - 2));
+  const b = pos(frame + 2);
+  const dx = b[0] - a[0];
+  const dz = b[2] - a[2];
+  const dist = Math.hypot(dx, dz);
+  const span = frame + 2 - Math.max(0, frame - 2);
+  return { travel, speed: (dist / span) * fps, heading: dist > 1e-4 ? Math.atan2(dx, dz) : null };
+}
+
 /** Base face from the expression track, blended over 8 frames at each change. */
 export function sampleExpression(t: Track, def: CharacterDefinition, frame: number): FaceState {
   const keys = [...t.expression].sort((a, b) => a.frame - b.frame);
@@ -102,6 +125,59 @@ export function sampleEnvironmentState(scene: Scene, defaults: Record<string, nu
   return state;
 }
 
+type Subject = Vec3 | string | { castId: string } | undefined;
+
+/** Eye-level world point of a cast member at any frame (lowered when seated). */
+function eyeWorldAt(t: Track, def: CharacterDefinition, frame: number): Vec3 {
+  const p = samplePlacement(t, frame).position;
+  const s = modelScale(def);
+  let y = p[1] + eyeHeightWorld(def);
+  for (const c of t.clips) {
+    if (c.clip !== "sit" || frame < c.from || frame > c.from + c.durationInFrames) continue;
+    const seat = typeof c.params.seatHeight === "number" ? c.params.seatHeight : 0.45;
+    y -= (def.body.hipHeight * s - seat) * Math.min(1, (frame - c.from) / Math.max(1, c.blendFrames));
+  }
+  return [p[0], y, p[2]];
+}
+
+/**
+ * Camera at a frame: explicit keyframes win; otherwise the shot list (hard
+ * cuts at each shot's `from`); otherwise the scene preset.
+ */
+export function sampleSceneCamera(scene: Scene, episode: Episode, env: EnvironmentDefinition, frame: number, aspect: number): CameraShot {
+  if (scene.camera.keyframes.length > 0) return sampleCamera(cameraKeysForScene(scene, env.focus), frame);
+  const shots = [...scene.camera.shots].sort((a, b) => a.from - b.from);
+  const active = shots.filter((sh) => sh.from <= frame).pop();
+  const spec = active ?? (scene.camera.preset && SHOTS[scene.camera.preset] ? { from: 0, preset: scene.camera.preset, subject: scene.camera.subject, subject2: scene.camera.subject2, params: scene.camera.params } : null);
+  if (!spec) return sampleCamera(cameraKeysForScene(scene, env.focus), frame);
+  const next = shots.find((sh) => sh.from > spec.from);
+  const end = next ? next.from : scene.durationInFrames;
+  const resolver = (subj: Subject): ((f: number) => Vec3) => {
+    if (subj === undefined) return () => env.focus;
+    if (Array.isArray(subj)) return () => subj as Vec3;
+    if (typeof subj === "string") {
+      const a = env.anchors[subj];
+      if (!a) throw new Error(`Unknown camera subject anchor "${subj}" in "${env.id}"`);
+      return () => a;
+    }
+    const track = scene.characters.find((c) => c.castId === subj.castId);
+    const cast = episode.cast.find((c) => c.id === subj.castId);
+    if (!track || !cast) throw new Error(`Camera subject "${subj.castId}" is not in this scene`);
+    const def = getCharacter(cast.characterId);
+    return (f) => eyeWorldAt(track, def, f);
+  };
+  const subjTrack = typeof spec.subject === "object" && !Array.isArray(spec.subject) ? scene.characters.find((c) => c.castId === (spec.subject as { castId: string }).castId) : undefined;
+  return getShot(spec.preset)({
+    frame: frame - spec.from,
+    durationInFrames: end - spec.from,
+    aspect,
+    subject: (f) => resolver(spec.subject)(f + spec.from),
+    subject2: spec.subject2 !== undefined ? (f) => resolver(spec.subject2)(f + spec.from) : undefined,
+    subjectYaw: subjTrack ? (f) => samplePlacement(subjTrack, f + spec.from).rotationY : undefined,
+    params: spec.params,
+  });
+}
+
 function resolveTarget(target: Vec3 | string | { castId: string }, env: EnvironmentDefinition, states: CharState[]): Vec3 | null {
   if (typeof target === "string") return env.anchors[target] ?? null;
   if (Array.isArray(target)) return target as Vec3;
@@ -115,13 +191,18 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
   const env = getEnvironment(scene.environment.id);
   const sampled = sampleLighting(scene, frame);
   const lighting = env.adjustLighting ? env.adjustLighting(sampled) : sampled;
-  const shot = sampleCamera(cameraKeysForScene(scene, env.focus), frame);
+  const shot = sampleSceneCamera(scene, episode, env, frame, width / height);
   const energy = sampleElectrical(scene.electrical, frame);
   const envState = sampleEnvironmentState(scene, env.defaultState?.(lighting, energy) ?? {}, frame);
 
   const states: CharState[] = scene.characters.map((t) => {
     const cast = episode.cast.find((c) => c.id === t.castId)!;
-    return { castId: t.castId, def: getCharacter(cast.characterId), variant: cast.variant, ...samplePlacement(t, frame) };
+    const placed = samplePlacement(t, frame);
+    if (t.faceMovement) {
+      const m = sampleMotion(t, frame, fps);
+      if (m.heading !== null) placed.rotationY = lerpAngle(placed.rotationY, m.heading, clamp((m.speed - 0.02) / 0.2));
+    }
+    return { castId: t.castId, def: getCharacter(cast.characterId), variant: cast.variant, ...placed };
   });
 
   const characters = scene.characters.map((t, i) => {
@@ -133,7 +214,7 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
 
     // resolve pointAt targets to character-local yaw/pitch (from the shoulder)
     const clips = t.clips.map((c) => {
-      const target = c.params.pointAt as Vec3 | string | undefined;
+      const target = (c.params.pointAt ?? c.params.target) as Vec3 | string | { castId: string } | undefined;
       if (target === undefined) return c;
       const p = resolveTarget(target, env, states);
       if (!p) throw new Error(`Unknown point target "${String(target)}" in environment "${env.id}"`);
@@ -142,10 +223,12 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
       const dz = p[2] - st.position[2];
       let yaw = Math.atan2(dx, dz) - st.rotationY;
       yaw = Math.atan2(Math.sin(yaw), Math.cos(yaw));
-      return { ...c, params: { ...c.params, yaw, pitch: Math.atan2(p[1] - shY, Math.hypot(dx, dz)) } };
+      const dist = Math.hypot(dx, dz, p[1] - shY);
+      return { ...c, params: { ...c.params, yaw, pitch: Math.atan2(p[1] - shY, Math.hypot(dx, dz)), dist } };
     });
 
-    const pose = evaluatePose(frame, fps, def.seed, clips, sampleExpression(t, def, frame), body);
+    const motion = sampleMotion(t, frame, fps);
+    const pose = evaluatePose(frame, fps, def.seed, clips, sampleExpression(t, def, frame), body, motion, t.autoWalk);
 
     // look-at: head turn + eye gaze toward the most recent target, eased over 10 frames
     let look: [number, number] = [0, 0];
@@ -205,6 +288,14 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
 
   const paths = energy
     ? Object.entries(environmentCables(env, scene.environment.options)).map(([id, pts], i) => {
+        // household consumption routes: "load:house:<appliance>" (normal circuits) and
+        // "load:backup:<appliance>" (backup circuit, only while house circuits are down)
+        if (id.startsWith("load:")) {
+          const [, circuit, appliance] = id.split(":");
+          const sw = envState[appliance!] ?? 1;
+          const level = circuit === "backup" ? energy.backupPower * (1 - energy.housePower) : energy.housePower;
+          return <EnergyPath key={id} points={pts} frame={frame} fps={fps} intensity={0.45 * level * sw} color="load" seed={i + 1} particleMultiplier={quality.particleMultiplier * 0.5} />;
+        }
         const flowId = (id === "meter-to-house" ? "grid-to-house" : id) as FlowId;
         const flow = energy.state.flows[flowId];
         if (!flow) return null;

@@ -2886,6 +2886,241 @@
       "implementation": "src/engine/characters/sunny",
       "issues": [],
       "notes": "Soft polygonal facial contours (55% smoothing, head detail 3), 20×14 eyeballs, iris 0.88 / pupil 0.56 of eye width, no rim, roughness 0.38. Approved 2026-11-27."
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "walk",
+      "name": "Clip: walk",
+      "category": "animation-clip",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "notes": "Procedural walk cycle driven by travel distance (no foot sliding); also applied automatically while a character moves"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "reach",
+      "name": "Clip: reach",
+      "category": "animation-clip",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "notes": "Reach toward a world target (yaw/pitch/distance), optional press"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "operate-switch",
+      "name": "Clip: operate-switch",
+      "category": "animation-clip",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "notes": "Reach and press a switch or breaker at a target"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "check-equipment",
+      "name": "Clip: check-equipment",
+      "category": "animation-clip",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "notes": "Lean in and inspect equipment"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "shade-eyes",
+      "name": "Clip: shade-eyes",
+      "category": "animation-clip",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "notes": "Hand above the eyes, looking into the distance"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "scratch-head",
+      "name": "Clip: scratch-head",
+      "category": "animation-clip",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "notes": "Puzzled head scratch"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "two-character",
+      "name": "Camera: two-character",
+      "category": "camera-preset",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "subject-aware",
+        "deterministic"
+      ],
+      "implementation": "src/engine/cameras/shots.ts",
+      "notes": "Two-shot perpendicular to the line between two subjects; auto distance by aspect"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "isometric-house",
+      "name": "Camera: isometric-house",
+      "category": "camera-preset",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "subject-aware",
+        "deterministic"
+      ],
+      "implementation": "src/engine/cameras/shots.ts",
+      "notes": "High 45° long-lens house view"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "rooftop-aerial",
+      "name": "Camera: rooftop-aerial",
+      "category": "camera-preset",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "subject-aware",
+        "deterministic"
+      ],
+      "implementation": "src/engine/cameras/shots.ts",
+      "notes": "High view over the roof array with slow orbit"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "equipment-close-up",
+      "name": "Camera: equipment-close-up",
+      "category": "camera-preset",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "subject-aware",
+        "deterministic"
+      ],
+      "implementation": "src/engine/cameras/shots.ts",
+      "notes": "Equipment close-up with slow lateral move"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "orbit-around-equipment",
+      "name": "Camera: orbit-around-equipment",
+      "category": "camera-preset",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "subject-aware",
+        "deterministic"
+      ],
+      "implementation": "src/engine/cameras/shots.ts",
+      "notes": "Slow orbit around a piece of equipment"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "top-down-technical",
+      "name": "Camera: top-down-technical",
+      "category": "camera-preset",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "subject-aware",
+        "deterministic"
+      ],
+      "implementation": "src/engine/cameras/shots.ts",
+      "notes": "Top-down technical view"
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "energy-cutaway-house",
+      "name": "ENV04 Energy cutaway house",
+      "category": "environment",
+      "modelType": "procedural-environment",
+      "animationCapabilities": [
+        "energy-flows",
+        "appliance-states",
+        "backup-circuit",
+        "outage-marker",
+        "clouds"
+      ],
+      "implementation": "src/engine/environments/CutawayHouse.tsx",
+      "notes": "Isometric two-storey section with rooms, appliances, garage service area, meter and pole. Appliance power derived from the electrical scenario. Simplified educational model, not a wiring diagram."
+    },
+    {
+      "references": [],
+      "palette": {},
+      "issues": [],
+      "phase": 3,
+      "status": "in-progress",
+      "id": "scene-transitions",
+      "name": "Scene transitions (cut, fade, dip-to-navy)",
+      "category": "visual-language",
+      "modelType": "data-preset",
+      "animationCapabilities": [
+        "cut",
+        "crossfade",
+        "dip-to-navy"
+      ],
+      "implementation": "src/compositions/EpisodeComposition.tsx"
     }
   ]
 }
