@@ -19,6 +19,7 @@ export const AssetCategory = z.enum([
   "lighting-preset",
   "camera-preset",
   "animation-clip",
+  "expression",
   "branding",
   "visual-language",
 ]);
@@ -36,6 +37,8 @@ export const ApprovalState = z.enum([
   "awaiting-visual-approval", // prototype rendered, waiting for owner sign-off
   "approved", // owner approved — locked (see CLAUDE.md)
   "temporary", // placeholder, must not ship
+  "reserved", // ID reserved for a future asset; not built or usable yet
+  "deferred", // explicitly not approved for the current phase
   "superseded", // replaced by another asset
   "reference-only", // material used for research only, never rendered
 ]);
@@ -64,12 +67,12 @@ export const ReferenceRef = z.object({
 export const PaletteEntry = z.object({
   hex: Hex,
   /** How the value was obtained. Only `official` may be treated as exact. */
-  source: z.enum(["official", "sheet-swatch", "sampled", "estimated"]),
+  source: z.enum(["official", "owner-approved", "sheet-swatch", "sampled", "estimated", "prototype"]),
   note: z.string().optional(),
 });
 
 export const ManifestAsset = z.object({
-  id: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
+  id: z.string().regex(/^[a-z0-9]+([-_][a-z0-9]+)*$/),
   name: z.string(),
   nameTh: z.string().optional(),
   category: AssetCategory,
@@ -83,7 +86,7 @@ export const ManifestAsset = z.object({
       /** World units are metres. */
       heightM: z.number().positive().optional(),
       footprintM: z.tuple([z.number().positive(), z.number().positive()]).optional(),
-      basis: z.enum(["official", "derived-from-reference", "proposed", "real-world-typical"]),
+      basis: z.enum(["official", "owner-approved", "derived-from-reference", "proposed", "real-world-typical", "measured-render"]),
       note: z.string().optional(),
     })
     .optional(),

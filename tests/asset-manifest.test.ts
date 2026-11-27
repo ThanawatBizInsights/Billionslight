@@ -7,6 +7,8 @@ import { CHARACTER_LIBRARY } from "../src/engine/characters/library";
 import { ENVIRONMENTS } from "../src/engine/environments/registry";
 import { LIGHTING_PRESETS } from "../src/engine/lighting/presets";
 import { CAMERA_PRESETS } from "../src/engine/cameras/presets";
+import { PROPS } from "../src/engine/props/Props";
+import { CLIPS } from "../src/engine/animation/clips";
 
 const root = path.resolve(__dirname, "..");
 const manifest = AssetManifest.parse(manifestJson);
@@ -23,6 +25,8 @@ describe("asset manifest", () => {
       ...Object.keys(ENVIRONMENTS),
       ...Object.keys(LIGHTING_PRESETS),
       ...Object.keys(CAMERA_PRESETS),
+      ...Object.keys(PROPS),
+      ...Object.keys(CLIPS),
     ];
     for (const id of engineIds) expect(byId.has(id), `manifest missing "${id}"`).toBe(true);
   });
@@ -33,14 +37,17 @@ describe("asset manifest", () => {
     }
   });
 
-  it("nothing is approved yet — approval is recorded by the owner only", () => {
-    expect(manifest.assets.filter((a) => a.status === "approved")).toEqual([]);
+  it("Phase 2 characters await visual approval; May is reserved; teammates deferred", () => {
+    expect(byId.get("sunny")!.status).toBe("awaiting-visual-approval");
+    expect(byId.get("homeowner_male_01")!.status).toBe("awaiting-visual-approval");
+    expect(byId.get("homeowner_female_01")!.status).toBe("reserved");
+    expect(byId.get("squirrel-teammate-red")!.status).toBe("deferred");
+    expect(byId.get("sunny")!.scale!.heightM).toBe(1.35);
+    expect(byId.get("homeowner_male_01")!.scale!.heightM).toBe(1.7);
   });
 
-  it("Sunny stays authoritative: no engine implementation until the low-poly adaptation is approved", () => {
-    const sunny = byId.get("sunny")!;
-    expect(sunny.status).not.toBe("approved");
-    expect(CHARACTER_LIBRARY["sunny"]).toBeUndefined();
+  it("only owner-approved decisions are marked approved", () => {
+    expect(manifest.assets.filter((a) => a.status === "approved").map((a) => a.id)).toEqual(["scene-palette"]);
   });
 
   it("third-party material is reference-only", () => {

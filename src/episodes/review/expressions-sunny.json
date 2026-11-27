@@ -1,0 +1,116 @@
+{
+ "schemaVersion": 1,
+ "id": "review-expressions-sunny",
+ "title": "SUNNY expressions",
+ "aspectRatio": "1:1",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "a",
+   "characterId": "sunny"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 200,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0,
+       0.9400000000000001,
+       2.4
+      ],
+      "target": [
+       0,
+       0.8400000000000001,
+       0
+      ],
+      "fov": 22
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "a",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0,
+        0,
+        0
+       ],
+       "rotationY": 0.18
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "neutral"
+      },
+      {
+       "frame": 20,
+       "expression": "happy"
+      },
+      {
+       "frame": 40,
+       "expression": "talk"
+      },
+      {
+       "frame": 60,
+       "expression": "surprised"
+      },
+      {
+       "frame": 80,
+       "expression": "thinking"
+      },
+      {
+       "frame": 100,
+       "expression": "confused"
+      },
+      {
+       "frame": 120,
+       "expression": "laughing"
+      },
+      {
+       "frame": 140,
+       "expression": "wink"
+      },
+      {
+       "frame": 160,
+       "expression": "concerned"
+      },
+      {
+       "frame": 180,
+       "expression": "curious"
+      }
+     ],
+     "clips": [
+      {
+       "clip": "talk",
+       "from": 40,
+       "durationInFrames": 20,
+       "blendFrames": 2
+      }
+     ]
+    }
+   ],
+   "overlays": []
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

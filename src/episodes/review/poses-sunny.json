@@ -1,0 +1,219 @@
+{
+ "schemaVersion": 1,
+ "id": "review-poses-sunny",
+ "title": "SUNNY poses",
+ "aspectRatio": "1:1",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "a",
+   "characterId": "sunny"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 360,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0,
+       0.7425000000000002,
+       4.455
+      ],
+      "target": [
+       0,
+       0.675,
+       0
+      ],
+      "fov": 26
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "a",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0,
+        0,
+        0
+       ],
+       "rotationY": 0.3
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      },
+      {
+       "frame": 30,
+       "expression": "talk"
+      },
+      {
+       "frame": 60,
+       "expression": "happy"
+      },
+      {
+       "frame": 90,
+       "expression": "thinking"
+      },
+      {
+       "frame": 120,
+       "expression": "happy"
+      },
+      {
+       "frame": 150,
+       "expression": "talk"
+      },
+      {
+       "frame": 180,
+       "expression": "happy"
+      },
+      {
+       "frame": 210,
+       "expression": "wink"
+      },
+      {
+       "frame": 240,
+       "expression": "surprised"
+      },
+      {
+       "frame": 270,
+       "expression": "confused"
+      },
+      {
+       "frame": 300,
+       "expression": "curious"
+      },
+      {
+       "frame": 330,
+       "expression": "laughing"
+      }
+     ],
+     "clips": [
+      {
+       "clip": "talk",
+       "from": 30,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "explain",
+       "from": 30,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "point",
+       "from": 60,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {
+        "yaw": -0.9,
+        "pitch": 0.35
+       }
+      },
+      {
+       "clip": "think",
+       "from": 90,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "wave",
+       "from": 120,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "hold-tablet",
+       "from": 150,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "present-prop",
+       "from": 180,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "thumbs-up",
+       "from": 210,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "surprised",
+       "from": 240,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "shrug",
+       "from": 270,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "look-upward",
+       "from": 300,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "laugh",
+       "from": 330,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      }
+     ],
+     "props": [
+      {
+       "prop": "tablet",
+       "joint": "wristR",
+       "from": 150,
+       "durationInFrames": 30
+      },
+      {
+       "prop": "demo-solar-panel",
+       "joint": "wristR",
+       "from": 180,
+       "durationInFrames": 30
+      }
+     ]
+    }
+   ],
+   "overlays": []
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

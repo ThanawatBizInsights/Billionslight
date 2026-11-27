@@ -6,12 +6,10 @@ whenever a new reusable asset or capability is approved.
 ## Current phase
 
 **Phase 1 — provisionally approved (2026-11-27).**
-**Phase 2 — ON HOLD until the essential reference sheets arrive** (approved
-Sunny low-poly adaptation, canonical homeowner sheet — see
-`docs/reference-review.md`). Do not build Phase 2 prototypes before then. When
-they arrive: inspect → prototype → front/side/rear/¾ renders → environment
-previews → 10 s living-room test (Sunny + homeowner) → measure → STOP for
-visual approval. Do not expand the asset library before that approval.
+**Phase 2 — prototypes complete, AWAITING VISUAL APPROVAL** (review pack:
+`docs/phase-2-report.md`, renders in `renders/phase-2-review/`). Do not start
+Phase 3 and do not expand the asset library until the owner approves the
+visuals. Approved design decisions: `docs/design-decisions-phase-2.md`.
 
 | Phase | Scope | Gate |
 |---|---|---|
@@ -28,9 +26,24 @@ visual approval. Do not expand the asset library before that approval.
 - **Preserve approved character identities.** Sunny's official character sheet
   (`public/assets/characters/sunny/`) is authoritative. Do not redesign Sunny,
   or change any approved character, without explicit approval.
-- **Sunny is an orange squirrel mascot** (white hard hat, navy coverall with
-  blue shoulder panels, gold trim, sun badge, violet eyes, bushy tail). The
-  approved low-poly adaptation, when supplied, is the modelling authority.
+- **Sunny** (`sunny`): golden-orange squirrel mascot, 1.35 m incl. hard hat
+  (≈79% of Ton). Large head, compact body, short limbs, large purple eyes,
+  cream cheeks/muzzle, pink inner ears, small brown nose, soft faceted bushy
+  tail, PURE WHITE ridged hard hat between the ears, navy + bright-blue
+  uniform with yellow details and a sun emblem, navy safety boots. Never a
+  child in a costume. Tablet / solar panel are removable props.
+- **Ton (ต้น)** (`homeowner_male_01`): board 01 is authoritative. 1.70 m,
+  stylized adult proportions, cream short-sleeved shirt, navy trousers, white
+  casual shoes, dark-brown geometric hair, warm skin tone. Curious, friendly,
+  occasionally humorous; represents the audience.
+- **May (เมย์)** `homeowner_female_01` is RESERVED (not built). Additional
+  squirrel teammates are NOT approved — do not develop or introduce them.
+- Art direction: board 01 — deep navy `#0F2747`, solar yellow `#FBBF24`, warm
+  amber light, muted blue shadows, wood, cream interiors, subtle greenery;
+  natural architectural colours in daytime (not everything navy).
+- Style: one cinematic low-poly world — soft facets, matte materials, warm
+  practical light. Avoid photoreal fur, voxel-blocky characters, glossy
+  plastic, high-poly geometry, inconsistent proportions.
 - `temp-engineer` is a TEMPORARY placeholder. Never present it as Sunny.
 - Reference images are design guides; final assets must be genuine,
   reusable, programmable 3D assets (procedural rigs/meshes, or GLB later).
@@ -44,6 +57,12 @@ visual approval. Do not expand the asset library before that approval.
   characters, branding or environments.
 - Third-party brand logos and vendor product branding must not appear in
   animations without the owner's explicit permission.
+- Logo placement: full official logo for openings/closings/large placements;
+  a tagline-free version only if an approved one exists, otherwise use the
+  full logo at a suitable size or omit. Never remove the tagline or redraw.
+- Equipment: the garage/service area is the default STORYTELLING location,
+  not an installation recommendation. Batteries are optional, never default;
+  on-grid and hybrid are separate configurations.
 
 ## Asset manifest & references
 
@@ -99,6 +118,7 @@ visual approval. Do not expand the asset library before that approval.
 ## Paid services
 
 - **No ElevenLabs credits during Phase 2** (owner instruction, 2026-11-27).
+  Phase 2 tests are silent (or temporary audio).
 - **Avoid unnecessary paid API calls.** ElevenLabs is only called when
   `ELEVENLABS_API_KEY` is set AND `ELEVENLABS_ALLOW_PAID_CALLS=true`, and only
   with the owner's approval. Development/testing uses mock or imported audio.
@@ -129,15 +149,40 @@ npm test && npm run typecheck
 On Linux/CI without a GPU set `RENDER_GL=swangle`; if Remotion cannot download
 its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 
+## Engine capabilities (Phase 2)
+
+- Body plans on one shared rig: `squirrel-mascot` (ears + 5-joint tail),
+  `stylized-human`. Height calibrated per plan (`NATURAL_HEIGHT`).
+- Expression presets (`expressions.ts`) on a per-character `expression`
+  track; clips layer on top. Eyelids close fully (blink, wink, laugh).
+- Clips receive body dimensions (e.g. `sit` works for both characters);
+  gestures mirror with `params.hand`.
+- `props` track attaches removable props to joints for a time range.
+- Camera keyframes with `easing: "hold"` are exact-frame hard cuts.
+- `environment.states` animates environment values (power, lights, tv, ac);
+  `lighting.transitions` blends presets (e.g. evening → power-outage).
+- Environments may compute cable routes from options (garage on-grid/hybrid).
+- Review pipeline: `node scripts/review/build-review-episodes.mjs` →
+  `node scripts/render-stills.mjs renders/phase-2-review/stills-plan.json` →
+  `python3 scripts/review/contact_sheet.py` (optional, Pillow).
+- Plan camera framing numerically with `scripts/plan-shot.mjs` (remember it
+  ignores character facing — check which way characters look).
+
 ## Approved reusable assets & capabilities
 
-_(Nothing has visual approval yet. Full register: `docs/asset-manifest.md`.)_
+Approved (owner decisions): `scene-palette` (board 01 colours), character
+design decisions in `docs/design-decisions-phase-2.md`. All 3D assets below
+are PROTOTYPES awaiting visual approval. Full register: `docs/asset-manifest.md`.
 
 | ID | Type | Status |
 |---|---|---|
-| `temp-engineer` | character | temporary placeholder |
-| `modern-thai-house` | environment | prototype (pending house reference) |
-| `golden-hour`, `bright-morning`, `midday-sun`, `evening`, `power-outage` | lighting | prototype |
-| `establishing-wide`, `slow-dolly-in`, `slow-dolly-out`, `orbit-equipment`, `medium-character` | camera | prototype |
-| `idle-breathing`, `wave`, `point`, `talk`, `explain`, `nod`, `smile` | animation clips | prototype |
-| solar panel/array, inverter, meter, battery | equipment | prototype |
+| `sunny`, `homeowner_male_01` | characters | awaiting visual approval |
+| `homeowner_female_01` | character | reserved |
+| `temp-engineer` | character | superseded (Phase 1 test only) |
+| `modern-thai-house`, `living-room`, `garage-service-area` | environments | awaiting visual approval |
+| `gable-house-prototype` | environment | superseded (Phase 1 test only) |
+| `review-studio` | environment | internal review set |
+| `midday-sun`, `golden-hour`, `evening`, `night`, `power-outage` | lighting | awaiting visual approval |
+| on-grid/hybrid inverter, battery stack, distribution board, EV charger, EV, utility meter, socket, switch | equipment | awaiting visual approval |
+| `tablet`, `demo-solar-panel`, `coffee-mug` | props | awaiting visual approval |
+| 20 animation clips, 11 expression presets | animation | awaiting visual approval |

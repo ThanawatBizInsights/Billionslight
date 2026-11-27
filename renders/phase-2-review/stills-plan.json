@@ -1,0 +1,391 @@
+{
+ "outDir": "renders/phase-2-review",
+ "jobs": [
+  {
+   "episode": "src/episodes/review/turnaround-sunny.json",
+   "frame": 15,
+   "out": "01-characters/sunny-turnaround.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/turnaround-ton.json",
+   "frame": 15,
+   "out": "01-characters/ton-turnaround.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/scale-reference.json",
+   "frame": 15,
+   "out": "01-characters/scale-comparison.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/expressions-sunny.json",
+   "frame": 16,
+   "out": "02-expressions/sunny/01-neutral.png",
+   "quality": "preview",
+   "label": "neutral"
+  },
+  {
+   "episode": "src/episodes/review/expressions-sunny.json",
+   "frame": 36,
+   "out": "02-expressions/sunny/02-happy.png",
+   "quality": "preview",
+   "label": "happy"
+  },
+  {
+   "episode": "src/episodes/review/expressions-sunny.json",
+   "frame": 52,
+   "out": "02-expressions/sunny/03-talk.png",
+   "quality": "preview",
+   "label": "talk"
+  },
+  {
+   "episode": "src/episodes/review/expressions-sunny.json",
+   "frame": 76,
+   "out": "02-expressions/sunny/04-surprised.png",
+   "quality": "preview",
+   "label": "surprised"
+  },
+  {
+   "episode": "src/episodes/review/expressions-sunny.json",
+   "frame": 96,
+   "out": "02-expressions/sunny/05-thinking.png",
+   "quality": "preview",
+   "label": "thinking"
+  },
+  {
+   "episode": "src/episodes/review/expressions-sunny.json",
+   "frame": 116,
+   "out": "02-expressions/sunny/06-confused.png",
+   "quality": "preview",
+   "label": "confused"
+  },
+  {
+   "episode": "src/episodes/review/expressions-sunny.json",
+   "frame": 136,
+   "out": "02-expressions/sunny/07-laughing.png",
+   "quality": "preview",
+   "label": "laughing"
+  },
+  {
+   "episode": "src/episodes/review/expressions-sunny.json",
+   "frame": 156,
+   "out": "02-expressions/sunny/08-wink.png",
+   "quality": "preview",
+   "label": "wink"
+  },
+  {
+   "episode": "src/episodes/review/expressions-sunny.json",
+   "frame": 176,
+   "out": "02-expressions/sunny/09-concerned.png",
+   "quality": "preview",
+   "label": "concerned"
+  },
+  {
+   "episode": "src/episodes/review/expressions-sunny.json",
+   "frame": 196,
+   "out": "02-expressions/sunny/10-curious.png",
+   "quality": "preview",
+   "label": "curious"
+  },
+  {
+   "episode": "src/episodes/review/expressions-ton.json",
+   "frame": 16,
+   "out": "02-expressions/ton/01-neutral.png",
+   "quality": "preview",
+   "label": "neutral"
+  },
+  {
+   "episode": "src/episodes/review/expressions-ton.json",
+   "frame": 36,
+   "out": "02-expressions/ton/02-happy.png",
+   "quality": "preview",
+   "label": "happy"
+  },
+  {
+   "episode": "src/episodes/review/expressions-ton.json",
+   "frame": 52,
+   "out": "02-expressions/ton/03-talk.png",
+   "quality": "preview",
+   "label": "talk"
+  },
+  {
+   "episode": "src/episodes/review/expressions-ton.json",
+   "frame": 76,
+   "out": "02-expressions/ton/04-surprised.png",
+   "quality": "preview",
+   "label": "surprised"
+  },
+  {
+   "episode": "src/episodes/review/expressions-ton.json",
+   "frame": 96,
+   "out": "02-expressions/ton/05-thinking.png",
+   "quality": "preview",
+   "label": "thinking"
+  },
+  {
+   "episode": "src/episodes/review/expressions-ton.json",
+   "frame": 116,
+   "out": "02-expressions/ton/06-confused.png",
+   "quality": "preview",
+   "label": "confused"
+  },
+  {
+   "episode": "src/episodes/review/expressions-ton.json",
+   "frame": 136,
+   "out": "02-expressions/ton/07-laughing.png",
+   "quality": "preview",
+   "label": "laughing"
+  },
+  {
+   "episode": "src/episodes/review/expressions-ton.json",
+   "frame": 156,
+   "out": "02-expressions/ton/08-concerned.png",
+   "quality": "preview",
+   "label": "concerned"
+  },
+  {
+   "episode": "src/episodes/review/expressions-ton.json",
+   "frame": 176,
+   "out": "02-expressions/ton/09-listening.png",
+   "quality": "preview",
+   "label": "listening"
+  },
+  {
+   "episode": "src/episodes/review/expressions-ton.json",
+   "frame": 196,
+   "out": "02-expressions/ton/10-curious.png",
+   "quality": "preview",
+   "label": "curious"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 20,
+   "out": "03-poses/sunny/01-idle.png",
+   "quality": "preview",
+   "label": "idle"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 50,
+   "out": "03-poses/sunny/02-talk-explain.png",
+   "quality": "preview",
+   "label": "talk + explain"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 80,
+   "out": "03-poses/sunny/03-point.png",
+   "quality": "preview",
+   "label": "point"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 110,
+   "out": "03-poses/sunny/04-think.png",
+   "quality": "preview",
+   "label": "think"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 140,
+   "out": "03-poses/sunny/05-wave.png",
+   "quality": "preview",
+   "label": "wave"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 170,
+   "out": "03-poses/sunny/06-hold-tablet.png",
+   "quality": "preview",
+   "label": "hold tablet"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 200,
+   "out": "03-poses/sunny/07-present-solar-panel.png",
+   "quality": "preview",
+   "label": "present solar panel"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 230,
+   "out": "03-poses/sunny/08-thumbs-up.png",
+   "quality": "preview",
+   "label": "thumbs up"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 260,
+   "out": "03-poses/sunny/09-surprised.png",
+   "quality": "preview",
+   "label": "surprised"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 290,
+   "out": "03-poses/sunny/10-shrug.png",
+   "quality": "preview",
+   "label": "shrug"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 320,
+   "out": "03-poses/sunny/11-look-upward.png",
+   "quality": "preview",
+   "label": "look upward"
+  },
+  {
+   "episode": "src/episodes/review/poses-sunny.json",
+   "frame": 350,
+   "out": "03-poses/sunny/12-laugh.png",
+   "quality": "preview",
+   "label": "laugh"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 20,
+   "out": "03-poses/ton/01-idle.png",
+   "quality": "preview",
+   "label": "idle"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 50,
+   "out": "03-poses/ton/02-talk.png",
+   "quality": "preview",
+   "label": "talk"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 80,
+   "out": "03-poses/ton/03-listen.png",
+   "quality": "preview",
+   "label": "listen"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 110,
+   "out": "03-poses/ton/04-think.png",
+   "quality": "preview",
+   "label": "think"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 140,
+   "out": "03-poses/ton/05-point.png",
+   "quality": "preview",
+   "label": "point"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 170,
+   "out": "03-poses/ton/06-surprised.png",
+   "quality": "preview",
+   "label": "surprised"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 200,
+   "out": "03-poses/ton/07-confused-shrug.png",
+   "quality": "preview",
+   "label": "confused shrug"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 230,
+   "out": "03-poses/ton/08-laugh.png",
+   "quality": "preview",
+   "label": "laugh"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 260,
+   "out": "03-poses/ton/09-wave.png",
+   "quality": "preview",
+   "label": "wave"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 290,
+   "out": "03-poses/ton/10-lean-in.png",
+   "quality": "preview",
+   "label": "lean in"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 320,
+   "out": "03-poses/ton/11-nod.png",
+   "quality": "preview",
+   "label": "nod"
+  },
+  {
+   "episode": "src/episodes/review/poses-ton.json",
+   "frame": 350,
+   "out": "03-poses/ton/12-coffee.png",
+   "quality": "preview",
+   "label": "coffee"
+  },
+  {
+   "episode": "src/episodes/review/sit-both.json",
+   "frame": 15,
+   "out": "03-poses/sitting-eye-contact.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/env-house-day.json",
+   "frame": 15,
+   "out": "04-environments/house-day.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/env-house-golden-hour.json",
+   "frame": 15,
+   "out": "04-environments/house-golden-hour.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/env-house-night.json",
+   "frame": 15,
+   "out": "04-environments/house-night.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/env-house-blackout.json",
+   "frame": 15,
+   "out": "04-environments/house-blackout.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/env-living-day.json",
+   "frame": 15,
+   "out": "04-environments/living-room-day.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/env-living-evening.json",
+   "frame": 15,
+   "out": "04-environments/living-room-evening.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/env-living-blackout.json",
+   "frame": 15,
+   "out": "04-environments/living-room-blackout.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/env-garage-on-grid.json",
+   "frame": 15,
+   "out": "04-environments/garage-on-grid-day.png",
+   "quality": "final"
+  },
+  {
+   "episode": "src/episodes/review/env-garage-hybrid.json",
+   "frame": 15,
+   "out": "04-environments/garage-hybrid-backup-evening.png",
+   "quality": "final"
+  }
+ ]
+}

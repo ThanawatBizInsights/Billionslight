@@ -1,0 +1,158 @@
+{
+ "schemaVersion": 1,
+ "id": "review-scale",
+ "title": "Character scale reference",
+ "aspectRatio": "16:9",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "sunny",
+   "characterId": "sunny"
+  },
+  {
+   "id": "ton",
+   "characterId": "homeowner_male_01"
+  },
+  {
+   "id": "sunny_side",
+   "characterId": "sunny"
+  },
+  {
+   "id": "ton_side",
+   "characterId": "homeowner_male_01"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false,
+     "ruler": true
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0.9,
+       0.88,
+       30
+      ],
+      "target": [
+       0.9,
+       0.88,
+       0
+      ],
+      "fov": 4.6
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "sunny",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        -0.35,
+        0,
+        0
+       ],
+       "rotationY": 0
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    },
+    {
+     "castId": "ton",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0.45,
+        0,
+        0
+       ],
+       "rotationY": 0
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    },
+    {
+     "castId": "sunny_side",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        1.4,
+        0,
+        0
+       ],
+       "rotationY": 1.5707963267948966
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    },
+    {
+     "castId": "ton_side",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        2.3,
+        0,
+        0
+       ],
+       "rotationY": 1.5707963267948966
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "SCALE REFERENCE · SUNNY 1.35 m (yellow line) · TON (ต้น) 1.70 m (navy line) · RULER 10 cm",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

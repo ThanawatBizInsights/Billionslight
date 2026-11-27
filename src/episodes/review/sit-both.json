@@ -1,0 +1,159 @@
+{
+ "schemaVersion": 1,
+ "id": "review-sit",
+ "title": "Sitting pose",
+ "aspectRatio": "16:9",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "s",
+   "characterId": "sunny"
+  },
+  {
+   "id": "t",
+   "characterId": "homeowner_male_01"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false,
+     "seats": [
+      [
+       -0.7,
+       -0.12,
+       0.34
+      ],
+      [
+       0.7,
+       -0.12,
+       0.45
+      ]
+     ]
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0.6,
+       1,
+       5.2
+      ],
+      "target": [
+       0,
+       0.7,
+       0
+      ],
+      "fov": 30
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "s",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        -0.7,
+        0,
+        0
+       ],
+       "rotationY": 0.25
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ],
+     "clips": [
+      {
+       "clip": "sit",
+       "from": 0,
+       "durationInFrames": 30,
+       "blendFrames": 1,
+       "params": {
+        "seatHeight": 0.34
+       }
+      }
+     ],
+     "lookAt": [
+      {
+       "frame": 0,
+       "target": {
+        "castId": "t"
+       }
+      }
+     ]
+    },
+    {
+     "castId": "t",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0.7,
+        0,
+        0
+       ],
+       "rotationY": -0.25
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "listening"
+      }
+     ],
+     "clips": [
+      {
+       "clip": "sit",
+       "from": 0,
+       "durationInFrames": 30,
+       "blendFrames": 1,
+       "params": {
+        "seatHeight": 0.45
+       }
+      }
+     ],
+     "lookAt": [
+      {
+       "frame": 0,
+       "target": {
+        "castId": "s"
+       }
+      }
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "SITTING · EYE CONTACT (look-at) · SEATS 0.34 m / 0.45 m",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

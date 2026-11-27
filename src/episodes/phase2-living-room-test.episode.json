@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 1,
+  "id": "phase2-living-room-test",
+  "title": "Phase 2 · Living-room conversation test (silent)",
+  "topic": "Visual test: Sunny and Ton interact in the living room; evening to blackout.",
+  "language": "th",
+  "aspectRatio": "9:16",
+  "fps": 30,
+  "cast": [
+    {
+      "id": "sunny",
+      "characterId": "sunny"
+    },
+    {
+      "id": "ton",
+      "characterId": "homeowner_male_01"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "conversation",
+      "title": "Living-room conversation",
+      "description": "Four camera set-ups (wide, over-the-shoulder, close-up, medium) with hard cuts; household power cuts out at 6.7 s.",
+      "durationInFrames": 300,
+      "environment": {
+        "id": "living-room",
+        "options": {},
+        "states": [
+          {
+            "frame": 0,
+            "values": {
+              "tv": 0,
+              "ac": 1
+            },
+            "transitionFrames": 0
+          },
+          {
+            "frame": 200,
+            "values": {
+              "power": 0
+            },
+            "transitionFrames": 3
+          }
+        ]
+      },
+      "lighting": {
+        "preset": "evening",
+        "transitions": [
+          {
+            "frame": 200,
+            "preset": "power-outage",
+            "transitionFrames": 8
+          }
+        ]
+      },
+      "camera": {
+        "keyframes": [
+          {
+            "frame": 0,
+            "position": [
+              -0.1,
+              1.5,
+              4.1
+            ],
+            "target": [
+              -0.12,
+              0.78,
+              -0.6
+            ],
+            "fov": 56
+          },
+          {
+            "frame": 89,
+            "position": [
+              -0.12,
+              1.42,
+              3.55
+            ],
+            "target": [
+              -0.12,
+              0.8,
+              -0.6
+            ],
+            "fov": 56,
+            "easing": "linear"
+          },
+          {
+            "frame": 90,
+            "position": [
+              -2.9,
+              1.5,
+              -2.0
+            ],
+            "target": [
+              0.25,
+              0.88,
+              -0.35
+            ],
+            "fov": 30,
+            "easing": "hold"
+          },
+          {
+            "frame": 179,
+            "position": [
+              -2.84,
+              1.49,
+              -1.94
+            ],
+            "target": [
+              0.25,
+              0.88,
+              -0.35
+            ],
+            "fov": 29,
+            "easing": "linear"
+          },
+          {
+            "frame": 180,
+            "position": [
+              0.1,
+              1.25,
+              0.9
+            ],
+            "target": [
+              -1.1,
+              1.15,
+              -1.3
+            ],
+            "fov": 38,
+            "easing": "hold"
+          },
+          {
+            "frame": 239,
+            "position": [
+              0.0,
+              1.25,
+              0.7
+            ],
+            "target": [
+              -1.1,
+              1.17,
+              -1.3
+            ],
+            "fov": 38,
+            "easing": "linear"
+          },
+          {
+            "frame": 240,
+            "position": [
+              -0.45,
+              1.1,
+              2.9
+            ],
+            "target": [
+              0.55,
+              0.72,
+              -0.2
+            ],
+            "fov": 34,
+            "easing": "hold"
+          },
+          {
+            "frame": 299,
+            "position": [
+              -0.35,
+              1.08,
+              2.55
+            ],
+            "target": [
+              0.55,
+              0.74,
+              -0.2
+            ],
+            "fov": 34,
+            "easing": "linear"
+          }
+        ]
+      },
+      "characters": [
+        {
+          "castId": "ton",
+          "keyframes": [
+            {
+              "frame": 0,
+              "position": [
+                -1.1,
+                0,
+                -1.35
+              ],
+              "rotationY": 0.5
+            }
+          ],
+          "clips": [
+            {
+              "clip": "sit",
+              "from": 0,
+              "durationInFrames": 300,
+              "blendFrames": 1,
+              "params": {
+                "seatHeight": 0.56
+              }
+            },
+            {
+              "clip": "wave",
+              "from": 18,
+              "durationInFrames": 45,
+              "blendFrames": 8,
+              "params": {
+                "hand": "left"
+              }
+            },
+            {
+              "clip": "talk",
+              "from": 20,
+              "durationInFrames": 40,
+              "blendFrames": 3
+            },
+            {
+              "clip": "listen",
+              "from": 95,
+              "durationInFrames": 85,
+              "blendFrames": 8
+            },
+            {
+              "clip": "nod",
+              "from": 130,
+              "durationInFrames": 24,
+              "blendFrames": 6
+            },
+            {
+              "clip": "think",
+              "from": 180,
+              "durationInFrames": 24,
+              "blendFrames": 6
+            },
+            {
+              "clip": "surprised",
+              "from": 202,
+              "durationInFrames": 40,
+              "blendFrames": 4
+            },
+            {
+              "clip": "talk",
+              "from": 214,
+              "durationInFrames": 22,
+              "blendFrames": 3,
+              "params": {
+                "energy": 0.7
+              }
+            }
+          ],
+          "expression": [
+            {
+              "frame": 0,
+              "expression": "happy"
+            },
+            {
+              "frame": 20,
+              "expression": "talk"
+            },
+            {
+              "frame": 90,
+              "expression": "listening"
+            },
+            {
+              "frame": 180,
+              "expression": "thinking"
+            },
+            {
+              "frame": 201,
+              "expression": "surprised"
+            },
+            {
+              "frame": 250,
+              "expression": "curious"
+            }
+          ],
+          "lookAt": [
+            {
+              "frame": 0,
+              "target": {
+                "castId": "sunny"
+              }
+            },
+            {
+              "frame": 184,
+              "target": [
+                -0.2,
+                1.6,
+                -0.3
+              ]
+            },
+            {
+              "frame": 205,
+              "target": [
+                -0.5,
+                2.6,
+                -0.4
+              ]
+            },
+            {
+              "frame": 238,
+              "target": {
+                "castId": "sunny"
+              }
+            }
+          ]
+        },
+        {
+          "castId": "sunny",
+          "keyframes": [
+            {
+              "frame": 0,
+              "position": [
+                0.65,
+                0,
+                -0.2
+              ],
+              "rotationY": -0.5
+            }
+          ],
+          "clips": [
+            {
+              "clip": "wave",
+              "from": 4,
+              "durationInFrames": 50,
+              "blendFrames": 8,
+              "params": {
+                "hand": "left"
+              }
+            },
+            {
+              "clip": "talk",
+              "from": 95,
+              "durationInFrames": 80,
+              "blendFrames": 3
+            },
+            {
+              "clip": "explain",
+              "from": 98,
+              "durationInFrames": 40,
+              "blendFrames": 8
+            },
+            {
+              "clip": "open-hands",
+              "from": 138,
+              "durationInFrames": 38,
+              "blendFrames": 8
+            },
+            {
+              "clip": "look-upward",
+              "from": 204,
+              "durationInFrames": 30,
+              "blendFrames": 6
+            },
+            {
+              "clip": "hold-tablet",
+              "from": 236,
+              "durationInFrames": 64,
+              "blendFrames": 8
+            },
+            {
+              "clip": "talk",
+              "from": 250,
+              "durationInFrames": 30,
+              "blendFrames": 3
+            },
+            {
+              "clip": "nod",
+              "from": 282,
+              "durationInFrames": 18,
+              "blendFrames": 4
+            }
+          ],
+          "expression": [
+            {
+              "frame": 0,
+              "expression": "happy"
+            },
+            {
+              "frame": 95,
+              "expression": "talk"
+            },
+            {
+              "frame": 180,
+              "expression": "listening"
+            },
+            {
+              "frame": 204,
+              "expression": "curious"
+            },
+            {
+              "frame": 240,
+              "expression": "happy"
+            },
+            {
+              "frame": 282,
+              "expression": "wink"
+            }
+          ],
+          "props": [
+            {
+              "prop": "tablet",
+              "joint": "wristR",
+              "from": 236,
+              "durationInFrames": 64,
+              "state": 1
+            }
+          ],
+          "lookAt": [
+            {
+              "frame": 0,
+              "target": {
+                "castId": "ton"
+              }
+            },
+            {
+              "frame": 204,
+              "target": [
+                -0.5,
+                2.6,
+                -0.4
+              ]
+            },
+            {
+              "frame": 232,
+              "target": {
+                "castId": "ton"
+              }
+            }
+          ]
+        }
+      ],
+      "overlays": [
+        {
+          "id": "tag",
+          "kind": "label",
+          "style": "tag",
+          "text": "PHASE 2 TEST · SILENT · PROTOTYPE CHARACTERS",
+          "from": 0,
+          "durationInFrames": 300,
+          "anchor": [
+            0.5,
+            0.0
+          ]
+        }
+      ]
+    }
+  ],
+  "branding": {
+    "showLogo": false
+  },
+  "approval": {
+    "status": "visual-review",
+    "history": []
+  }
+}

@@ -11,8 +11,11 @@ import { z } from "zod";
 export const Vec3 = z.tuple([z.number(), z.number(), z.number()]);
 export type Vec3 = z.infer<typeof Vec3>;
 
-/** Asset identifiers are kebab-case, e.g. "modern-thai-house". */
-export const AssetId = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "asset IDs must be kebab-case");
+/**
+ * Asset identifiers: lower-case words joined by "-" or "_", e.g.
+ * "modern-thai-house", "homeowner_male_01" (owner-approved character ID).
+ */
+export const AssetId = z.string().regex(/^[a-z0-9]+([-_][a-z0-9]+)*$/, "asset IDs must be lower-case kebab_or_snake case");
 
 export const EasingName = z.enum(["linear", "easeIn", "easeOut", "easeInOut", "easeInOutCubic", "hold"]);
 export type EasingName = z.infer<typeof EasingName>;
@@ -88,7 +91,19 @@ export const CharacterTrack = z.object({
   expression: z
     .array(z.object({ frame: Frame, expression: AssetId, easing: EasingName.default("easeInOut") }))
     .default([]),
-  /** Look-at target: a world position, an environment anchor name, or another cast member's head. */
+  /** Hand-held props attached to a joint for a time range (props stay separate assets). */
+  props: z
+    .array(
+      z.object({
+        prop: AssetId,
+        joint: z.enum(["wristL", "wristR", "chest", "head"]).default("wristR"),
+        from: Frame,
+        durationInFrames: z.number().int().positive(),
+        state: z.number().min(0).max(1).default(1),
+      }),
+    )
+    .default([]),
+  /** Look-at target: a world position, an environment anchor name, or another cast member's eyes. */
   lookAt: z
     .array(z.object({ frame: Frame, target: z.union([Vec3, z.string(), z.object({ castId: z.string() })]) }))
     .default([]),
@@ -99,7 +114,7 @@ export const CameraKeyframe = z.object({
   frame: Frame,
   position: Vec3,
   target: Vec3,
-  fov: z.number().min(10).max(90).optional(),
+  fov: z.number().min(2).max(90).optional(),
   easing: EasingName.default("easeInOutCubic"),
 });
 
@@ -218,8 +233,20 @@ export const Scene = z.object({
     id: AssetId,
     variant: z.string().optional(),
     options: z.record(z.string(), z.unknown()).default({}),
+    /**
+     * Animated environment state (e.g. power, lights, tv, ac — 0…1). Values
+     * cross-fade over transitionFrames. Unlisted keys keep their defaults.
+     */
+    states: z
+      .array(z.object({ frame: Frame, values: z.record(z.string(), z.number()), transitionFrames: z.number().int().nonnegative().default(6) }))
+      .default([]),
   }),
-  lighting: z.object({ preset: AssetId, overrides: z.record(z.string(), z.unknown()).default({}) }),
+  lighting: z.object({
+    preset: AssetId,
+    overrides: z.record(z.string(), z.unknown()).default({}),
+    /** Blend to other lighting presets over time (e.g. evening → power-outage). */
+    transitions: z.array(z.object({ frame: Frame, preset: AssetId, transitionFrames: z.number().int().nonnegative().default(15) })).default([]),
+  }),
   camera: CameraTrack,
   characters: z.array(CharacterTrack).default([]),
   electrical: z.array(ElectricalStateKeyframe).default([]),

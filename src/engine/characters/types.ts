@@ -1,25 +1,38 @@
 /** Data-only description of a reusable character. */
+
+export type BodyPlan = "squirrel-mascot" | "stylized-human" | "basic-human";
+
+/** Skeleton measurements in metres, used by renderers and by clips (e.g. sit). */
+export interface BodyDims {
+  /** Hip joint height above the floor when standing. */
+  hipHeight: number;
+  thigh: number;
+  shin: number;
+  /** Shoulder joint height above the hip joint. */
+  shoulderAboveHip: number;
+  shoulderHalfWidth: number;
+  upperArm: number;
+  forearm: number;
+  /** Eye height above the floor (look-at, eye-contact, camera framing). */
+  eyeHeight: number;
+}
+
 export interface CharacterDefinition {
   id: string;
   displayName: string;
-  /** Prototype geometry pending approval. Approved designs are locked (see CLAUDE.md). */
+  displayNameTh?: string;
+  /** temporary = pipeline placeholder; prototype = awaiting visual approval; approved = locked. */
   status: "temporary" | "prototype" | "approved";
-  colors: {
-    skin: string;
-    hair: string;
-    shirt: string;
-    shirtAccent: string;
-    pants: string;
-    shoes: string;
-    eyes: string;
-    mouth: string;
-  };
-  /** Overall scale (1 = ~1.65 m adult). */
-  scale: number;
-  /** Head radius relative to default 0.2 (stylised large heads). */
-  headScale: number;
-  build: { shoulderWidth: number; torsoWidth: number; torsoDepth: number };
-  accessories: Array<"hard-hat" | "safety-glasses" | "tool-belt" | "tablet" | "id-badge">;
+  bodyPlan: BodyPlan;
+  /** Total height including headwear, metres. */
+  heightM: number;
+  body: BodyDims;
+  /** Named material colours; keys depend on the body plan. */
+  colors: Record<string, string>;
   /** Seed so idle motion of different characters is not in sync. */
   seed: number;
+  /** Default expression when no expression track is given. */
+  defaultExpression: string;
+  /** Free text: personality / role, for writers and the studio UI. */
+  role?: string;
 }

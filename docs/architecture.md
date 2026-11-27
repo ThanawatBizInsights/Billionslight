@@ -77,3 +77,27 @@ tests/                        vitest suites
 renders/                      outputs (MP4s git-ignored) + render-log.jsonl
 docs/                         architecture, electrical accuracy, limitations, phase reports
 ```
+
+## Phase 2 additions
+
+```
+CharacterDefinition (data: body plan, height, body dims, colours, seed)
+        │
+        ▼
+CharacterModel ──► SquirrelMascot (Sunny)  ┐  shared joints + optional ears/tail
+               └─► StylizedHuman  (Ton)    ┘  scaled to the approved height
+pose = evaluatePose(frame, clips, base face from expression track, body dims)
+       + look-at (head turn + eye gaze) + props attached to joints
+```
+
+| Decision | Why |
+|---|---|
+| Body plans instead of one humanoid | A squirrel mascot and an adult human need different silhouettes, but the same joint names keep every clip reusable on both. New characters (May) reuse a body plan with new data. |
+| Height calibration (`NATURAL_HEIGHT`) | Body plans are modelled in convenient units; each character is scaled to its owner-approved height, verified on a ruler render. |
+| Expressions as data presets + a track | Writers choose `happy`, `confused` … per frame; blending is automatic; `talk` layers mouth motion on top. |
+| Props are separate assets on a `props` track | Owner requirement: tablet and solar panel must be removable. Props render in the hand joint's space with a counter-scale. |
+| `hold` easing = hard cut | Several camera set-ups in one scene without extra scenes or canvases. Cuts land on exactly the keyframe frame. |
+| `environment.states` + `lighting.transitions` | Story beats such as "the power goes out" are data, not code: power gates lights/TV/AC; lighting blends to the outage preset. |
+| Environment `adjustLighting` | Outdoor presets are reused indoors; interiors swap grass-green bounce light for a warm floor bounce, and drop outdoor haze. |
+| Option-dependent cable routes | The garage draws different energy paths for on-grid vs hybrid (battery and backup circuit only when configured). |
+| Review content = episodes | Identity sheets, scale reference, expressions, poses and environment previews are generated episode JSON rendered by the same engine, so what is approved is what episodes will use. |

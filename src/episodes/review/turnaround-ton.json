@@ -1,0 +1,205 @@
+{
+ "schemaVersion": 1,
+ "id": "review-turnaround-ton",
+ "title": "TON turnaround",
+ "aspectRatio": "16:9",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "v0",
+   "characterId": "homeowner_male_01"
+  },
+  {
+   "id": "v1",
+   "characterId": "homeowner_male_01"
+  },
+  {
+   "id": "v2",
+   "characterId": "homeowner_male_01"
+  },
+  {
+   "id": "v3",
+   "characterId": "homeowner_male_01"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0,
+       0.935,
+       13.5
+      ],
+      "target": [
+       0,
+       0.85,
+       0
+      ],
+      "fov": 20
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "v0",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        -1.5750000000000002,
+        0,
+        0
+       ],
+       "rotationY": 0
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    },
+    {
+     "castId": "v1",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        -0.525,
+        0,
+        0
+       ],
+       "rotationY": 0.62
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    },
+    {
+     "castId": "v2",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0.525,
+        0,
+        0
+       ],
+       "rotationY": 1.5707963267948966
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    },
+    {
+     "castId": "v3",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        1.5750000000000002,
+        0,
+        0
+       ],
+       "rotationY": 3.141592653589793
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "TON (ต้น) · IDENTITY SHEET · PROTOTYPE FOR APPROVAL",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    },
+    {
+     "id": "l0",
+     "kind": "label",
+     "style": "tag",
+     "text": "FRONT",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.29902395051729735,
+      0.97
+     ]
+    },
+    {
+     "id": "l1",
+     "kind": "label",
+     "style": "tag",
+     "text": "3/4",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.4330079835057658,
+      0.97
+     ]
+    },
+    {
+     "id": "l2",
+     "kind": "label",
+     "style": "tag",
+     "text": "SIDE",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5669920164942341,
+      0.97
+     ]
+    },
+    {
+     "id": "l3",
+     "kind": "label",
+     "style": "tag",
+     "text": "BACK",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.7009760494827026,
+      0.97
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

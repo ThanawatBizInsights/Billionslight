@@ -25,7 +25,8 @@ export const EASINGS: Record<EasingName, (t: number) => number> = {
   easeOut: (t) => 1 - (1 - t) * (1 - t),
   easeInOut: (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2),
   easeInOutCubic: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
-  hold: () => 0,
+  // step: holds the previous value, then jumps exactly on the keyframe (camera cuts)
+  hold: (t) => (t >= 1 ? 1 : 0),
 };
 
 /** Smooth 0→1 progress between two frames. */

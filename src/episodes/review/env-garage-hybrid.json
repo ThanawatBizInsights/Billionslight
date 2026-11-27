@@ -1,0 +1,85 @@
+{
+ "schemaVersion": 1,
+ "id": "review-env-garage-hybrid",
+ "title": "ENV03 Garage service area · hybrid + battery + EV charger · outage, backup loads only",
+ "aspectRatio": "16:9",
+ "fps": 30,
+ "cast": [],
+ "scenes": [
+  {
+   "id": "env",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "garage-service-area",
+    "options": {
+     "system": "hybrid",
+     "battery": true,
+     "evCharger": true,
+     "car": true
+    },
+    "states": []
+   },
+   "lighting": {
+    "preset": "evening"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       2.4,
+       1.75,
+       4.6
+      ],
+      "target": [
+       -0.1,
+       1.15,
+       -2.5
+      ],
+      "fov": 48
+     }
+    ]
+   },
+   "characters": [],
+   "electrical": [
+    {
+     "frame": 0,
+     "transitionFrames": 0,
+     "scenario": {
+      "inverterType": "hybrid",
+      "gridStatus": "outage",
+      "solarIrradiance": 0,
+      "householdLoadKw": 2.5,
+      "backupLoadKw": 0.6,
+      "battery": {
+       "present": true,
+       "stateOfCharge": 0.7
+      },
+      "backup": {
+       "backupOutputConfigured": true,
+       "gridIsolationDevice": true,
+       "loadsOnBackupCircuit": true
+      }
+     }
+    }
+   ],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "ENV03 GARAGE SERVICE AREA · HYBRID + BATTERY + EV CHARGER · OUTAGE, BACKUP LOADS ONLY",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

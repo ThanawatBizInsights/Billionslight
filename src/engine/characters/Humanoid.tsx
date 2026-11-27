@@ -8,6 +8,10 @@ import { Matte } from "../core/materials";
 import type { Pose, JointName, Rot } from "./rig";
 import type { CharacterDefinition } from "./types";
 
+/** Phase 1 placeholder body plan ("basic-human"): fixed proportions/accessories. */
+const BASIC = { headScale: 1.25, build: { shoulderWidth: 0.24, torsoWidth: 0.42, torsoDepth: 0.26 }, accessories: ["hard-hat", "id-badge"] as string[] };
+type Colors = Record<"skin" | "hair" | "shirt" | "shirtAccent" | "pants" | "shoes" | "eyes" | "mouth", string>;
+
 const R = (pose: Pose, j: JointName): Rot => pose.joints[j] ?? [0, 0, 0];
 
 const Limb = ({ length, radius, color, segments = 6 }: { length: number; radius: number; color: string; segments?: number }) => (
@@ -25,7 +29,8 @@ const Joint = ({ name, pose, position, children }: { name: JointName; pose: Pose
 
 function Face({ def, pose, blink, r }: { def: CharacterDefinition; pose: Pose; blink: number; r: number }) {
   const f = pose.face;
-  const lid = Math.min(1, f.eyelids + blink);
+  const colors = def.colors as Colors;
+  const lid = Math.min(1, Math.max(f.eyelids[0], f.eyelids[1]) + blink);
   const eyeY = r * 0.12;
   const eyeX = r * 0.36;
   const z = r * 0.9;
@@ -40,7 +45,7 @@ function Face({ def, pose, blink, r }: { def: CharacterDefinition; pose: Pose; b
           {/* eye — scaled vertically by eyelid closure */}
           <mesh position={[s * eyeX + gx, eyeY + gy, z]} scale={[1, Math.max(0.08, 1 - lid), 0.6]}>
             <sphereGeometry args={[r * 0.11, 6, 5]} />
-            <meshBasicMaterial color={def.colors.eyes} />
+            <meshBasicMaterial color={colors.eyes} />
           </mesh>
           {/* eye highlight */}
           {lid < 0.5 && (
@@ -55,7 +60,7 @@ function Face({ def, pose, blink, r }: { def: CharacterDefinition; pose: Pose; b
             rotation={[0, 0, s * (-0.12 - f.browRaise * 0.1) + f.browTilt * 0.25]}
           >
             <boxGeometry args={[r * 0.3, r * 0.06, r * 0.05]} />
-            <meshBasicMaterial color={def.colors.hair} />
+            <meshBasicMaterial color={colors.hair} />
           </mesh>
         </group>
       ))}
@@ -64,7 +69,7 @@ function Face({ def, pose, blink, r }: { def: CharacterDefinition; pose: Pose; b
         {[-1, 1].map((s) => (
           <mesh key={s} position={[(s * mouthW) / 2, 0, 0]} rotation={[0, 0, s * smileAngle]}>
             <boxGeometry args={[mouthW, r * 0.045, r * 0.04]} />
-            <meshBasicMaterial color={def.colors.mouth} />
+            <meshBasicMaterial color={colors.mouth} />
           </mesh>
         ))}
         <mesh position={[0, -r * 0.03, 0.005]} scale={[1, Math.max(0.01, f.mouthOpen), 1]}>
@@ -87,12 +92,12 @@ export interface HumanoidProps {
 }
 
 export function Humanoid({ def, pose, blink, position = [0, 0, 0], rotationY = 0, look = [0, 0] }: HumanoidProps) {
-  const c = def.colors;
-  const r = 0.2 * def.headScale;
-  const { shoulderWidth: sw, torsoWidth: tw, torsoDepth: td } = def.build;
+  const c = def.colors as Colors;
+  const r = 0.2 * BASIC.headScale;
+  const { shoulderWidth: sw, torsoWidth: tw, torsoDepth: td } = BASIC.build;
   const head = R(pose, "head");
   const headRot: Rot = [head[0] - look[1], head[1] + look[0], head[2]];
-  const hasHat = def.accessories.includes("hard-hat");
+  const hasHat = BASIC.accessories.includes("hard-hat");
 
   const arm = (side: 1 | -1) => {
     const sh = side === 1 ? "shoulderL" : "shoulderR";
@@ -139,7 +144,7 @@ export function Humanoid({ def, pose, blink, position = [0, 0, 0], rotationY = 0
   };
 
   return (
-    <group position={position} rotation={[0, rotationY, 0]} scale={def.scale}>
+    <group position={position} rotation={[0, rotationY, 0]}>
       <group position={[0, 0.9 + pose.rootY, 0]}>
         <Joint name="hips" pose={pose} position={[0, 0, 0]}>
           <mesh castShadow>
@@ -160,7 +165,7 @@ export function Humanoid({ def, pose, blink, position = [0, 0, 0], rotationY = 0
                 <cylinderGeometry args={[tw * 0.38, tw * 0.6, 0.05, 6]} />
                 <Matte color={c.shirtAccent} />
               </mesh>
-              {def.accessories.includes("id-badge") && (
+              {BASIC.accessories.includes("id-badge") && (
                 <mesh position={[-0.1, 0.38, td * 0.62]} rotation={[-0.08, 0, 0]}>
                   <boxGeometry args={[0.07, 0.09, 0.01]} />
                   <Matte color="#F2F4F8" />

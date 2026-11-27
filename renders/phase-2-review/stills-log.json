@@ -1,0 +1,69 @@
+{
+  "at": "2026-11-27T05:37:53.081Z",
+  "gl": "swangle",
+  "jobs": [
+    {
+      "out": "renders/phase-2-review/04-environments/house-day.png",
+      "frame": 15,
+      "size": "960x540",
+      "sec": 1.7,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2-review/04-environments/house-golden-hour.png",
+      "frame": 15,
+      "size": "960x540",
+      "sec": 1.7,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2-review/04-environments/house-night.png",
+      "frame": 15,
+      "size": "960x540",
+      "sec": 1.8,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2-review/04-environments/house-blackout.png",
+      "frame": 15,
+      "size": "960x540",
+      "sec": 1.6,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2-review/04-environments/living-room-day.png",
+      "frame": 15,
+      "size": "960x540",
+      "sec": 1.8,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2-review/04-environments/living-room-evening.png",
+      "frame": 15,
+      "size": "960x540",
+      "sec": 2.1,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2-review/04-environments/living-room-blackout.png",
+      "frame": 15,
+      "size": "960x540",
+      "sec": 1.8,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2-review/04-environments/garage-on-grid-day.png",
+      "frame": 15,
+      "size": "960x540",
+      "sec": 1.6,
+      "ok": true
+    },
+    {
+      "out": "renders/phase-2-review/04-environments/garage-hybrid-backup-evening.png",
+      "frame": 15,
+      "size": "960x540",
+      "sec": 1.7,
+      "ok": true
+    }
+  ]
+}

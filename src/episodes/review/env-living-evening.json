@@ -1,0 +1,68 @@
+{
+ "schemaVersion": 1,
+ "id": "review-env-living-evening",
+ "title": "ENV02 Living room · evening (lights on)",
+ "aspectRatio": "16:9",
+ "fps": 30,
+ "cast": [],
+ "scenes": [
+  {
+   "id": "env",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "living-room",
+    "options": {},
+    "states": [
+     {
+      "frame": 0,
+      "values": {
+       "tv": 1,
+       "ac": 1
+      },
+      "transitionFrames": 0
+     }
+    ]
+   },
+   "lighting": {
+    "preset": "evening"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       2.1,
+       1.6,
+       4.9
+      ],
+      "target": [
+       -0.4,
+       1,
+       -1
+      ],
+      "fov": 48
+     }
+    ]
+   },
+   "characters": [],
+   "electrical": [],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "ENV02 LIVING ROOM · EVENING (LIGHTS ON)",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

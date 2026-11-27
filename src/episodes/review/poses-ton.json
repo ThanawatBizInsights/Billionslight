@@ -1,0 +1,214 @@
+{
+ "schemaVersion": 1,
+ "id": "review-poses-ton",
+ "title": "TON poses",
+ "aspectRatio": "1:1",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "a",
+   "characterId": "homeowner_male_01"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 360,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0,
+       0.935,
+       5.609999999999999
+      ],
+      "target": [
+       0,
+       0.85,
+       0
+      ],
+      "fov": 26
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "a",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0,
+        0,
+        0
+       ],
+       "rotationY": 0.3
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "neutral"
+      },
+      {
+       "frame": 30,
+       "expression": "talk"
+      },
+      {
+       "frame": 60,
+       "expression": "listening"
+      },
+      {
+       "frame": 90,
+       "expression": "thinking"
+      },
+      {
+       "frame": 120,
+       "expression": "curious"
+      },
+      {
+       "frame": 150,
+       "expression": "surprised"
+      },
+      {
+       "frame": 180,
+       "expression": "confused"
+      },
+      {
+       "frame": 210,
+       "expression": "laughing"
+      },
+      {
+       "frame": 240,
+       "expression": "happy"
+      },
+      {
+       "frame": 270,
+       "expression": "curious"
+      },
+      {
+       "frame": 300,
+       "expression": "happy"
+      },
+      {
+       "frame": 330,
+       "expression": "happy"
+      }
+     ],
+     "clips": [
+      {
+       "clip": "talk",
+       "from": 30,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "open-hands",
+       "from": 30,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "listen",
+       "from": 60,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "think",
+       "from": 90,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "point",
+       "from": 120,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {
+        "yaw": 0.9,
+        "pitch": 0.2,
+        "hand": "left"
+       }
+      },
+      {
+       "clip": "surprised",
+       "from": 150,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "shrug",
+       "from": 180,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "laugh",
+       "from": 210,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "wave",
+       "from": 240,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "lean-in",
+       "from": 270,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "nod",
+       "from": 300,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      },
+      {
+       "clip": "present-prop",
+       "from": 330,
+       "durationInFrames": 30,
+       "blendFrames": 6,
+       "params": {}
+      }
+     ],
+     "props": [
+      {
+       "prop": "coffee-mug",
+       "joint": "wristR",
+       "from": 330,
+       "durationInFrames": 30
+      }
+     ]
+    }
+   ],
+   "overlays": []
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

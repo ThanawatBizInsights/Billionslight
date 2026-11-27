@@ -8,7 +8,7 @@
       "name": "Sunny — Billionslight solar & electrical engineer",
       "nameTh": "ซันนี่",
       "category": "character",
-      "status": "awaiting-low-poly-adaptation",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-creature-rig",
       "phase": 2,
       "references": [
@@ -38,86 +38,96 @@
         }
       ],
       "scale": {
-        "heightM": 1.55,
-        "basis": "proposed",
-        "note": "Incl. hard hat. Board 06 shows Sunny ≈ homeowner height; chibi proportions, head ≈ 45–50% of height."
+        "heightM": 1.35,
+        "basis": "owner-approved",
+        "note": "Incl. hard hat; ≈79% of Ton. Mascot proportions: large head (~50% of height), compact body, short limbs, large tail. Verified on the scale-reference render."
       },
       "palette": {
         "fur": {
-          "hex": "#DB9450",
-          "source": "sampled",
-          "note": "main orange fur"
+          "hex": "#E8913A",
+          "source": "prototype",
+          "note": "golden-orange; tuned from sampled #DB9450 under cinematic lighting"
         },
         "fur-light": {
-          "hex": "#F6AA50",
-          "source": "sampled",
-          "note": "sunlit fur, board 01"
+          "hex": "#F4AA55",
+          "source": "prototype"
         },
         "cream": {
           "hex": "#FDE6CD",
           "source": "sampled",
-          "note": "cheeks, muzzle, belly, inner tail"
+          "note": "cheeks, muzzle, chin, tail underside"
         },
         "helmet": {
-          "hex": "#F8F0F0",
-          "source": "sampled",
-          "note": "white hard hat, matte"
+          "hex": "#F6F4F2",
+          "source": "owner-approved",
+          "note": "pure white base (decision 4)"
         },
         "uniform": {
-          "hex": "#222C48",
-          "source": "sampled",
+          "hex": "#1F2A4A",
+          "source": "prototype",
           "note": "navy coverall"
         },
         "uniform-panel": {
           "hex": "#2F7DE1",
-          "source": "estimated",
-          "note": "bright blue shoulder/collar panels"
+          "source": "prototype",
+          "note": "bright-blue shoulder panels / collar"
         },
         "trim": {
-          "hex": "#B2803B",
-          "source": "sampled",
-          "note": "gold piping & zip"
+          "hex": "#E0A93B",
+          "source": "prototype",
+          "note": "yellow uniform details"
         },
         "badge": {
-          "hex": "#F7B744",
-          "source": "sampled",
-          "note": "sun badge on chest"
+          "hex": "#FBBF24",
+          "source": "owner-approved",
+          "note": "sun emblem = solar yellow"
         },
         "iris": {
-          "hex": "#6B3F8F",
-          "source": "estimated",
-          "note": "violet iris"
+          "hex": "#7A4BA8",
+          "source": "prototype",
+          "note": "large purple eyes"
         },
         "inner-ear": {
           "hex": "#F4B6A8",
-          "source": "estimated",
-          "note": "pink inner ear"
+          "source": "prototype",
+          "note": "pink inner ears"
         },
         "nose": {
-          "hex": "#8A4A2A",
-          "source": "estimated"
+          "hex": "#7A4127",
+          "source": "prototype",
+          "note": "small brown nose"
+        },
+        "boot": {
+          "hex": "#1A2238",
+          "source": "prototype",
+          "note": "navy safety boots"
         }
       },
       "animationCapabilities": [
-        "idle",
-        "walk",
-        "sit",
-        "talk",
-        "point",
-        "think",
-        "nod",
-        "surprised",
-        "confused",
-        "laugh",
+        "idle-breathing",
         "wave",
-        "hold-tablet",
-        "check-meter",
-        "look-upward",
-        "operate-switch",
+        "point",
+        "talk",
         "explain",
-        "hold-pv-panel",
+        "open-hands",
+        "nod",
+        "shake-head",
+        "listen",
+        "think",
+        "surprised",
+        "laugh",
         "thumbs-up",
-        "arms-crossed",
+        "hold-tablet",
+        "present-prop",
+        "look-upward",
+        "lean-in",
+        "sit",
+        "shrug",
+        "ear-flick",
+        "tail-sway",
+        "blink",
+        "eye-gaze",
+        "look-at",
         "expr:neutral",
         "expr:happy",
         "expr:talk",
@@ -126,94 +136,85 @@
         "expr:confused",
         "expr:laughing",
         "expr:wink",
-        "blink",
-        "eye-gaze",
-        "lip-sync",
-        "ear-flick",
-        "tail-sway",
-        "look-at"
+        "expr:concerned",
+        "expr:listening",
+        "expr:curious",
+        "walk (Phase 3)"
       ],
       "issues": [
-        "Owner will supply an approved low-poly adaptation; sheets are smooth/plush renders at ~110 px per turnaround view — too small for exact proportions. Need ≥2048 px front/side/back/¾ sheet.",
-        "Tail is faceted low-poly on board 01/06 but plush on board 02 and 'Three Squirrels' — confirm low-poly treatment.",
-        "Helmet tint varies (pure white vs. faint pink) across boards — confirm.",
-        "Hands: four-finger paws or mitten? Needed for tablet / switch / pointing poses."
+        "Prototype awaiting owner visual approval (Phase 2 review pack)."
       ],
-      "notes": "Authoritative identity. Do not redesign. Rig = shared humanoid joints + ear and 3–4 segment tail chains.",
-      "implementation": null
+      "notes": "Authoritative identity from the original character sheet. Soft faceted low-poly; tail = 5-joint chain; removable props (tablet, demo solar panel); pure-white hard hat with ridges between the ears.",
+      "implementation": "src/engine/characters/SquirrelMascot.tsx"
     },
     {
-      "id": "homeowner-male",
-      "name": "Homeowner (male) — the curious homeowner",
-      "nameTh": "เจ้าของบ้าน (ชาย)",
+      "id": "homeowner_male_01",
+      "name": "Ton (ต้น) — main male homeowner",
+      "nameTh": "ต้น",
       "category": "character",
-      "status": "needs-owner-decision",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-humanoid-rig",
       "phase": 2,
       "references": [
         {
           "file": "boards/01-visual-reference-board.png",
-          "section": "§02 turnaround, §07 expressions, §08 key poses",
-          "note": "Variant A: cream short-sleeve shirt, navy trousers, white shoes"
-        },
-        {
-          "file": "boards/02-cinematic-reference-board.png",
-          "section": "§02",
-          "note": "Variant B: blue-grey shirt, dark trousers, spikier hair"
-        },
-        {
-          "file": "boards/06-production-reference-sheet.png",
-          "section": "hero",
-          "note": "Variant C: tan open overshirt over cream tee"
-        },
-        {
-          "file": "boards/04-solar-composition-reference.png",
-          "section": "§02, §03 close-up"
+          "section": "§02 turnaround, §07 expressions, §08 key poses (authoritative)"
         }
       ],
       "scale": {
-        "heightM": 1.65,
-        "basis": "proposed",
-        "note": "Blocky/voxel-like: cube head ≈ 45% of height, faceted hair."
+        "heightM": 1.7,
+        "basis": "owner-approved",
+        "note": "Stylized adult proportions (rounded-cube head ≈ 1/5 of height incl. hair). Verified on the scale-reference render."
       },
       "palette": {
         "skin": {
-          "hex": "#F3C29C",
-          "source": "sampled",
-          "note": "board 01"
+          "hex": "#E9B48A",
+          "source": "prototype"
         },
         "hair": {
-          "hex": "#3A2A2C",
-          "source": "sampled",
-          "note": "dark brown, faceted"
+          "hex": "#3B2A24",
+          "source": "prototype"
         },
         "shirt": {
-          "hex": "#EDE3D6",
-          "source": "sampled",
-          "note": "variant A"
+          "hex": "#EFE6D6",
+          "source": "prototype"
         },
         "trousers": {
-          "hex": "#2B3352",
-          "source": "estimated",
-          "note": "navy"
+          "hex": "#1F2D52",
+          "source": "prototype"
         },
         "shoes": {
-          "hex": "#F2F2F2",
-          "source": "estimated"
+          "hex": "#F4F4F2",
+          "source": "prototype"
+        },
+        "belt": {
+          "hex": "#3A2E26",
+          "source": "prototype"
         }
       },
       "animationCapabilities": [
-        "idle",
+        "idle-breathing",
+        "wave",
+        "point",
         "talk",
+        "explain",
+        "open-hands",
+        "nod",
+        "shake-head",
         "listen",
         "think",
-        "nod",
-        "confused",
         "surprised",
-        "point",
-        "walk",
+        "laugh",
+        "thumbs-up",
+        "hold-tablet",
+        "present-prop",
+        "look-upward",
+        "lean-in",
         "sit",
-        "operate-switch",
+        "shrug",
+        "blink",
+        "eye-gaze",
+        "look-at",
         "expr:neutral",
         "expr:happy",
         "expr:talk",
@@ -222,21 +223,22 @@
         "expr:confused",
         "expr:laughing",
         "expr:concerned",
-        "blink",
-        "lip-sync",
-        "look-at"
+        "expr:listening",
+        "expr:curious",
+        "walk (Phase 3)"
       ],
       "issues": [
-        "Three different outfits/hair across boards 01, 02 and 06 — choose one canonical design (recommend board 01: it is the only one with a full turnaround, expressions and poses)."
+        "Prototype awaiting owner visual approval (Phase 2 review pack)."
       ],
-      "implementation": null
+      "implementation": "src/engine/characters/StylizedHuman.tsx",
+      "notes": "Curious, friendly, occasionally humorous; asks practical questions. Cream short-sleeved shirt, navy trousers, white casual shoes, dark-brown geometric hair, warm skin tone."
     },
     {
-      "id": "homeowner-female",
-      "name": "Homeowner (female)",
-      "nameTh": "เจ้าของบ้าน (หญิง)",
+      "id": "homeowner_female_01",
+      "name": "May (เมย์) — female homeowner (reserved)",
+      "nameTh": "เมย์",
       "category": "character",
-      "status": "reference-supplied",
+      "status": "reserved",
       "modelType": "procedural-humanoid-rig",
       "phase": 2,
       "references": [
@@ -277,10 +279,9 @@
         "lip-sync",
         "look-at"
       ],
-      "issues": [
-        "Only one board; no ¾ view, expressions or poses. Not in the original brief — confirm whether she is needed for Phase 2."
-      ],
-      "implementation": null
+      "issues": [],
+      "implementation": null,
+      "notes": "Reserved ID. Focus: household energy use, family needs, electricity costs, purchasing decisions. Not built in Phase 2; uses the stylized-human body plan when approved."
     },
     {
       "id": "technician",
@@ -298,7 +299,7 @@
         "point"
       ],
       "issues": [
-        "No reference supplied. Needs PPE design (helmet, insulated gloves, safety glasses)."
+        "No reference supplied. Not in Phase 2 scope."
       ],
       "references": [],
       "palette": {},
@@ -308,7 +309,7 @@
       "id": "squirrel-teammate-red",
       "name": "Squirrel teammate (red-brown, brown eyes)",
       "category": "character",
-      "status": "needs-owner-decision",
+      "status": "deferred",
       "modelType": "procedural-creature-rig",
       "phase": 3,
       "references": [
@@ -318,7 +319,7 @@
         }
       ],
       "issues": [
-        "Not mentioned in the brief: confirm name, role and whether this character is in scope."
+        "Not approved for Phase 2 (owner decision 5). Do not develop or introduce."
       ],
       "palette": {},
       "animationCapabilities": [],
@@ -328,7 +329,7 @@
       "id": "squirrel-teammate-grey",
       "name": "Squirrel teammate (grey, green eyes)",
       "category": "character",
-      "status": "needs-owner-decision",
+      "status": "deferred",
       "modelType": "procedural-creature-rig",
       "phase": 3,
       "references": [
@@ -338,7 +339,7 @@
         }
       ],
       "issues": [
-        "Not mentioned in the brief: confirm name, role and whether this character is in scope."
+        "Not approved for Phase 2 (owner decision 5). Do not develop or introduce."
       ],
       "palette": {},
       "animationCapabilities": [],
@@ -348,7 +349,7 @@
       "id": "temp-engineer",
       "name": "Temporary engineer placeholder",
       "category": "character",
-      "status": "temporary",
+      "status": "superseded",
       "modelType": "procedural-humanoid-rig",
       "phase": 1,
       "implementation": "src/engine/characters/library.ts",
@@ -363,7 +364,7 @@
         "blink",
         "look-at"
       ],
-      "notes": "Phase 1 pipeline test only. Superseded once Sunny's prototype exists; never ship.",
+      "notes": "Phase 1 placeholder; kept only so the Phase 1 foundation test still renders. Superseded by sunny.",
       "references": [],
       "palette": {},
       "issues": []
@@ -373,7 +374,7 @@
       "name": "ENV01 Modern Thai solar house",
       "nameTh": "บ้านโซลาร์",
       "category": "environment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-environment",
       "phase": 2,
       "references": [
@@ -431,24 +432,24 @@
         }
       },
       "animationCapabilities": [
-        "day-night-cycle",
-        "interior-lights-on-off",
-        "cutaway",
-        "window-glow-by-power-state",
+        "power-state",
+        "interior-lights",
+        "garden-lights",
+        "pv-generation-sheen",
         "energy-cable-anchors"
       ],
-      "implementation": "src/engine/environments/ModernThaiHouse.tsx",
+      "implementation": "src/engine/environments/ModernSolarHouse.tsx",
       "issues": [
-        "Existing Phase 1 prototype (gable roof) does NOT match the reference (flat-roof modern block with terrace). It will be rebuilt; the old one is kept only until then.",
-        "No outdoor meter / inverter location shown on the exterior — confirm placement (side wall vs. garage ENV03 / room ENV05)."
-      ]
+        "Prototype awaiting owner visual approval."
+      ],
+      "notes": "Rebuilt to board 05 ENV01: flat-roof two-storey block, recessed glazing with lit interiors, terrace planters, tilted PV array on racks, garage/service wing, utility meter on a separate boundary-wall pillar, tropical landscaping. Day/golden/night/blackout via lighting presets + power state."
     },
     {
       "id": "living-room",
       "name": "ENV02 Living room",
       "nameTh": "ห้องนั่งเล่น",
       "category": "environment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-environment",
       "phase": 2,
       "references": [
@@ -508,16 +509,17 @@
         "day",
         "evening",
         "power-outage",
-        "backup-loads-only",
-        "ac-on-off",
+        "lights-on-off",
         "tv-on-off",
-        "lamp-on-off",
-        "ceiling-lights"
+        "ac-on-off",
+        "sockets",
+        "light-switch"
       ],
       "issues": [
-        "Need: socket positions, window/garden view, whether AC wall unit is always on the left wall."
+        "Prototype awaiting owner visual approval."
       ],
-      "implementation": null
+      "implementation": "src/engine/environments/LivingRoom.tsx",
+      "notes": "Cutaway room 6.4×5 m, ceiling 2.8 m. State: power, lights, tv, ac, daylight. Sofa, coffee table, TV + console, wall AC, floor lamp, pendant + downlights, window with garden view, sockets, light switch."
     },
     {
       "id": "dining-area",
@@ -556,10 +558,10 @@
       "issues": []
     },
     {
-      "id": "garage-ev",
-      "name": "ENV03 Garage — EV charger & battery",
+      "id": "garage-service-area",
+      "name": "ENV03 Garage & electrical service area (default equipment storytelling location)",
       "category": "environment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-environment",
       "phase": 3,
       "references": [
@@ -569,9 +571,19 @@
         }
       ],
       "palette": {},
-      "animationCapabilities": [],
-      "implementation": null,
-      "issues": []
+      "animationCapabilities": [
+        "on-grid-config",
+        "hybrid-config",
+        "optional-battery",
+        "optional-ev-charger",
+        "backup-circuit-indicator",
+        "energy-flow-routes"
+      ],
+      "implementation": "src/engine/environments/GarageServiceArea.tsx",
+      "issues": [
+        "Prototype awaiting owner visual approval."
+      ],
+      "notes": "Options: system on-grid|hybrid, battery (hybrid only), evCharger, car. Storytelling location only — not an installation recommendation. Energy-flow routes derived from the configuration."
     },
     {
       "id": "rooftop-solar",
@@ -681,7 +693,7 @@
       "id": "pv-panel",
       "name": "PV module",
       "category": "equipment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -705,14 +717,14 @@
       "implementation": "src/engine/equipment/Solar.tsx",
       "palette": {},
       "issues": [
-        "Phase 1 prototype exists but must be restyled to match boards 02/06 (rounded matte housing, small dark display)."
+        "Prototype awaiting owner visual approval."
       ]
     },
     {
       "id": "on-grid-inverter",
       "name": "On-grid (grid-tied) inverter",
       "category": "equipment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -734,7 +746,7 @@
         "output-bars",
         "anti-islanding-off"
       ],
-      "implementation": "src/engine/equipment/Solar.tsx",
+      "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {
         "housing": {
           "hex": "#EEF0F3",
@@ -747,14 +759,15 @@
         }
       },
       "issues": [
-        "Phase 1 prototype exists but must be restyled to match boards 02/06 (rounded matte housing, small dark display)."
-      ]
+        "Prototype awaiting owner visual approval."
+      ],
+      "notes": "WallInverter (variant on-grid). Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "hybrid-inverter",
       "name": "Hybrid inverter",
       "category": "equipment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -780,7 +793,7 @@
         "backup-mode",
         "output-bars"
       ],
-      "implementation": "src/engine/equipment/Solar.tsx",
+      "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {
         "housing": {
           "hex": "#EEF0F3",
@@ -793,14 +806,15 @@
         }
       },
       "issues": [
-        "Phase 1 prototype exists but must be restyled to match boards 02/06 (rounded matte housing, small dark display)."
-      ]
+        "Prototype awaiting owner visual approval."
+      ],
+      "notes": "WallInverter (variant hybrid). Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "battery-storage",
       "name": "Battery storage (Li-ion)",
       "category": "equipment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -825,17 +839,18 @@
         "state-of-charge-bars",
         "charge-discharge-glow"
       ],
-      "implementation": "src/engine/equipment/Solar.tsx",
+      "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {},
       "issues": [
-        "Phase 1 prototype exists but must be restyled to match boards 02/06 (rounded matte housing, small dark display)."
-      ]
+        "Prototype awaiting owner visual approval."
+      ],
+      "notes": "BatteryStack. Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "electricity-meter",
       "name": "Electricity meter",
       "category": "equipment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -860,17 +875,18 @@
         "import-export-indicator",
         "display"
       ],
-      "implementation": "src/engine/equipment/Solar.tsx",
+      "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {},
       "issues": [
-        "Phase 1 prototype exists but must be restyled to match boards 02/06 (rounded matte housing, small dark display)."
-      ]
+        "Prototype awaiting owner visual approval."
+      ],
+      "notes": "UtilityMeter. Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "distribution-board",
       "name": "Distribution board",
       "category": "equipment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -895,9 +911,12 @@
         "breaker-states",
         "door-open"
       ],
-      "implementation": null,
+      "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {},
-      "issues": []
+      "issues": [
+        "Prototype awaiting owner visual approval."
+      ],
+      "notes": "DistributionBoard. Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "circuit-breaker",
@@ -999,7 +1018,7 @@
       "id": "ev-charger",
       "name": "EV charger (wallbox)",
       "category": "equipment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 3,
       "references": [
@@ -1020,15 +1039,18 @@
         "charging-led",
         "cable"
       ],
-      "implementation": null,
+      "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {},
-      "issues": []
+      "issues": [
+        "Prototype awaiting owner visual approval."
+      ],
+      "notes": "EVCharger. Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "electric-vehicle",
       "name": "Electric vehicle",
       "category": "equipment",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 3,
       "references": [
@@ -1048,9 +1070,12 @@
       "animationCapabilities": [
         "charging-port-glow"
       ],
-      "implementation": null,
+      "implementation": "src/engine/equipment/Electrical.tsx",
       "palette": {},
-      "issues": []
+      "issues": [
+        "Prototype awaiting owner visual approval."
+      ],
+      "notes": "ElectricCar. Generic, unbranded; placeable in garage, exterior service wall, equipment room or demo studio."
     },
     {
       "id": "microinverter",
@@ -1110,7 +1135,7 @@
       "id": "air-conditioner",
       "name": "Air conditioner (wall split)",
       "category": "appliance",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -1123,9 +1148,11 @@
         "on-off-state",
         "power-indicator"
       ],
-      "issues": [],
+      "issues": [
+        "Prototype awaiting owner visual approval."
+      ],
       "palette": {},
-      "implementation": null
+      "implementation": "src/engine/environments/LivingRoom.tsx"
     },
     {
       "id": "refrigerator",
@@ -1152,7 +1179,7 @@
       "id": "television",
       "name": "Television",
       "category": "appliance",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -1165,9 +1192,11 @@
         "on-off-state",
         "power-indicator"
       ],
-      "issues": [],
+      "issues": [
+        "Prototype awaiting owner visual approval."
+      ],
       "palette": {},
-      "implementation": null
+      "implementation": "src/engine/environments/LivingRoom.tsx"
     },
     {
       "id": "washing-machine",
@@ -1278,7 +1307,7 @@
       "id": "floor-lamp",
       "name": "Floor lamp",
       "category": "appliance",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -1291,15 +1320,17 @@
         "on-off-state",
         "power-indicator"
       ],
-      "issues": [],
+      "issues": [
+        "Prototype awaiting owner visual approval."
+      ],
       "palette": {},
-      "implementation": null
+      "implementation": "src/engine/environments/LivingRoom.tsx"
     },
     {
       "id": "ceiling-light",
       "name": "Ceiling light",
       "category": "appliance",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 2,
       "references": [
@@ -1312,15 +1343,17 @@
         "on-off-state",
         "power-indicator"
       ],
-      "issues": [],
+      "issues": [
+        "Prototype awaiting owner visual approval."
+      ],
       "palette": {},
-      "implementation": null
+      "implementation": "src/engine/environments/LivingRoom.tsx"
     },
     {
       "id": "socket",
       "name": "Household socket",
       "category": "appliance",
-      "status": "missing-reference",
+      "status": "awaiting-visual-approval",
       "modelType": "procedural-mesh",
       "phase": 3,
       "references": [],
@@ -1329,17 +1362,17 @@
         "power-indicator"
       ],
       "issues": [
-        "No reference supplied."
+        "Prototype awaiting owner visual approval."
       ],
       "palette": {},
-      "implementation": null
+      "implementation": "src/engine/equipment/Electrical.tsx"
     },
     {
       "id": "bright-morning",
       "name": "Morning",
       "nameTh": "เช้า",
       "category": "lighting-preset",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1366,7 +1399,7 @@
       "notes": "Soft warm light, long shadows, fresh & calm",
       "implementation": "src/engine/lighting/presets.ts",
       "issues": [
-        "Phase 1 preset exists but is not yet tuned to board 03."
+        "Preview rendered; awaiting owner visual approval."
       ],
       "animationCapabilities": []
     },
@@ -1375,7 +1408,7 @@
       "name": "Midday",
       "nameTh": "กลางวัน",
       "category": "lighting-preset",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1402,7 +1435,7 @@
       "notes": "Bright, high contrast, energetic",
       "implementation": "src/engine/lighting/presets.ts",
       "issues": [
-        "Phase 1 preset exists but is not yet tuned to board 03."
+        "Preview rendered; awaiting owner visual approval."
       ],
       "animationCapabilities": []
     },
@@ -1445,7 +1478,7 @@
       "name": "Golden hour",
       "nameTh": "เย็น (แสงทอง)",
       "category": "lighting-preset",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1472,7 +1505,7 @@
       "notes": "Warm golden light, rich colour, atmospheric",
       "implementation": "src/engine/lighting/presets.ts",
       "issues": [
-        "Phase 1 preset exists but is not yet tuned to board 03."
+        "Preview rendered; awaiting owner visual approval."
       ],
       "animationCapabilities": []
     },
@@ -1481,7 +1514,7 @@
       "name": "Night",
       "nameTh": "กลางคืน",
       "category": "lighting-preset",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1506,8 +1539,10 @@
         }
       },
       "notes": "Warm interior light, deep blue shadows",
-      "implementation": null,
-      "issues": [],
+      "implementation": "src/engine/lighting/presets.ts",
+      "issues": [
+        "Preview rendered; awaiting owner visual approval."
+      ],
       "animationCapabilities": []
     },
     {
@@ -1515,7 +1550,7 @@
       "name": "Power outage",
       "nameTh": "ไฟดับ",
       "category": "lighting-preset",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1542,7 +1577,7 @@
       "notes": "No interior light, cool moonlight, dark & quiet",
       "implementation": "src/engine/lighting/presets.ts",
       "issues": [
-        "Phase 1 preset exists but is not yet tuned to board 03."
+        "Preview rendered; awaiting owner visual approval."
       ],
       "animationCapabilities": []
     },
@@ -1551,7 +1586,7 @@
       "name": "Evening",
       "nameTh": "ค่ำ",
       "category": "lighting-preset",
-      "status": "reference-supplied",
+      "status": "awaiting-visual-approval",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1562,7 +1597,7 @@
       ],
       "implementation": "src/engine/lighting/presets.ts",
       "issues": [
-        "Phase 1 preset exists but is not yet tuned to board 01 §11."
+        "Preview rendered; awaiting owner visual approval."
       ],
       "palette": {},
       "animationCapabilities": []
@@ -1958,7 +1993,7 @@
       "id": "scene-palette",
       "name": "Global scene & UI palette",
       "category": "visual-language",
-      "status": "needs-owner-decision",
+      "status": "approved",
       "modelType": "data-preset",
       "phase": 2,
       "references": [
@@ -1976,57 +2011,19 @@
         }
       ],
       "palette": {
-        "navy-b01": {
+        "deep-navy": {
           "hex": "#0F2747",
-          "source": "sheet-swatch",
-          "note": "board 01 primary"
+          "source": "owner-approved"
         },
-        "yellow-b01": {
+        "solar-yellow": {
           "hex": "#FBBF24",
-          "source": "sheet-swatch",
-          "note": "board 01 primary"
-        },
-        "navy-b06": {
-          "hex": "#0B1B3B",
-          "source": "sheet-swatch",
-          "note": "board 06 deep navy"
-        },
-        "yellow-b06": {
-          "hex": "#FFC107",
-          "source": "sheet-swatch",
-          "note": "board 06 solar yellow"
-        },
-        "sunlight": {
-          "hex": "#FFD166",
-          "source": "sheet-swatch"
-        },
-        "interior-warm": {
-          "hex": "#F59E0B",
-          "source": "sheet-swatch"
-        },
-        "night-shadow": {
-          "hex": "#0F1B3D",
-          "source": "sheet-swatch"
-        },
-        "moonlight": {
-          "hex": "#3B82F6",
-          "source": "sheet-swatch"
-        },
-        "cloud": {
-          "hex": "#64748B",
-          "source": "sheet-swatch"
-        },
-        "ambient-fill": {
-          "hex": "#E2E8F0",
-          "source": "sheet-swatch"
+          "source": "owner-approved"
         }
       },
-      "issues": [
-        "Boards 01 and 06 give different navy (#0F2747 vs #0B1B3B) and yellow (#FBBF24 vs #FFC107). Pick one pair.",
-        "These illustration colours differ from the official logo colours (orange #FF5E1F / blue #1B28CE). Confirm the video-world palette may differ from the logo palette."
-      ],
+      "issues": [],
       "animationCapabilities": [],
-      "implementation": null
+      "implementation": null,
+      "notes": "Board 01 is the primary cinematic colour direction. Warm amber light, muted blue shadows, natural wood, cream interiors, subtle tropical greenery; natural architectural colours in daytime. The official logo keeps its own brand colours."
     },
     {
       "id": "supplier-flyers",
@@ -2098,6 +2095,657 @@
       "palette": {},
       "animationCapabilities": [],
       "implementation": null
+    },
+    {
+      "id": "review-studio",
+      "name": "Review studio (identity sheets, scale ruler, seats)",
+      "category": "environment",
+      "status": "in-progress",
+      "modelType": "procedural-environment",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "height-ruler",
+        "seats"
+      ],
+      "implementation": "src/engine/environments/ReviewStudio.tsx",
+      "issues": [],
+      "notes": "Internal review set, not for episodes."
+    },
+    {
+      "id": "gable-house-prototype",
+      "name": "Phase 1 gable-roof house prototype",
+      "category": "environment",
+      "status": "superseded",
+      "modelType": "procedural-environment",
+      "phase": 1,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": "src/engine/environments/ModernThaiHouse.tsx",
+      "issues": [],
+      "notes": "Superseded by modern-thai-house; kept for the Phase 1 foundation test."
+    },
+    {
+      "id": "light-switch",
+      "name": "Light switch",
+      "category": "equipment",
+      "status": "awaiting-visual-approval",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "on-off-rocker"
+      ],
+      "implementation": "src/engine/equipment/Electrical.tsx",
+      "issues": [
+        "Prototype awaiting owner visual approval."
+      ]
+    },
+    {
+      "id": "tablet",
+      "name": "Tablet (hand-held prop, screen glow)",
+      "category": "prop",
+      "status": "awaiting-visual-approval",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "Sunny holding tablet / panel"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "attach-to-joint",
+        "screen-glow"
+      ],
+      "implementation": "src/engine/props/Props.tsx",
+      "issues": []
+    },
+    {
+      "id": "demo-solar-panel",
+      "name": "Demonstration solar panel (hand-held prop)",
+      "category": "prop",
+      "status": "awaiting-visual-approval",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "Sunny holding tablet / panel"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "attach-to-joint",
+        "static"
+      ],
+      "implementation": "src/engine/props/Props.tsx",
+      "issues": []
+    },
+    {
+      "id": "coffee-mug",
+      "name": "Coffee mug (hand-held prop)",
+      "category": "prop",
+      "status": "awaiting-visual-approval",
+      "modelType": "procedural-mesh",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/04-solar-composition-reference.png",
+          "section": "§02 mugs on table"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "attach-to-joint",
+        "static"
+      ],
+      "implementation": "src/engine/props/Props.tsx",
+      "issues": []
+    },
+    {
+      "id": "review-studio-light",
+      "name": "Review studio soft key + fill",
+      "category": "lighting-preset",
+      "status": "in-progress",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [],
+      "implementation": "src/engine/lighting/presets.ts",
+      "issues": [],
+      "notes": "Engine ID: review-studio (lighting)."
+    },
+    {
+      "id": "idle-breathing",
+      "name": "Clip: idle-breathing",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "wave",
+      "name": "Clip: wave",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out",
+        "hand-mirroring"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "point",
+      "name": "Clip: point",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out",
+        "hand-mirroring"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "talk",
+      "name": "Clip: talk",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "explain",
+      "name": "Clip: explain",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out",
+        "hand-mirroring"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "open-hands",
+      "name": "Clip: open-hands",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "nod",
+      "name": "Clip: nod",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "shake-head",
+      "name": "Clip: shake-head",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "listen",
+      "name": "Clip: listen",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "think",
+      "name": "Clip: think",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out",
+        "hand-mirroring"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "surprised",
+      "name": "Clip: surprised",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "laugh",
+      "name": "Clip: laugh",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "thumbs-up",
+      "name": "Clip: thumbs-up",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out",
+        "hand-mirroring"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "hold-tablet",
+      "name": "Clip: hold-tablet",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "present-prop",
+      "name": "Clip: present-prop",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out",
+        "hand-mirroring"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "look-upward",
+      "name": "Clip: look-upward",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "lean-in",
+      "name": "Clip: lean-in",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "sit",
+      "name": "Clip: sit",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "shrug",
+      "name": "Clip: shrug",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "smile",
+      "name": "Clip: smile",
+      "category": "animation-clip",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [],
+      "palette": {},
+      "animationCapabilities": [
+        "blend-in-out"
+      ],
+      "implementation": "src/engine/animation/clips.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-neutral",
+      "name": "Expression: neutral",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-happy",
+      "name": "Expression: happy",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-talk",
+      "name": "Expression: talk",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-surprised",
+      "name": "Expression: surprised",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-thinking",
+      "name": "Expression: thinking",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-confused",
+      "name": "Expression: confused",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-laughing",
+      "name": "Expression: laughing",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-wink",
+      "name": "Expression: wink",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-concerned",
+      "name": "Expression: concerned",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-listening",
+      "name": "Expression: listening",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
+    },
+    {
+      "id": "expr-curious",
+      "name": "Expression: curious",
+      "category": "expression",
+      "status": "awaiting-visual-approval",
+      "modelType": "data-preset",
+      "phase": 2,
+      "references": [
+        {
+          "file": "boards/01-visual-reference-board.png",
+          "section": "§04 / §07 expressions"
+        }
+      ],
+      "palette": {},
+      "animationCapabilities": [
+        "blendable"
+      ],
+      "implementation": "src/engine/characters/expressions.ts",
+      "issues": []
     }
   ]
 }

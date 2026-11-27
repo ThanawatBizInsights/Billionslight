@@ -33,7 +33,8 @@ function fadeFor(frame: number, o: Overlay) {
 
 function Positioned({ o, children }: { o: Overlay; children: React.ReactNode }) {
   const { width, height } = useVideoConfig();
-  const sa = SAFE_AREA_9_16;
+  // social safe area for vertical video; simple margins for landscape/square review sheets
+  const sa = height > width * 1.2 ? SAFE_AREA_9_16 : { top: 0.06, bottom: 0.06, left: 0.04, right: 0.04 };
   const left = (sa.left + (1 - sa.left - sa.right) * o.anchor[0]) * width;
   const top = (sa.top + (1 - sa.top - sa.bottom) * o.anchor[1]) * height;
   return (

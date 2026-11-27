@@ -1,0 +1,59 @@
+{
+ "schemaVersion": 1,
+ "id": "review-env-living-day",
+ "title": "ENV02 Living room · day",
+ "aspectRatio": "16:9",
+ "fps": 30,
+ "cast": [],
+ "scenes": [
+  {
+   "id": "env",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "living-room",
+    "options": {},
+    "states": []
+   },
+   "lighting": {
+    "preset": "midday-sun"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       2.1,
+       1.6,
+       4.9
+      ],
+      "target": [
+       -0.4,
+       1,
+       -1
+      ],
+      "fov": 48
+     }
+    ]
+   },
+   "characters": [],
+   "electrical": [],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "ENV02 LIVING ROOM · DAY",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

@@ -38,7 +38,7 @@
       "description": "Slow dolly from a wide golden-hour establishing shot to the engineer, who waves and points at the roof array while sunlight strengthens and solar flow to the house increases.",
       "durationInFrames": 150,
       "environment": {
-        "id": "modern-thai-house",
+        "id": "gable-house-prototype",
         "options": {
           "inverterVariant": "grid-tied"
         }

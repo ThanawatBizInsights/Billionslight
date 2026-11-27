@@ -1,0 +1,205 @@
+{
+ "schemaVersion": 1,
+ "id": "review-turnaround-sunny",
+ "title": "SUNNY turnaround",
+ "aspectRatio": "16:9",
+ "fps": 30,
+ "cast": [
+  {
+   "id": "v0",
+   "characterId": "sunny"
+  },
+  {
+   "id": "v1",
+   "characterId": "sunny"
+  },
+  {
+   "id": "v2",
+   "characterId": "sunny"
+  },
+  {
+   "id": "v3",
+   "characterId": "sunny"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "review",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "review-studio",
+    "options": {
+     "atmosphere": false
+    }
+   },
+   "lighting": {
+    "preset": "review-studio"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       0,
+       0.7425000000000002,
+       11
+      ],
+      "target": [
+       0,
+       0.675,
+       0
+      ],
+      "fov": 20
+     }
+    ]
+   },
+   "characters": [
+    {
+     "castId": "v0",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        -1.7999999999999998,
+        0,
+        0
+       ],
+       "rotationY": 0
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    },
+    {
+     "castId": "v1",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        -0.6,
+        0,
+        0
+       ],
+       "rotationY": 0.62
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    },
+    {
+     "castId": "v2",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        0.6,
+        0,
+        0
+       ],
+       "rotationY": 1.5707963267948966
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    },
+    {
+     "castId": "v3",
+     "keyframes": [
+      {
+       "frame": 0,
+       "position": [
+        1.7999999999999998,
+        0,
+        0
+       ],
+       "rotationY": 3.141592653589793
+      }
+     ],
+     "expression": [
+      {
+       "frame": 0,
+       "expression": "happy"
+      }
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "SUNNY (ซันนี่) · IDENTITY SHEET · PROTOTYPE FOR APPROVAL",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    },
+    {
+     "id": "l0",
+     "kind": "label",
+     "style": "tag",
+     "text": "FRONT",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.21811151501127424,
+      0.97
+     ]
+    },
+    {
+     "id": "l1",
+     "kind": "label",
+     "style": "tag",
+     "text": "3/4",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.40603717167042475,
+      0.97
+     ]
+    },
+    {
+     "id": "l2",
+     "kind": "label",
+     "style": "tag",
+     "text": "SIDE",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5939628283295753,
+      0.97
+     ]
+    },
+    {
+     "id": "l3",
+     "kind": "label",
+     "style": "tag",
+     "text": "BACK",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.7818884849887258,
+      0.97
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

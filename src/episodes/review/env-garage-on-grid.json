@@ -1,0 +1,72 @@
+{
+ "schemaVersion": 1,
+ "id": "review-env-garage-on-grid",
+ "title": "ENV03 Garage service area · on-grid system · daytime solar + grid",
+ "aspectRatio": "16:9",
+ "fps": 30,
+ "cast": [],
+ "scenes": [
+  {
+   "id": "env",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "garage-service-area",
+    "options": {
+     "system": "on-grid"
+    },
+    "states": []
+   },
+   "lighting": {
+    "preset": "midday-sun"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       1.1,
+       1.55,
+       1.6
+      ],
+      "target": [
+       -0.15,
+       1.3,
+       -2.8
+      ],
+      "fov": 46
+     }
+    ]
+   },
+   "characters": [],
+   "electrical": [
+    {
+     "frame": 0,
+     "transitionFrames": 0,
+     "scenario": {
+      "inverterType": "grid-tied",
+      "gridStatus": "connected",
+      "solarIrradiance": 0.3,
+      "householdLoadKw": 2.2
+     }
+    }
+   ],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "ENV03 GARAGE SERVICE AREA · ON-GRID SYSTEM · DAYTIME SOLAR + GRID",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

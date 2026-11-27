@@ -1,0 +1,67 @@
+{
+ "schemaVersion": 1,
+ "id": "review-env-house-blackout",
+ "title": "ENV01 Modern Thai solar house · blackout",
+ "aspectRatio": "16:9",
+ "fps": 30,
+ "cast": [],
+ "scenes": [
+  {
+   "id": "env",
+   "durationInFrames": 30,
+   "environment": {
+    "id": "modern-thai-house",
+    "options": {},
+    "states": [
+     {
+      "frame": 0,
+      "values": {
+       "power": 0
+      },
+      "transitionFrames": 0
+     }
+    ]
+   },
+   "lighting": {
+    "preset": "power-outage"
+   },
+   "camera": {
+    "keyframes": [
+     {
+      "frame": 0,
+      "position": [
+       9.5,
+       5.2,
+       21.5
+      ],
+      "target": [
+       1.2,
+       3.6,
+       0
+      ],
+      "fov": 34
+     }
+    ]
+   },
+   "characters": [],
+   "electrical": [],
+   "overlays": [
+    {
+     "id": "t",
+     "kind": "label",
+     "style": "tag",
+     "text": "ENV01 MODERN THAI SOLAR HOUSE · BLACKOUT",
+     "from": 0,
+     "durationInFrames": 9999,
+     "anchor": [
+      0.5,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "branding": {
+  "showLogo": false
+ }
+}

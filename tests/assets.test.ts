@@ -38,10 +38,14 @@ describe("asset availability", () => {
     }
   });
 
-  it("temporary characters are flagged as such", () => {
+  it("character statuses follow the approval gates", () => {
     expect(CHARACTER_LIBRARY["temp-engineer"]!.status).toBe("temporary");
-    // Sunny must not exist until the official character sheet is approved.
-    expect(CHARACTER_LIBRARY["sunny"]).toBeUndefined();
+    // Phase 2 prototypes exist but are not approved until the owner signs off
+    expect(CHARACTER_LIBRARY["sunny"]!.status).toBe("prototype");
+    expect(CHARACTER_LIBRARY["homeowner_male_01"]!.status).toBe("prototype");
+    // May is reserved, not buildable yet; squirrel teammates are not in the library
+    expect(CHARACTER_LIBRARY["homeowner_female_01"]).toBeUndefined();
+    expect(Object.keys(CHARACTER_LIBRARY).some((k) => k.includes("teammate"))).toBe(false);
   });
 });
 

@@ -28,27 +28,42 @@ function SkyDome({ preset }: { preset: LightingPreset }) {
   );
 }
 
-export function LightingRig({ preset, shadowMapSize, sunIntensityScale = 1 }: { preset: LightingPreset; shadowMapSize: number; sunIntensityScale?: number }) {
+export function LightingRig({
+  preset,
+  shadowMapSize,
+  sunIntensityScale = 1,
+  shadowExtent = 16,
+  skyVisible = true,
+}: {
+  preset: LightingPreset;
+  shadowMapSize: number;
+  sunIntensityScale?: number;
+  /** Half-size of the sun's shadow frustum (smaller = crisper shadows for interiors). */
+  shadowExtent?: number;
+  skyVisible?: boolean;
+}) {
   const sunDir = new THREE.Vector3(...preset.sun.position).normalize();
+  // keep the shadow camera tight around the set: place the sun along its direction at a fixed distance
+  const sunPos = sunDir.clone().multiplyScalar(Math.max(20, shadowExtent * 2.5)).toArray() as [number, number, number];
   return (
     <>
-      <SkyDome preset={preset} />
+      {skyVisible && <SkyDome preset={preset} />}
       <fog attach="fog" args={[preset.fog.color, preset.fog.near, preset.fog.far]} />
       <ambientLight color={preset.ambient.color} intensity={preset.ambient.intensity} />
       <hemisphereLight args={[preset.hemisphere.sky, preset.hemisphere.ground, preset.hemisphere.intensity]} />
       <directionalLight
         color={preset.sun.color}
         intensity={preset.sun.intensity * sunIntensityScale}
-        position={preset.sun.position}
+        position={sunPos}
         castShadow
         shadow-mapSize-width={shadowMapSize}
         shadow-mapSize-height={shadowMapSize}
-        shadow-camera-left={-16}
-        shadow-camera-right={16}
-        shadow-camera-top={16}
-        shadow-camera-bottom={-16}
+        shadow-camera-left={-shadowExtent}
+        shadow-camera-right={shadowExtent}
+        shadow-camera-top={shadowExtent}
+        shadow-camera-bottom={-shadowExtent}
         shadow-camera-near={1}
-        shadow-camera-far={70}
+        shadow-camera-far={Math.max(20, shadowExtent * 2.5) * 2}
         shadow-bias={-0.0004}
         shadow-normalBias={0.03}
         shadow-radius={4}
