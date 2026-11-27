@@ -57,3 +57,17 @@ Host: 4-core Xeon 2.1 GHz container, SwANGLE software GL (no GPU), concurrency 3
   appliance. Simplified educational model — not a wiring diagram.
 - Overlay text in the showcase only names the configuration; no technical
   claims are made, so no references are attached.
+
+## Regenerated with the approved energy-flow style V3 (2026-11-27)
+
+After the owner approved the V3 travelling-pulse previews and the equipment
+indicator migration, every existing video with energy flows or device
+indicators was regenerated (all ffprobe-verified; previous versions kept in
+`pre-v3/` next to each file):
+
+- `renders/phase-3-review/showcase/` — draft, preview, final
+- `renders/phase-2-review/05-conversation-test/` — draft, preview, final (AC LED)
+- `renders/FoundationTest/` — draft, final
+- `renders/energy-flow-review/v3/full|mobile/` — all nine tests
+- `renders/phase-2-review/energy-flow-v3/` — garage on-grid / hybrid stills
+  (the approved Phase 2 stills are left untouched for the record)
