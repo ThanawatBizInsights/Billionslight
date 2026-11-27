@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "id": "foundation-test",
+  "title": "Phase 1 foundation test — solar house",
+  "topic": "Technical test: 3D pipeline, lighting, character rig and energy-flow engine",
+  "language": "th",
+  "aspectRatio": "9:16",
+  "fps": 30,
+  "cast": [
+    {
+      "id": "engineer",
+      "characterId": "temp-engineer"
+    }
+  ],
+  "technicalClaims": [
+    {
+      "id": "claim-irradiance",
+      "text": "แดดแรงขึ้น โซลาร์ผลิตไฟได้มากขึ้น",
+      "meaning": "PV output rises with irradiance on the array (all else equal).",
+      "referenceIds": [
+        "ref-pv-irradiance"
+      ],
+      "status": "needs-human-review"
+    }
+  ],
+  "references": [
+    {
+      "id": "ref-pv-irradiance",
+      "title": "PV module output vs. irradiance (general principle)",
+      "source": "TO BE SUPPLIED BY REVIEWER — e.g. module datasheet or IEC 61215/61853 performance data",
+      "notes": "Placeholder: reviewer must attach an authoritative source before approval."
+    }
+  ],
+  "scenes": [
+    {
+      "id": "solar-house-test",
+      "title": "Solar house establishing test",
+      "description": "Slow dolly from a wide golden-hour establishing shot to the engineer, who waves and points at the roof array while sunlight strengthens and solar flow to the house increases.",
+      "durationInFrames": 150,
+      "environment": {
+        "id": "modern-thai-house",
+        "options": {
+          "inverterVariant": "grid-tied"
+        }
+      },
+      "lighting": {
+        "preset": "golden-hour"
+      },
+      "camera": {
+        "keyframes": [
+          {
+            "frame": 0,
+            "position": [
+              17,
+              8.5,
+              21
+            ],
+            "target": [
+              1.2,
+              3.2,
+              1.5
+            ],
+            "fov": 40
+          },
+          {
+            "frame": 150,
+            "position": [
+              8.0,
+              1.8,
+              16
+            ],
+            "target": [
+              2.4,
+              3.9,
+              3.4
+            ],
+            "fov": 48,
+            "easing": "easeInOutCubic"
+          }
+        ]
+      },
+      "characters": [
+        {
+          "castId": "engineer",
+          "keyframes": [
+            {
+              "frame": 0,
+              "position": [
+                3.0,
+                0,
+                7.6
+              ],
+              "rotationY": 0.75
+            },
+            {
+              "frame": 58,
+              "rotationY": 0.75
+            },
+            {
+              "frame": 76,
+              "rotationY": 0.55
+            }
+          ],
+          "clips": [
+            {
+              "clip": "wave",
+              "from": 6,
+              "durationInFrames": 56,
+              "blendFrames": 10,
+              "params": {
+                "hand": "left"
+              }
+            },
+            {
+              "clip": "point",
+              "from": 66,
+              "durationInFrames": 84,
+              "blendFrames": 12,
+              "params": {
+                "pointAt": "arrayCenter",
+                "hand": "left"
+              }
+            },
+            {
+              "clip": "talk",
+              "from": 72,
+              "durationInFrames": 70,
+              "blendFrames": 4
+            }
+          ],
+          "lookAt": [
+            {
+              "frame": 0,
+              "target": [
+                8.0,
+                1.8,
+                16
+              ]
+            },
+            {
+              "frame": 70,
+              "target": "arrayCenter"
+            },
+            {
+              "frame": 112,
+              "target": [
+                8.0,
+                1.8,
+                16
+              ]
+            }
+          ]
+        }
+      ],
+      "electrical": [
+        {
+          "frame": 0,
+          "transitionFrames": 0,
+          "scenario": {
+            "inverterType": "grid-tied",
+            "gridStatus": "connected",
+            "solarIrradiance": 0.25,
+            "pvRatedKw": 5,
+            "inverterRatedKw": 5,
+            "householdLoadKw": 2.4
+          }
+        },
+        {
+          "frame": 50,
+          "transitionFrames": 30,
+          "scenario": {
+            "inverterType": "grid-tied",
+            "gridStatus": "connected",
+            "solarIrradiance": 0.9,
+            "pvRatedKw": 5,
+            "inverterRatedKw": 5,
+            "householdLoadKw": 2.4
+          }
+        }
+      ],
+      "overlays": [
+        {
+          "id": "tag",
+          "kind": "label",
+          "style": "tag",
+          "text": "PHASE 1 TEST · TEMPORARY CHARACTER",
+          "from": 0,
+          "durationInFrames": 150,
+          "anchor": [
+            0.5,
+            0.0
+          ]
+        },
+        {
+          "id": "title",
+          "kind": "title",
+          "text": "พลังงานแสงอาทิตย์\nสู่บ้านของคุณ",
+          "from": 8,
+          "durationInFrames": 142,
+          "anchor": [
+            0.5,
+            0.11
+          ]
+        },
+        {
+          "id": "solar-label",
+          "kind": "label",
+          "style": "energy-solar",
+          "text": "แดดแรงขึ้น โซลาร์ผลิตไฟได้มากขึ้น",
+          "from": 62,
+          "durationInFrames": 88,
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "legend",
+          "kind": "legend",
+          "text": "solar,grid,inactive",
+          "from": 20,
+          "durationInFrames": 130,
+          "anchor": [
+            0.73,
+            1.0
+          ]
+        }
+      ],
+      "claimIds": [
+        "claim-irradiance"
+      ]
+    }
+  ],
+  "branding": {
+    "showLogo": false
+  },
+  "approval": {
+    "status": "draft",
+    "history": []
+  }
+}

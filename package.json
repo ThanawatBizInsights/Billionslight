@@ -1,0 +1,42 @@
+{
+  "name": "billionslight-animation-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local-first programmable low-poly 3D animation studio for Billionslight educational videos",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render:test": "node scripts/render.mjs FoundationTest --quality=final",
+    "render:test:draft": "node scripts/render.mjs FoundationTest --quality=draft",
+    "verify": "node scripts/verify-video.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "doctor": "node scripts/doctor.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
+    "@remotion/bundler": "4.0.547",
+    "@remotion/cli": "4.0.547",
+    "@remotion/fonts": "4.0.547",
+    "@remotion/renderer": "4.0.547",
+    "@remotion/three": "4.0.547",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "remotion": "4.0.547",
+    "three": "0.180.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@fontsource/noto-sans-thai": "5.2.8",
+    "@types/node": "22.15.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@types/three": "0.180.0",
+    "typescript": "5.9.3",
+    "vitest": "5.1.2"
+  }
+}
