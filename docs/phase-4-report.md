@@ -1,8 +1,9 @@
 # Phase 4 report — audio, dialogue sync, Thai subtitles, music & SFX
 
-Status: **pipeline built and tested with free mock voices.** No ElevenLabs
-credits have been used. Real voices need the owner's voice choices and
-approval of a paid generation run (see "Next step").
+Status: **built; first real-voice test generated (owner-approved,
+2026-11-28).** Voices: narrator = owner's clone "Thanawat", Ton = "Songkran",
+Sunny = "Kirin". First paid run: 7 lines, 292 characters, run in the cloud
+session through the environment's proxy credential.
 
 Details: `docs/audio-pipeline.md`.
 
@@ -47,7 +48,19 @@ configured).
 Output: `renders/phase-4-review/dialogue-test/` (MP4 + `.th.srt` per
 quality), stills in `renders/phase-4-review/stills/`.
 
-## Next step — real voices (owner decisions)
+## Real voices (2026-11-28)
+
+| Quality | Resolution | Render time | Verification |
+|---|---|---|---|
+| draft | 360×640 | 83 s | ffprobe ok, 25.84 s, AAC |
+| preview | 540×960 | 177 s | ffprobe ok |
+| final | 1080×1920 | 456 s | ffprobe ok, −21.4 dB mean / −3.8 dB peak |
+
+All 7 lines came back with exact character alignment, so subtitle changes
+follow the real speech. Renders use `--audio=cache` (no network). The
+mock-voice renders are kept in `dialogue-test/mock-voices/` for comparison.
+
+## Original next step (done)
 
 1. Choose voices for Sunny, Ton (`homeowner`) and the narrator.
 2. Approve a first paid run (the dialogue test is ~263 characters,
