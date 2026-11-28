@@ -33,9 +33,19 @@ for (const w of ["400", "700", "800"]) {
   check(`Thai font ${w}`, fs.existsSync(f));
 }
 const ref = (p) => fs.existsSync(path.join(root, "public/assets", p)) && fs.readdirSync(path.join(root, "public/assets", p)).some((f) => !f.startsWith(".") && f !== "README.md");
-check("Official Billionslight logo (branding/)", ref("branding"), ref("branding") ? "" : "NOT SUPPLIED — required before Phase 5");
-check("Sunny character sheet (characters/sunny/)", fs.existsSync(path.join(root, "public/assets/characters/sunny")) && ref("characters/sunny"), "required before Phase 2 approval");
-check("ElevenLabs key present", !!process.env.ELEVENLABS_API_KEY, process.env.ELEVENLABS_API_KEY ? "set (value hidden)" : "not set → mock/imported audio only");
+const logoFiles = ["billionslight-logo-stacked.png", "billionslight-logo-horizontal.png"].filter((f) => fs.existsSync(path.join(root, "public/assets/branding", f)));
+check("Official logo files for the logo overlay (public/assets/branding/)", logoFiles.length === 2, logoFiles.length === 2 ? logoFiles.join(", ") : "missing — copy the official PNGs from the Drive 'Logo' folder (git-ignored)");
+check("Sunny character sheet (characters/sunny/)", fs.existsSync(path.join(root, "public/assets/characters/sunny")) && ref("characters/sunny"), "optional reference copy (Phase 2 approved)");
+const behindProxy = !!(process.env.HTTPS_PROXY || process.env.https_proxy);
+check("ElevenLabs key present", !!process.env.ELEVENLABS_API_KEY, process.env.ELEVENLABS_API_KEY ? "set (value hidden)" : behindProxy ? "not in env — in a cloud session the 'Billionslight' environment injects it via the proxy; run paid steps with ELEVENLABS_API_KEY=proxy-injected" : "not set → mock/imported audio only");
+check("ElevenLabs model / language", (process.env.ELEVENLABS_MODEL_ID || "eleven_v4") === "eleven_v4", `${process.env.ELEVENLABS_MODEL_ID || "eleven_v4 (default)"} · language_code ${process.env.ELEVENLABS_LANGUAGE_CODE || "th (default)"}`);
+const voices = ["SUNNY", "HOMEOWNER", "NARRATOR"].filter((k) => process.env[`ELEVENLABS_VOICE_${k}`]);
+check("Voice IDs (Sunny, Ton, narrator)", voices.length === 3, voices.length === 3 ? "all set (values hidden)" : `missing: ${["SUNNY", "HOMEOWNER", "NARRATOR"].filter((k) => !voices.includes(k)).join(", ")}`);
+const lib = path.join(root, "public/assets/audio/library");
+check("Original sound library", fs.existsSync(lib) && fs.readdirSync(lib).filter((f) => f.endsWith(".wav")).length >= 7, fs.existsSync(lib) ? `${fs.readdirSync(lib).filter((f) => f.endsWith(".wav")).length} files` : "not generated — npx tsx scripts/audio/synth-library.ts");
+const cache = path.join(root, "public/assets/audio/cache");
+const cached = fs.existsSync(cache) ? fs.readdirSync(cache).filter((f) => f.startsWith("el-") && f.endsWith(".wav")).length : 0;
+check("Voice cache (generated lines on this machine)", cached > 0, `${cached} ElevenLabs lines cached (re-renders use them for free)`);
 check("Paid API calls enabled", process.env.ELEVENLABS_ALLOW_PAID_CALLS === "true", process.env.ELEVENLABS_ALLOW_PAID_CALLS === "true" ? "ENABLED" : "disabled (safe default)");
 
 console.log(`\nBillionslight Animation Studio — doctor\n${os.type()} ${os.arch()} · ${os.cpus()[0]?.model} ×${os.cpus().length} · ${Math.round(os.totalmem() / 1e9)} GB RAM\n`);

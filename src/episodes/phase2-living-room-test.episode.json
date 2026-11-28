@@ -451,7 +451,14 @@
     "showLogo": false
   },
   "approval": {
-    "status": "visual-review",
-    "history": []
+    "status": "approved",
+    "history": [
+      {
+        "status": "approved",
+        "by": "owner",
+        "at": "2026-11-28",
+        "note": "Owner approved all episodes (visual, audio and technical claims)."
+      }
+    ]
   }
 }

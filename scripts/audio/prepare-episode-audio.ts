@@ -73,7 +73,11 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     process.exit(r.status ?? 1);
   }
   runPrepare(process.argv.slice(2)).catch((e) => {
-    console.error(String(e instanceof Error ? e.message : e));
+    const issues = (e as { issues?: { path: (string | number)[]; message: string }[] })?.issues;
+    if (Array.isArray(issues)) {
+      console.error("✖ Episode validation failed:");
+      for (const i of issues) console.error(`  - ${i.path.join(".") || "(episode)"}: ${i.message}`);
+    } else console.error(`✖ ${String(e instanceof Error ? e.message : e)}`);
     process.exit(1);
   });
 }

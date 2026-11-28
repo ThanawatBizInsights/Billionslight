@@ -435,6 +435,15 @@ export const Episode = z
           ctx.addIssue({ code: "custom", path: ["technicalClaims", ci], message: `unknown reference "${r}"` });
       }),
     );
+    // An episode can only be approved (or rendered/published as approved) once a human verified every claim.
+    if (["approved", "published"].includes(ep.approval.status)) {
+      ep.technicalClaims.forEach((c, ci) => {
+        if (c.status !== "verified" || !c.reviewer)
+          ctx.addIssue({ code: "custom", path: ["technicalClaims", ci, "status"], message: `claim "${c.id}" must be verified by a named human reviewer before the episode is ${ep.approval.status}` });
+      });
+      if (!ep.approval.history.some((h) => h.status === "approved"))
+        ctx.addIssue({ code: "custom", path: ["approval", "history"], message: "an approved episode needs an approval history entry (who, when)" });
+    }
     const sceneIds = ep.scenes.map((s) => s.id);
     if (new Set(sceneIds).size !== sceneIds.length)
       ctx.addIssue({ code: "custom", path: ["scenes"], message: "scene IDs must be unique" });

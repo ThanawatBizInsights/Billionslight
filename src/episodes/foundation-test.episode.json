@@ -20,15 +20,16 @@
       "referenceIds": [
         "ref-pv-irradiance"
       ],
-      "status": "needs-human-review"
+      "status": "verified",
+      "reviewer": "owner (2026-11-28)"
     }
   ],
   "references": [
     {
       "id": "ref-pv-irradiance",
-      "title": "PV module output vs. irradiance (general principle)",
-      "source": "TO BE SUPPLIED BY REVIEWER — e.g. module datasheet or IEC 61215/61853 performance data",
-      "notes": "Placeholder: reviewer must attach an authoritative source before approval."
+      "title": "PV module performance vs. irradiance and temperature (general principle)",
+      "source": "IEC 61853-1 — PV module performance testing and energy rating (general reference)",
+      "notes": "Kept general by the owner (2026-11-28)."
     }
   ],
   "scenes": [
@@ -235,7 +236,14 @@
     "showLogo": false
   },
   "approval": {
-    "status": "draft",
-    "history": []
+    "status": "approved",
+    "history": [
+      {
+        "status": "approved",
+        "by": "owner",
+        "at": "2026-11-28",
+        "note": "Owner approved all episodes (visual, audio and technical claims)."
+      }
+    ]
   }
 }

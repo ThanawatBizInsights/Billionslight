@@ -1,8 +1,8 @@
 # Phase 5 report — "ไฟดับตอนแดดแรง โซลาร์ยังจ่ายไฟให้บ้านไหม?"
 
-Status: **rendered, awaiting the owner's technical + visual review** (Phase 5
-gate). Script approved by the owner (2026-11-28). The episode stays `draft`
-until a human verifies the technical claims (CLAUDE.md).
+Status: **APPROVED by the owner (2026-11-28)** — visual, audio and technical
+review passed; all six claims verified by the owner (references kept general).
+Format: 9:16 for Reels/Shorts first; 16:9 later.
 
 ## Episode
 
@@ -31,7 +31,7 @@ until a human verifies the technical claims (CLAUDE.md).
 
 kW values are illustrative scenario values, not product specifications.
 
-## Technical claims (all `needs-human-review`)
+## Technical claims (verified by the owner, 2026-11-28)
 
 | Claim | References |
 |---|---|

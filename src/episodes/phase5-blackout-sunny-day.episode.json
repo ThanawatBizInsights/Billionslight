@@ -894,7 +894,8 @@
         "r-iec-62116",
         "r-ieee-1547"
       ],
-      "status": "needs-human-review"
+      "status": "verified",
+      "reviewer": "owner (2026-11-28)"
     },
     {
       "id": "c-lineworker-safety",
@@ -904,7 +905,8 @@
         "r-ieee-1547",
         "r-iec-62116"
       ],
-      "status": "needs-human-review"
+      "status": "verified",
+      "reviewer": "owner (2026-11-28)"
     },
     {
       "id": "c-hybrid-backup-needs",
@@ -914,7 +916,8 @@
         "r-hybrid-manual",
         "r-bl-policy"
       ],
-      "status": "needs-human-review"
+      "status": "verified",
+      "reviewer": "owner (2026-11-28)"
     },
     {
       "id": "c-backup-isolation",
@@ -924,7 +927,8 @@
         "r-hybrid-manual",
         "r-ieee-1547"
       ],
-      "status": "needs-human-review"
+      "status": "verified",
+      "reviewer": "owner (2026-11-28)"
     },
     {
       "id": "c-backup-limits",
@@ -933,7 +937,8 @@
       "referenceIds": [
         "r-hybrid-manual"
       ],
-      "status": "needs-human-review"
+      "status": "verified",
+      "reviewer": "owner (2026-11-28)"
     },
     {
       "id": "c-qualified-installer",
@@ -942,7 +947,8 @@
       "referenceIds": [
         "r-bl-policy"
       ],
-      "status": "needs-human-review"
+      "status": "verified",
+      "reviewer": "owner (2026-11-28)"
     }
   ],
   "references": [
@@ -969,7 +975,14 @@
     }
   ],
   "approval": {
-    "status": "draft",
-    "history": []
+    "status": "approved",
+    "history": [
+      {
+        "status": "approved",
+        "by": "owner",
+        "at": "2026-11-28",
+        "note": "Owner approved all episodes (visual, audio and technical claims)."
+      }
+    ]
   }
 }

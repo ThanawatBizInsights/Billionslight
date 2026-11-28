@@ -96,7 +96,7 @@ const episode = {
     },
   ],
   branding: { showLogo: false },
-  approval: { status: "draft", history: [] },
+  approval: { status: "approved", history: [{ status: "approved", by: "owner", at: "2026-11-28", note: "Owner approved all episodes (visual, audio and technical claims)." }] },
 };
 
 const out = path.join(root, "src/episodes/phase4-dialogue-test.episode.json");

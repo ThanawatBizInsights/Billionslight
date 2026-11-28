@@ -8,8 +8,8 @@
  * the house running. Sunny shows why an on-grid system stops (anti-islanding,
  * line-worker safety), what a hybrid system with battery + configured backup
  * circuit can do, its limits, and that a qualified installer should assess it.
- * Every technical statement is a claim with references, status
- * needs-human-review until a human technical reviewer verifies it.
+ * Every technical statement is a claim with references; all six were verified
+ * by the owner on 2026-11-28 when approving the episode.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -39,7 +39,8 @@ const references = [
   { id: "r-hybrid-manual", title: "Hybrid inverter documentation (general) — backup (EPS) output, grid isolation and backup load limits", source: "Manufacturers' installation manuals for hybrid inverters with a backup output (general; no specific product)", notes: "Kept general by the owner (2026-11-28); product-specific references will be added in future episodes." },
   { id: "r-bl-policy", title: "Billionslight electrical-accuracy and safety policy", source: "docs/electrical-accuracy.md (internal)" },
 ];
-const claim = (id, text, meaning, referenceIds) => ({ id, text, meaning, referenceIds, status: "needs-human-review" });
+// verified by the owner on 2026-11-28 ("Approved all episodes"); hybrid references kept general by decision
+const claim = (id, text, meaning, referenceIds) => ({ id, text, meaning, referenceIds, status: "verified", reviewer: "owner (2026-11-28)" });
 const technicalClaims = [
   claim("c-ongrid-stops", "ระบบออนกริด พอไฟจากการไฟฟ้าดับ อินเวอร์เตอร์จะหยุดจ่ายไฟ", "A grid-tied (on-grid) PV inverter stops supplying power when the utility grid fails (anti-islanding), even in strong sun.", ["r-iec-62116", "r-ieee-1547"]),
   claim("c-lineworker-safety", "เพื่อไม่ให้ไฟย้อนกลับเข้าสายไฟฟ้าตอนที่ช่างกำลังซ่อม", "Anti-islanding prevents the PV system from energising the utility lines during an outage, protecting utility workers.", ["r-ieee-1547", "r-iec-62116"]),
@@ -244,7 +245,7 @@ const episode = {
   branding: { showLogo: true },
   technicalClaims,
   references,
-  approval: { status: "draft", history: [] },
+  approval: { status: "approved", history: [{ status: "approved", by: "owner", at: "2026-11-28", note: "Owner approved all episodes (visual, audio and technical claims)." }] },
 };
 
 const out = path.join(root, "src/episodes/phase5-blackout-sunny-day.episode.json");

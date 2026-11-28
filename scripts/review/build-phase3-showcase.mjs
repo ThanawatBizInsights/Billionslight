@@ -203,7 +203,7 @@ const episode = {
   ],
   scenes,
   branding: { showLogo: false },
-  approval: { status: "visual-review", history: [] },
+  approval: { status: "approved", history: [{ status: "approved", by: "owner", at: "2026-11-28", note: "Owner approved all episodes (visual, audio and technical claims)." }] },
 };
 
 const out = path.join(root, "src/episodes/phase3-engine-showcase.episode.json");

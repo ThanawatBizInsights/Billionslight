@@ -1,6 +1,6 @@
 # Phase 5 script — ไฟดับตอนแดดแรง โซลาร์ยังจ่ายไฟให้บ้านไหม?
 
-Status: **script approved by the owner (2026-11-28)**; claims still await human technical verification before the episode can be marked approved. No real voices generated yet; the animatic uses free mock voices.
+Status: **approved by the owner (2026-11-28)** — script, visuals, audio and all technical claims (verified, references kept general). No real voices generated yet; the animatic uses free mock voices.
 
 Cast: Sunny = Pat, Ton = Suwapoj, Narrator = Thanawat (clone) · model `eleven_v4`, `language_code: th`. Captions show the **Caption** column; the voice says the **Spoken** column (direction tags in [ ] are performed, never shown).
 
@@ -63,7 +63,7 @@ Cast: Sunny = Pat, Ton = Suwapoj, Narrator = Thanawat (clone) · model `eleven_v
 
 **Total to generate: 1067 characters** (eleven_v4).
 
-## Technical claims (all `needs-human-review`)
+## Technical claims (verified by the owner, 2026-11-28)
 
 | ID | Claim (Thai) | Meaning | References |
 |---|---|---|---|

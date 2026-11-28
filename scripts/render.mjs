@@ -48,7 +48,10 @@ if (inputProps.episode && hasDialogue && audioMode !== "none") {
   const timedOut = path.join(root, "public/assets/audio/episodes", inputProps.episode.id, `timed-${audioMode}.json`);
   console.log(`▶ Preparing audio (${audioMode})…`);
   const r = spawnSync("npx", ["tsx", "scripts/audio/prepare-episode-audio.ts", path.resolve(root, args.episode), `--audio=${audioMode}`, `--out=${timedOut}`], { cwd: root, stdio: "inherit", env: process.env });
-  if (r.status !== 0) throw new Error("audio preparation failed");
+  if (r.status !== 0) {
+    console.error("✖ Render stopped: episode validation / audio preparation failed (details above). Nothing was rendered.");
+    process.exit(1);
+  }
   inputProps.episode = JSON.parse(fs.readFileSync(timedOut, "utf8"));
   srtFile = path.join(path.dirname(timedOut), `${inputProps.episode.id}.th.srt`);
 }
