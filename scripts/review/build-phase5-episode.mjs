@@ -91,7 +91,7 @@ const scenes = [
         castId: "ton",
         keyframes: [{ frame: 0, position: [-1.1, 0, -1.35], rotationY: 0.5 }],
         clips: [
-          { clip: "sit", from: 0, durationInFrames: 330, blendFrames: 1, params: { seatHeight: 0.56 } },
+          { clip: "sit", from: 0, durationInFrames: 3000, blendFrames: 1, params: { seatHeight: 0.56 } }, // holds for the whole scene, whatever the real dialogue length
           { clip: "surprised", from: 26, durationInFrames: 36, blendFrames: 4 },
           { clip: "scratch-head", from: 0, onLine: "ton-02", durationInFrames: 50, params: { hand: "right" } },
         ],

@@ -230,7 +230,7 @@
             {
               "clip": "sit",
               "from": 0,
-              "durationInFrames": 330,
+              "durationInFrames": 3000,
               "blendFrames": 1,
               "params": {
                 "seatHeight": 0.56
