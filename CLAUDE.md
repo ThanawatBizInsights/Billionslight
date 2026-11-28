@@ -13,9 +13,11 @@ face without permission (see `docs/sunny-eye-review.md`).
 **Phase 2 — APPROVED by the owner (2026-11-27).** Approved assets are locked:
 do not modify them without permission — add variants instead.
 **Phase 3 — animation engine: APPROVED by the owner (2026-11-28).**
-**Phase 4 — audio, dialogue sync, Thai subtitles, music, SFX: IN PROGRESS**
-(started 2026-11-28). Build and test with mock/imported audio. Any paid
-ElevenLabs generation still needs the owner's explicit approval per run.
+**Phase 4 — audio, dialogue sync, Thai subtitles, music, SFX: APPROVED by the
+owner (2026-11-28)** (voices, pacing and subtitles). Any paid ElevenLabs
+generation still needs the owner's explicit approval per run.
+**Phase 5 — demo episode: IN PROGRESS** (script + claims + mock animatic first;
+real voices only after the owner approves the script and character count).
 **Energy-flow style V3 (travelling pulse, Variant B): APPROVED** by the owner
 (2026-11-27) as the permanent style, and its implementation previews
 (`renders/energy-flow-review/v3/`) are APPROVED. Equipment indicator LEDs were
@@ -246,7 +248,7 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
   idle = grey, fault = red. The old energy palette is retired (a test fails if
   it reappears).
 
-## Phase 4 audio (in progress — see docs/audio-pipeline.md)
+## Phase 4 audio (approved — see docs/audio-pipeline.md)
 
 - Pipeline: `scripts/audio/prepare-episode-audio.ts` (imported → voice cache →
   paid ElevenLabs only with key + `ELEVENLABS_ALLOW_PAID_CALLS=true` +

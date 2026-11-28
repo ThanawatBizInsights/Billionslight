@@ -2,7 +2,7 @@
  * 2D overlay layer: titles, labels, legend, subtitles. Positioned inside the
  * social-media safe area; sizes scale with the render resolution.
  */
-import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { SCENE_COLORS } from "../config/palette";
 import { ENERGY_FLOW_COLORS, ENERGY_FLOW_LEGEND_TH, type EnergyFlowCategory } from "../config/energy-flow";
 import { PulseSwatch } from "../engine/energy-flow/FlowLabels";
@@ -123,6 +123,24 @@ function Legend({ keys, u }: { keys: EnergyFlowCategory[]; u: number }) {
   );
 }
 
+/**
+ * Official Billionslight logo, shown exactly as supplied (never redrawn,
+ * recoloured, cropped or re-proportioned). Files live in public/assets/branding/
+ * (git-ignored — owner-supplied). A plain white card gives contrast and clear space.
+ * style: "stacked" (default) | "horizontal"; text = optional caption under the card.
+ */
+function Logo({ variant, caption, u }: { variant: string; caption?: string; u: number }) {
+  const horizontal = variant === "horizontal";
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 28 * u }}>
+      <div style={{ background: "#FFFFFF", borderRadius: 36 * u, padding: `${(horizontal ? 36 : 48) * u}px ${(horizontal ? 44 : 56) * u}px`, boxShadow: `0 ${10 * u}px ${40 * u}px rgba(14,26,51,0.35)` }}>
+        <Img src={staticFile(`assets/branding/billionslight-logo-${horizontal ? "horizontal" : "stacked"}.png`)} style={{ width: (horizontal ? 760 : 520) * u, height: "auto", display: "block" }} />
+      </div>
+      {caption && <div style={{ fontFamily: THAI_FONT_STACK, fontWeight: 700, fontSize: 44 * u, color: "#FFFFFF", textAlign: "center", textShadow: `0 ${3 * u}px ${12 * u}px rgba(14,26,51,0.8)`, whiteSpace: "pre-line" }}>{caption}</div>}
+    </div>
+  );
+}
+
 function Tag({ text, u }: { text: string; u: number }) {
   return (
     <div style={{ fontFamily: THAI_FONT_STACK, fontWeight: 700, fontSize: 26 * u, letterSpacing: 2 * u, color: SCENE_COLORS.sunGold, background: "rgba(14,26,51,0.6)", padding: `${8 * u}px ${18 * u}px`, borderRadius: 10 * u, whiteSpace: "nowrap" }}>
@@ -148,7 +166,8 @@ export function SceneOverlays({ scene }: { scene: Scene }) {
           } else if (o.kind === "legend") {
             const keys = (o.text ?? "solar,grid,battery,inverter,load").split(",").map((k) => energyKey(k.trim()));
             el = <Legend keys={keys.filter((k): k is EnergyFlowCategory => k !== undefined)} u={u} />;
-          } else el = <Tag text={o.text ?? ""} u={u} />;
+          } else if (o.kind === "logo") el = <Logo variant={o.style ?? "stacked"} caption={o.text} u={u} />;
+          else el = <Tag text={o.text ?? ""} u={u} />;
           return (
             <div key={o.id} style={{ opacity, transform: `translateY(${rise * u}px)` }}>
               <Positioned o={o}>{el}</Positioned>

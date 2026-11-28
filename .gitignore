@@ -31,3 +31,9 @@ renders/**/*.mp3
 renders/**/*.m4a
 renders/**/*.aac
 renders/**/*.props.json
+
+# official logo files (owner-supplied, never committed — public repo)
+public/assets/branding/*.png
+public/assets/branding/*.svg
+public/assets/branding/*.jpg
+public/assets/branding/*.pdf

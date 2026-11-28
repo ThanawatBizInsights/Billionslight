@@ -6,14 +6,14 @@ Updated: 2026-11-27 · 142 assets · reference files live (git-ignored) under `p
 
 | Status | Count |
 |---|---|
-| approved | 83 |
+| approved | 92 |
 | reserved | 1 |
 | missing-reference | 8 |
 | deferred | 2 |
 | superseded | 2 |
 | reference-supplied | 32 |
 | reference-only | 3 |
-| in-progress | 11 |
+| in-progress | 2 |
 
 ## character
 
@@ -375,8 +375,8 @@ Updated: 2026-11-27 · 142 assets · reference files live (git-ignored) under `p
 | `scene-palette` | Global scene & UI palette | approved | data-preset | 2 |  | 01-visual-reference-board.png §03; 06-production-reference-sheet.png colour & material palette; 03-cinematic-house-lighting-grid.png lighting palette |
 | `scene-transitions` | Scene transitions (cut, fade, dip-to-navy) | approved | data-preset | 3 |  | — |
 | `energy-flow-standard` | Billionslight energy-flow visual standard (V3 travelling pulse) | approved | data-preset | 3 |  | — |
-| `thai-subtitles` | Thai subtitle system | in-progress | 2d-overlay | 4 |  | — |
-| `audio-pipeline` | Dialogue audio pipeline (ElevenLabs + cache + mock) | in-progress | data-preset | 4 |  | — |
+| `thai-subtitles` | Thai subtitle system | approved | 2d-overlay | 4 |  | — |
+| `audio-pipeline` | Dialogue audio pipeline (ElevenLabs + cache + mock) | approved | data-preset | 4 |  | — |
 
 **`energy-flow-language`** —  Superseded palette: see energy-flow-standard (V3).
 - Palette: solarDC `#FBBF24` (official), utilityGridAC `#3B82F6` (official), batteryDC `#22C55E` (official), inverterAC `#22D3EE` (official), householdLoad `#F8FAFC` (official), inactive `#64748B` (official), fault `#EF4444` (official)
