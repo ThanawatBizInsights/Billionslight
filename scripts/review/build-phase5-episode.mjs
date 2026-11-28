@@ -36,7 +36,7 @@ const CUTAWAY_CAM = { frame: 0, position: [21.44, 24.49, 45.29], target: [2.5, 1
 const references = [
   { id: "r-iec-62116", title: "IEC 62116:2014 — Utility-interconnected photovoltaic inverters: test procedure of islanding prevention measures", source: "IEC 62116:2014" },
   { id: "r-ieee-1547", title: "IEEE 1547-2018 — Interconnection and interoperability of distributed energy resources with electric power systems", source: "IEEE Std 1547-2018" },
-  { id: "r-hybrid-manual", title: "Hybrid inverter installation manual — backup (EPS) output, grid isolation and backup load limits", source: "Manufacturer documentation — technical reviewer to name the specific product(s) used by Billionslight", notes: "Placeholder until a reviewer selects the product documentation." },
+  { id: "r-hybrid-manual", title: "Hybrid inverter documentation (general) — backup (EPS) output, grid isolation and backup load limits", source: "Manufacturers' installation manuals for hybrid inverters with a backup output (general; no specific product)", notes: "Kept general by the owner (2026-11-28); product-specific references will be added in future episodes." },
   { id: "r-bl-policy", title: "Billionslight electrical-accuracy and safety policy", source: "docs/electrical-accuracy.md (internal)" },
 ];
 const claim = (id, text, meaning, referenceIds) => ({ id, text, meaning, referenceIds, status: "needs-human-review" });

@@ -958,9 +958,9 @@
     },
     {
       "id": "r-hybrid-manual",
-      "title": "Hybrid inverter installation manual — backup (EPS) output, grid isolation and backup load limits",
-      "source": "Manufacturer documentation — technical reviewer to name the specific product(s) used by Billionslight",
-      "notes": "Placeholder until a reviewer selects the product documentation."
+      "title": "Hybrid inverter documentation (general) — backup (EPS) output, grid isolation and backup load limits",
+      "source": "Manufacturers' installation manuals for hybrid inverters with a backup output (general; no specific product)",
+      "notes": "Kept general by the owner (2026-11-28); product-specific references will be added in future episodes."
     },
     {
       "id": "r-bl-policy",

@@ -1,6 +1,6 @@
 # Phase 5 script — ไฟดับตอนแดดแรง โซลาร์ยังจ่ายไฟให้บ้านไหม?
 
-Status: **draft for owner review** (script, wording, story) and **technical review** (claims). No real voices generated yet; the animatic uses free mock voices.
+Status: **script approved by the owner (2026-11-28)**; claims still await human technical verification before the episode can be marked approved. No real voices generated yet; the animatic uses free mock voices.
 
 Cast: Sunny = Pat, Ton = Suwapoj, Narrator = Thanawat (clone) · model `eleven_v4`, `language_code: th`. Captions show the **Caption** column; the voice says the **Spoken** column (direction tags in [ ] are performed, never shown).
 
@@ -78,7 +78,7 @@ Cast: Sunny = Pat, Ton = Suwapoj, Narrator = Thanawat (clone) · model `eleven_v
 
 - `r-iec-62116` — IEC 62116:2014 — Utility-interconnected photovoltaic inverters: test procedure of islanding prevention measures (IEC 62116:2014)
 - `r-ieee-1547` — IEEE 1547-2018 — Interconnection and interoperability of distributed energy resources with electric power systems (IEEE Std 1547-2018)
-- `r-hybrid-manual` — Hybrid inverter installation manual — backup (EPS) output, grid isolation and backup load limits (Manufacturer documentation — technical reviewer to name the specific product(s) used by Billionslight) — Placeholder until a reviewer selects the product documentation.
+- `r-hybrid-manual` — Hybrid inverter documentation (general) — backup (EPS) output, grid isolation and backup load limits (manufacturers' installation manuals for hybrid inverters with a backup output; general, no specific product) — kept general by the owner; product-specific references in future episodes.
 - `r-bl-policy` — Billionslight electrical-accuracy and safety policy (docs/electrical-accuracy.md (internal))
 
-The episode cannot be marked approved until a human technical reviewer verifies each claim (CLAUDE.md). `r-hybrid-manual` is a placeholder: the reviewer should name the product documentation Billionslight uses. Values (5 kW array, 10 kWh battery, 0.8 kW backup loads) are illustrative scenario values, not product specs.
+The episode cannot be marked approved until a human technical reviewer verifies each claim (CLAUDE.md). `r-hybrid-manual` is kept general by the owner's decision (2026-11-28); product-specific references come in future episodes. Values (5 kW array, 10 kWh battery, 0.8 kW backup loads) are illustrative scenario values, not product specs.
