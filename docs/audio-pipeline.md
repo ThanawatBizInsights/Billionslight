@@ -47,6 +47,28 @@ month; the multilingual v2 model uses about 1 credit per character. Usage
 inside the monthly allowance costs nothing extra; overage only applies if
 usage-based billing is enabled in the ElevenLabs account.
 
+## Voice cast (owner's choice, 2026-11-28)
+
+| Voice key | Character | ElevenLabs voice |
+|---|---|---|
+| `narrator` | Narrator | **Thanawat** — the owner's own cloned voice |
+| `homeowner` | Ton (ต้น) | **Songkran – Calm & Humble** (library, Thai, middle-aged male) |
+| `sunny` | Sunny | **Kirin – Natural Thai Male** (library, Thai, casual) |
+
+Voice IDs live only in `.env` (`ELEVENLABS_VOICE_NARRATOR`, `…_HOMEOWNER`,
+`…_SUNNY`) — the owner's clone ID is never committed. Sunny's lines use the
+male particles ผม/ครับ to match the chosen voice.
+
+## Running in a cloud session
+
+The Billionslight cloud environment holds the ElevenLabs key as a network
+credential for `api.elevenlabs.io` (header `xi-api-key`), injected by the
+session proxy — no key exists in files or variables. Set the variable to a
+placeholder for the command: `ELEVENLABS_API_KEY=proxy-injected`. The prepare
+script enables Node's proxy support (`NODE_USE_ENV_PROXY=1`) automatically.
+The key is scoped: it can generate speech but not read voice metadata (fine
+for the pipeline).
+
 ## Voice cache
 
 - `public/assets/audio/cache/<key>.wav` + `<key>.json` (git-ignored; stays on

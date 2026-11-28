@@ -266,6 +266,13 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 - Owner's ElevenLabs plan (2026-11-28): Creator, 144,577 credits/month,
   ~1 credit per character on multilingual v2; no extra cost inside the
   allowance.
+- **Voice cast (owner, 2026-11-28):** narrator = owner's cloned voice
+  "Thanawat"; Ton (`homeowner`) = "Songkran"; Sunny (`sunny`) = "Kirin"
+  (male → Sunny says ผม/ครับ). IDs only in `.env`, never committed.
+- Cloud sessions: environment "Billionslight" holds the key as a proxy
+  credential for api.elevenlabs.io; run with `ELEVENLABS_API_KEY=proxy-injected`.
+- First paid run (2026-11-28, approved): phase4-dialogue-test, 7 lines,
+  292 characters.
 
 ## Approved reusable assets & capabilities
 

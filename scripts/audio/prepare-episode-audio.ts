@@ -11,6 +11,7 @@
  *             Always run with --dry-run first to see the character count.
  */
 import fs from "node:fs";
+import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { prepareEpisodeAudio, type AudioMode } from "../../src/audio-pipeline/prepare";
@@ -63,6 +64,11 @@ export async function runPrepare(argv: string[]) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  // Behind an HTTPS proxy (cloud sessions) Node's fetch needs NODE_USE_ENV_PROXY=1 (Node >= 22.21).
+  if ((process.env.HTTPS_PROXY || process.env.https_proxy) && process.env.NODE_USE_ENV_PROXY !== "1") {
+    const r = spawnSync(process.execPath, [...process.execArgv, ...process.argv.slice(1)], { stdio: "inherit", env: { ...process.env, NODE_USE_ENV_PROXY: "1", NODE_NO_WARNINGS: "1" } });
+    process.exit(r.status ?? 1);
+  }
   runPrepare(process.argv.slice(2)).catch((e) => {
     console.error(String(e instanceof Error ? e.message : e));
     process.exit(1);

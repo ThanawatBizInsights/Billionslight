@@ -79,6 +79,7 @@ const episode = {
       electrical: [{ frame: 0, scenario: { inverterType: "grid-tied", gridStatus: "connected", solarIrradiance: 0.6, pvRatedKw: 5, inverterRatedKw: 5, householdLoadKw: 3 }, transitionFrames: 0 }],
       energyFlow: { labels: true, legend: false, pathScale: 1.8 },
       dialogue: [
+        { id: "narrator-01", text: "มาดูกันว่าไฟฟ้าในบ้านมาจากไหน", from: 10 },
         { id: "sunny-03", castId: "sunny", text: "เส้นสีเหลืองคือพลังงานแสงอาทิตย์จากแผงโซลาร์", from: 15 },
         { id: "sunny-04", castId: "sunny", text: "ส่วนเส้นสีฟ้าอมเขียวคือไฟฟ้าจากอินเวอร์เตอร์ที่ส่งเข้าบ้านครับ", from: 100 },
       ],
