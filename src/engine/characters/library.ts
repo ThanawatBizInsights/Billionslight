@@ -12,6 +12,7 @@ import type { CharacterDefinition } from "./types";
 
 export const SUNNY: CharacterDefinition = {
   id: "sunny",
+  voiceKey: "sunny",
   displayName: "Sunny",
   displayNameTh: "ซันนี่",
   status: "prototype",
@@ -51,6 +52,7 @@ export const SUNNY: CharacterDefinition = {
 
 export const TON: CharacterDefinition = {
   id: "homeowner_male_01",
+  voiceKey: "homeowner",
   displayName: "Ton",
   displayNameTh: "ต้น",
   status: "prototype",
@@ -83,6 +85,7 @@ export const TON: CharacterDefinition = {
 /** Phase 1 placeholder — not a production character. */
 export const TEMP_ENGINEER: CharacterDefinition = {
   id: "temp-engineer",
+  voiceKey: "technician",
   displayName: "Temporary engineer (placeholder)",
   status: "temporary",
   bodyPlan: "basic-human",

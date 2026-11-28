@@ -12,9 +12,10 @@ comparison only; do not use them in episodes. Do not change the approved
 face without permission (see `docs/sunny-eye-review.md`).
 **Phase 2 — APPROVED by the owner (2026-11-27).** Approved assets are locked:
 do not modify them without permission — add variants instead.
-**Phase 3 — animation engine: BUILT, awaiting owner review** (see
-`docs/phase-3-report.md`). Do not start Phase 4 without approval (ElevenLabs
-needs approval for any paid call).
+**Phase 3 — animation engine: APPROVED by the owner (2026-11-28).**
+**Phase 4 — audio, dialogue sync, Thai subtitles, music, SFX: IN PROGRESS**
+(started 2026-11-28). Build and test with mock/imported audio. Any paid
+ElevenLabs generation still needs the owner's explicit approval per run.
 **Energy-flow style V3 (travelling pulse, Variant B): APPROVED** by the owner
 (2026-11-27) as the permanent style, and its implementation previews
 (`renders/energy-flow-review/v3/`) are APPROVED. Equipment indicator LEDs were
@@ -201,7 +202,7 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 - Plan camera framing numerically with `scripts/plan-shot.mjs` (remember it
   ignores character facing — check which way characters look).
 
-## Engine capabilities (Phase 3, in review)
+## Engine capabilities (Phase 3, approved)
 
 - Locomotion: characters walk automatically while keyframes move them (gait
   synced to distance; `autoWalk: false` opts out); `faceMovement: true` turns

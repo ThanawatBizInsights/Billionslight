@@ -216,37 +216,89 @@ export const ElectricalStateKeyframe = z.object({
 });
 
 // ----------------------------------------------------------------- dialogue
+/** Resolved audio for a dialogue line (written by the audio pipeline; never hand-edited). */
+export const DialogueAudio = z.object({
+  source: z.enum(["elevenlabs", "imported", "mock"]),
+  /** Path under public/ (served with staticFile). */
+  file: z.string().optional(),
+  cacheKey: z.string().optional(),
+  voiceKey: z.string().optional(),
+  /** Real audio duration in milliseconds. */
+  durationMs: z.number().positive().optional(),
+  /** Loudness envelope 0–1 sampled at envelopeHz (drives lip sync). */
+  envelopeHz: z.number().positive().optional(),
+  envelope: z.array(z.number().min(0).max(1)).optional(),
+  /** Character timings (ms) of the SPOKEN text (ElevenLabs alignment, or estimated for mock). */
+  alignment: z.object({ chars: z.array(z.string()), startMs: z.array(z.number()), endMs: z.array(z.number()) }).optional(),
+});
+
 export const DialogueLine = z.object({
   id: z.string().min(1),
   castId: z.string().optional(), // undefined = narrator
+  /** What the audience reads (Thai subtitles). */
   text: z.string().min(1),
-  /** Start frame relative to the scene. */
+  /** What the voice says, if different (e.g. "กิโลวัตต์" for "kW"). Default: text with unit normalisation. */
+  speak: z.string().min(1).optional(),
+  /** Start frame relative to the scene. Real speech timing may push a line later, never shorten it. */
   from: Frame,
-  /** Filled after TTS / import from real audio duration. */
+  /** Filled from the real audio duration by the audio pipeline. */
   durationInFrames: z.number().int().positive().optional(),
-  audio: z
-    .object({
-      source: z.enum(["elevenlabs", "imported", "mock"]),
-      file: z.string().optional(),
-      cacheKey: z.string().optional(),
-    })
-    .optional(),
+  audio: DialogueAudio.optional(),
+  /** Show this line as a subtitle. */
+  subtitle: z.boolean().default(true),
+  /** Lip sync + subtle talking head motion for the speaking cast member. */
+  lipSync: z.boolean().default(true),
   delivery: z
-    .object({ speed: z.number().min(0.7).max(1.2).default(1), style: z.string().optional() })
+    .object({
+      speed: z.number().min(0.7).max(1.2).default(1),
+      style: z.string().optional(),
+      /** ElevenLabs voice settings (0–1). */
+      stability: z.number().min(0).max(1).optional(),
+      similarity: z.number().min(0).max(1).optional(),
+      styleExaggeration: z.number().min(0).max(1).optional(),
+    })
     .optional(),
 });
 
-export const AudioCue = z.object({
-  id: z.string(),
-  kind: z.enum(["music", "sfx", "ambience"]),
-  file: z.string(),
-  from: Frame,
-  durationInFrames: z.number().int().positive().optional(),
-  volume: z.number().min(0).max(1).default(0.6),
-  fadeInFrames: z.number().int().nonnegative().default(0),
-  fadeOutFrames: z.number().int().nonnegative().default(0),
-  duckUnderDialogue: z.boolean().default(true),
-});
+/** Music / SFX / ambience. Either a sound-library asset ID or a file under public/. */
+export const AudioCue = z
+  .object({
+    id: z.string(),
+    kind: z.enum(["music", "sfx", "ambience"]),
+    /** Sound-library ID (src/engine/audio/library.ts). */
+    asset: AssetId.optional(),
+    /** Or a file path under public/ — original or properly licensed audio only. */
+    file: z.string().optional(),
+    from: Frame,
+    durationInFrames: z.number().int().positive().optional(),
+    volume: z.number().min(0).max(1).default(0.6),
+    fadeInFrames: z.number().int().nonnegative().default(0),
+    fadeOutFrames: z.number().int().nonnegative().default(0),
+    loop: z.boolean().optional(),
+    duckUnderDialogue: z.boolean().default(true),
+  })
+  .refine((c) => (c.asset ? 1 : 0) + (c.file ? 1 : 0) === 1, { message: "audio cue needs exactly one of `asset` or `file`" });
+
+/** Dialogue/music mix. Music never competes with speech. */
+export const AudioMix = z
+  .object({
+    dialogueVolume: z.number().min(0).max(1).default(1),
+    /** Gain applied to ducked cues while someone speaks (0.25 ≈ -12 dB). */
+    duckTo: z.number().min(0).max(1).default(0.25),
+    duckRampFrames: z.number().int().nonnegative().default(8),
+  })
+  .default({ dialogueVolume: 1, duckTo: 0.25, duckRampFrames: 8 });
+
+export const SubtitleSettings = z
+  .object({
+    enabled: z.boolean().default(true),
+    /** Max visual characters per line (Thai combining marks don't count). */
+    maxCharsPerLine: z.number().int().min(8).max(60).default(22),
+    maxLines: z.number().int().min(1).max(3).default(2),
+    /** Show the speaker's name above the line. */
+    speakerNames: z.boolean().default(false),
+  })
+  .default({ enabled: true, maxCharsPerLine: 22, maxLines: 2, speakerNames: false });
 
 export const OverlayItem = z.object({
   id: z.string(),
@@ -337,6 +389,10 @@ export const Episode = z
         closingText: z.string().optional(),
       })
       .default({ showLogo: true }),
+    /** Episode-wide music beds / ambience (frames are episode-global). */
+    audio: z.array(AudioCue).default([]),
+    audioMix: AudioMix,
+    subtitles: SubtitleSettings,
     technicalClaims: z.array(TechnicalClaim).default([]),
     references: z.array(TechnicalReference).default([]),
     approval: z

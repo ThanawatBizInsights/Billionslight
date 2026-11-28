@@ -6,14 +6,14 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 
 | Status | Count |
 |---|---|
-| approved | 69 |
+| approved | 83 |
 | reserved | 1 |
 | missing-reference | 8 |
 | deferred | 2 |
 | superseded | 2 |
 | reference-supplied | 32 |
 | reference-only | 3 |
-| in-progress | 16 |
+| in-progress | 2 |
 
 ## character
 
@@ -77,7 +77,7 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 | `demo-studio` | Technical demonstration studio (dark navy) | reference-supplied | procedural-environment | 3 |  | 04-solar-composition-reference.png §10 centred product demonstration |
 | `review-studio` | Review studio (identity sheets, scale ruler, seats) | in-progress | procedural-environment | 2 |  | — |
 | `gable-house-prototype` | Phase 1 gable-roof house prototype | superseded | procedural-environment | 1 |  | — |
-| `energy-cutaway-house` | ENV04 Energy cutaway house | in-progress | procedural-environment | 3 |  | — |
+| `energy-cutaway-house` | ENV04 Energy cutaway house | approved | procedural-environment | 3 |  | — |
 
 **`modern-thai-house`** — Rebuilt to board 05 ENV01: flat-roof two-storey block, recessed glazing with lit interiors, terrace planters, tilted PV array on racks, garage/service wing, utility meter on a separate boundary-wall pillar, tropical landscaping. Day/golden/night/blackout via lighting presets + power state.
 - Palette: concrete `#D9D6CF` (estimated), render-white `#F2EFE8` (estimated), window-frame `#2A2A2E` (estimated), interior-warm `#F59E0B` (sheet-swatch), pv-glass `#1E3A8A` (estimated), foliage `#4E8C3A` (estimated)
@@ -309,12 +309,12 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 | `slow-dolly-out` | Slow dolly-out | missing-reference | data-preset | 3 |  | — |
 | `orbit-equipment` | Orbit around equipment | missing-reference | data-preset | 3 |  | — |
 | `tracking` | Tracking shot | missing-reference | data-preset | 3 |  | — |
-| `two-character` | Camera: two-character | in-progress | data-preset | 3 |  | — |
-| `isometric-house` | Camera: isometric-house | in-progress | data-preset | 3 |  | — |
-| `rooftop-aerial` | Camera: rooftop-aerial | in-progress | data-preset | 3 |  | — |
-| `equipment-close-up` | Camera: equipment-close-up | in-progress | data-preset | 3 |  | — |
-| `orbit-around-equipment` | Camera: orbit-around-equipment | in-progress | data-preset | 3 |  | — |
-| `top-down-technical` | Camera: top-down-technical | in-progress | data-preset | 3 |  | — |
+| `two-character` | Camera: two-character | approved | data-preset | 3 |  | — |
+| `isometric-house` | Camera: isometric-house | approved | data-preset | 3 |  | — |
+| `rooftop-aerial` | Camera: rooftop-aerial | approved | data-preset | 3 |  | — |
+| `equipment-close-up` | Camera: equipment-close-up | approved | data-preset | 3 |  | — |
+| `orbit-around-equipment` | Camera: orbit-around-equipment | approved | data-preset | 3 |  | — |
+| `top-down-technical` | Camera: top-down-technical | approved | data-preset | 3 |  | — |
 
 **`slow-dolly-in`** — Camera move; no image reference required.
 - Implementation: `src/engine/cameras/presets.ts`
@@ -373,7 +373,7 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 |---|---|---|---|---|---|---|
 | `energy-flow-language` | Energy-flow visual language | reference-supplied | 2d-overlay | 3 |  | 02-cinematic-reference-board.png §11; 06-production-reference-sheet.png energy-flow visual language; 04-solar-composition-reference.png §06 |
 | `scene-palette` | Global scene & UI palette | approved | data-preset | 2 |  | 01-visual-reference-board.png §03; 06-production-reference-sheet.png colour & material palette; 03-cinematic-house-lighting-grid.png lighting palette |
-| `scene-transitions` | Scene transitions (cut, fade, dip-to-navy) | in-progress | data-preset | 3 |  | — |
+| `scene-transitions` | Scene transitions (cut, fade, dip-to-navy) | approved | data-preset | 3 |  | — |
 | `energy-flow-standard` | Billionslight energy-flow visual standard (V3 travelling pulse) | approved | data-preset | 3 |  | — |
 
 **`energy-flow-language`** —  Superseded palette: see energy-flow-standard (V3).
@@ -419,12 +419,12 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 | `shrug` | Clip: shrug | approved | data-preset | 2 |  | — |
 | `smile` | Clip: smile | approved | data-preset | 2 |  | — |
 | `blink` | Clip: blink (deliberate blink via eyelids) | approved | data-preset | 2 |  | — |
-| `walk` | Clip: walk | in-progress | data-preset | 3 |  | — |
-| `reach` | Clip: reach | in-progress | data-preset | 3 |  | — |
-| `operate-switch` | Clip: operate-switch | in-progress | data-preset | 3 |  | — |
-| `check-equipment` | Clip: check-equipment | in-progress | data-preset | 3 |  | — |
-| `shade-eyes` | Clip: shade-eyes | in-progress | data-preset | 3 |  | — |
-| `scratch-head` | Clip: scratch-head | in-progress | data-preset | 3 |  | — |
+| `walk` | Clip: walk | approved | data-preset | 3 |  | — |
+| `reach` | Clip: reach | approved | data-preset | 3 |  | — |
+| `operate-switch` | Clip: operate-switch | approved | data-preset | 3 |  | — |
+| `check-equipment` | Clip: check-equipment | approved | data-preset | 3 |  | — |
+| `shade-eyes` | Clip: shade-eyes | approved | data-preset | 3 |  | — |
+| `scratch-head` | Clip: scratch-head | approved | data-preset | 3 |  | — |
 
 **`idle-breathing`**
 - Animation: blend-in-out

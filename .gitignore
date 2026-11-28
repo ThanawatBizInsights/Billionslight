@@ -19,3 +19,8 @@ public/assets/references/local-index.json
 renders/phase-2-review/iterations/
 renders/phase-3-review/iterations/
 renders/energy-flow-review/iterations/
+
+# Phase 4 generated audio (regenerable; voice cache stays on the machine that paid for it)
+public/assets/audio/library/
+public/assets/audio/cache/
+public/assets/audio/episodes/

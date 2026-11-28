@@ -18,6 +18,8 @@ export interface BodyDims {
 }
 
 export interface CharacterDefinition {
+  /** Default voice key for TTS (maps to ELEVENLABS_VOICE_<KEY>); cast `voiceKey` overrides. */
+  voiceKey?: string;
   id: string;
   displayName: string;
   displayNameTh?: string;
