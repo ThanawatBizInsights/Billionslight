@@ -10,6 +10,9 @@ import { Episode, episodeDurationInFrames, sceneOverlap, sceneStartFrames, type 
 import { FORMATS, QUALITY, type QualityName } from "../config/formats";
 import { SceneView } from "../engine/scene/SceneView";
 import { SceneOverlays } from "../components/Overlays";
+import { EpisodeBeds, SceneAudio } from "../components/EpisodeAudio";
+import { Subtitles } from "../components/Subtitles";
+import { dialogueIntervals } from "../engine/audio/timing";
 import { ensureFonts } from "../engine/subtitles/fonts";
 import { SCENE_COLORS } from "../config/palette";
 
@@ -59,6 +62,8 @@ export function EpisodeComposition({ episode: input, quality }: EpisodeCompositi
   const episode = Episode.parse(input);
   const starts = sceneStartFrames(episode);
   const q = QUALITY[quality];
+  const intervals = dialogueIntervals(episode);
+  const total = episodeDurationInFrames(episode);
 
   return (
     <AbsoluteFill style={{ backgroundColor: SCENE_COLORS.navyDeep }}>
@@ -74,9 +79,12 @@ export function EpisodeComposition({ episode: input, quality }: EpisodeCompositi
               <SceneView scene={scene} episode={episode} quality={q} />
             </AbsoluteFill>
             <SceneOverlays scene={scene} />
+            <Subtitles scene={scene} episode={episode} />
           </TransitionLayer>
+          <SceneAudio scene={scene} episode={episode} sceneStart={starts[i]!} intervals={intervals} />
         </Sequence>
       ))}
+      <EpisodeBeds episode={episode} total={total} intervals={intervals} />
     </AbsoluteFill>
   );
 }

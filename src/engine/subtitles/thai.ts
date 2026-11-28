@@ -22,6 +22,14 @@ export const THAI_GLOSSARY = [
   "เบรกเกอร์",
   "แอร์",
   "ซันนี่",
+  // spoken compounds that read badly when split
+  "ยังไง",
+  "อย่างไร",
+  "ทำไม",
+  "ไม่ได้",
+  "ได้ไหม",
+  "หรือเปล่า",
+  "เท่าไหร่",
 ];
 
 const COMBINING = /[ัิ-ฺ็-๎]/u;
@@ -63,42 +71,89 @@ export function segmentThai(text: string): string[] {
 const isSpace = (s: string) => /^\s+$/u.test(s);
 const isClosingPunct = (s: string) => /^[!?.,:;)\]”’…ๆฯ]+$/u.test(s);
 
+/** Break text into atoms (words with trailing punctuation attached), remembering spaces. */
+function atoms(text: string): { text: string; spaceBefore: boolean }[] {
+  const out: { text: string; spaceBefore: boolean }[] = [];
+  let space = false;
+  for (const w of segmentThai(text.trim())) {
+    if (isSpace(w)) {
+      space = true;
+      continue;
+    }
+    if (isClosingPunct(w) && out.length && !space) out[out.length - 1]!.text += w;
+    else out.push({ text: w, spaceBefore: space });
+    space = false;
+  }
+  return out;
+}
+
+function splitLongAtom(a: string, maxChars: number): string[] {
+  const parts: string[] = [];
+  let cur = "";
+  for (const g of [...new Intl.Segmenter("th", { granularity: "grapheme" }).segment(a)].map((x) => x.segment)) {
+    if (cur && visualLength(cur + g) > maxChars) {
+      parts.push(cur);
+      cur = "";
+    }
+    cur += g;
+  }
+  if (cur) parts.push(cur);
+  return parts;
+}
+
+const join = (xs: { text: string; spaceBefore: boolean }[]) => xs.map((x, i) => (i > 0 && x.spaceBefore ? " " : "") + x.text).join("");
+
 /**
- * Greedy word wrap at word boundaries. A single word longer than the limit is
- * split by grapheme as a last resort. Leading/trailing spaces are trimmed.
+ * Word wrap at word boundaries with BALANCED lines: the fewest lines that fit
+ * `maxChars`, then the split that keeps line lengths even and prefers the
+ * spaces Thai uses between phrases (no orphan words).
  */
 export function wrapThai(text: string, maxChars: number): string[] {
-  const words = segmentThai(text.trim());
-  const lines: string[] = [];
-  let cur = "";
-  const push = () => {
-    if (cur.trim()) lines.push(cur.trim());
-    cur = "";
-  };
-  for (const w of words) {
-    if (isSpace(w)) {
-      if (cur) cur += " ";
-      continue;
-    }
-    // punctuation sticks to the previous word
-    if (isClosingPunct(w) || visualLength(cur + w) <= maxChars) {
-      cur += w;
-      continue;
-    }
-    push();
-    if (visualLength(w) <= maxChars) {
-      cur = w;
-      continue;
-    }
-    // over-long word: split by grapheme clusters
-    const graphemes = [...new Intl.Segmenter("th", { granularity: "grapheme" }).segment(w)].map((g) => g.segment);
-    for (const g of graphemes) {
-      if (visualLength(cur + g) > maxChars) push();
-      cur += g;
+  const raw = atoms(text);
+  const as: { text: string; spaceBefore: boolean }[] = [];
+  for (const a of raw) {
+    if (visualLength(a.text) <= maxChars) as.push(a);
+    else splitLongAtom(a.text, maxChars).forEach((p, i) => as.push({ text: p, spaceBefore: i === 0 ? a.spaceBefore : false }));
+  }
+  if (as.length === 0) return [];
+  const n = as.length;
+  const len = (i: number, j: number) => visualLength(join(as.slice(i, j)));
+  // minimal line count (greedy)
+  let lines = 1;
+  for (let i = 0, start = 0; i < n; i++) if (len(start, i + 1) > maxChars) {
+    lines++;
+    start = i;
+  }
+  // DP over break positions for exactly `lines` lines
+  const target = len(0, n) / lines;
+  const INF = 1e12;
+  const cost: number[][] = Array.from({ length: lines + 1 }, () => Array(n + 1).fill(INF));
+  const back: number[][] = Array.from({ length: lines + 1 }, () => Array(n + 1).fill(-1));
+  cost[0]![0] = 0;
+  for (let k = 1; k <= lines; k++) {
+    for (let j = 1; j <= n; j++) {
+      for (let i = k - 1; i < j; i++) {
+        if (cost[k - 1]![i]! >= INF) continue;
+        const l = len(i, j);
+        if (l > maxChars) continue;
+        const breakBonus = j < n && as[j]!.spaceBefore ? -40 : 0;
+        const c = cost[k - 1]![i]! + (l - target) ** 2 + breakBonus;
+        if (c < cost[k]![j]!) {
+          cost[k]![j] = c;
+          back[k]![j] = i;
+        }
+      }
     }
   }
-  push();
-  return lines;
+  const out: string[] = [];
+  let j = n;
+  for (let k = lines; k > 0; k--) {
+    const i = back[k]![j]!;
+    if (i < 0) return [join(as)]; // should not happen
+    out.unshift(join(as.slice(i, j)));
+    j = i;
+  }
+  return out;
 }
 
 export interface CaptionChunk {

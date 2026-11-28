@@ -23,6 +23,7 @@ import { environmentCables, getEnvironment, type EnvironmentDefinition } from ".
 import { LightingRig } from "../lighting/LightingRig";
 import { blendPresets, getLightingPreset, type LightingPreset } from "../lighting/presets";
 import { sampleElectrical, sampleFlowLinks } from "../energy-flow/timeline";
+import { mouthForCast } from "../audio/lipsync";
 import { EnergyFlowPath } from "../energy-flow/EnergyFlowPath";
 import { FlowLabels, FlowLegend, type FlowLabelItem } from "../energy-flow/FlowLabels";
 import { ROUTE_TO_LINK, loadRouteKw, type LinkId } from "../energy-flow/links";
@@ -147,7 +148,8 @@ function eyeWorldAt(t: Track, def: CharacterDefinition, frame: number): Vec3 {
  */
 export function sampleSceneCamera(scene: Scene, episode: Episode, env: EnvironmentDefinition, frame: number, aspect: number): CameraShot {
   if (scene.camera.keyframes.length > 0) return sampleCamera(cameraKeysForScene(scene, env.focus), frame);
-  const shots = [...scene.camera.shots].sort((a, b) => a.from - b.from);
+  const lineStart = (id: string) => scene.dialogue.find((d) => d.id === id)?.from;
+  const shots = scene.camera.shots.map((sh) => ({ ...sh, from: sh.onLine !== undefined ? (lineStart(sh.onLine) ?? sh.from) : sh.from })).sort((a, b) => a.from - b.from);
   const active = shots.filter((sh) => sh.from <= frame).pop();
   const spec = active ?? (scene.camera.preset && SHOTS[scene.camera.preset] ? { from: 0, preset: scene.camera.preset, subject: scene.camera.subject, subject2: scene.camera.subject2, params: scene.camera.params } : null);
   if (!spec) return sampleCamera(cameraKeysForScene(scene, env.focus), frame);
@@ -214,7 +216,12 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
     const eyeY = st.position[1] + eyeHeightWorld(def);
 
     // resolve pointAt targets to character-local yaw/pitch (from the shoulder)
-    const clips = t.clips.map((c) => {
+    // dialogue sync: a speaking line adds subtle talking head motion unless the author placed a talk clip
+    const autoTalk = scene.dialogue
+      .filter((d) => d.castId === t.castId && d.lipSync && d.durationInFrames)
+      .filter((d) => !t.clips.some((c) => c.clip === "talk" && c.from < d.from + d.durationInFrames! && c.from + c.durationInFrames > d.from))
+      .map((d) => ({ clip: "talk", from: d.from, durationInFrames: d.durationInFrames!, blendFrames: 4, weight: 0.8, params: { energy: 0.6 } as Record<string, unknown> }));
+    const clips = [...t.clips, ...autoTalk].map((c) => {
       const target = (c.params.pointAt ?? c.params.target) as Vec3 | string | { castId: string } | undefined;
       if (target === undefined) return c;
       const p = resolveTarget(target, env, states);
@@ -230,6 +237,9 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
 
     const motion = sampleMotion(t, frame, fps);
     const pose = evaluatePose(frame, fps, def.seed, clips, sampleExpression(t, def, frame), body, motion, t.autoWalk);
+    // lip sync from the voice's loudness envelope (overrides the procedural talk mouth)
+    const mouth = mouthForCast(scene, t.castId, frame, fps);
+    if (mouth) pose.face = { ...pose.face, mouthOpen: mouth.open * 0.9, mouthRound: Math.max(mouth.round, pose.face.mouthRound * 0.3) };
 
     // look-at: head turn + eye gaze toward the most recent target, eased over 10 frames
     let look: [number, number] = [0, 0];

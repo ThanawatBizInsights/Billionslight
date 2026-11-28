@@ -143,6 +143,8 @@ export const ShotParams = z
 /** One camera set-up; consecutive shots cut on their `from` frame. */
 export const CameraShotSpec = z.object({
   from: Frame,
+  /** Start this shot when a dialogue line starts (follows real audio timing); overrides `from`. */
+  onLine: z.string().optional(),
   preset: AssetId,
   subject: CameraSubject.optional(),
   subject2: CameraSubject.optional(),
@@ -293,12 +295,12 @@ export const SubtitleSettings = z
   .object({
     enabled: z.boolean().default(true),
     /** Max visual characters per line (Thai combining marks don't count). */
-    maxCharsPerLine: z.number().int().min(8).max(60).default(22),
+    maxCharsPerLine: z.number().int().min(8).max(60).default(26),
     maxLines: z.number().int().min(1).max(3).default(2),
     /** Show the speaker's name above the line. */
     speakerNames: z.boolean().default(false),
   })
-  .default({ enabled: true, maxCharsPerLine: 22, maxLines: 2, speakerNames: false });
+  .default({ enabled: true, maxCharsPerLine: 26, maxLines: 2, speakerNames: false });
 
 export const OverlayItem = z.object({
   id: z.string(),

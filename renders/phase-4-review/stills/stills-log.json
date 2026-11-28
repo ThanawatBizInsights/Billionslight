@@ -1,0 +1,13 @@
+{
+  "at": "2026-11-28T02:06:29.439Z",
+  "gl": "swangle",
+  "jobs": [
+    {
+      "out": "renders/phase-4-review/stills/02-sunny-closeup.png",
+      "frame": 190,
+      "size": "540x960",
+      "sec": 2.3,
+      "ok": true
+    }
+  ]
+}

@@ -11,7 +11,7 @@
  */
 import { bundle } from "@remotion/bundler";
 import { renderMedia, selectComposition } from "@remotion/renderer";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -36,6 +36,22 @@ const JPEG = { draft: 70, preview: 80, final: 92 }[quality];
 
 const inputProps = { quality };
 if (args.episode) inputProps.episode = JSON.parse(fs.readFileSync(path.resolve(root, args.episode), "utf8"));
+
+// ---- Phase 4: dialogue audio + subtitles. Renders never make paid calls:
+// --audio=mock (default; cached voices first, else free mock voices) | cache (cached/imported only) | none.
+// Paid ElevenLabs generation is a separate, approved step: scripts/audio/prepare-episode-audio.ts --audio=elevenlabs.
+const audioMode = args.audio ?? "mock";
+if (!["mock", "cache", "none"].includes(audioMode)) throw new Error(`--audio must be mock, cache or none (paid generation is a separate approved step)`);
+let srtFile = null;
+const hasDialogue = inputProps.episode?.scenes?.some((s) => (s.dialogue ?? []).length > 0);
+if (inputProps.episode && hasDialogue && audioMode !== "none") {
+  const timedOut = path.join(root, "public/assets/audio/episodes", inputProps.episode.id, `timed-${audioMode}.json`);
+  console.log(`▶ Preparing audio (${audioMode})…`);
+  const r = spawnSync("npx", ["tsx", "scripts/audio/prepare-episode-audio.ts", path.resolve(root, args.episode), `--audio=${audioMode}`, `--out=${timedOut}`], { cwd: root, stdio: "inherit", env: process.env });
+  if (r.status !== 0) throw new Error("audio preparation failed");
+  inputProps.episode = JSON.parse(fs.readFileSync(timedOut, "utf8"));
+  srtFile = path.join(path.dirname(timedOut), `${inputProps.episode.id}.th.srt`);
+}
 
 const gl = process.env.RENDER_GL || (process.platform === "darwin" ? "angle" : "swangle");
 const concurrency = Number(process.env.RENDER_CONCURRENCY || Math.max(1, Math.min(3, os.cpus().length - 1)));
@@ -141,6 +157,7 @@ const metrics = {
   host: { platform: process.platform, arch: process.arch, cpus: os.cpus().length, cpuModel: os.cpus()[0]?.model, totalMemGb: Math.round(os.totalmem() / 1e9) },
   gl,
   concurrency,
+  audio: hasDialogue ? audioMode : "silent",
   verification,
 };
 fs.appendFileSync(path.join(root, "renders", "render-log.jsonl"), JSON.stringify(metrics) + "\n");
@@ -148,5 +165,10 @@ console.log(JSON.stringify(metrics, null, 2));
 if (!verification.ok) {
   console.error("✖ Verification FAILED:", verification.errors.join("; "));
   process.exit(1);
+}
+if (srtFile && fs.existsSync(srtFile)) {
+  const dest = outFile.replace(/\.mp4$/, ".th.srt");
+  fs.copyFileSync(srtFile, dest);
+  console.log(`✔ Thai subtitles: ${path.relative(root, dest)}`);
 }
 console.log(`✔ Rendered and verified: ${outFile}`);

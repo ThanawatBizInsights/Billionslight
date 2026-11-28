@@ -1,0 +1,41 @@
+{
+ "outDir": "renders/phase-4-review/stills",
+ "jobs": [
+  {
+   "episode": "public/assets/audio/episodes/phase4-dialogue-test/timed.json",
+   "frame": 60,
+   "out": "01-ton-speaking.png",
+   "quality": "preview"
+  },
+  {
+   "episode": "public/assets/audio/episodes/phase4-dialogue-test/timed.json",
+   "frame": 190,
+   "out": "02-sunny-closeup.png",
+   "quality": "preview"
+  },
+  {
+   "episode": "public/assets/audio/episodes/phase4-dialogue-test/timed.json",
+   "frame": 320,
+   "out": "03-ton-closeup.png",
+   "quality": "preview"
+  },
+  {
+   "episode": "public/assets/audio/episodes/phase4-dialogue-test/timed.json",
+   "frame": 420,
+   "out": "04-sunny-medium.png",
+   "quality": "preview"
+  },
+  {
+   "episode": "public/assets/audio/episodes/phase4-dialogue-test/timed.json",
+   "frame": 560,
+   "out": "05-cutaway-labels.png",
+   "quality": "preview"
+  },
+  {
+   "episode": "public/assets/audio/episodes/phase4-dialogue-test/timed.json",
+   "frame": 680,
+   "out": "06-cutaway-line2.png",
+   "quality": "preview"
+  }
+ ]
+}
