@@ -79,6 +79,9 @@ export const CharacterKeyframe = z.object({
 export const AnimationClipRef = z.object({
   clip: AssetId, // e.g. "idle-breathing", "wave", "point"
   from: Frame,
+  /** Start when this dialogue line starts (+ `offset` frames); follows real audio timing. */
+  onLine: z.string().optional(),
+  offset: z.number().int().default(0),
   durationInFrames: z.number().int().positive(),
   /** Blend-in / blend-out length in frames. */
   blendFrames: z.number().int().nonnegative().default(8),
@@ -91,7 +94,7 @@ export const CharacterTrack = z.object({
   keyframes: z.array(CharacterKeyframe).min(1),
   clips: z.array(AnimationClipRef).default([]),
   expression: z
-    .array(z.object({ frame: Frame, expression: AssetId, easing: EasingName.default("easeInOut") }))
+    .array(z.object({ frame: Frame, onLine: z.string().optional(), offset: z.number().int().default(0), expression: AssetId, easing: EasingName.default("easeInOut") }))
     .default([]),
   /** Blend a walk cycle automatically whenever the character moves (gait synced to distance). */
   autoWalk: z.boolean().default(true),
@@ -227,6 +230,8 @@ export const DialogueAudio = z.object({
   voiceKey: z.string().optional(),
   /** Real audio duration in milliseconds. */
   durationMs: z.number().positive().optional(),
+  /** Static per-character level balance (dB, ≤ 0): one gain for all of a character's lines. */
+  gainDb: z.number().max(0).optional(),
   /** Loudness envelope 0–1 sampled at envelopeHz (drives lip sync). */
   envelopeHz: z.number().positive().optional(),
   envelope: z.array(z.number().min(0).max(1)).optional(),

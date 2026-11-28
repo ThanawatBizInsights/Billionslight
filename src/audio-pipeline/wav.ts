@@ -75,3 +75,20 @@ export function loudnessEnvelope(samples: Float32Array, sampleRate: number, hz =
   const ref = sorted[Math.floor(sorted.length * 0.95)] || 1;
   return out.map((v) => Math.round(Math.min(1, v / ref) * 100) / 100);
 }
+
+/** Loudness of the voiced parts only (dBFS RMS over 50 ms windows above -45 dBFS). */
+export function voicedLevelDb(samples: Float32Array, sampleRate: number): number {
+  const win = Math.max(1, Math.round(sampleRate * 0.05));
+  let sum = 0;
+  let n = 0;
+  for (let i = 0; i + win <= samples.length; i += win) {
+    let e = 0;
+    for (let j = i; j < i + win; j++) e += samples[j]! * samples[j]!;
+    const ms = e / win;
+    if (10 * Math.log10(ms + 1e-12) > -45) {
+      sum += ms;
+      n++;
+    }
+  }
+  return n ? 10 * Math.log10(sum / n) : -100;
+}

@@ -47,17 +47,22 @@ month; the multilingual v2 model uses about 1 credit per character. Usage
 inside the monthly allowance costs nothing extra; overage only applies if
 usage-based billing is enabled in the ElevenLabs account.
 
-## Voice cast (owner's choice, 2026-11-28)
+## Voice cast (owner-approved recast, 2026-11-28)
 
-| Voice key | Character | ElevenLabs voice |
-|---|---|---|
-| `narrator` | Narrator | **Thanawat** — the owner's own cloned voice |
-| `homeowner` | Ton (ต้น) | **Songkran – Calm & Humble** (library, Thai, middle-aged male) |
-| `sunny` | Sunny | **Kirin – Natural Thai Male** (library, Thai, casual) |
+Model `eleven_v4` with `language_code: "th"` (confirmed available on the
+project key; with-timestamps supported).
 
-Voice IDs live only in `.env` (`ELEVENLABS_VOICE_NARRATOR`, `…_HOMEOWNER`,
-`…_SUNNY`) — the owner's clone ID is never committed. Sunny's lines use the
-male particles ผม/ครับ to match the chosen voice.
+| Voice key | Character | ElevenLabs voice | Direction |
+|---|---|---|---|
+| `sunny` | Sunny (boy mascot) | Pat – Warm Thai Storyteller (`6x3qYeG3xkaxgXoc66dE`) | cheerful, sweet, clear; audible smile; excited when it clicks |
+| `homeowner` | Ton (ต้น) | Suwapoj – ไทย Podcast (`vSL3G4iIBh54RFkRCXHj`) | warm, grounded, conversational; puzzled → assured |
+| `narrator` | Narrator | owner's cloned voice "Thanawat" (ID only in `.env`) | — |
+
+Chosen from a v4 screening (8 voices) and a two-pair audition on v4 and v3
+(`renders/phase-4-review/casting/`). Pair 1 on v4 had the widest natural
+contrast (Sunny lifts to ~245 Hz when excited, Ton stays ~155 Hz) and the most
+expressive delivery; v3 was flatter. The approved audition takes were reused
+for the matching script lines (no regeneration).
 
 ## Running in a cloud session
 

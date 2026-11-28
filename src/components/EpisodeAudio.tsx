@@ -45,7 +45,7 @@ export function SceneAudio({ scene, episode, sceneStart, intervals }: { scene: S
       {scene.dialogue.map((d) =>
         d.audio?.file && d.durationInFrames ? (
           <Sequence key={d.id} from={d.from} durationInFrames={d.durationInFrames} name={`voice:${d.id}`} layout="none">
-            <Audio src={staticFile(d.audio.file)} volume={episode.audioMix.dialogueVolume} />
+            <Audio src={staticFile(d.audio.file)} volume={episode.audioMix.dialogueVolume * 10 ** ((d.audio.gainDb ?? 0) / 20)} />
           </Sequence>
         ) : null,
       )}

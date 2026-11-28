@@ -49,6 +49,9 @@ export async function runPrepare(argv: string[]) {
   const out = args.out ? path.resolve(root, args.out) : path.join(outDir, "timed.json");
   console.log(`audio mode: ${mode}  model: ${res.config.modelId}  language_code: ${res.config.languageCode}  (ElevenLabs: ${res.config.mode}${res.config.reasons.length ? " — " + res.config.reasons.join("; ") : ""})`);
   for (const l of res.lines) console.log(`  ${l.sceneId}/${l.lineId.padEnd(14)} ${l.voiceKey.padEnd(10)} ${l.source.padEnd(17)} ${String(l.characters).padStart(4)} chars ${l.durationMs ? (l.durationMs / 1000).toFixed(2) + " s" : ""}${l.note ? "  ⚠ " + l.note : ""}`);
+  const gains = new Map<string, number>();
+  for (const s of ep.scenes) for (const d of s.dialogue) if (d.audio?.gainDb !== undefined) gains.set(d.audio.voiceKey ?? "?", d.audio.gainDb);
+  if (gains.size) console.log(`level balance (static gain per character): ${[...gains].map(([k, g]) => `${k} ${g} dB`).join(", ")}`);
   const wouldBill = res.lines.filter((l) => l.source === "elevenlabs-new").reduce((n, l) => n + l.characters, 0);
   if (args["dry-run"] === "true") {
     console.log(`dry run: ${wouldBill} characters would be billed to ElevenLabs; nothing written.`);

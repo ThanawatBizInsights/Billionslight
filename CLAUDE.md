@@ -266,9 +266,21 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
 - Owner's ElevenLabs plan (2026-11-28): Creator, 144,577 credits/month,
   ~1 credit per character on multilingual v2; no extra cost inside the
   allowance.
-- **Voice cast (owner, 2026-11-28):** narrator = owner's cloned voice
-  "Thanawat"; Ton (`homeowner`) = "Songkran"; Sunny (`sunny`) = "Kirin"
-  (male → Sunny says ผม/ครับ). IDs only in `.env`, never committed.
+- **Voice cast (owner-approved recast, 2026-11-28):** model `eleven_v4`,
+  `language_code: "th"`. Sunny = "Pat – Warm Thai Storyteller"
+  (6x3qYeG3xkaxgXoc66dE, cheerful/expressive, ผม/ครับ); Ton (`homeowner`) =
+  "Suwapoj – ไทย Podcast" (vSL3G4iIBh54RFkRCXHj, warm/grounded); narrator =
+  owner's cloned voice "Thanawat" (ID only in `.env`). Songkran/Kirin and
+  `eleven_multilingual_v2` (no Thai support) are retired.
+- Direction: write `speak` as people talk, with v4 audio tags (`[curious]`,
+  `[excited]`, `[warmly]`, `[cheerful]`) and pauses (…); captions (`text`) keep
+  the written form ("3 kW" captioned, "สามกิโลวัตต์" spoken). Shorten wording or
+  adjust the cut instead of speeding up a voice.
+- Levels: one static gain per character (≤ 0 dB, matched to the quietest
+  voice), never per-line levelling or compression.
+- Clips, expression keys and camera shots can start `onLine` (+ `offset`).
+- Auditions: `scripts/audio/audition.ts` (paid-guarded; loudness-matched
+  dialogue-only previews). Rendered audio is git-ignored.
 - Cloud sessions: environment "Billionslight" holds the key as a proxy
   credential for api.elevenlabs.io; run with `ELEVENLABS_API_KEY=proxy-injected`.
 - First paid run (2026-11-28, approved): phase4-dialogue-test, 7 lines,

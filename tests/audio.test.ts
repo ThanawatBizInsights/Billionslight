@@ -276,3 +276,32 @@ describe("WAV + sound library", () => {
     }
   });
 });
+
+describe("Phase 4 recast: level balance + line anchors", () => {
+  it("one static gain per character, matched to the quietest voice (never boosted)", async () => {
+    const { balanceCharacterLevels } = await import("../src/audio-pipeline/prepare");
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), "bl-bal-"));
+    const dir = path.join(root, "public/a");
+    fs.mkdirSync(dir, { recursive: true });
+    const tone = (amp: number) => encodeWav(new Float32Array(24000).map((_, i) => Math.sin(i / 8) * amp), 24000);
+    fs.writeFileSync(path.join(dir, "s1.wav"), tone(0.5));
+    fs.writeFileSync(path.join(dir, "s2.wav"), tone(0.25)); // Sunny varies between lines
+    fs.writeFileSync(path.join(dir, "t1.wav"), tone(0.1));
+    const ep = episode([scene([
+      { id: "s1", castId: "sunny", text: "x", from: 0, audio: { source: "elevenlabs", file: "a/s1.wav", voiceKey: "sunny" } },
+      { id: "s2", castId: "sunny", text: "x", from: 0, audio: { source: "elevenlabs", file: "a/s2.wav", voiceKey: "sunny" } },
+      { id: "t1", castId: "ton", text: "x", from: 0, audio: { source: "elevenlabs", file: "a/t1.wav", voiceKey: "homeowner" } },
+    ])]);
+    const r = balanceCharacterLevels(ep, path.join(root, "public"));
+    expect(r.homeowner!.gainDb).toBe(0);
+    expect(r.sunny!.gainDb).toBeLessThan(0);
+    const [s1, s2] = ep.scenes[0]!.dialogue;
+    expect(s1!.audio!.gainDb).toBe(s2!.audio!.gainDb); // same gain → line-to-line variation preserved
+  });
+  it("clips and expressions can start on a dialogue line", () => {
+    const s = Scene.parse({ id: "s", durationInFrames: 60, environment: { id: "living-room" }, lighting: { preset: "evening" }, camera: {},
+      characters: [{ castId: "sunny", keyframes: [{ frame: 0, position: [0, 0, 0] }], clips: [{ clip: "wave", from: 0, onLine: "l1", offset: 2, durationInFrames: 20 }], expression: [{ frame: 0, onLine: "l1", expression: "happy" }] }] });
+    expect(s.characters[0]!.clips[0]).toMatchObject({ onLine: "l1", offset: 2 });
+    expect(s.characters[0]!.expression[0]!.onLine).toBe("l1");
+  });
+});

@@ -30,7 +30,7 @@ export function resolveElevenLabsConfig(env: Record<string, string | undefined>)
   };
   return {
     mode: key && allow ? "elevenlabs" : "cache-or-mock",
-    modelId: env.ELEVENLABS_MODEL_ID || "eleven_multilingual_v2",
+    modelId: env.ELEVENLABS_MODEL_ID || "eleven_v4",
     languageCode: env.ELEVENLABS_LANGUAGE_CODE || "th",
     voices,
     reasons,

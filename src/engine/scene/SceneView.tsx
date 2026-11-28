@@ -216,6 +216,13 @@ export function SceneView({ scene, episode, quality }: { scene: Scene; episode: 
     const eyeY = st.position[1] + eyeHeightWorld(def);
 
     // resolve pointAt targets to character-local yaw/pitch (from the shoulder)
+    // anchor clips / expression keys to dialogue lines (they follow real audio timing)
+    const lineFrom = (id?: string) => (id ? scene.dialogue.find((d) => d.id === id)?.from : undefined);
+    t = {
+      ...t,
+      clips: t.clips.map((c) => (c.onLine !== undefined && lineFrom(c.onLine) !== undefined ? { ...c, from: Math.max(0, lineFrom(c.onLine)! + c.offset) } : c)),
+      expression: t.expression.map((e) => (e.onLine !== undefined && lineFrom(e.onLine) !== undefined ? { ...e, frame: Math.max(0, lineFrom(e.onLine)! + e.offset) } : e)),
+    };
     // dialogue sync: a speaking line adds subtle talking head motion unless the author placed a talk clip
     const autoTalk = scene.dialogue
       .filter((d) => d.castId === t.castId && d.lipSync && d.durationInFrames)

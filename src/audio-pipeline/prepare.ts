@@ -21,7 +21,7 @@ import { resolveElevenLabsConfig, type ElevenLabsConfig } from "../engine/audio/
 import { normalizeForTts } from "../engine/audio/tts-normalize";
 import { applyDialogueTiming } from "../engine/audio/timing";
 import { getCharacter } from "../engine/characters/library";
-import { encodeWav, loudnessEnvelope, pcm16ToWav, readWav } from "./wav";
+import { encodeWav, loudnessEnvelope, pcm16ToWav, readWav, voicedLevelDb } from "./wav";
 import { mockVoice } from "./mock-voice";
 import { synthesize, type TtsResult } from "./elevenlabs";
 
@@ -237,6 +237,40 @@ export async function prepareEpisodeAudio(input: EpisodeInput | Episode, opts: P
     const missing = reports.filter((r) => r.source === "missing");
     if (missing.length) throw new Error(`Voice cache incomplete for ${missing.length} line(s): ${missing.map((m) => m.lineId).join(", ")}`);
   }
+  if (!opts.dryRun) balanceCharacterLevels(ep, pub);
   const timed = opts.dryRun ? ep : applyDialogueTiming(ep);
   return { episode: Episode.parse(timed), lines: reports, billedCharacters: billed, config: { mode: cfg.mode, modelId: cfg.modelId, languageCode: cfg.languageCode, reasons: cfg.reasons } };
+}
+
+/**
+ * Per-character level balance: measure each character's average voiced level
+ * across all of their lines and apply ONE static gain per character (≤ 0 dB,
+ * matched to the quietest character). No compression and no per-line
+ * levelling, so the natural variation within and between lines is kept.
+ */
+export function balanceCharacterLevels(ep: Episode, pub: string): Record<string, { levelDb: number; gainDb: number }> {
+  const byVoice = new Map<string, { lines: Episode["scenes"][number]["dialogue"]; energy: number; n: number }>();
+  for (const s of ep.scenes)
+    for (const d of s.dialogue) {
+      const f = d.audio?.file;
+      if (!f || !fs.existsSync(path.join(pub, f))) continue;
+      const w = readWav(path.join(pub, f));
+      const db = voicedLevelDb(w.samples, w.sampleRate);
+      const key = d.audio!.voiceKey ?? d.castId ?? "narrator";
+      const e = byVoice.get(key) ?? { lines: [], energy: 0, n: 0 };
+      e.lines.push(d);
+      e.energy += 10 ** (db / 10);
+      e.n++;
+      byVoice.set(key, e);
+    }
+  const levels = [...byVoice.entries()].map(([k, v]) => [k, 10 * Math.log10(v.energy / v.n)] as const);
+  if (levels.length === 0) return {};
+  const target = Math.min(...levels.map(([, l]) => l));
+  const out: Record<string, { levelDb: number; gainDb: number }> = {};
+  for (const [k, level] of levels) {
+    const gainDb = Math.round(Math.min(0, target - level) * 10) / 10;
+    out[k] = { levelDb: Math.round(level * 10) / 10, gainDb };
+    for (const d of byVoice.get(k)!.lines) d.audio = { ...d.audio!, gainDb };
+  }
+  return out;
 }
