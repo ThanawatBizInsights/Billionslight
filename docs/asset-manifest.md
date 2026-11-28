@@ -2,7 +2,7 @@
 
 _Generated from `src/assets/asset-manifest.json` by `node scripts/manifest-report.mjs` — edit the JSON, not this file._
 
-Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `public/assets/references/drive/`.
+Updated: 2026-11-27 · 142 assets · reference files live (git-ignored) under `public/assets/references/drive/`.
 
 | Status | Count |
 |---|---|
@@ -13,7 +13,7 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 | superseded | 2 |
 | reference-supplied | 32 |
 | reference-only | 3 |
-| in-progress | 2 |
+| in-progress | 11 |
 
 ## character
 
@@ -375,6 +375,8 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 | `scene-palette` | Global scene & UI palette | approved | data-preset | 2 |  | 01-visual-reference-board.png §03; 06-production-reference-sheet.png colour & material palette; 03-cinematic-house-lighting-grid.png lighting palette |
 | `scene-transitions` | Scene transitions (cut, fade, dip-to-navy) | approved | data-preset | 3 |  | — |
 | `energy-flow-standard` | Billionslight energy-flow visual standard (V3 travelling pulse) | approved | data-preset | 3 |  | — |
+| `thai-subtitles` | Thai subtitle system | in-progress | 2d-overlay | 4 |  | — |
+| `audio-pipeline` | Dialogue audio pipeline (ElevenLabs + cache + mock) | in-progress | data-preset | 4 |  | — |
 
 **`energy-flow-language`** —  Superseded palette: see energy-flow-standard (V3).
 - Palette: solarDC `#FBBF24` (official), utilityGridAC `#3B82F6` (official), batteryDC `#22C55E` (official), inverterAC `#22D3EE` (official), householdLoad `#F8FAFC` (official), inactive `#64748B` (official), fault `#EF4444` (official)
@@ -393,6 +395,14 @@ Updated: 2026-11-27 · 133 assets · reference files live (git-ignored) under `p
 - Palette: solarDC `#FBBF24` (official), utilityGridAC `#3B82F6` (official), batteryDC `#22C55E` (official), inverterAC `#22D3EE` (official), householdLoad `#F8FAFC` (official), inactive `#64748B` (official), fault `#EF4444` (official)
 - Animation: travelling-pulse, bright-leading-edge, fading-tail, direction-from-rules-engine, inactive-static, warning-indicator, thai-labels, legend
 - Implementation: `src/engine/energy-flow`
+
+**`thai-subtitles`** — Noto Sans Thai, safe area, legend-aware. See docs/audio-pipeline.md.
+- Animation: word-boundary-wrap, balanced-lines, srt-export
+- Implementation: `src/engine/subtitles/thai.ts`
+
+**`audio-pipeline`** — Paid generation only with owner approval. See docs/audio-pipeline.md.
+- Animation: voice-cache, paid-call-guard, dialogue-timing, lip-sync, ducking
+- Implementation: `src/audio-pipeline/prepare.ts`
 
 ## animation-clip
 

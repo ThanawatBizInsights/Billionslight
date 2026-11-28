@@ -172,6 +172,8 @@ npm run render:test:draft      # 360×640 draft
 npm run render:test            # 1080×1920 final
 node scripts/render.mjs Episode --episode=src/episodes/<id>.episode.json --quality=preview
 node scripts/plan-shot.mjs '<json>'   # numeric camera framing
+npx tsx scripts/audio/prepare-episode-audio.ts <episode> --audio=mock   # voices/timing/subtitles
+npx tsx scripts/audio/synth-library.ts                                  # original music + SFX
 npm run manifest               # regenerate docs/asset-manifest.md
 npm test && npm run typecheck
 ```
@@ -243,6 +245,27 @@ its browser, set `BROWSER_EXECUTABLE` to a Chrome Headless Shell binary.
   green, meter import/export = blue, PV = yellow, powered appliance = white,
   idle = grey, fault = red. The old energy palette is retired (a test fails if
   it reappears).
+
+## Phase 4 audio (in progress — see docs/audio-pipeline.md)
+
+- Pipeline: `scripts/audio/prepare-episode-audio.ts` (imported → voice cache →
+  paid ElevenLabs only with key + `ELEVENLABS_ALLOW_PAID_CALLS=true` +
+  `--confirm-paid` + `--max-characters` budget + owner approval → mock).
+  ALWAYS `--dry-run` first and report the billable characters to the owner.
+- `render.mjs` never makes paid calls: `--audio=mock` (default) | `cache` | `none`;
+  it writes `<video>.th.srt` beside the MP4.
+- Voice cache `public/assets/audio/cache/` (git-ignored): never regenerate a
+  cached line unless asked (`--regenerate=<lineId>`); ledger.jsonl logs billing.
+- Dialogue: `text` = subtitles, `speak` (or unit-normalised text) = voice;
+  timing follows real audio (lines pushed, scenes grown, never shortened);
+  `camera.shots[].onLine` cuts on speech; lip sync from the loudness envelope.
+- Thai subtitles: word-boundary, balanced, glossary-protected wrapping
+  (`src/engine/subtitles/thai.ts`), 26 visual chars × 2 lines, safe area.
+- Sound library (`src/engine/audio/library.ts`): original, procedurally
+  synthesised music bed, room tone and SFX; music ducks under speech.
+- Owner's ElevenLabs plan (2026-11-28): Creator, 144,577 credits/month,
+  ~1 credit per character on multilingual v2; no extra cost inside the
+  allowance.
 
 ## Approved reusable assets & capabilities
 

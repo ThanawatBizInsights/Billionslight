@@ -9,6 +9,7 @@ import { LIGHTING_PRESETS } from "../src/engine/lighting/presets";
 import { CAMERA_PRESETS } from "../src/engine/cameras/presets";
 import { PROPS } from "../src/engine/props/Props";
 import { CLIPS } from "../src/engine/animation/clips";
+import { SOUND_LIBRARY } from "../src/engine/audio/library";
 
 const root = path.resolve(__dirname, "..");
 const manifest = AssetManifest.parse(manifestJson);
@@ -27,6 +28,7 @@ describe("asset manifest", () => {
       ...Object.keys(CAMERA_PRESETS),
       ...Object.keys(PROPS),
       ...Object.keys(CLIPS),
+      ...Object.keys(SOUND_LIBRARY),
     ];
     for (const id of engineIds) expect(byId.has(id), `manifest missing "${id}"`).toBe(true);
   });

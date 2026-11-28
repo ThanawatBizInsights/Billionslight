@@ -22,6 +22,7 @@ export const AssetCategory = z.enum([
   "expression",
   "branding",
   "visual-language",
+  "audio",
 ]);
 
 /**
@@ -51,6 +52,7 @@ export const ModelType = z.enum([
   "gltf-import", // future: GLB built from the reference
   "data-preset", // lighting / camera / clip definitions
   "2d-overlay", // logo, legend, captions
+  "procedural-audio", // synthesised original music / SFX
   "none",
 ]);
 
