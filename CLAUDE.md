@@ -16,8 +16,11 @@ do not modify them without permission — add variants instead.
 **Phase 4 — audio, dialogue sync, Thai subtitles, music, SFX: APPROVED by the
 owner (2026-11-28)** (voices, pacing and subtitles). Any paid ElevenLabs
 generation still needs the owner's explicit approval per run.
-**Phase 5 — demo episode: IN PROGRESS** (script + claims + mock animatic first;
-real voices only after the owner approves the script and character count).
+**Phase 5 — demo episode: RENDERED, awaiting the owner's technical + visual
+review** (`docs/phase-5-report.md`). Script approved 2026-11-28 (1,067 chars
+generated). Claims stay `needs-human-review` until verified; hybrid backup
+references kept general by the owner's decision. Do not start Phase 6 before
+the Phase 5 gate is passed.
 **Energy-flow style V3 (travelling pulse, Variant B): APPROVED** by the owner
 (2026-11-27) as the permanent style, and its implementation previews
 (`renders/energy-flow-review/v3/`) are APPROVED. Equipment indicator LEDs were
