@@ -1,0 +1,2 @@
+{ "outDir": "renders/phase-4-review/casting/probe", "model": "eleven_v4", "languageCode": "th",
+  "takes": [ { "id": "probe-v4-fee", "voiceId": "b4vqHPFcFt5Q1FqfFhVe", "text": "สวัสดีครับ ผมซันนี่" } ] }

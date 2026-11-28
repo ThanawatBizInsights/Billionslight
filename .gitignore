@@ -24,3 +24,10 @@ renders/energy-flow-review/iterations/
 public/assets/audio/library/
 public/assets/audio/cache/
 public/assets/audio/episodes/
+
+# rendered audio (voices, incl. the owner's cloned voice) never goes to the public repo
+renders/**/*.wav
+renders/**/*.mp3
+renders/**/*.m4a
+renders/**/*.aac
+renders/**/*.props.json

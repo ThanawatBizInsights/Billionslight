@@ -1,0 +1,47 @@
+{
+ "outDir": "renders/phase-4-review/casting/screening",
+ "model": "eleven_v4",
+ "languageCode": "th",
+ "takes": [
+  {
+   "id": "sunny-tongeek",
+   "voiceId": "ezkLs9Yt73bdKnjZ9EBR",
+   "text": "[cheerful] สวัสดีครับ! ผมซันนี่ วันนี้จะพาไปดูโซลาร์กับระบบออนกริดกันครับ"
+  },
+  {
+   "id": "sunny-bankky",
+   "voiceId": "RwilAvCC3o05RLuACpAn",
+   "text": "[cheerful] สวัสดีครับ! ผมซันนี่ วันนี้จะพาไปดูโซลาร์กับระบบออนกริดกันครับ"
+  },
+  {
+   "id": "sunny-pat",
+   "voiceId": "6x3qYeG3xkaxgXoc66dE",
+   "text": "[cheerful] สวัสดีครับ! ผมซันนี่ วันนี้จะพาไปดูโซลาร์กับระบบออนกริดกันครับ"
+  },
+  {
+   "id": "sunny-fee",
+   "voiceId": "b4vqHPFcFt5Q1FqfFhVe",
+   "text": "[cheerful] สวัสดีครับ! ผมซันนี่ วันนี้จะพาไปดูโซลาร์กับระบบออนกริดกันครับ"
+  },
+  {
+   "id": "ton-varungarn",
+   "voiceId": "WC2mLA3JUeu3JY9S1J9O",
+   "text": "[curious] เอ๊ะ... แดดแรงขนาดนี้ บ้านเราใช้ไฟจากโซลาร์อยู่ใช่ไหมเนี่ย"
+  },
+  {
+   "id": "ton-dream",
+   "voiceId": "A67W0PZx18wQRMcPcMI0",
+   "text": "[curious] เอ๊ะ... แดดแรงขนาดนี้ บ้านเราใช้ไฟจากโซลาร์อยู่ใช่ไหมเนี่ย"
+  },
+  {
+   "id": "ton-suwapoj",
+   "voiceId": "vSL3G4iIBh54RFkRCXHj",
+   "text": "[curious] เอ๊ะ... แดดแรงขนาดนี้ บ้านเราใช้ไฟจากโซลาร์อยู่ใช่ไหมเนี่ย"
+  },
+  {
+   "id": "ton-patinya",
+   "voiceId": "weRAVUYgqjjfUEEu5BsB",
+   "text": "[curious] เอ๊ะ... แดดแรงขนาดนี้ บ้านเราใช้ไฟจากโซลาร์อยู่ใช่ไหมเนี่ย"
+  }
+ ]
+}

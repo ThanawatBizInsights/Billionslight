@@ -1,0 +1,117 @@
+{
+ "outDir": "renders/phase-4-review/casting/auditions",
+ "model": "eleven_v4",
+ "languageCode": "th",
+ "takes": [
+  {
+   "id": "pair1-v4-ton-a-suwapoj",
+   "voiceId": "vSL3G4iIBh54RFkRCXHj",
+   "text": "[curious] เอ๊ะ... ซันนี่ แดดแรงขนาดนี้ บ้านเราใช้ไฟจากโซลาร์อยู่ใช่ไหมเนี่ย",
+   "model": "eleven_v4"
+  },
+  {
+   "id": "pair1-v4-sunny-a-pat",
+   "voiceId": "6x3qYeG3xkaxgXoc66dE",
+   "text": "[excited] ใช่เลยครับ! แผงโซลาร์บนหลังคา ผลิตไฟได้ประมาณสามกิโลวัตต์ครับ",
+   "model": "eleven_v4"
+  },
+  {
+   "id": "pair1-v4-ton-b-suwapoj",
+   "voiceId": "vSL3G4iIBh54RFkRCXHj",
+   "text": "[warmly] อ๋อ... งั้นระบบออนกริดบ้านเรา ก็ใช้ไฟจากแดดอยู่นี่เอง",
+   "model": "eleven_v4"
+  },
+  {
+   "id": "pair2-v4-ton-a-patinya",
+   "voiceId": "weRAVUYgqjjfUEEu5BsB",
+   "text": "[curious] เอ๊ะ... ซันนี่ แดดแรงขนาดนี้ บ้านเราใช้ไฟจากโซลาร์อยู่ใช่ไหมเนี่ย",
+   "model": "eleven_v4"
+  },
+  {
+   "id": "pair2-v4-sunny-a-bankky",
+   "voiceId": "RwilAvCC3o05RLuACpAn",
+   "text": "[excited] ใช่เลยครับ! แผงโซลาร์บนหลังคา ผลิตไฟได้ประมาณสามกิโลวัตต์ครับ",
+   "model": "eleven_v4"
+  },
+  {
+   "id": "pair2-v4-ton-b-patinya",
+   "voiceId": "weRAVUYgqjjfUEEu5BsB",
+   "text": "[warmly] อ๋อ... งั้นระบบออนกริดบ้านเรา ก็ใช้ไฟจากแดดอยู่นี่เอง",
+   "model": "eleven_v4"
+  },
+  {
+   "id": "pair1-v3-ton-a-suwapoj",
+   "voiceId": "vSL3G4iIBh54RFkRCXHj",
+   "text": "[curious] เอ๊ะ... ซันนี่ แดดแรงขนาดนี้ บ้านเราใช้ไฟจากโซลาร์อยู่ใช่ไหมเนี่ย",
+   "model": "eleven_v3"
+  },
+  {
+   "id": "pair1-v3-sunny-a-pat",
+   "voiceId": "6x3qYeG3xkaxgXoc66dE",
+   "text": "[excited] ใช่เลยครับ! แผงโซลาร์บนหลังคา ผลิตไฟได้ประมาณสามกิโลวัตต์ครับ",
+   "model": "eleven_v3"
+  },
+  {
+   "id": "pair1-v3-ton-b-suwapoj",
+   "voiceId": "vSL3G4iIBh54RFkRCXHj",
+   "text": "[warmly] อ๋อ... งั้นระบบออนกริดบ้านเรา ก็ใช้ไฟจากแดดอยู่นี่เอง",
+   "model": "eleven_v3"
+  },
+  {
+   "id": "pair2-v3-ton-a-patinya",
+   "voiceId": "weRAVUYgqjjfUEEu5BsB",
+   "text": "[curious] เอ๊ะ... ซันนี่ แดดแรงขนาดนี้ บ้านเราใช้ไฟจากโซลาร์อยู่ใช่ไหมเนี่ย",
+   "model": "eleven_v3"
+  },
+  {
+   "id": "pair2-v3-sunny-a-bankky",
+   "voiceId": "RwilAvCC3o05RLuACpAn",
+   "text": "[excited] ใช่เลยครับ! แผงโซลาร์บนหลังคา ผลิตไฟได้ประมาณสามกิโลวัตต์ครับ",
+   "model": "eleven_v3"
+  },
+  {
+   "id": "pair2-v3-ton-b-patinya",
+   "voiceId": "weRAVUYgqjjfUEEu5BsB",
+   "text": "[warmly] อ๋อ... งั้นระบบออนกริดบ้านเรา ก็ใช้ไฟจากแดดอยู่นี่เอง",
+   "model": "eleven_v3"
+  }
+ ],
+ "sequences": [
+  {
+   "id": "pair1-v4-pat-suwapoj",
+   "takes": [
+    "pair1-v4-ton-a-suwapoj",
+    "pair1-v4-sunny-a-pat",
+    "pair1-v4-ton-b-suwapoj"
+   ],
+   "gapMs": 350
+  },
+  {
+   "id": "pair2-v4-bankky-patinya",
+   "takes": [
+    "pair2-v4-ton-a-patinya",
+    "pair2-v4-sunny-a-bankky",
+    "pair2-v4-ton-b-patinya"
+   ],
+   "gapMs": 350
+  },
+  {
+   "id": "pair1-v3-pat-suwapoj",
+   "takes": [
+    "pair1-v3-ton-a-suwapoj",
+    "pair1-v3-sunny-a-pat",
+    "pair1-v3-ton-b-suwapoj"
+   ],
+   "gapMs": 350
+  },
+  {
+   "id": "pair2-v3-bankky-patinya",
+   "takes": [
+    "pair2-v3-ton-a-patinya",
+    "pair2-v3-sunny-a-bankky",
+    "pair2-v3-ton-b-patinya"
+   ],
+   "gapMs": 350
+  }
+ ]
+}
