@@ -68,3 +68,25 @@ mock-voice renders are kept in `dialogue-test/mock-voices/` for comparison.
 3. Where to run it: on the owner's Mac with the API key in `.env`
    (recommended — the cache then stays where videos are rendered), or in a
    cloud session with the key added through the secure credential form.
+
+## Recast on eleven_v4 (owner-approved, 2026-11-28)
+
+Sunny = Pat, Ton = Suwapoj, narrator = Thanawat (clone); `eleven_v4`,
+`language_code: th`. Script rewritten as spoken Thai with v4 performance tags
+(voice only); captions keep the written notation. 9 lines (3 reused from the
+approved audition, 6 generated: 314 characters). Per-character static gain:
+Sunny −1.9 dB, Ton −0.5 dB, narrator 0 dB.
+
+| Quality | Resolution | Render time | Verification |
+|---|---|---|---|
+| draft | 360×640 | 132 s | ffprobe ok, 40.15 s, AAC |
+| preview | 540×960 | 289 s | ffprobe ok |
+| final | 1080×1920 | 767 s | ffprobe ok |
+
+Final-mix loudness per line (EBU R128): Ton −21.1 LUFS mean (range 1.7 LU),
+Sunny −20.7 (range 2.0), narrator −20.9 — characters balanced within 0.4 LU,
+natural line-to-line variation kept. Camera cuts, Sunny's gestures and Ton's
+expressions are anchored to the lines (`onLine`). Previous renders:
+`dialogue-test/v1-songkran-kirin/`.
+
+ElevenLabs usage so far ≈ 2,127 characters (292 + 106 + 19 + 564 + 832 + 314).
