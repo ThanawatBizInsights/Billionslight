@@ -3,7 +3,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { chunkCaptions, segmentThai, timeCaptions, visualLength, wrapThai } from "../src/engine/subtitles/thai";
-import { normalizeForTts, estimateSpeechMs } from "../src/engine/audio/tts-normalize";
+import { normalizeForTts, estimateSpeechMs, thaiInteger } from "../src/engine/audio/tts-normalize";
 import { applyDialogueTiming, cueFade, dialogueIntervals, duckGain, layoutSceneDialogue } from "../src/engine/audio/timing";
 import { mouthForLine } from "../src/engine/audio/lipsync";
 import { episodeSrt, sceneCaptions } from "../src/engine/subtitles/captions";
@@ -53,9 +53,15 @@ describe("Thai subtitles", () => {
 
 describe("TTS text", () => {
   it("speaks units in Thai, never letter-by-letter", () => {
-    expect(normalizeForTts("ผลิตได้ 3 kW")).toBe("ผลิตได้ 3 กิโลวัตต์");
-    expect(normalizeForTts("แบตเตอรี่ 10 kWh")).toBe("แบตเตอรี่ 10 กิโลวัตต์ชั่วโมง");
-    expect(normalizeForTts("ประมาณ 80%")).toBe("ประมาณ 80 เปอร์เซ็นต์");
+    expect(normalizeForTts("ผลิตได้ 3 kW")).toBe("ผลิตได้สามกิโลวัตต์");
+    expect(normalizeForTts("แบตเตอรี่ 10 kWh")).toBe("แบตเตอรี่สิบกิโลวัตต์ชั่วโมง");
+    expect(normalizeForTts("ประมาณ 80%")).toBe("ประมาณแปดสิบเปอร์เซ็นต์");
+    expect(normalizeForTts("2.5 kW")).toBe("สองจุดห้ากิโลวัตต์");
+  });
+  it("speaks numbers as Thai words", () => {
+    expect(thaiInteger(21)).toBe("ยี่สิบเอ็ด");
+    expect(thaiInteger(111)).toBe("หนึ่งร้อยสิบเอ็ด");
+    expect(thaiInteger(2026)).toBe("สองพันยี่สิบหก");
   });
   it("estimates longer speech for longer text and slower delivery", () => {
     expect(estimateSpeechMs("สวัสดีครับ วันนี้เราจะคุยเรื่องโซลาร์เซลล์กัน")).toBeGreaterThan(estimateSpeechMs("สวัสดีครับ"));
@@ -179,9 +185,9 @@ describe("audio pipeline (no network)", () => {
     const { calls, impl } = fakeTts();
     const o = { mode: "elevenlabs" as const, root, env: paidEnv, confirmPaid: true, synthesizeImpl: impl as never };
     const first = await prepareEpisodeAudio(ep(), o);
-    expect(calls.map((c) => c.text)).toEqual(["ผลิตได้ 3 กิโลวัตต์", "เยี่ยมเลย"]); // the voice says the normalised text
+    expect(calls.map((c) => c.text)).toEqual(["ผลิตได้สามกิโลวัตต์", "เยี่ยมเลย"]); // the voice says the normalised text
     expect(calls.map((c) => c.voiceId)).toEqual(["voice-s", "voice-t"]);
-    expect(first.billedCharacters).toBe("ผลิตได้ 3 กิโลวัตต์".length + "เยี่ยมเลย".length);
+    expect(first.billedCharacters).toBe("ผลิตได้สามกิโลวัตต์".length + "เยี่ยมเลย".length);
     expect(fs.readFileSync(path.join(root, "public/assets/audio/cache/ledger.jsonl"), "utf8").trim().split("\n")).toHaveLength(2);
     expect(first.episode.scenes[0]!.dialogue[0]!.text).toBe("ผลิตได้ 3 kW"); // subtitles keep the written form
     const second = await prepareEpisodeAudio(ep(), o);
@@ -207,6 +213,28 @@ describe("audio pipeline (no network)", () => {
 });
 
 describe("ElevenLabs request", () => {
+  it("sends language_code th by default and drops speed settings on v3/v4", async () => {
+    const bodies: Record<string, unknown>[] = [];
+    const fetchImpl = async (_u: string, init: { body: string }) => {
+      bodies.push(JSON.parse(init.body));
+      return { ok: true, status: 200, json: async () => ({ audio_base64: Buffer.alloc(480).toString("base64"), alignment: null }), text: async () => "" };
+    };
+    await synthesize({ voiceId: "v", modelId: "eleven_v3", text: "สวัสดี", languageCode: "th", speed: 1 }, "k", fetchImpl as never);
+    expect(bodies[0]).toMatchObject({ language_code: "th", model_id: "eleven_v3" });
+    expect((bodies[0]!.voice_settings as Record<string, unknown>).speed).toBeUndefined();
+  });
+  it("falls back to plain speech when a model has no timestamps", async () => {
+    const urls: string[] = [];
+    const fetchImpl = async (u: string) => {
+      urls.push(u);
+      if (u.includes("with-timestamps")) return { ok: false, status: 400, json: async () => ({}), text: async () => "timestamps are not supported for this model" };
+      return { ok: true, status: 200, json: async () => ({}), text: async () => "", arrayBuffer: async () => new ArrayBuffer(480) };
+    };
+    const r = await synthesize({ voiceId: "v", modelId: "m", text: "x" }, "k", fetchImpl as never);
+    expect(urls[1]).not.toContain("with-timestamps");
+    expect(r.alignment).toBeNull();
+    expect(r.pcm.length).toBe(480);
+  });
   it("uses with-timestamps + PCM, sends the key only as a header", async () => {
     const { url, body } = buildTtsRequest({ voiceId: "v1", modelId: "eleven_multilingual_v2", text: "สวัสดี", speed: 0.9 });
     expect(url).toBe("https://api.elevenlabs.io/v1/text-to-speech/v1/with-timestamps?output_format=pcm_24000");

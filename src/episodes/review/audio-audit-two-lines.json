@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "audio-audit-two-lines",
+  "title": "Audio audit · Ton + Sunny lines",
+  "language": "th",
+  "aspectRatio": "9:16",
+  "fps": 30,
+  "cast": [
+    {
+      "id": "sunny",
+      "characterId": "sunny"
+    },
+    {
+      "id": "ton",
+      "characterId": "homeowner_male_01"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "audit",
+      "durationInFrames": 60,
+      "environment": {
+        "id": "living-room"
+      },
+      "lighting": {
+        "preset": "midday-sun"
+      },
+      "camera": {},
+      "dialogue": [
+        {
+          "id": "ton-01",
+          "castId": "ton",
+          "text": "ซันนี่ วันนี้แดดแรงมาก บ้านเราใช้ไฟจากโซลาร์อยู่ใช่ไหม",
+          "from": 0
+        },
+        {
+          "id": "sunny-01",
+          "castId": "sunny",
+          "text": "ใช่ครับ ตอนนี้แผงบนหลังคาผลิตไฟได้ประมาณ 3 kW",
+          "from": 0
+        }
+      ]
+    }
+  ],
+  "branding": {
+    "showLogo": false
+  },
+  "approval": {
+    "status": "draft",
+    "history": []
+  }
+}

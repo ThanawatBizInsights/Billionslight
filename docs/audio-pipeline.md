@@ -144,3 +144,26 @@ npx tsx scripts/audio/prepare-episode-audio.ts <episode> --audio=mock
 node scripts/render.mjs Episode --episode=<episode> --quality=preview --audio=mock
 node scripts/render.mjs Episode --episode=<episode> --quality=final --audio=cache   # real voices only
 ```
+
+
+## Audit 2026-11-28 — "the voice is not Thai conversation"
+
+Lines audited: `ton-01`, `sunny-01` of phase4-dialogue-test.
+
+| Stage | Result |
+|---|---|
+| A raw ElevenLabs | **source of the problem** — `eleven_multilingual_v2`, no `language_code`, digits sent as "3 กิโลวัตต์" |
+| B dialogue-only render (Remotion, no music/SFX) | identical to A (correlation 1.0000, same level, same pitch 82/110 Hz, 0 ms offset) |
+| C full mix | 0.99 correlation with A (music under speech); no speed or pitch change |
+
+Fixes in the pipeline:
+- numbers are spoken as Thai words joined to their unit ("สามกิโลวัตต์"); captions keep "3 kW";
+- `ELEVENLABS_LANGUAGE_CODE` (default `th`) is sent as `language_code`;
+- model and language are part of the cache key (old and new takes never mix);
+- `eleven_v3`/`v4` requests omit `speed`/`use_speaker_boost` (not supported there);
+- if a model has no timestamp endpoint, plain speech is used and captions time by length.
+
+Regenerated with `eleven_v3` + `language_code: th` (106 characters; API accepted
+both, alignment returned). Clips: `renders/phase-4-review/audio-audit/*-A2-*.wav`.
+The default model stays as configured in `.env` until the owner confirms the
+new takes by ear.

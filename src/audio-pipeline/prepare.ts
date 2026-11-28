@@ -59,7 +59,7 @@ export interface PrepareResult {
   episode: Episode;
   lines: LineReport[];
   billedCharacters: number;
-  config: Pick<ElevenLabsConfig, "mode" | "modelId" | "reasons">;
+  config: Pick<ElevenLabsConfig, "mode" | "modelId" | "languageCode" | "reasons">;
 }
 
 export const CACHE_DIR = "assets/audio/cache";
@@ -82,8 +82,8 @@ export interface VoiceSettings {
 }
 
 /** Cache key: everything that changes the generated audio, nothing else. */
-export function cacheKey(provider: "elevenlabs" | "mock", modelId: string, voiceKey: string, spoken: string, settings: VoiceSettings): string {
-  const canonical = JSON.stringify({ v: 1, provider, modelId: provider === "mock" ? "mock" : modelId, voiceKey, spoken: spoken.normalize("NFC"), settings });
+export function cacheKey(provider: "elevenlabs" | "mock", modelId: string, voiceKey: string, spoken: string, settings: VoiceSettings, languageCode?: string): string {
+  const canonical = JSON.stringify({ v: 1, provider, modelId: provider === "mock" ? "mock" : modelId, voiceKey, spoken: spoken.normalize("NFC"), settings, ...(provider === "elevenlabs" && languageCode ? { languageCode } : {}) });
   return `${provider === "mock" ? "mock" : "el"}-${crypto.createHash("sha256").update(canonical).digest("hex").slice(0, 24)}`;
 }
 
@@ -93,6 +93,7 @@ interface CacheMeta {
   voiceKey: string;
   voiceId?: string;
   modelId: string;
+  languageCode?: string;
   spoken: string;
   durationMs: number;
   envelopeHz: number;
@@ -122,7 +123,7 @@ export async function prepareEpisodeAudio(input: EpisodeInput | Episode, opts: P
       const spoken = d.speak ?? normalizeForTts(d.text);
       const voiceKey = voiceKeyFor(ep, d.castId);
       const settings: VoiceSettings = { speed: d.delivery?.speed ?? 1, stability: d.delivery?.stability, similarity: d.delivery?.similarity, style: d.delivery?.styleExaggeration };
-      jobs.push({ si, di, spoken, voiceKey, settings, elKey: cacheKey("elevenlabs", cfg.modelId, voiceKey, spoken, settings), mockKey: cacheKey("mock", "mock", voiceKey, spoken, settings) });
+      jobs.push({ si, di, spoken, voiceKey, settings, elKey: cacheKey("elevenlabs", cfg.modelId, voiceKey, spoken, settings, cfg.languageCode), mockKey: cacheKey("mock", "mock", voiceKey, spoken, settings) });
     }),
   );
   const needsPaid = jobs.filter((j) => {
@@ -178,7 +179,7 @@ export async function prepareEpisodeAudio(input: EpisodeInput | Episode, opts: P
       }
       const voiceId = cfg.voices[j.voiceKey]!;
       const call = opts.synthesizeImpl ?? ((req, key) => synthesize(req, key));
-      const r = await call({ voiceId, modelId: cfg.modelId, text: j.spoken, speed: j.settings.speed, stability: j.settings.stability, similarity: j.settings.similarity, style: j.settings.style }, opts.env.ELEVENLABS_API_KEY ?? "");
+      const r = await call({ voiceId, modelId: cfg.modelId, languageCode: cfg.languageCode, text: j.spoken, speed: j.settings.speed, stability: j.settings.stability, similarity: j.settings.similarity, style: j.settings.style }, opts.env.ELEVENLABS_API_KEY ?? "");
       const wav = pcm16ToWav(r.pcm, r.sampleRate);
       fs.writeFileSync(path.join(cacheAbs, `${j.elKey}.wav`), wav);
       const w = readWav(path.join(cacheAbs, `${j.elKey}.wav`));
@@ -188,6 +189,7 @@ export async function prepareEpisodeAudio(input: EpisodeInput | Episode, opts: P
         voiceKey: j.voiceKey,
         voiceId,
         modelId: cfg.modelId,
+        languageCode: cfg.languageCode,
         spoken: j.spoken,
         durationMs: Math.round((w.samples.length / w.sampleRate) * 1000),
         envelopeHz: ENVELOPE_HZ,
@@ -236,5 +238,5 @@ export async function prepareEpisodeAudio(input: EpisodeInput | Episode, opts: P
     if (missing.length) throw new Error(`Voice cache incomplete for ${missing.length} line(s): ${missing.map((m) => m.lineId).join(", ")}`);
   }
   const timed = opts.dryRun ? ep : applyDialogueTiming(ep);
-  return { episode: Episode.parse(timed), lines: reports, billedCharacters: billed, config: { mode: cfg.mode, modelId: cfg.modelId, reasons: cfg.reasons } };
+  return { episode: Episode.parse(timed), lines: reports, billedCharacters: billed, config: { mode: cfg.mode, modelId: cfg.modelId, languageCode: cfg.languageCode, reasons: cfg.reasons } };
 }

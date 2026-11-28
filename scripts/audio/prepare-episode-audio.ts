@@ -47,7 +47,7 @@ export async function runPrepare(argv: string[]) {
   const ep = res.episode;
   const outDir = path.join(root, "public/assets/audio/episodes", ep.id);
   const out = args.out ? path.resolve(root, args.out) : path.join(outDir, "timed.json");
-  console.log(`audio mode: ${mode}  (ElevenLabs: ${res.config.mode}${res.config.reasons.length ? " — " + res.config.reasons.join("; ") : ""})`);
+  console.log(`audio mode: ${mode}  model: ${res.config.modelId}  language_code: ${res.config.languageCode}  (ElevenLabs: ${res.config.mode}${res.config.reasons.length ? " — " + res.config.reasons.join("; ") : ""})`);
   for (const l of res.lines) console.log(`  ${l.sceneId}/${l.lineId.padEnd(14)} ${l.voiceKey.padEnd(10)} ${l.source.padEnd(17)} ${String(l.characters).padStart(4)} chars ${l.durationMs ? (l.durationMs / 1000).toFixed(2) + " s" : ""}${l.note ? "  ⚠ " + l.note : ""}`);
   const wouldBill = res.lines.filter((l) => l.source === "elevenlabs-new").reduce((n, l) => n + l.characters, 0);
   if (args["dry-run"] === "true") {

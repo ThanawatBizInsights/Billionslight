@@ -10,6 +10,8 @@ export type AudioMode = "elevenlabs" | "cache-or-mock";
 export interface ElevenLabsConfig {
   mode: AudioMode;
   modelId: string;
+  /** ISO 639-1 language sent as language_code (models that support it). */
+  languageCode: string;
   voices: Record<string, string | undefined>;
   reasons: string[];
 }
@@ -29,6 +31,7 @@ export function resolveElevenLabsConfig(env: Record<string, string | undefined>)
   return {
     mode: key && allow ? "elevenlabs" : "cache-or-mock",
     modelId: env.ELEVENLABS_MODEL_ID || "eleven_multilingual_v2",
+    languageCode: env.ELEVENLABS_LANGUAGE_CODE || "th",
     voices,
     reasons,
   };
